@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --fix ./v0 ./v1 ./v2 ./v3 ./v4 ./pdf ./agent-policy-agreement",
+    "format": "prettier -w ./",
+    "dev:v1": "pnpm --filter @lark-resume/v1 dev",
+    "dev:v2": "pnpm --filter @lark-resume/v2 dev",
+    "dev:v3": "pnpm --filter @lark-resume/v3 dev",
+    "dev:v4": "pnpm --filter @lark-resume/v4 dev",
+    "dev:apa": "pnpm --filter agent-policy-agreement dev"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.4.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "jsdom": "^27.4.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.59.3"
+  }
+}

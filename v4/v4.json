@@ -1,0 +1,216 @@
+{
+  "basics": {
+    "name": "杭天铖",
+    "title": "前端/全栈工程师 | 硕士在读 | AI Agent / 工程化方向",
+    "phone": "15395377789",
+    "email": "161043261@qq.com",
+    "city": "",
+    "links": [
+      {
+        "label": "GitHub 主页",
+        "url": "https://github.com/hangtiancheng"
+      },
+      {
+        "label": "lark-sentry 仓库",
+        "url": "https://github.com/hangtiancheng/lark-sentry"
+      },
+      {
+        "label": "ai-agent 仓库",
+        "url": "https://github.com/hangtiancheng/ai-agent"
+      }
+    ]
+  },
+  "summary": "23 岁，硕士在读，聚焦前端工程化、Node.js 全栈开发、性能优化与 AI Agent 方向，具备平台建设、监控埋点、数据处理与复杂业务系统研发经验。",
+  "experience": [
+    {
+      "company": "字节跳动",
+      "role": "产品研发与工程架构部门 / TikTok 安卓性能优化团队",
+      "city": "",
+      "start": "2025.06",
+      "end": "2025.09",
+      "highlights": [
+        "负责安卓设备性能数据的数据处理与可视化渲染。",
+        "性能数据通过 Kafka 转发并入库到 MySQL、ClickHouse 和 Redis。",
+        "后端使用 Golang 和 Kitex，编写 Thrift 生成 Node.js API，供 BFF 层调用 RPC 方法，并通过 LRU 内存缓存减轻数据库压力。",
+        "BFF 层使用 Nest.js 调用 RPC 方法，并暴露 HTTP 接口给前端。",
+        "前端使用 React、Zustand、react-router 文件路由、Semi Design 和 ECharts，并通过 React 性能优化 Hooks 与虚拟滚动列表优化渲染性能。",
+        "实习中参与 CloudWeGo Kitex 与扣子 coze-js 的开源工作。"
+      ]
+    },
+    {
+      "company": "腾讯",
+      "role": "IEG 互动娱乐事业群 / 基础技术产品部",
+      "city": "",
+      "start": "2025.10",
+      "end": "2026.02",
+      "highlights": [
+        "负责腾讯 NoSQL 数据库 TcaplusDB 管理系统研发。",
+        "前端侧迁移 React 类组件到函数组件，使用性能优化 Hooks 避免重复请求并优化组件性能。",
+        "排查闭包引用与接口响应时间过长导致的数据竞争问题。",
+        "后端侧编写 TCP 连接池。",
+        "编写 ffi-napi 绑定 C++ 函数，维护进程池调用 C++ 动态链接库以完成加解密与表文件解析。",
+        "使用 valgrind 排查 Node.js 与 C++ 动态链接库内存泄漏，并通过复用大数组和大结构体降低 Node.js 侧 GC 压力。"
+      ]
+    },
+    {
+      "company": "字节跳动",
+      "role": "Data-架构部门 / ByteRec 搜索推荐算法平台开发",
+      "city": "",
+      "start": "2026.02",
+      "end": "至今",
+      "highlights": [
+        "参与 ByteRec 搜索推荐算法平台开发。",
+        "ByteRec 是面向字节跳动全业务的搜索推荐算法解决方案。"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "前端埋点/性能监控",
+      "role": "个人项目",
+      "link": "https://github.com/hangtiancheng/lark-sentry",
+      "start": "",
+      "end": "",
+      "techStack": [
+        "Monorepo",
+        "TypeScript",
+        "Web Vitals",
+        "Observer API",
+        "rrweb",
+        "gzip"
+      ],
+      "highlights": [
+        "lark-sentry 是一个基于 monorepo 的前端监控 SDK，支持异常捕获、性能指标采集、白屏检测与用户行为重放。",
+        "异常捕获模块支持 js 运行时错误、资源加载错误、未捕获 Promise 异常、xhr / fetch 请求错误，并监控点击事件与路由跳转等用户行为。",
+        "性能指标采集模块计算 LCP、FCP、CLS、INP 等 web-vitals 指标，并使用 Observer API 计算首屏渲染时间。",
+        "实现基于关键点采样的白屏检测算法，用于区分骨架屏与真实白屏。",
+        "故障发生时使用 rrweb + gzip 记录现场，优先使用 navigator.sendBeacon 上报，并提供 fetch 降级方案。",
+        "整体架构采用发布订阅模式，实现 core 模块与多个监控子模块解耦，提升扩展性与可维护性。"
+      ]
+    },
+    {
+      "name": "AI Agent 项目",
+      "role": "个人项目",
+      "link": "https://github.com/hangtiancheng/ai-agent",
+      "start": "",
+      "end": "",
+      "techStack": [
+        "React",
+        "Koa",
+        "Vite",
+        "Tailwind CSS",
+        "Jotai",
+        "TanStack Query",
+        "Zod",
+        "Redis",
+        "MySQL",
+        "RAG"
+      ],
+      "highlights": [
+        "ai-agent 是一个使用 React 和 Koa 的 AI Agent 全栈项目。",
+        "前端使用 Vite、React、Tailwind CSS 和 Jotai，通过 TanStack Query 管理异步状态与请求缓存。",
+        "使用 Zod + react-hook-form 保证端到端类型安全。",
+        "使用 SSE 流式响应与虚拟滚动列表，保障长对话场景下的渲染性能。",
+        "后端使用 Koa、JWT、lru-cache、Redis 和 MySQL，并通过 Knex 参数化查询避免 SQL 注入。",
+        "通过工厂模式实现 OpenAI / Ollama 可插拔模型，并使用内存向量存储实现 RAG 检索查询增强。"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "安徽省南陵中学",
+      "major": "理科",
+      "degree": "高中",
+      "start": "2016",
+      "end": "2019",
+      "highlights": []
+    },
+    {
+      "school": "西安电子科技大学",
+      "major": "微电子科学与工程",
+      "degree": "本科",
+      "start": "2019",
+      "end": "2023",
+      "highlights": []
+    },
+    {
+      "school": "南京邮电大学",
+      "major": "计算机技术",
+      "degree": "硕士",
+      "start": "2024",
+      "end": "2027",
+      "highlights": []
+    }
+  ],
+  "skills": [
+    {
+      "name": "AI / LLM",
+      "items": [
+        "多模态",
+        "提示词增强",
+        "会话记忆",
+        "结构化输出",
+        "RAG",
+        "TopK 检索切片",
+        "MCP",
+        "Tool Calling",
+        "Guardrail",
+        "SSE"
+      ]
+    },
+    {
+      "name": "Frontend",
+      "items": [
+        "CSS",
+        "CSS Preprocessors",
+        "Modular CSS",
+        "Atomic CSS",
+        "CSS-in-JS",
+        "JavaScript",
+        "TypeScript",
+        "JSX",
+        "TSX",
+        "React",
+        "Zustand",
+        "React Router",
+        "React Fiber",
+        "Vue 3",
+        "Pinia",
+        "Vue Router",
+        "Vite",
+        "Webpack",
+        "SSR",
+        "Next.js",
+        "Web Performance",
+        "Frontend Monitoring"
+      ]
+    },
+    {
+      "name": "Backend / Engineering",
+      "items": [
+        "Node.js",
+        "Express.js",
+        "Nest.js",
+        "BFF",
+        "Go",
+        "MySQL",
+        "Redis",
+        "Git",
+        "CI/CD",
+        "Monorepo",
+        "Rush.js",
+        "Data Structures",
+        "Computer Networks",
+        "Design Patterns"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "科研方向",
+      "date": "",
+      "detail": "强化学习辅助计算机网络拥塞控制，多核并行化网络仿真。"
+    }
+  ],
+  "additional": "熟悉数据结构、计算机网络与设计模式，关注前端性能优化、工程化体系建设和复杂业务系统的可维护性。"
+}

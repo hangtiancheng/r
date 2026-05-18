@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "outDir": "./dist-rollup",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.rollup.tsbuildinfo"
+  }
+}
