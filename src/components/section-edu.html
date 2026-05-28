@@ -1,0 +1,62 @@
+<section class="rounded-lg border border-emerald-200 bg-white p-5 shadow-sm">
+  <div class="font-semibold text-emerald-800">
+    {{if isChanging}}
+    <input
+      value="{{=sectionTitle}}"
+      v-change="updateField()"
+      placeholder="Education Experience"
+      class="w-full max-w-xs rounded-md border border-emerald-200 px-2 py-1 text-sm font-semibold focus:border-emerald-400 focus:outline-none"
+    />
+    {{else}} {{=sectionTitle}} {{/if}}
+  </div>
+  <div class="my-0 h-px bg-emerald-200"></div>
+  {{if isChanging}}
+  <ul class="mt-3 space-y-2">
+    {{each eduList as edu idx}}
+    <li class="grid items-start gap-2 md:grid-cols-[1.1fr_1.6fr_1fr_auto]">
+      <input
+        value="{{=edu[0]}}"
+        data-idx="{{=idx}}"
+        data-col="0"
+        v-change="updateEdu()"
+        placeholder="From to"
+        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+      />
+      <input
+        value="{{=edu[1]}}"
+        data-idx="{{=idx}}"
+        data-col="1"
+        v-change="updateEdu()"
+        placeholder="University"
+        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+      />
+      <input
+        value="{{=edu[2]}}"
+        data-idx="{{=idx}}"
+        data-col="2"
+        v-change="updateEdu()"
+        placeholder="Major"
+        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+      />
+      <button
+        data-idx="{{=idx}}"
+        v-click="clearEdu()"
+        class="w-full rounded-md border border-emerald-300 px-3 py-1 text-sm text-emerald-700 hover:bg-emerald-50 md:w-20"
+      >
+        clear
+      </button>
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <ul class="mt-3 space-y-1 text-sm">
+    {{each eduList as edu}}
+    <li class="grid gap-1.5 md:grid-cols-3">
+      <div class="text-gray-800">{{=edu[0]}}</div>
+      <div class="text-gray-800">{{=edu[1]}}</div>
+      <div class="text-gray-800">{{=edu[2]}}</div>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+</section>
