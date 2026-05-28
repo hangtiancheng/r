@@ -1,0 +1,26 @@
+{
+  "name": "@lark.js/resume",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint --fix ./",
+    "preview": "vite preview",
+    "format": "prettier -w ./"
+  },
+  "dependencies": {
+    "@lark.js/mvc": "0.0.2",
+    "tailwindcss": "^4.3.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/node": "^25.9.1",
+    "daisyui": "^5.5.19",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12"
+  }
+}

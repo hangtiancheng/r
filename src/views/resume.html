@@ -1,0 +1,440 @@
+<div class="bg-base-200 text-base-content min-h-dvh w-full">
+  <div class="mx-auto flex w-full max-w-5xl flex-col gap-2">
+    <!-- Header Card -->
+    {{if isChanging}}
+    <div class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span class="badge badge-ghost cursor-pointer" v-click="toggleEdit()"
+            >Edit Mode</span
+          >
+          <button
+            class="btn btn-sm btn-outline btn-secondary"
+            v-click="clearStorage()"
+          >
+            clear localStorage
+          </button>
+        </div>
+        <div class="grid gap-3 md:grid-cols-2">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-base-content/80 text-sm font-medium">姓名</span>
+            <input
+              value="{{=name}}"
+              data-field="name"
+              v-change="updateField()"
+              placeholder="Input your name"
+              class="input input-ghost input-sm w-full"
+            />
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-base-content/80 text-sm font-medium"
+              >基本信息</span
+            >
+            <input
+              value="{{=myInfo}}"
+              data-field="myInfo"
+              v-change="updateField()"
+              placeholder="Input your gender, age, education, expected job"
+              class="input input-ghost input-sm w-full"
+            />
+          </label>
+        </div>
+        <div class="grid gap-3 md:grid-cols-3">
+          <label class="flex flex-col gap-1.5">
+            <span class="text-base-content/80 text-sm font-medium">Tel</span>
+            <input
+              value="{{=tel}}"
+              data-field="tel"
+              v-change="updateField()"
+              class="input input-ghost input-sm w-full"
+            />
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-base-content/80 text-sm font-medium">Email</span>
+            <input
+              value="{{=email}}"
+              data-field="email"
+              v-change="updateField()"
+              class="input input-ghost input-sm w-full"
+            />
+          </label>
+          <label class="flex flex-col gap-1.5">
+            <span class="text-base-content/80 text-sm font-medium">GitHub</span>
+            <input
+              value="{{=github}}"
+              data-field="github"
+              v-change="updateField()"
+              class="input input-ghost input-sm w-full"
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div
+          class="flex flex-wrap items-center gap-2"
+          v-contextmenu="toggleEdit()"
+        >
+          <h1 class="cursor-pointer text-2xl font-bold">{{=name}}</h1>
+        </div>
+        <p class="text-base-content/80">{{=myInfo}}</p>
+        <div class="flex flex-wrap gap-3 text-sm">
+          <div class="flex items-center gap-1.5">
+            <span class="badge badge-outline">Tel</span>
+            <a href="tel:{{=tel}}" class="link link-primary">{{=tel}}</a>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="badge badge-outline">Email</span>
+            <a href="mailto:{{=email}}" class="link link-primary">{{=email}}</a>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="badge badge-outline">Github</span>
+            <a
+              href="https://github.com/{{=github}}"
+              class="link link-primary"
+              target="_blank"
+              rel="noopener"
+              >https://github.com/{{=github}}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+
+    <!-- Education Section -->
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div class="text-base font-semibold">
+          {{if isChanging}}
+          <input
+            value="{{=headers.eduExperience}}"
+            data-field="headers.eduExperience"
+            v-change="updateField()"
+            placeholder="Education Experience"
+            class="input input-ghost input-sm w-full max-w-xs"
+          />
+          {{else}} {{=headers.eduExperience}} {{/if}}
+        </div>
+        <div class="divider my-0"></div>
+        {{if isChanging}}
+        <ul class="space-y-2">
+          {{each eduExperienceList as edu idx}}
+          <li
+            class="grid items-start gap-2 md:grid-cols-[1.1fr_1.6fr_1fr_auto]"
+          >
+            <input
+              value="{{=edu[0]}}"
+              data-field="eduExperienceList"
+              data-idx="{{=idx}}"
+              data-col="0"
+              v-change="updateEdu()"
+              placeholder="From to"
+              class="input input-ghost input-sm w-full"
+            />
+            <input
+              value="{{=edu[1]}}"
+              data-field="eduExperienceList"
+              data-idx="{{=idx}}"
+              data-col="1"
+              v-change="updateEdu()"
+              placeholder="University"
+              class="input input-ghost input-sm w-full"
+            />
+            <input
+              value="{{=edu[2]}}"
+              data-field="eduExperienceList"
+              data-idx="{{=idx}}"
+              data-col="2"
+              v-change="updateEdu()"
+              placeholder="Major"
+              class="input input-ghost input-sm w-full"
+            />
+            <button
+              data-idx="{{=idx}}"
+              v-click="clearEdu()"
+              class="btn btn-outline btn-secondary btn-sm w-full md:w-20"
+            >
+              clear
+            </button>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <ul class="space-y-1 text-sm">
+          {{each eduExperienceList as edu}}
+          <li class="grid gap-1.5 md:grid-cols-3">
+            <div>{{=edu[0]}}</div>
+            <div>{{=edu[1]}}</div>
+            <div>{{=edu[2]}}</div>
+          </li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </section>
+
+    <!-- Dev Abilities Section -->
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div class="text-base font-semibold">
+          {{if isChanging}}
+          <input
+            value="{{=headers.devAbilities}}"
+            data-field="headers.devAbilities"
+            v-change="updateField()"
+            placeholder="Development Abilities"
+            class="input input-ghost input-sm w-full max-w-xs"
+          />
+          {{else}} {{=headers.devAbilities}} {{/if}}
+        </div>
+        <div class="divider my-0"></div>
+        {{if isChanging}}
+        <ul class="space-y-2">
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-section="devAbilitiesList"
+              v-change="updateNewItem()"
+              placeholder="newItem"
+              class="textarea textarea-ghost textarea-sm w-full"
+            ></textarea>
+            <button
+              data-section="devAbilitiesList"
+              v-click="addItem()"
+              class="btn btn-primary btn-sm w-full sm:w-24"
+            >
+              add
+            </button>
+          </li>
+          {{each devAbilitiesList as item idx}}
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-field="devAbilitiesList"
+              data-idx="{{=idx}}"
+              v-change="updateListItem()"
+              placeholder="skill"
+              class="textarea textarea-ghost textarea-sm w-full"
+            >
+{{=item}}
+</textarea
+            >
+            <button
+              data-field="devAbilitiesList"
+              data-idx="{{=idx}}"
+              v-click="removeItem()"
+              class="btn btn-outline btn-secondary btn-sm w-full sm:w-24"
+            >
+              remove
+            </button>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <ul class="ml-5 list-disc space-y-1 text-sm">
+          {{each devAbilitiesList as item}}
+          <li>{{=item}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </section>
+
+    <!-- Job Experience Section -->
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div class="text-base font-semibold">
+          {{if isChanging}}
+          <input
+            value="{{=headers.jobExperience}}"
+            data-field="headers.jobExperience"
+            v-change="updateField()"
+            placeholder="Job Experience"
+            class="input input-ghost input-sm w-full max-w-xs"
+          />
+          {{else}} {{=headers.jobExperience}} {{/if}}
+        </div>
+        <div class="divider my-0"></div>
+        {{if isChanging}}
+        <ul class="space-y-2">
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-section="jobExperienceList"
+              v-change="updateNewItem()"
+              placeholder="newItem"
+              class="textarea textarea-ghost textarea-sm w-full"
+            ></textarea>
+            <button
+              data-section="jobExperienceList"
+              v-click="addItem()"
+              class="btn btn-primary btn-sm w-full sm:w-24"
+            >
+              add
+            </button>
+          </li>
+          {{each jobExperienceList as item idx}}
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-field="jobExperienceList"
+              data-idx="{{=idx}}"
+              v-change="updateListItem()"
+              placeholder="experience"
+              class="textarea textarea-ghost textarea-sm w-full"
+            >
+{{=item}}
+
+
+</textarea
+            >
+            <button
+              data-field="jobExperienceList"
+              data-idx="{{=idx}}"
+              v-click="removeItem()"
+              class="btn btn-outline btn-secondary btn-sm w-full sm:w-24"
+            >
+              remove
+            </button>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <ul class="ml-5 list-disc space-y-1 text-sm">
+          {{each jobExperienceList as item}}
+          <li>{{=item}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </section>
+
+    <!-- Project Experience Section -->
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div class="text-base font-semibold">
+          {{if isChanging}}
+          <input
+            value="{{=headers.projectExperience}}"
+            data-field="headers.projectExperience"
+            v-change="updateField()"
+            placeholder="Project Experience"
+            class="input input-ghost input-sm w-full max-w-xs"
+          />
+          {{else}} {{=headers.projectExperience}} {{/if}}
+        </div>
+        <div class="divider my-0"></div>
+        {{if isChanging}}
+        <ul class="space-y-2">
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-section="projectExperienceList"
+              v-change="updateNewItem()"
+              placeholder="newItem"
+              class="textarea textarea-ghost textarea-sm w-full"
+            ></textarea>
+            <button
+              data-section="projectExperienceList"
+              v-click="addItem()"
+              class="btn btn-primary btn-sm w-full sm:w-24"
+            >
+              add
+            </button>
+          </li>
+          {{each projectExperienceList as item idx}}
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-field="projectExperienceList"
+              data-idx="{{=idx}}"
+              v-change="updateListItem()"
+              placeholder="project"
+              class="textarea textarea-ghost textarea-sm w-full"
+            >
+{{=item}}
+</textarea
+            >
+            <button
+              data-field="projectExperienceList"
+              data-idx="{{=idx}}"
+              v-click="removeItem()"
+              class="btn btn-outline btn-secondary btn-sm w-full sm:w-24"
+            >
+              remove
+            </button>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <ul class="ml-5 list-disc space-y-1 text-sm">
+          {{each projectExperienceList as item}}
+          <li>{{=item}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </section>
+
+    <!-- Research Experience Section -->
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <div class="text-base font-semibold">
+          {{if isChanging}}
+          <input
+            value="{{=headers.researchExperience}}"
+            data-field="headers.researchExperience"
+            v-change="updateField()"
+            placeholder="Research Experience"
+            class="input input-ghost input-sm w-full max-w-xs"
+          />
+          {{else}} {{=headers.researchExperience}} {{/if}}
+        </div>
+        <div class="divider my-0"></div>
+        {{if isChanging}}
+        <ul class="space-y-2">
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-section="researchExperienceList"
+              v-change="updateNewItem()"
+              placeholder="newItem"
+              class="textarea textarea-ghost textarea-sm w-full"
+            ></textarea>
+            <button
+              data-section="researchExperienceList"
+              v-click="addItem()"
+              class="btn btn-primary btn-sm w-full sm:w-24"
+            >
+              add
+            </button>
+          </li>
+          {{each researchExperienceList as item idx}}
+          <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
+            <textarea
+              data-field="researchExperienceList"
+              data-idx="{{=idx}}"
+              v-change="updateListItem()"
+              placeholder="research"
+              class="textarea textarea-ghost textarea-sm w-full"
+            >
+{{=item}}</textarea
+            >
+            <button
+              data-field="researchExperienceList"
+              data-idx="{{=idx}}"
+              v-click="removeItem()"
+              class="btn btn-outline btn-secondary btn-sm w-full sm:w-24"
+            >
+              remove
+            </button>
+          </li>
+          {{/each}}
+        </ul>
+        {{else}}
+        <ul class="ml-5 list-disc space-y-1 text-sm">
+          {{each researchExperienceList as item}}
+          <li>{{=item}}</li>
+          {{/each}}
+        </ul>
+        {{/if}}
+      </div>
+    </section>
+  </div>
+</div>
