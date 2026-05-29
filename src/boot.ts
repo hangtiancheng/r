@@ -10,9 +10,11 @@ import {
   ResearchExperienceSection,
 } from "./components";
 import { pluginEnable, init } from "@lark.js/sentry";
-import ScreenRecordPlugin from "@lark.js/sentry/plugins/record";
-import ExposurePlugin from "@lark.js/sentry/plugins/exposure";
-import PerformancePlugin from "@lark.js/sentry/plugins/perf";
+import {
+  ScreenRecordPlugin,
+  ExposurePlugin,
+  PerformancePlugin,
+} from "@lark.js/sentry/plugins";
 
 import "./style.css";
 

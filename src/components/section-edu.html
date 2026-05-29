@@ -3,7 +3,7 @@
     {{if isChanging}}
     <input
       value="{{=sectionTitle}}"
-      v-change="updateField()"
+      @change="updateField()"
       placeholder="Education Experience"
       class="w-full max-w-xs rounded-md border border-emerald-200 px-2 py-1 text-sm font-semibold focus:border-emerald-400 focus:outline-none"
     />
@@ -18,7 +18,7 @@
         value="{{=edu[0]}}"
         data-idx="{{=idx}}"
         data-col="0"
-        v-change="updateEdu()"
+        @change="updateEdu()"
         placeholder="From to"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
@@ -26,7 +26,7 @@
         value="{{=edu[1]}}"
         data-idx="{{=idx}}"
         data-col="1"
-        v-change="updateEdu()"
+        @change="updateEdu()"
         placeholder="University"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
@@ -34,13 +34,13 @@
         value="{{=edu[2]}}"
         data-idx="{{=idx}}"
         data-col="2"
-        v-change="updateEdu()"
+        @change="updateEdu()"
         placeholder="Major"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
       <button
         data-idx="{{=idx}}"
-        v-click="clearEdu()"
+        @click="clearEdu()"
         class="w-full rounded-md border border-emerald-300 px-3 py-1 text-sm text-emerald-700 hover:bg-emerald-50 md:w-20"
       >
         clear

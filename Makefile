@@ -4,6 +4,11 @@ feat:
 	git commit -m "feat: Introduce new features"
 	git push origin main
 
+ci:
+	git add -A
+	git commit -m "ci: Deploy resume"
+	git push origin main
+
 .PHONY: init
 init:
 	rm -rf ./.git

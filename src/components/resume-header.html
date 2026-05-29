@@ -3,12 +3,12 @@
   <div class="flex flex-wrap items-center justify-between gap-2">
     <span
       class="cursor-pointer rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700"
-      v-click="toggleEdit()"
-      >Edit Mode</span
+      @click="toggleEdit()"
+      >edit mode</span
     >
     <button
       class="rounded-md border border-emerald-300 px-3 py-1 text-sm text-emerald-700 hover:bg-emerald-50"
-      v-click="clearStorage()"
+      @click="clearStorage()"
     >
       clear localStorage
     </button>
@@ -19,7 +19,7 @@
       <input
         value="{{=name}}"
         data-field="name"
-        v-change="updateField()"
+        @change="updateField()"
         placeholder="Input your name"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
@@ -29,7 +29,7 @@
       <input
         value="{{=myInfo}}"
         data-field="myInfo"
-        v-change="updateField()"
+        @change="updateField()"
         placeholder="Input your gender, age, education, expected job"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
@@ -41,7 +41,7 @@
       <input
         value="{{=tel}}"
         data-field="tel"
-        v-change="updateField()"
+        @change="updateField()"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
     </label>
@@ -50,7 +50,7 @@
       <input
         value="{{=email}}"
         data-field="email"
-        v-change="updateField()"
+        @change="updateField()"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
     </label>
@@ -59,7 +59,7 @@
       <input
         value="{{=github}}"
         data-field="github"
-        v-change="updateField()"
+        @change="updateField()"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       />
     </label>
@@ -67,7 +67,7 @@
 </div>
 {{else}}
 <div class="rounded-lg border border-emerald-200 bg-white p-5 shadow-sm">
-  <div class="flex flex-wrap items-center gap-2" v-contextmenu="toggleEdit()">
+  <div class="flex flex-wrap items-center gap-2" @contextmenu="toggleEdit()">
     <h1 class="cursor-pointer text-2xl font-bold text-gray-800">{{=name}}</h1>
   </div>
   <p class="mt-2 text-gray-500">{{=myInfo}}</p>

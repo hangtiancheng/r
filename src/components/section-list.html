@@ -3,7 +3,7 @@
     {{if isChanging}}
     <input
       value="{{=sectionTitle}}"
-      v-change="updateTitle()"
+      @change="updateTitle()"
       placeholder="Section Title"
       class="w-full max-w-xs rounded-md border border-emerald-200 px-2 py-1 text-sm font-semibold focus:border-emerald-400 focus:outline-none"
     />
@@ -18,7 +18,7 @@
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       ></textarea>
       <button
-        v-click="addItem()"
+        @click="addItem()"
         class="rounded-md bg-emerald-600 px-3 py-1 text-sm text-white hover:bg-emerald-700 sm:w-24"
       >
         add
@@ -28,7 +28,7 @@
     <li class="grid gap-2 sm:grid-cols-[1fr_auto]">
       <textarea
         data-idx="{{=idx}}"
-        v-change="updateListItem()"
+        @change="updateListItem()"
         placeholder="content"
         class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
       >
@@ -36,7 +36,7 @@
       >
       <button
         data-idx="{{=idx}}"
-        v-click="removeItem()"
+        @click="removeItem()"
         class="rounded-md border border-emerald-300 px-3 py-1 text-sm text-emerald-700 hover:bg-emerald-50 sm:w-24"
       >
         remove
