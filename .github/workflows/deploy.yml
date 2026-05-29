@@ -45,7 +45,7 @@ jobs:
           path: ./dist
 
   deploy:
-    if: "${{ github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'ci: Deploy homepage' }}"
+    if: "${{ github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'ci: Deploy resume' }}"
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
