@@ -1,3 +1,11 @@
+/// <reference types="vite/client" />
+
+declare global {
+  interface Window {
+    __lark_Debug?: boolean;
+  }
+}
+
 import { Framework, registerViewClass } from "@lark.js/mvc";
 import type { FrameworkConfig } from "@lark.js/mvc";
 import ResumeView from "./views/resume";
@@ -45,9 +53,13 @@ const config: FrameworkConfig = {
   },
 };
 
-init({ dsn: "/sentry " });
-pluginEnable(ScreenRecordPlugin);
-pluginEnable(ExposurePlugin);
-pluginEnable(PerformancePlugin);
+if (import.meta.env.DEV) {
+  window.__lark_Debug = true;
+  init({ dsn: "/sentry" });
+  pluginEnable(ScreenRecordPlugin);
+  pluginEnable(ExposurePlugin);
+  pluginEnable(PerformancePlugin);
+}
 
+window.__lark_Debug = false;
 Framework.boot(config);
