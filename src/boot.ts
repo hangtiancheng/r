@@ -9,6 +9,10 @@ import {
   ProjectExperienceSection,
   ResearchExperienceSection,
 } from "./components";
+import { pluginEnable, init } from "@lark.js/sentry";
+import ScreenRecordPlugin from "@lark.js/sentry/plugins/record";
+import ExposurePlugin from "@lark.js/sentry/plugins/exposure";
+import PerformancePlugin from "@lark.js/sentry/plugins/perf";
 
 import "./style.css";
 
@@ -35,8 +39,13 @@ const config: FrameworkConfig = {
   },
   unmatchedView: "resume",
   error(e: Error) {
-    console.error("Lark application error:", e);
+    console.error("@lark.js/mvc application error:", e);
   },
 };
+
+init({ dsn: "/sentry " });
+pluginEnable(ScreenRecordPlugin);
+pluginEnable(ExposurePlugin);
+pluginEnable(PerformancePlugin);
 
 Framework.boot(config);

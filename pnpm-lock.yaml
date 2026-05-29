@@ -10,6 +10,9 @@ importers:
       "@lark.js/mvc":
         specifier: 0.0.2
         version: 0.0.2(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0))
+      "@lark.js/sentry":
+        specifier: ^0.0.1
+        version: 0.0.1(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0))
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.0
@@ -84,6 +87,12 @@ packages:
         integrity: sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==,
       }
 
+  "@fingerprintjs/fingerprintjs@5.2.0":
+    resolution:
+      {
+        integrity: sha512-j+2nInkwCQNTJcNhOjvkGM/nLRTuGJTC6xai4quqvUpjob2ssrGwBZjS7k55nOmKvge7qvJT2nS3i/IRvQSTQA==,
+      }
+
   "@jridgewell/gen-mapping@0.3.5":
     resolution:
       {
@@ -142,6 +151,24 @@ packages:
       }
     peerDependencies:
       vite: ^8.0.14
+
+  "@lark.js/sentry@0.0.1":
+    resolution:
+      {
+        integrity: sha512-lF0W78xs2DsLGxHk3zxRZkOY+jg7gdMGfxzzaddywCGTFNsaObwNbpCQ1Iu7d45oh5Dy4/NZwtReDuoy4nGYtw==,
+        tarball: https://registry.npmjs.org/@lark.js/sentry/-/sentry-0.0.1.tgz,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      vite: ^7.0.0 || ^8.0.0
+      vue: ^3.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      vite:
+        optional: true
+      vue:
+        optional: true
 
   "@napi-rs/wasm-runtime@1.1.4":
     resolution:
@@ -304,6 +331,24 @@ packages:
         integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==,
       }
 
+  "@rrweb/record@2.0.0-alpha.20":
+    resolution:
+      {
+        integrity: sha512-marVOU3Lc285mwLCp+vI6M/eJ+wZ6lcTa7fX0zcdmBsM+j5loXmMQjkmIvkji5+lAbkq5/w2cwto3GS0TaCjtg==,
+      }
+
+  "@rrweb/types@2.0.0-alpha.20":
+    resolution:
+      {
+        integrity: sha512-RbnDgKxA/odwB1R4gF7eUUj+rdSrq6ROQJsnMw7MIsGzlbSYvJeZN8YY4XqU0G6sKJvXI6bSzk7w/G94jNwzhw==,
+      }
+
+  "@rrweb/utils@2.0.0-alpha.20":
+    resolution:
+      {
+        integrity: sha512-MTQOmhPRe39C0fYaCnnVYOufQsyGzwNXpUStKiyFSfGLUJrzuwhbRoUAKR5w6W2j5XuA0bIz3ZDIBztkquOhLw==,
+      }
+
   "@tailwindcss/node@4.3.0":
     resolution:
       {
@@ -449,16 +494,41 @@ packages:
         integrity: sha512-RoBvJ2X0wuKlWFIjrwffGw1IqZHKQqzIchKaadZZfnNpsAYp2mM0h36JtPCjNDAHGgYez/15uMBpfGwchhiMgg==,
       }
 
+  "@types/css-font-loading-module@0.0.7":
+    resolution:
+      {
+        integrity: sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==,
+      }
+
   "@types/node@25.9.1":
     resolution:
       {
         integrity: sha512-xfrlY7UD5rMJk3ZVJP8BNzS28J36YJg+xp+LPXV1TdWxr8uMH5A860QNxYDGQe/ylDSgjxE52Q9VnO7p75tJxg==,
       }
 
+  "@xstate/fsm@1.6.5":
+    resolution:
+      {
+        integrity: sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==,
+      }
+
+  base64-arraybuffer@1.0.2:
+    resolution:
+      {
+        integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==,
+      }
+    engines: { node: ">= 0.6.0" }
+
   daisyui@5.5.20:
     resolution:
       {
         integrity: sha512-HemJcjl0Gk9rQ8BcgofN6p+EURrqftQG9wK1Hkxs98i49xe68+QxpNvry+PyxwkIUgrbMpNmZ5ZWjmtffAjfhQ==,
+      }
+
+  detect-europe-js@0.1.2:
+    resolution:
+      {
+        integrity: sha512-lgdERlL3u0aUdHocoouzT10d9I89VVhk0qNRmll7mXdGfJT1/wqZ2ZLA4oJAjeACPY5fT1wsbq2AT+GkuInsow==,
       }
 
   detect-libc@2.1.2:
@@ -499,6 +569,12 @@ packages:
     resolution:
       {
         integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==,
+      }
+
+  is-standalone-pwa@0.1.1:
+    resolution:
+      {
+        integrity: sha512-9Cbovsa52vNQCjdXOzeQq5CnCbAcRk05aU62K20WO372NrTv0NxibLFCK6lQ4/iZEFdEA3p3t2VNOn8AJ53F5g==,
       }
 
   jiti@2.7.0:
@@ -624,6 +700,12 @@ packages:
         integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==,
       }
 
+  mitt@3.0.1:
+    resolution:
+      {
+        integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==,
+      }
+
   nanoid@3.3.12:
     resolution:
       {
@@ -631,6 +713,12 @@ packages:
       }
     engines: { node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1 }
     hasBin: true
+
+  pako@2.1.0:
+    resolution:
+      {
+        integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==,
+      }
 
   picocolors@1.1.1:
     resolution:
@@ -726,6 +814,24 @@ packages:
     engines: { node: ^20.19.0 || >=22.12.0 }
     hasBin: true
 
+  rrdom@2.0.0-alpha.20:
+    resolution:
+      {
+        integrity: sha512-hoqjS4662LtBp82qEz9GrqU36UpEmCvTA2Hns3qdF7cklLFFy3G+0Th8hLytJENleHHWxsB5nWJ3eXz5mSRxdQ==,
+      }
+
+  rrweb-snapshot@2.0.0-alpha.20:
+    resolution:
+      {
+        integrity: sha512-YTNf9YVeaGRo/jxY3FKBge2c/Ojd/KTHmuWloUSB+oyPXuY73ZeeG873qMMmhIpqEn7hn7aBF1eWEQmP7wjf8A==,
+      }
+
+  rrweb@2.0.0-alpha.20:
+    resolution:
+      {
+        integrity: sha512-CZKDlm+j1VA50Ko3gnMbpvguCAleljsTNXPnVk9aeNP8o6T6kolRbISHyDZpqZ4G+bdDLlQOignPP3jEsXs8Gg==,
+      }
+
   source-map-js@1.2.1:
     resolution:
       {
@@ -765,6 +871,19 @@ packages:
         integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==,
       }
     engines: { node: ">=14.17" }
+    hasBin: true
+
+  ua-is-frozen@0.1.2:
+    resolution:
+      {
+        integrity: sha512-RwKDW2p3iyWn4UbaxpP2+VxwqXh0jpvdxsYpZ5j/MLLiQOfbsV5shpgQiw93+KMYQPcteeMQ289MaAFzs3G9pw==,
+      }
+
+  ua-parser-js@2.0.10:
+    resolution:
+      {
+        integrity: sha512-t+3Ktbq0Ies2vaSezfOaWiolH4OigQIO1dk+1xDpOydB1COVPocVYOrEV5rqZ0kFY9XYG1v9LutCyMgYBpABcw==,
+      }
     hasBin: true
 
   undici-types@7.24.6:
@@ -819,6 +938,12 @@ packages:
       yaml:
         optional: true
 
+  web-vitals@5.2.0:
+    resolution:
+      {
+        integrity: sha512-i2z98bEmaCqSDiHEDu+gHl/dmR4Q+TxFmG3/13KkMO+o8UxQzCqWaDRCiLgEa41nlO4VpXSI0ASa1xWmO9sBlA==,
+      }
+
   zod@4.4.3:
     resolution:
       {
@@ -855,6 +980,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  "@fingerprintjs/fingerprintjs@5.2.0": {}
+
   "@jridgewell/gen-mapping@0.3.5":
     dependencies:
       "@jridgewell/set-array": 1.2.1
@@ -885,6 +1012,17 @@ snapshots:
     dependencies:
       "@babel/parser": 7.29.7
       "@babel/types": 7.29.7
+      vite: 8.0.14(@types/node@25.9.1)(jiti@2.7.0)
+
+  "@lark.js/sentry@0.0.1(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0))":
+    dependencies:
+      "@fingerprintjs/fingerprintjs": 5.2.0
+      "@rrweb/record": 2.0.0-alpha.20
+      pako: 2.1.0
+      ua-parser-js: 2.0.10
+      web-vitals: 5.2.0
+      zod: 4.4.3
+    optionalDependencies:
       vite: 8.0.14(@types/node@25.9.1)(jiti@2.7.0)
 
   "@napi-rs/wasm-runtime@1.1.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)":
@@ -946,6 +1084,16 @@ snapshots:
     optional: true
 
   "@rolldown/pluginutils@1.0.1": {}
+
+  "@rrweb/record@2.0.0-alpha.20":
+    dependencies:
+      "@rrweb/types": 2.0.0-alpha.20
+      "@rrweb/utils": 2.0.0-alpha.20
+      rrweb: 2.0.0-alpha.20
+
+  "@rrweb/types@2.0.0-alpha.20": {}
+
+  "@rrweb/utils@2.0.0-alpha.20": {}
 
   "@tailwindcss/node@4.3.0":
     dependencies:
@@ -1020,11 +1168,19 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  "@types/css-font-loading-module@0.0.7": {}
+
   "@types/node@25.9.1":
     dependencies:
       undici-types: 7.24.6
 
+  "@xstate/fsm@1.6.5": {}
+
+  base64-arraybuffer@1.0.2: {}
+
   daisyui@5.5.20: {}
+
+  detect-europe-js@0.1.2: {}
 
   detect-libc@2.1.2: {}
 
@@ -1041,6 +1197,8 @@ snapshots:
     optional: true
 
   graceful-fs@4.2.11: {}
+
+  is-standalone-pwa@0.1.1: {}
 
   jiti@2.7.0: {}
 
@@ -1097,7 +1255,11 @@ snapshots:
     dependencies:
       "@jridgewell/sourcemap-codec": 1.5.5
 
+  mitt@3.0.1: {}
+
   nanoid@3.3.12: {}
+
+  pako@2.1.0: {}
 
   picocolors@1.1.1: {}
 
@@ -1136,6 +1298,25 @@ snapshots:
       "@rolldown/binding-win32-arm64-msvc": 1.0.2
       "@rolldown/binding-win32-x64-msvc": 1.0.2
 
+  rrdom@2.0.0-alpha.20:
+    dependencies:
+      rrweb-snapshot: 2.0.0-alpha.20
+
+  rrweb-snapshot@2.0.0-alpha.20:
+    dependencies:
+      postcss: 8.5.15
+
+  rrweb@2.0.0-alpha.20:
+    dependencies:
+      "@rrweb/types": 2.0.0-alpha.20
+      "@rrweb/utils": 2.0.0-alpha.20
+      "@types/css-font-loading-module": 0.0.7
+      "@xstate/fsm": 1.6.5
+      base64-arraybuffer: 1.0.2
+      mitt: 3.0.1
+      rrdom: 2.0.0-alpha.20
+      rrweb-snapshot: 2.0.0-alpha.20
+
   source-map-js@1.2.1: {}
 
   tailwindcss@4.3.0: {}
@@ -1152,6 +1333,14 @@ snapshots:
 
   typescript@6.0.3: {}
 
+  ua-is-frozen@0.1.2: {}
+
+  ua-parser-js@2.0.10:
+    dependencies:
+      detect-europe-js: 0.1.2
+      is-standalone-pwa: 0.1.1
+      ua-is-frozen: 0.1.2
+
   undici-types@7.24.6: {}
 
   vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0):
@@ -1165,5 +1354,7 @@ snapshots:
       "@types/node": 25.9.1
       fsevents: 2.3.3
       jiti: 2.7.0
+
+  web-vitals@5.2.0: {}
 
   zod@4.4.3: {}
