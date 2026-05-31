@@ -11,7 +11,7 @@ export default defineConfig({
     larkMvcPlugin(),
     tailwindcss(),
     sentryPlugin({
-      url: "/sentry",
+      dsn: "/sentry",
     }),
   ],
   resolve: {
