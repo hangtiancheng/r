@@ -2,7 +2,6 @@
 
 [What is @lark.js/sentry?](https://github.com/hangtiancheng/lark-sentry)
 
-
 本项目是一个使用 @lark.js/mvc 前端框架的简历项目, dev/build 时期望:
 
 - 初始读取 src/resume.json 中的简历默认值

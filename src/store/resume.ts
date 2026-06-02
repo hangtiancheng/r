@@ -9,8 +9,10 @@ export interface ResumeStoreData extends Resume {
   toggleEdit(): void;
   clearStorage(): void;
   reloadFromStorage(): void;
+  setField(key: string, value: string): void;
   getList(key: string): string[];
   setList(key: string, value: string[]): void;
+  setEduList(list: EduExperience[]): void;
   getHeader(key: string): string;
   setHeader(key: string, value: string): void;
 }
@@ -98,6 +100,14 @@ const useResumeStore = defineStore<ResumeStoreData>("resume", (store) => {
       if (fresh) applyResume(store, fresh);
     },
 
+    setField(key: string, value: string): void {
+      if (key === "name") store.name = value;
+      else if (key === "myInfo") store.myInfo = value;
+      else if (key === "tel") store.tel = value;
+      else if (key === "email") store.email = value;
+      else if (key === "github") store.github = value;
+    },
+
     getList(key: string): string[] {
       if (key === "devAbilitiesList") return [...store.devAbilitiesList];
       if (key === "jobExperienceList") return [...store.jobExperienceList];
@@ -125,6 +135,10 @@ const useResumeStore = defineStore<ResumeStoreData>("resume", (store) => {
         store.researchExperienceList = value;
         return;
       }
+    },
+
+    setEduList(list: EduExperience[]): void {
+      store.eduExperienceList = list;
     },
 
     getHeader(key: string): string {

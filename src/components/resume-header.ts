@@ -19,14 +19,7 @@ export default View.extend({
 
   init() {
     const store = useResumeStore(this);
-    store.observe(this, [
-      "isChanging",
-      "name",
-      "myInfo",
-      "tel",
-      "email",
-      "github",
-    ]);
+    store.observe(this, ["isChanging"]);
   },
 
   assign() {
@@ -54,11 +47,7 @@ export default View.extend({
     const target = e.target as HTMLInputElement;
     const field = target.dataset.field ?? "";
     const store = useResumeStore();
-    if (field === "name") store.name = target.value;
-    else if (field === "myInfo") store.myInfo = target.value;
-    else if (field === "tel") store.tel = target.value;
-    else if (field === "email") store.email = target.value;
-    else if (field === "github") store.github = target.value;
+    store.setField(field, target.value);
   },
 
   "clearStorage<click>"() {

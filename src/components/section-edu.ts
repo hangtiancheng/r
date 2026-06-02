@@ -17,7 +17,7 @@ export default View.extend({
 
   init() {
     const store = useResumeStore(this);
-    store.observe(this, ["isChanging", "eduExperienceList", "headers"]);
+    store.observe(this, ["isChanging"]);
   },
 
   assign() {
@@ -47,7 +47,7 @@ export default View.extend({
       copy[col] = target.value;
       return copy;
     });
-    store.eduExperienceList = list;
+    store.setEduList(list);
   },
 
   "clearEdu<click>"(e: Event) {
@@ -57,6 +57,7 @@ export default View.extend({
     const list = store.eduExperienceList.map(
       (edu, i): EduExperience => (i === idx ? ["", "", ""] : [...edu]),
     );
-    store.eduExperienceList = list;
+    store.setEduList(list);
+    this.render();
   },
 });

@@ -8,7 +8,7 @@ function createSectionListView(listKey: string, headerKey: string) {
 
     init() {
       const store = useResumeStore(this);
-      store.observe(this, [listKey, "isChanging", "headers"]);
+      store.observe(this, ["isChanging"]);
     },
 
     assign() {
@@ -61,7 +61,7 @@ function createSectionListView(listKey: string, headerKey: string) {
       const list = store.getList(listKey);
       list.push(value);
       store.setList(listKey, list);
-      textarea.value = "";
+      this.render();
     },
 
     "removeItem<click>"(e: Event) {
@@ -71,6 +71,7 @@ function createSectionListView(listKey: string, headerKey: string) {
       const list = store.getList(listKey);
       list.splice(idx, 1);
       store.setList(listKey, list);
+      this.render();
     },
   });
 }
