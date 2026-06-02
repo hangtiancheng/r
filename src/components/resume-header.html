@@ -1,88 +1,94 @@
 {{if isChanging}}
-<div class="rounded-lg border border-emerald-200 bg-white p-5 shadow-sm">
+<div class="rounded-lg border border-emerald-200 bg-white p-4 shadow-sm">
   <div class="flex flex-wrap items-center justify-between gap-2">
-    <span
-      class="cursor-pointer rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700"
-      s-lark-ev="toggle-edit"
-      s-lark-msg="点击切换预览模式"
-      s-lark-toggle="edit -> preview"
-      @click="toggleEdit()"
-      >Edit Mode</span
-    >
+    <div class="tooltip tooltip-bottom" data-tip="Click to save and exit">
+      <span
+        class="cursor-pointer rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-medium text-white transition-colors hover:bg-emerald-700"
+        @click="toggleEdit()"
+      >
+        Edit Mode
+      </span>
+    </div>
     <button
-      class="rounded-md border border-emerald-300 px-3 py-1 text-sm text-emerald-700 hover:bg-emerald-50"
-      s-lark-ev="clear-local-storage"
-      s-lark-msg="清空本地存储"
+      class="rounded-md border border-red-200 px-2.5 py-1 text-xs text-red-600 transition-colors hover:bg-red-50"
       @click="clearStorage()"
     >
       Clear localStorage
     </button>
   </div>
-  <div class="mt-3 grid gap-3 md:grid-cols-2">
-    <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-medium text-gray-500">姓名</span>
+  <div class="my-2 h-px bg-emerald-100"></div>
+  <div class="grid gap-3 md:grid-cols-2">
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-medium text-emerald-700/70">Name</span>
       <input
+        type="text"
         value="{{=name}}"
         data-field="name"
-        @change="updateField()"
-        placeholder="Input your name"
-        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+        @input="updateField()"
+        placeholder="Your name"
+        class="rounded-md border border-emerald-200 px-2 py-1 text-sm transition-colors focus:border-emerald-400 focus:outline-none"
       />
     </label>
-    <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-medium text-gray-500">基本信息</span>
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-medium text-emerald-700/70">Info</span>
       <input
+        type="text"
         value="{{=myInfo}}"
         data-field="myInfo"
-        @change="updateField()"
-        placeholder="Input your gender, age, education, expected job"
-        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+        @input="updateField()"
+        placeholder="Gender, age, education, expected job"
+        class="rounded-md border border-emerald-200 px-2 py-1 text-sm transition-colors focus:border-emerald-400 focus:outline-none"
       />
     </label>
   </div>
   <div class="mt-3 grid gap-3 md:grid-cols-3">
-    <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-medium text-gray-500">Tel</span>
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-medium text-emerald-700/70">Tel</span>
       <input
+        type="text"
         value="{{=tel}}"
         data-field="tel"
-        @change="updateField()"
-        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+        @input="updateField()"
+        class="rounded-md border border-emerald-200 px-2 py-1 text-sm transition-colors focus:border-emerald-400 focus:outline-none"
       />
     </label>
-    <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-medium text-gray-500">Email</span>
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-medium text-emerald-700/70">Email</span>
       <input
+        type="text"
         value="{{=email}}"
         data-field="email"
-        @change="updateField()"
-        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+        @input="updateField()"
+        class="rounded-md border border-emerald-200 px-2 py-1 text-sm transition-colors focus:border-emerald-400 focus:outline-none"
       />
     </label>
-    <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-medium text-gray-500">GitHub</span>
+    <label class="flex flex-col gap-1">
+      <span class="text-xs font-medium text-emerald-700/70">GitHub</span>
       <input
+        type="text"
         value="{{=github}}"
         data-field="github"
-        @change="updateField()"
-        class="w-full rounded-md border border-emerald-200 px-2 py-1 text-sm focus:border-emerald-400 focus:outline-none"
+        @input="updateField()"
+        class="rounded-md border border-emerald-200 px-2 py-1 text-sm transition-colors focus:border-emerald-400 focus:outline-none"
       />
     </label>
   </div>
 </div>
 {{else}}
-<div class="rounded-lg border border-emerald-200 bg-white p-5 shadow-sm">
-  <div
-    class="flex flex-wrap items-center gap-2"
-    s-lark-ev="toggle-edit"
-    s-lark-msg="右键点击切换编辑模式"
-    s-lark-toggle="preview -> edit"
-    @contextmenu="toggleEdit()"
-  >
-    <h1 class="cursor-pointer text-2xl font-bold text-gray-800">{{=name}}</h1>
+<div class="rounded-lg border border-emerald-200 bg-white p-4 shadow-sm">
+  <div class="flex flex-wrap items-center gap-2">
+    <div
+      class="tooltip tooltip-bottom"
+      data-tip="Right-click to edit"
+      @contextmenu="toggleEdit()"
+    >
+      <h1 class="cursor-pointer text-2xl font-bold text-gray-800 transition-colors hover:text-emerald-700">
+        {{=name}}
+      </h1>
+    </div>
   </div>
-  <p class="mt-2 text-gray-500">{{=myInfo}}</p>
-  <div class="mt-3 flex flex-wrap gap-3 text-sm">
+  <p class="mt-1 text-sm text-gray-500">{{=myInfo}}</p>
+  <div class="mt-2 flex flex-wrap gap-3 text-sm">
     <div class="flex items-center gap-1.5">
       <span
         class="rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700"

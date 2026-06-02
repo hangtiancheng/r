@@ -4,3 +4,4 @@ minimumReleaseAgeExclude:
   - '@lark.js/sentry@0.0.2'
   - '@lark.js/mvc@0.0.4'
   - '@lark.js/sentry@0.0.3'
+  - '@lark.js/mvc@0.0.5'

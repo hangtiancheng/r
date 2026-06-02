@@ -50,7 +50,7 @@ export default View.extend({
     store.toggleEdit();
   },
 
-  "updateField<change>"(e: Event) {
+  "updateField<input>"(e: Event) {
     const target = e.target as HTMLInputElement;
     const field = target.dataset.field ?? "";
     const store = useResumeStore();

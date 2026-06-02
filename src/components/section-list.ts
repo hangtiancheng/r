@@ -33,13 +33,13 @@ function createSectionListView(listKey: string, headerKey: string) {
         .digest();
     },
 
-    "updateTitle<change>"(e: Event) {
+    "updateTitle<input>"(e: Event) {
       const target = e.target as HTMLInputElement;
       const store = useResumeStore();
       store.setHeader(headerKey, target.value);
     },
 
-    "updateListItem<change>"(e: Event) {
+    "updateListItem<input>"(e: Event) {
       const target = e.target as HTMLTextAreaElement;
       const idx = parseInt(target.dataset.idx ?? "0");
       const store = useResumeStore();

@@ -30,13 +30,13 @@ export default View.extend({
     this.updater.set(syncData()).digest();
   },
 
-  "updateField<change>"(e: Event) {
+  "updateField<input>"(e: Event) {
     const target = e.target as HTMLInputElement;
     const store = useResumeStore();
     store.setHeader("eduExperience", target.value);
   },
 
-  "updateEdu<change>"(e: Event) {
+  "updateEdu<input>"(e: Event) {
     const target = e.target as HTMLInputElement;
     const idx = parseInt(target.dataset.idx ?? "0");
     const col = parseInt(target.dataset.col ?? "0");
