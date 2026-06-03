@@ -8,7 +8,9 @@ function createSectionListView(listKey: string, headerKey: string) {
 
     init() {
       const store = useResumeStore(this);
-      store.observe(this, ["isChanging"]);
+      store.observe(this, ["isChanging"], () => {
+        this.render();
+      });
     },
 
     assign() {

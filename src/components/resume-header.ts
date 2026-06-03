@@ -19,7 +19,9 @@ export default View.extend({
 
   init() {
     const store = useResumeStore(this);
-    store.observe(this, ["isChanging"]);
+    store.observe(this, ["isChanging"], () => {
+      this.render();
+    });
   },
 
   assign() {
