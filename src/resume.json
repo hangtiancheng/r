@@ -17,28 +17,28 @@
     ["硕士: 2024-2027", "南京邮电大学", "计算机技术"]
   ],
   "devAbilitiesList": [
-    "了解大模型的多模态, 提示词增强, 会话记忆, 结构化输出, 检索增强生成 (RAG), topK 最相关文档切片, mcp 模型上下文协议, mcp 工具调用与开发, 大模型护轨 (guardrail), SSE 流式响应",
-    "熟悉 CSS, 熟悉 CSS 预处理器, 模块化, 原子化, CSS-in-JS",
-    "熟悉 JS/TS, 了解 monorepo, Rush.js",
-    "熟悉 Node.js, 熟悉 Express.js, Nest.js; 有 BFF 层, Node.js 后端开发经验",
-    "熟悉 JSX/TSX, 熟悉 React, Zustand, react-router; 了解 React Fiber 架构",
+    "了解大模型的多 session, Guardrail, prompt 增强, 结构化输出, 会话记忆, RAG, Tools, MCP, SSE 流式响应",
+    "熟悉 CSS, 熟悉 CSS 预处理器, 模块化, 原子化, PostCSS, CSS-in-JS",
+    "熟悉 JS/TS, 熟悉 Zod, monorepo",
+    "熟悉 Node, 熟悉 Express/Koa/Hono; 有 BFF 层, Node 后端开发经验",
+    "熟悉 JSX/TSX, 熟悉 React, Zustand/Jotai/MobX, react-router; 了解 React Fiber 架构, 熟悉 React 性能优化 hooks/虚拟滚动/SWR",
     "熟悉 Vue3, Pinia, vue-router, 了解 Vue3 响应式原理",
-    "熟悉数据结构, 计算机网络, 设计模式",
-    "熟悉 Git, CI/CD",
+    "熟悉数据结构, 计算机网络, 了解设计模式",
     "熟悉 Vite, 了解 Webpack",
-    "了解 Go, MySQL, Redis 等后端技术栈",
-    "了解 Web 性能指标, 性能优化, 前端监控",
-    "了解 SSR, Next.js"
+    "熟悉 Go, MySQL, Redis, MongoDB, 了解 ClickHouse, RPC",
+    "了解 Web 性能指标, 性能优化, 前端埋点、监控",
+    "了解 SSR, Next, 了解使用 Ink 的 TUI 开发, 了解使用 RN/Lynx 的 App 开发",
+    "熟悉 Git, CI/CD, ..."
   ],
   "jobExperienceList": [
-    "字节跳动: 2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; 负责对终端设备性能数据进行数据处理, 可视化渲染; 终端设备性能数据使用 Kafka 转发入库到 MySQL, ClickHouse 和 Redis; 后端使用 Golang 和字节后端框架 Kitex, 编写 Thrift 生成 Node.js API, 提供给 BFF 层调用 RPC 方法, 编写 LRU 内存缓存减轻数据库压力; BFF 层使用 Nest.js, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 前端使用 React, Zustand, react-router 文件路由, 抖音组件库 Semi Design, Echarts; 使用 React 性能优化 Hooks, 编写虚拟滚动列表; 实习中参与 CloudWeGo Kitex 和扣子 coze-js 的开源工作",
-    "腾讯: 2025-10 ~ 2026-2, IEG 互动娱乐事业群, 基础技术产品部; 负责腾讯自研 NoSQL 数据库管理系统; 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化组件性能, 排查闭包引用和接口响应时间过长导致的数据竞争问题; 后端负责编写 TCP 连接池; 编写 ffi-napi 绑定 C++ 函数, 维护进程池调用 C++ 动态链接库以加解密, 解析表文件; 使用 valgrind 排查 Node.js 和 C++ 动态链接库的内存泄漏问题, 复用大数组和大结构体降低 Node.js 侧 GC 压力",
-    "字节跳动: 2026-02 ~ 2026-05, Data-架构部门, ByteRec 搜索推荐算法平台开发, 抖音 Debug 平台开发, A2UI react 框架接入, AI 页面生成...",
-    "阿里巴巴: 2026-05 ~ 至今, 阿里妈妈广告技术部; 负责阿里妈妈自研前端框架、Server&Schema-Driven UI、WuJie 微前端、A2UI 自研前端框架接入"
+    "字节跳动: 2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; 终端设备性能数据使用 Kafka 转发到 MySQL, ClickHouse 和 Redis; 后端使用 Golang 和字节后端框架 Kitex, 编写 Thrift 生成 Node 包, 提供给 BFF 层调用 RPC 方法, BFF 层清洗、整形终端设备性能数据, 前端可视化渲染; 设计多层缓存减轻数据库压力; BFF 层使用 Nest, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 前端使用 React, Zustand, react-router, 抖音组件库 Semi Design, Echarts, ...; 使用性能优化 Hooks, 编写虚拟滚动列表; 参与 CloudWeGo Kitex 和扣子 coze-js 的开源工作",
+    "腾讯: 2025-10 ~ 2026-2, IEG 互动娱乐事业群, 基础技术产品部; 负责腾讯 NoSQL 数据库管理系统; 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化组件性能, 排查闭包引用和接口响应时间过长导致的数据竞争; 后端负责编写 TCP 连接池; 编写 ffi-napi 绑定 C++ 函数, 维护进程池调用 C++ 动态链接库以加解密, 解析表文件; 使用 valgrind 排查 Node 和 C++ 动态链接库的内存泄漏问题, 复用大数组和大结构体降低 Node 侧 GC 压力",
+    "字节跳动: 2026-02 ~ 2026-05, Data-架构部门, ByteRec 搜索推荐算法平台开发, 抖音 Debug 平台开发, 前端 JSError 大模型自动修复, A2UI React 框架接入, AI 页面生成/构建/部署...",
+    "阿里巴巴: 2026-05 ~ 至今, 阿里妈妈广告技术部; 负责阿里妈妈 MVC 前端框架、Server&Schema-Driven UI、Webpack 模块联邦接入、A2UI 接入"
   ],
   "projectExperienceList": [
-    "前端埋点/性能监控, 仓库链接: https://github.com/hangtiancheng/lark-sentry; lark-sentry 是一个使用 monorepo 的前端监控 SDK, 支持异常捕获、性能指标采集、白屏检测及用户行为重放。异常捕获模块支持捕获 js 运行时错误、资源加载错误、未捕获的 promise 异常、xhr 和 fetch 请求错误, 监控点击事件、路由跳转等用户行为。性能指标采集模块计算 LCP/FCP/CLS/INP 等 web-vitals 指标, 使用 Observer API 计算首屏渲染时间。SDK 支持白屏检测, 实现基于关键点采样的白屏检测算法, 以区分骨架屏与真实白屏。为重放故障现场, SDK 支持屏幕录制, 故障发生时使用 rrweb + gzip 记录现场, 使用 navigator.sendBeacon 作为首选数据上报方式, 并提供 fetch 降级方案。整体架构使用发布订阅, 实现 core 模块和多个监控字模块的解耦, 具有高扩展性与可维护性",
-    "AI Agent 项目, 仓库链接: https://github.com/hangtiancheng/ai-agent; ai-agent 是一个使用 react 和 koa 的 AI Agent 全栈项目; 前端使用 vite, react, tailwindcss 和 jotai, 通过 tanstack-query 管理异步状态, 缓存请求数据; 使用 zod + react-hook-form 保证端到端类型安全; 使用 SSE 流式响应和虚拟滚动列表, 保证长对话的渲染性能; 后端使用 koa, jwt, lru-cache, redis 和 mysql, 使用 knex 参数化查询器避免 sql 注入; 使用工厂模式实现 OpenAI/Ollama 可插拔模型, 使用内存向量存储实现 RAG 检索查询增强"
+    "前端埋点/性能监控, 仓库链接: https://github.com/hangtiancheng/lark-sentry; lark-sentry 是一个前端监控 SDK, 支持异常捕获、性能指标采集、白屏检测、用户行为重放。异常捕获模块支持捕获 JS 运行时错误、资源加载错误、未捕获的 Promise 异常、XHR 和 fetch 请求错误, 监控点击事件、路由跳转等用户行为。性能指标采集模块计算 LCP/FCP/CLS/INP 等 web-vitals 指标, 使用 Observer API 计算首屏渲染时间。SDK 支持白屏检测, 实现基于关键点采样的白屏检测算法, 以区分骨架屏与真实白屏。SDK 支持屏幕录制以重放故障现场, 故障发生时使用 rrweb + gzip 记录现场, 使用 navigator.sendBeacon 作为首选数据上报方式, 并提供 fetch 降级方案。整体架构使用发布订阅, 实现核心模块和多个 Plugin 子模块的解耦",
+    "AI Agent 项目, 仓库链接: https://github.com/hangtiancheng/ai-agent; ai-agent 是一个使用 React 和 Koa 的 AI Agent 全栈项目; 前端使用 Vite, React, TailwindCSS 和 Jotai, 通过 tanstack-query 管理异步状态, 缓存请求数据; 使用 Zod + react-hook-form 保证端到端类型安全; 使用 SSE 流式响应和虚拟滚动列表, 保证长对话的渲染性能; 后端使用 Koa, JWT, lru-cache, Redis 和 MySQL, 使用 Knex 参数化查询器; 使用工厂模式实现 OpenAI/Ollama 可插拔模型, 使用内存向量存储实现 RAG"
   ],
   "researchExperienceList": [
     "科研方向: 强化学习辅助计算机网络拥塞控制, 多核并行化网络仿真"
