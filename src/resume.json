@@ -33,12 +33,12 @@
   "jobExperienceList": [
     "字节跳动: 2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; 终端设备性能数据使用 Kafka 转发到 MySQL, ClickHouse 和 Redis; 后端使用 Golang 和字节后端框架 Kitex, 编写 Thrift 生成 Node 包, 提供给 BFF 层调用 RPC 方法, BFF 层清洗、整形终端设备性能数据, 前端可视化渲染; 设计多层缓存减轻数据库压力; BFF 层使用 Nest, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 前端使用 React, Zustand, react-router, 抖音组件库 Semi Design, Echarts, ...; 使用性能优化 Hooks, 编写虚拟滚动列表; 参与 CloudWeGo Kitex 和扣子 coze-js 的开源工作",
     "腾讯: 2025-10 ~ 2026-2, IEG 互动娱乐事业群, 基础技术产品部; 负责腾讯 NoSQL 数据库管理系统; 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化组件性能, 排查闭包引用和接口响应时间过长导致的数据竞争; 后端负责编写 TCP 连接池; 编写 ffi-napi 绑定 C++ 函数, 维护进程池调用 C++ 动态链接库以加解密, 解析表文件; 使用 valgrind 排查 Node 和 C++ 动态链接库的内存泄漏问题, 复用大数组和大结构体降低 Node 侧 GC 压力",
-    "字节跳动: 2026-02 ~ 2026-05, Data-架构部门, ByteRec 搜索推荐算法平台开发, 抖音 Debug 平台开发, 前端 JSError 大模型自动修复, A2UI React 框架接入, AI 页面生成/构建/部署...",
+    "字节跳动: 2026-02 ~ 2026-05, Data-架构部门, ByteRec 搜索推荐算法平台开发, 抖音 Debug 平台开发, SWR 前端性能优化, 前端 JSError 大模型自动修复, A2UI React 框架接入, AI 页面生成/构建/部署...",
     "阿里巴巴: 2026-05 ~ 至今, 阿里妈妈广告技术部; 负责阿里妈妈 MVC 前端框架、Server&Schema-Driven UI、Webpack 模块联邦接入、A2UI 接入"
   ],
   "projectExperienceList": [
-    "前端埋点/性能监控, 仓库链接: https://github.com/hangtiancheng/lark-sentry; lark-sentry 是一个前端监控 SDK, 支持异常捕获、性能指标采集、白屏检测、用户行为重放。异常捕获模块支持捕获 JS 运行时错误、资源加载错误、未捕获的 Promise 异常、XHR 和 fetch 请求错误, 监控点击事件、路由跳转等用户行为。性能指标采集模块计算 LCP/FCP/CLS/INP 等 web-vitals 指标, 使用 Observer API 计算首屏渲染时间。SDK 支持白屏检测, 实现基于关键点采样的白屏检测算法, 以区分骨架屏与真实白屏。SDK 支持屏幕录制以重放故障现场, 故障发生时使用 rrweb + gzip 记录现场, 使用 navigator.sendBeacon 作为首选数据上报方式, 并提供 fetch 降级方案。整体架构使用发布订阅, 实现核心模块和多个 Plugin 子模块的解耦",
-    "AI Agent 项目, 仓库链接: https://github.com/hangtiancheng/ai-agent; ai-agent 是一个使用 React 和 Koa 的 AI Agent 全栈项目; 前端使用 Vite, React, TailwindCSS 和 Jotai, 通过 tanstack-query 管理异步状态, 缓存请求数据; 使用 Zod + react-hook-form 保证端到端类型安全; 使用 SSE 流式响应和虚拟滚动列表, 保证长对话的渲染性能; 后端使用 Koa, JWT, lru-cache, Redis 和 MySQL, 使用 Knex 参数化查询器; 使用工厂模式实现 OpenAI/Ollama 可插拔模型, 使用内存向量存储实现 RAG"
+    "前端埋点/性能监控, 仓库链接: https://github.com/hangtiancheng/lark-sentry; lark-sentry 是一个前端监控 SDK, 支持异常捕获、白屏检测、性能指标采集、故障现场重放。异常捕获模块支持捕获资源加载错误、JS 运行时错误、未捕获的 Promise 异常、XHR 和 fetch 请求错误, 监控点击事件、路由跳转等用户行为。实现基于关键点采样的白屏检测算法, 以区分骨架屏与真实白屏; 性能指标采集模块计算 LCP/FCP/CLS/INP 等 web-vitals 指标, 使用 Observer API 计算首屏渲染时间。SDK 支持屏幕录制以重放故障现场, 故障发生时使用 rrweb + gzip 记录现场, 使用 navigator.sendBeacon 作为首选数据上报方式, 提供 fetch 降级方案。整体架构使用发布订阅, 实现核心模块和多个 Plugin 子模块的解耦",
+    "AI Agent 项目, 仓库链接: https://github.com/hangtiancheng/ai-agent; ai-agent 前端使用 Vite, React, TailwindCSS 和 Jotai, 使用 tanstack-query 管理异步状态, 缓存请求数据; 使用 SSE 和虚拟滚动, 保证长对话的渲染性能; 后端使用 Koa, JWT, lru-cache, Redis 和 MySQL, 使用 Knex 参数化查询器; 使用内存向量存储实现 RAG, 支持 workflow 代码生成, 目前已使用 Ink 迁移到 TUI"
   ],
   "researchExperienceList": [
     "科研方向: 强化学习辅助计算机网络拥塞控制, 多核并行化网络仿真"
