@@ -7,7 +7,15 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "format": "prettier -w ./"
+    "format": "prettier -w ./",
+    "git:commit": "git add -A && git commit -m \"feat: Introduce new features\"",
+    "git:commit:ci": "git add -A && git commit -m \"ci: Deploy resume\"",
+    "git:push": "pnpm git:commit && git push origin main",
+    "git:push:ci": "pnpm git:commit:ci && git push origin main",
+    "git:push:force": "git push -f origin main --set-upstream",
+    "git:remote": "git remote add origin git@github.com:hangtiancheng/r.git",
+    "git:init": "rm -rf ./.git && git init",
+    "git:reset": "pnpm git:init && pnpm git:remote && pnpm git:commit && pnpm git:push:force"
   },
   "dependencies": {
     "@lark.js/mvc": "^0.0.5",
