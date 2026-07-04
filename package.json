@@ -16,7 +16,7 @@
     "format": "prettier -w ./ --experimental-cli"
   },
   "dependencies": {
-    "@swifty.js/sentry": "0.0.10",
+    "@swifty.js/sentry": "0.0.1",
     "@lit/react": "^1.0.8",
     "daisyui": "^5.6.10",
     "i18next": "^26.3.4",
