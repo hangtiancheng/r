@@ -1,0 +1,60 @@
+{
+  "headers": {
+    "eduExperience": "Education",
+    "devAbilities": "Skills",
+    "jobExperience": "Experience",
+    "projectExperience": "Projects",
+    "researchExperience": "Research"
+  },
+  "labels": {
+    "tel": "Tel",
+    "email": "Email",
+    "github": "GitHub",
+    "switch": "中"
+  },
+  "name": "Tiancheng Hang",
+  "tel": "15395377789",
+  "email": "161043261@qq.com",
+  "github": "hangtiancheng",
+  "myInfo": "Male, 23, M.S., Frontend / Full-Stack Engineer",
+  "eduExperienceList": [
+    ["High School: 2016-2019", "Nanling High School, Anhui", "Science"],
+    [
+      "B.S.: 2019-2023",
+      "Xidian University",
+      "Microelectronics Science and Engineering"
+    ],
+    [
+      "M.S.: 2024-2027",
+      "Nanjing University of Posts and Telecommunications",
+      "Computer Technology"
+    ]
+  ],
+  "devAbilitiesList": [
+    "Familiar with LLM multi-session, Guardrail, prompt engineering, structured output, conversation memory, RAG, Tools, MCP, SSE streaming",
+    "Proficient in CSS, CSS preprocessors, CSS Modules, utility-first CSS, PostCSS, CSS-in-JS",
+    "Proficient in JS/TS, familiar with Zod, monorepo tooling",
+    "Proficient in Node.js, familiar with Express/Koa/Hono; experienced in BFF layer and Node backend development",
+    "Proficient in JSX/TSX, React, Zustand/Jotai/MobX, react-router; familiar with React Fiber architecture and React performance optimization (hooks, virtual scrolling, SWR)",
+    "Proficient in Vue3, Pinia, vue-router; familiar with Vue3 reactivity system",
+    "Familiar with data structures, computer networking; aware of design patterns",
+    "Proficient in Vite, familiar with Webpack",
+    "Proficient in Go, MySQL, Redis, MongoDB; familiar with ClickHouse, RPC",
+    "Familiar with web performance metrics, frontend instrumentation, monitoring",
+    "Familiar with SSR, Next.js; aware of Ink TUI development, React Native / Lynx app development",
+    "Proficient in Git, CI/CD, ..."
+  ],
+  "jobExperienceList": [
+    "ByteDance: 2025-06 ~ 2025-09, Product R&D and Engineering Architecture, TikTok Performance team; terminal device performance data forwarded via Kafka to MySQL, ClickHouse and Redis; backend in Golang with Kitex framework, Thrift-generated Node packages for BFF RPC calls, BFF layer for data cleansing and frontend visualization; multi-layer caching to reduce DB load; BFF in Nest exposing HTTP APIs; frontend in React, Zustand, react-router, Semi Design, Echarts; performance optimization hooks, virtual scroll lists; contributed to CloudWeGo Kitex and Coze-JS open source",
+    "Tencent: 2025-10 ~ 2026-02, IEG Interactive Entertainment, Infrastructure Tech; responsible for Tencent NoSQL DB management system; frontend migration of React class components to function components, performance optimization hooks, debugging data races from closure refs and slow API responses; backend TCP connection pool; ffi-napi bindings to C++ crypto and table parsing DLLs; valgrind for memory leak detection across Node and C++ DLLs, large array/struct reuse to reduce GC pressure",
+    "ByteDance: 2026-02 ~ 2026-05, Data-Architecture, ByteRec search and recommendation platform, Douyin Debug platform, SWR performance optimization, LLM-based JSError auto-fix, A2UI React framework integration, AI page generation/build/deploy",
+    "Alibaba: 2026-05 ~ present, Alimama Ad Tech; responsible for Alimama MVC frontend framework, Server & Schema-Driven UI, Webpack Module Federation, A2UI integration"
+  ],
+  "projectExperienceList": [
+    "Frontend instrumentation / performance monitoring: https://github.com/hangtiancheng/swifty-sentry — swifty-sentry is a frontend monitoring SDK supporting exception capture, blank-screen detection, performance metric collection, and session replay. Captures resource load errors, JS runtime errors, unhandled promise rejections, XHR/fetch errors; tracks click events, route changes, and user behavior. Implements key-point sampling blank-screen detection to distinguish skeleton screens from real blank states. Performance module computes LCP/FCP/CLS/INP web-vitals and first-screen render time via Observer APIs. Supports session replay with rrweb + gzip, reports via navigator.sendBeacon with fetch fallback. Pub/sub architecture decouples core from plugin modules",
+    "AI Chatbot: https://github.com/hangtiancheng/swifty-chatbot — frontend in Vite, React, TailwindCSS, Jotai; tanstack-query for async state and request caching; SSE with virtual scrolling for long conversations; backend in Koa, JWT, lru-cache, Redis, MySQL with Knex parameterized queries; in-memory vector store for RAG, workflow code generation; now migrated to TUI with Ink"
+  ],
+  "researchExperienceList": [
+    "Research: reinforcement learning for network congestion control, multi-core parallel network simulation"
+  ]
+}
