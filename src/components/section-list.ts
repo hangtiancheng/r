@@ -1,6 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
+type TitledItem = { title: string; content: string };
+
 @customElement("section-list")
 export class SectionList extends LitElement {
   static override styles = css`
@@ -13,7 +15,7 @@ export class SectionList extends LitElement {
   sectionTitle = "";
 
   @property({ type: Array })
-  items: string[] = [];
+  items: (string | TitledItem)[] = [];
 
   protected override createRenderRoot(): HTMLElement {
     return this;
@@ -27,7 +29,11 @@ export class SectionList extends LitElement {
         </div>
         <div class="my-1 h-px bg-neutral-100"></div>
         <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
-          ${this.items.map((item) => html`<li>${item}</li>`)}
+          ${this.items.map((item) =>
+            typeof item === "string"
+              ? html`<li>${item}</li>`
+              : html`<li><b>${item.title}</b>: ${item.content}</li>`,
+          )}
         </ul>
       </section>
     `;

@@ -30,7 +30,7 @@ export function ErrorFallback({ error, errorInfo }: ErrorFallbackProps) {
           onClick={() => window.location.reload()}
           className="mt-3 rounded-md bg-neutral-900 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-black focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 focus:outline-none"
         >
-          Reload page
+          reload page
         </button>
       </div>
     </div>

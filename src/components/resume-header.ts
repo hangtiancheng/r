@@ -13,7 +13,7 @@ export class ResumeHeader extends LitElement {
   name = "";
 
   @property({ type: String })
-  myInfo = "";
+  about = "";
 
   @property({ type: String })
   tel = "";
@@ -52,7 +52,7 @@ export class ResumeHeader extends LitElement {
             ${this.labelSwitch}
           </button>
         </div>
-        <p class="mt-1 text-xs text-neutral-500">${this.myInfo}</p>
+        <p class="mt-1 text-xs text-neutral-500">${this.about}</p>
         <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs">
           <div class="flex items-center gap-1.5">
             <span

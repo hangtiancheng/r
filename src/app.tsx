@@ -17,15 +17,15 @@ function App() {
   const data = i18n.getResourceBundle(i18n.language, "translation") as Resume;
 
   const sections = [
-    { title: data.headers.devAbilities, items: data.devAbilitiesList },
-    { title: data.headers.jobExperience, items: data.jobExperienceList },
+    { title: data.headers.skills, items: data.skills },
+    { title: data.headers.works, items: data.works },
     {
-      title: data.headers.projectExperience,
-      items: data.projectExperienceList,
+      title: data.headers.projects,
+      items: data.projects,
     },
     {
-      title: data.headers.researchExperience,
-      items: data.researchExperienceList,
+      title: data.headers.research,
+      items: [data.research],
     },
   ];
 
@@ -38,7 +38,7 @@ function App() {
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
         <ResumeHeaderComponent
           name={data.name}
-          myInfo={data.myInfo}
+          about={data.about}
           tel={data.tel}
           email={data.email}
           github={data.github}
@@ -49,8 +49,8 @@ function App() {
           onToggleLocale={handleToggleLocale}
         />
         <SectionEduComponent
-          sectionTitle={data.headers.eduExperience}
-          eduList={data.eduExperienceList}
+          sectionTitle={data.headers.edu}
+          eduList={data.eduList}
         />
         {sections.map((section) => (
           <SectionListComponent
