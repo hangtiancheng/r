@@ -9,7 +9,7 @@ import {
 import { enablePlugin, init } from "@swifty.js/sentry";
 
 import App from "./app";
-import { PreactErrorBoundary } from "./components/error-boundary";
+import { PreactErrorBoundary } from "@swifty.js/sentry/preact";
 
 init({
   dsn: "/sentry",
@@ -28,7 +28,7 @@ enablePlugin(new ExposurePlugin());
 enablePlugin(new PerformancePlugin());
 
 render(
-  <PreactErrorBoundary>
+  <PreactErrorBoundary fallback={<div>Error</div>}>
     <App />
   </PreactErrorBoundary>,
   document.getElementById("root")!,

@@ -1,0 +1,2 @@
+overrides:
+  '@swifty.js/sentry': link:../swifty-sentry/sentry

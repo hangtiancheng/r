@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@preact/signals": "^2.3.1",
-    "@swifty.js/sentry": "0.0.1",
+    "@swifty.js/sentry": "file:../swifty-sentry/sentry",
     "daisyui": "^5.6.10",
     "i18next": "^26.3.4",
     "preact": "^10.27.6",
