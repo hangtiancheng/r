@@ -11,7 +11,7 @@
     "email",
     "github",
     "about",
-    "eduList",
+    "edu",
     "skills",
     "works",
     "projects",
@@ -54,7 +54,7 @@
     },
     "github": { "type": "string", "description": "GitHub username" },
     "about": { "type": "string", "description": "Brief personal summary" },
-    "eduList": {
+    "edu": {
       "type": "array",
       "description": "Education history entries",
       "items": {

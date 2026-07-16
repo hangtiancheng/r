@@ -31,7 +31,7 @@ const resumeSchema = z.object({
   email: z.string(),
   github: z.string(),
   about: z.string(),
-  eduList: z.array(eduSchema),
+  edu: z.array(eduSchema),
   skills: z.array(z.string()),
   works: z.array(titledItemSchema),
   projects: z.array(titledItemSchema),

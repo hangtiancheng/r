@@ -1,20 +1,18 @@
-import { useTranslation } from "react-i18next";
-import type { Resume } from "./schema/resume";
-import { ResumeHeaderComponent } from "./components/resume-header.react";
-import { SectionEduComponent } from "./components/section-edu.react";
-import { SectionListComponent } from "./components/section-list.react";
+import type { JSX } from "preact";
+import { resumeData } from "./i18n";
+import { ResumeHeader } from "./components/resume-header";
+import { SectionEdu } from "./components/section-edu";
+import { SectionList } from "./components/section-list";
 
 /**
  * Root application component.
  *
- * Composes @lit/react-wrapped web components directly in React rather than
- * routing data through an intermediate Lit container. Resume content and UI
- * labels are sourced from the i18next translation bundle of the active locale,
- * so switching language re-renders every section with no prop drilling.
+ * Composes Preact components directly, reading resume content from the
+ * resumeData signal. Switching language updates the signal, which triggers
+ * a re-render of every component that reads it, with no prop drilling.
  */
-function App() {
-  const { i18n } = useTranslation();
-  const data = i18n.getResourceBundle(i18n.language, "translation") as Resume;
+function App(): JSX.Element {
+  const data = resumeData.value;
 
   const sections = [
     { title: data.headers.skills, items: data.skills },
@@ -29,33 +27,15 @@ function App() {
     },
   ];
 
-  const handleToggleLocale = () => {
-    void i18n.changeLanguage(i18n.language === "en" ? "zh" : "en");
-  };
-
   return (
-    <div className="min-h-dvh w-full bg-neutral-50 text-neutral-900">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
-        <ResumeHeaderComponent
-          name={data.name}
-          about={data.about}
-          tel={data.tel}
-          email={data.email}
-          github={data.github}
-          labelTel={data.labels.tel}
-          labelEmail={data.labels.email}
-          labelGithub={data.labels.github}
-          labelSwitch={data.labels.switch}
-          onToggleLocale={handleToggleLocale}
-        />
-        <SectionEduComponent
-          sectionTitle={data.headers.edu}
-          eduList={data.eduList}
-        />
+    <div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
+      <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
+        <ResumeHeader />
+        <SectionEdu />
         {sections.map((section) => (
-          <SectionListComponent
+          <SectionList
             key={section.title}
-            sectionTitle={section.title}
+            title={section.title}
             items={section.items}
           />
         ))}

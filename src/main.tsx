@@ -1,4 +1,4 @@
-import { createRoot } from "react-dom/client";
+import { render } from "preact";
 import "./index.css";
 import "./i18n";
 import {
@@ -7,11 +7,9 @@ import {
   ExposurePlugin,
 } from "@swifty.js/sentry/plugins";
 import { enablePlugin, init } from "@swifty.js/sentry";
-import { ReactErrorBoundary } from "@swifty.js/sentry/react";
 
-import type { ErrorInfo } from "react";
 import App from "./app";
-import { ErrorFallback } from "./components/error-fallback";
+import { PreactErrorBoundary } from "./components/error-boundary";
 
 init({
   dsn: "/sentry",
@@ -29,12 +27,9 @@ enablePlugin(new ScreenRecordPlugin());
 enablePlugin(new ExposurePlugin());
 enablePlugin(new PerformancePlugin());
 
-const fallback = (error: Error, errorInfo?: ErrorInfo) => (
-  <ErrorFallback error={error} errorInfo={errorInfo} />
-);
-
-createRoot(document.getElementById("root")!).render(
-  <ReactErrorBoundary fallback={fallback}>
+render(
+  <PreactErrorBoundary>
     <App />
-  </ReactErrorBoundary>,
+  </PreactErrorBoundary>,
+  document.getElementById("root")!,
 );
