@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import preact from "@preact/preset-vite";
 import tailwindcss from "@tailwindcss/vite";
 import { sentryPlugin } from "@swifty.js/sentry/vite";
 import { fileURLToPath, URL } from "node:url";
@@ -14,7 +14,7 @@ export default defineConfig({
   base: isProd ? "/r/" : "/",
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
-    react(),
+    preact(),
     tailwindcss(),
     sentryPlugin({
       dsn: "/sentry",
