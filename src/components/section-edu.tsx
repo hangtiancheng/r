@@ -1,4 +1,4 @@
-import type { JSX } from "preact";
+import type { JSX } from "@swifty.js/preact";
 import { resumeData } from "../i18n";
 
 /**

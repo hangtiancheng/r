@@ -14,6 +14,9 @@ importers:
       '@preact/signals':
         specifier: ^2.3.1
         version: 2.9.4(preact@10.29.7)
+      '@swifty.js/preact':
+        specifier: ^0.0.3
+        version: 0.0.3
       '@swifty.js/sentry':
         specifier: link:../swifty-sentry/sentry
         version: link:../swifty-sentry/sentry
@@ -23,9 +26,6 @@ importers:
       i18next:
         specifier: ^26.3.4
         version: 26.3.4(typescript@6.0.3)
-      preact:
-        specifier: ^10.27.6
-        version: 10.29.7
       tailwindcss:
         specifier: ^4.3.2
         version: 4.3.2
@@ -1016,6 +1016,9 @@ packages:
     resolution: {integrity: sha512-BfzEnDJOt9T8M989/lA37EcJgat01wLRnoi5dQf3QzOH7jzpqTAzdDbVfRljVr5r+jzKqpbHeyOfAaXxAd0PAA==}
     cpu: [x64]
     os: [win32]
+
+  '@swifty.js/preact@0.0.3':
+    resolution: {integrity: sha512-/v1qpOh1RECGrT634jhqSEV+UsxXRVT09nb9zIaTXzkgR9vXaJ6Zgf2L700HIBGoTPQD+aXBZ0IBtAgG+Pb8JA==}
 
   '@tailwindcss/node@4.3.2':
     resolution: {integrity: sha512-yWP/sqEcBLaD8JuA6zNwxoYKr75qxTioYwlRwekj5Jr/I5GXnoJfjetH/psLUIv74cYTH2lBUEzBkinthoYcBg==}
@@ -3572,6 +3575,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.62.2':
     optional: true
+
+  '@swifty.js/preact@0.0.3': {}
 
   '@tailwindcss/node@4.3.2':
     dependencies:

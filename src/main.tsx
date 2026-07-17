@@ -1,4 +1,4 @@
-import { render } from "preact";
+import { render } from "@swifty.js/preact";
 import "./index.css";
 import "./i18n";
 import {

@@ -1,4 +1,4 @@
-import type { JSX } from "preact";
+import type { JSX } from "@swifty.js/preact";
 import type { TitledItem } from "../schema/resume";
 
 interface SectionListProps {
