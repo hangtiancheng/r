@@ -1,6 +1,4 @@
-import { render } from "@swifty.js/preact";
 import "@/index.css";
-import "@/i18n/store";
 import "@/i18n";
 import {
   ScreenRecordPlugin,
@@ -8,11 +6,10 @@ import {
   ExposurePlugin,
 } from "@swifty.js/sentry/plugins";
 import { enablePlugin, init } from "@swifty.js/sentry";
-import { resumeStore } from "@/i18n/store";
-import { mountReactApp } from "@/mount-react";
+import { i18next } from "@/i18n";
+import { mountReactWC } from "@/react-wc";
 
-import App from "@/app";
-import { PreactErrorBoundary } from "@swifty.js/sentry/preact";
+import { mountPreact } from "./preact";
 
 init({
   dsn: "/sentry",
@@ -31,31 +28,39 @@ enablePlugin(new ExposurePlugin());
 enablePlugin(new PerformancePlugin());
 
 // Two rendering roots: Preact for English, React+Lit WC for Chinese.
-// Only one is visible at a time, toggled by the store subscription below.
-const preactRoot = document.getElementById("root")!;
-const reactRoot = document.createElement("div");
-reactRoot.id = "root-react";
-document.body.appendChild(reactRoot);
+// Only one is visible at a time, toggled by the i18next listener below.
+const reactRoot =
+  document.getElementById("react-root") ?? document.createElement("react-root");
 
-// Initial visibility based on current language (default: en → Preact).
-const isZh = resumeStore.getLang() === "zh";
-preactRoot.classList.toggle("hidden", isZh);
-reactRoot.classList.toggle("hidden", !isZh);
+const preactRoot =
+  document.getElementById("preact-root") ??
+  document.createElement("react-root");
+
+if (!reactRoot.id) {
+  reactRoot.id = "react-root";
+}
+if (!preactRoot.id) {
+  preactRoot.id = "preact-root";
+}
+if (!document.body.contains(reactRoot)) {
+  document.body.appendChild(reactRoot);
+}
+if (!document.body.contains(preactRoot)) {
+  document.body.appendChild(preactRoot);
+}
+function updateVisibility(lang: string): void {
+  const en = lang === "en";
+  reactRoot.classList.toggle("hidden", en);
+  preactRoot.classList.toggle("hidden", !en);
+}
+
+// Initial visibility based on current language (default: en -> Preact).
+updateVisibility(i18next.language);
 
 // Preact tree (English mode).
-render(
-  <PreactErrorBoundary fallback={<>Oops!!!</>}>
-    <App />
-  </PreactErrorBoundary>,
-  preactRoot,
-);
-
+mountPreact(preactRoot);
 // React tree (Chinese mode, Lit Web Components via @lit/react).
-mountReactApp(reactRoot);
+mountReactWC(reactRoot);
 
 // Toggle visibility on language change.
-resumeStore.subscribe(() => {
-  const zh = resumeStore.getLang() === "zh";
-  preactRoot.classList.toggle("hidden", zh);
-  reactRoot.classList.toggle("hidden", !zh);
-});
+i18next.on("languageChanged", updateVisibility);

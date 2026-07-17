@@ -1,19 +1,21 @@
 import React from "react";
-import { createComponent } from "@lit/react";
+import { createComponent, type EventName } from "@lit/react";
 import { ResumeHeader } from "@/components/wc/resume-header";
 import { SectionEdu } from "@/components/wc/section-edu";
 import { SectionList } from "@/components/wc/section-list";
 
 /**
- * @lit/react wrappers — bridges Lit Web Components into React/Preact
+ * @lit/react wrappers — bridges Lit Web Components into React
  * so they can be composed in JSX with proper prop reflection and
- * event mapping, while the custom elements are registered globally
- * via @customElement on first import.
+ * event mapping.
  */
 export const ResumeHeaderWC = createComponent({
   tagName: "resume-header",
   elementClass: ResumeHeader,
   react: React,
+  events: {
+    onToggleLocale: "toggle-locale" as EventName<CustomEvent>,
+  },
 });
 
 export const SectionEduWC = createComponent({

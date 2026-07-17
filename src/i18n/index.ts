@@ -1,7 +1,7 @@
 import i18next from "i18next";
 import { signal } from "@preact/signals";
 import enData from "@/i18n/en.json";
-import zhData from "./zh.json";
+import zhData from "@/i18n/zh.json";
 import { resumeSchema } from "@/schema/resume";
 import type { Resume } from "@/schema/resume";
 

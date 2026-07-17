@@ -1,8 +1,8 @@
 import type { JSX } from "@swifty.js/preact";
-import { resumeData } from "./i18n";
-import { ResumeHeader } from "./components/resume-header";
-import { SectionEdu } from "./components/section-edu";
-import { SectionList } from "./components/section-list";
+import { resumeData } from "@/i18n";
+import { ResumeHeader } from "@/components/resume-header";
+import { SectionEdu } from "@/components/section-edu";
+import { SectionList } from "@/components/section-list";
 
 /**
  * Root application component.
@@ -11,7 +11,7 @@ import { SectionList } from "./components/section-list";
  * resumeData signal. Switching language updates the signal, which triggers
  * a re-render of every component that reads it, with no prop drilling.
  */
-function App(): JSX.Element {
+function AppPreact(): JSX.Element {
   const data = resumeData.value;
 
   const sections = [
@@ -44,4 +44,4 @@ function App(): JSX.Element {
   );
 }
 
-export default App;
+export default AppPreact;
