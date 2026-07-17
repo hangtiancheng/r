@@ -12,9 +12,7 @@ import { ReactErrorBoundaryFallback } from "./fallback";
 export function mountReactWC(reactRoot: HTMLElement): void {
   const root = createRoot(reactRoot);
   root.render(
-    <ReactErrorBoundary
-      fallback={ReactErrorBoundaryFallback}
-    >
+    <ReactErrorBoundary fallback={ReactErrorBoundaryFallback}>
       <AppReactWC />
     </ReactErrorBoundary>,
   );

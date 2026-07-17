@@ -5,6 +5,7 @@ import { sentryPlugin } from "@swifty.js/sentry/vite";
 import { fileURLToPath, URL } from "node:url";
 import { VitePWA } from "vite-plugin-pwa";
 import { resolve } from "node:path";
+import react from "@vitejs/plugin-react";
 
 const PKG_DIR = import.meta.dirname;
 const isProd = process.env.NODE_ENV === "production";
@@ -15,6 +16,7 @@ export default defineConfig({
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
     preact({ jsxImportSource: "@swifty.js/preact" }),
+    react(),
     tailwindcss(),
     sentryPlugin({
       dsn: "/sentry",

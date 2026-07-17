@@ -12,14 +12,14 @@ export const PreactErrorBoundaryFallback = (
     { class: "min-h-dvh w-full bg-neutral-50 text-neutral-900 p-6" },
     createElement(
       "div",
-      { class: "mx-auto max-w-2xl rounded-lg border border-red-200 bg-white p-4" },
+      {
+        class:
+          "mx-auto max-w-2xl rounded-lg border border-red-200 bg-white p-4",
+      },
       createElement(
         "div",
         { class: "mb-3 flex items-center gap-2" },
-        createElement(
-          "div",
-          { class: "h-2 w-2 rounded-full bg-red-500" },
-        ),
+        createElement("div", { class: "h-2 w-2 rounded-full bg-red-500" }),
         createElement(
           "h1",
           { class: "text-sm font-semibold text-neutral-900" },
@@ -48,7 +48,7 @@ export const ReactErrorBoundaryFallback = (
   error: Error,
   errorInfo?: ReactErrorInfo,
 ) => (
-  <div className="min-h-dvh w-full bg-neutral-50 text-neutral-900 p-6">
+  <div className="min-h-dvh w-full bg-neutral-50 p-6 text-neutral-900">
     <div className="mx-auto max-w-2xl rounded-lg border border-red-200 bg-white p-4">
       <div className="mb-3 flex items-center gap-2">
         <div className="h-2 w-2 rounded-full bg-red-500" />
@@ -65,4 +65,3 @@ export const ReactErrorBoundaryFallback = (
     </div>
   </div>
 );
-
