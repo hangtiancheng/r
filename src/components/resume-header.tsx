@@ -1,5 +1,5 @@
 import type { JSX } from "@swifty.js/preact";
-import { resumeData, currentLang, i18next } from "../i18n";
+import { resumeData, currentLang, i18next } from "@/i18n";
 
 /**
  * Resume header component.

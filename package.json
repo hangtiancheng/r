@@ -16,11 +16,16 @@
     "format": "prettier -w ./ --experimental-cli"
   },
   "dependencies": {
+    "@lit/react": "^1.0.8",
     "@preact/signals": "^2.3.1",
+    "@swifty.js/preact": "^0.0.3",
     "@swifty.js/sentry": "^0.0.2",
     "daisyui": "^5.6.10",
     "i18next": "^26.3.4",
-    "@swifty.js/preact": "^0.0.3",
+    "lit": "^3.3.3",
+    "preact": "^10.29.7",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "tailwindcss": "^4.3.2",
     "zod": "^4.4.3"
   },
@@ -29,6 +34,8 @@
     "@preact/preset-vite": "^2.10.1",
     "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "eslint": "^10.6.0",
     "globals": "^17.7.0",
     "prettier": "^3.9.4",

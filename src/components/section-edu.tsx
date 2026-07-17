@@ -1,5 +1,5 @@
 import type { JSX } from "@swifty.js/preact";
-import { resumeData } from "../i18n";
+import { resumeData } from "@/i18n";
 
 /**
  * Education section component.

@@ -1,9 +1,9 @@
 import i18next from "i18next";
 import { signal } from "@preact/signals";
-import enData from "./en.json";
+import enData from "@/i18n/en.json";
 import zhData from "./zh.json";
-import { resumeSchema } from "../schema/resume";
-import type { Resume } from "../schema/resume";
+import { resumeSchema } from "@/schema/resume";
+import type { Resume } from "@/schema/resume";
 
 // Validate resource shape at module load so malformed data fails fast
 // instead of surfacing as undefined access at render time.
