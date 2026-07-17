@@ -28,7 +28,7 @@ enablePlugin(new ExposurePlugin());
 enablePlugin(new PerformancePlugin());
 
 render(
-  <PreactErrorBoundary fallback={<div>Error</div>}>
+  <PreactErrorBoundary fallback={<>Oops!!!</>}>
     <App />
   </PreactErrorBoundary>,
   document.getElementById("root")!,
