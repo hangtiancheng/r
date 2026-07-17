@@ -15,7 +15,12 @@ export default defineConfig({
   base: isProd ? "/r/" : "/",
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
-    preact({ jsxImportSource: "@swifty.js/preact" }),
+    preact({
+      jsxImportSource: "@swifty.js/preact",
+      // reactAliasesEnabled: false,
+      // devToolsEnabled: false,
+      // prefreshEnabled: true,
+    }),
     react(),
     tailwindcss(),
     sentryPlugin({

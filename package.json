@@ -38,6 +38,7 @@
     "@vitejs/plugin-react": "^6.0.3",
     "eslint": "^10.7.0",
     "globals": "^17.7.0",
+    "preact": "^10.29.7",
     "prettier": "^3.9.5",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "~6.0.3",
