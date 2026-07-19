@@ -17,9 +17,6 @@ export default defineConfig({
   plugins: [
     preact({
       jsxImportSource: "@swifty.js/preact",
-      // reactAliasesEnabled: false,
-      // devToolsEnabled: false,
-      // prefreshEnabled: true,
     }),
     react(),
     tailwindcss(),
