@@ -1,4 +1,3 @@
-<!doctype html>
 <!--
  Copyright (c) 2026 hangtiancheng
 
@@ -21,20 +20,30 @@
  SOFTWARE.
 -->
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#ecfdf5" />
-    <meta name="description" content="resume" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
-    <title>resume</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
-</html>
+<div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
+  <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
+    <div
+      v-lark="views/components/resume-header"
+      *name="{{=data.name}}"
+      *about="{{=data.about}}"
+      *tel="{{=data.tel}}"
+      *email="{{=data.email}}"
+      *github="{{=data.github}}"
+      *labels="{{@data.labels}}"
+      @toggleLocale="onToggleLocale"
+    ></div>
+    <div
+      v-lark="views/components/section-edu"
+      *header="{{=data.headers.edu}}"
+      *edu="{{@data.edu}}"
+    ></div>
+    {{forOf sections as section idx}}
+    <div
+      id="section-{{=idx}}"
+      v-lark="views/components/section-list"
+      *title="{{=section.title}}"
+      *items="{{@section.items}}"
+    ></div>
+    {{/forOf}}
+  </div>
+</div>
