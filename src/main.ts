@@ -98,7 +98,9 @@ registerViewClass(
 );
 registerViewClass(
   "views/components/section-list",
-  instrumentView(sectionListView, { viewPath: "views/components/section-list" }),
+  instrumentView(sectionListView, {
+    viewPath: "views/components/section-list",
+  }),
 );
 
 // === Boot ===

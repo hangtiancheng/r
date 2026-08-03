@@ -24,12 +24,10 @@
   <div class="text-sm font-semibold text-neutral-900">{{=title}}</div>
   <div class="my-1 h-px bg-neutral-100"></div>
   <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
-    {{forOf items as item}}
-    {{if typeof item === 'string'}}
+    {{forOf items as item}} {{if typeof item === 'string'}}
     <li>{{=item}}</li>
     {{else}}
     <li><b>{{=item.title}}</b>: {{=item.content}}</li>
-    {{/if}}
-    {{/forOf}}
+    {{/if}} {{/forOf}}
   </ul>
 </section>

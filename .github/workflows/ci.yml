@@ -18,26 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-name: Deploy https://tianchenghang.github.io/resume resume
+name: CI
 
 on:
   push:
     branches: [main]
-
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  build:
-    if: "${{ github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'ci: Deploy resume' }}"
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,26 +44,11 @@ jobs:
         with:
           node-version: 24
           cache: pnpm
-      - name: Setup pages
-        uses: actions/configure-pages@v4
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Build with @lark.js/mvc, @swifty.js/sentry and Vite
+      - name: Typecheck
+        run: npx tsc -b
+      - name: Lint
+        run: npx eslint ./
+      - name: Build
         run: pnpm build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    if: "${{ github.event_name == 'workflow_dispatch' || github.event.head_commit.message == 'ci: Deploy resume' }}"
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

@@ -20,25 +20,18 @@
  * SOFTWARE.
  */
 
-import { defineView, useStore } from "@lark.js/mvc";
-import { resumeStore } from "@/i18n";
-import template from "./resume.html";
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-/**
- * Root view. Composes the header / edu / list section child views and
- * reads resume content from the resume store. Toggling the language
- * updates the store, which re-renders this view and pushes the new
- * props down to every child via mountZone.
- */
-export default defineView(() => {
-  useStore(resumeStore, (s) => ({ data: s.data, sections: s.sections }));
-
-  return {
-    template,
-    events: {
-      "onToggleLocale<click>": () => {
-        resumeStore.getState().toggleLocale();
-      },
+export default defineConfig([
+  globalIgnores(["dist"]),
+  {
+    files: ["**/*.{ts,tsx}"],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
+    languageOptions: {
+      globals: globals.browser,
     },
-  };
-});
+  },
+]);

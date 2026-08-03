@@ -4,8 +4,7 @@
     "target": "ESNext",
     "lib": ["ESNext", "DOM"],
     "module": "esnext",
-    "types": ["vite/client", "@lark.js/mvc/client"],
-    "allowArbitraryExtensions": true,
+    "types": [],
     "skipLibCheck": true,
     /* Bundler mode */
     "moduleResolution": "bundler",

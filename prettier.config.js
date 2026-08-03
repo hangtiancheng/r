@@ -20,25 +20,7 @@
  * SOFTWARE.
  */
 
-import { defineView, useStore } from "@lark.js/mvc";
-import { resumeStore } from "@/i18n";
-import template from "./resume.html";
-
-/**
- * Root view. Composes the header / edu / list section child views and
- * reads resume content from the resume store. Toggling the language
- * updates the store, which re-renders this view and pushes the new
- * props down to every child via mountZone.
- */
-export default defineView(() => {
-  useStore(resumeStore, (s) => ({ data: s.data, sections: s.sections }));
-
-  return {
-    template,
-    events: {
-      "onToggleLocale<click>": () => {
-        resumeStore.getState().toggleLocale();
-      },
-    },
-  };
-});
+/** @type {import('prettier').Config & import('prettier-plugin-tailwindcss').PluginOptions} */
+export default {
+  plugins: ["prettier-plugin-tailwindcss"],
+};

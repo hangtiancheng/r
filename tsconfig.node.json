@@ -7,7 +7,6 @@
     "skipLibCheck": true,
     /* Bundler mode */
     "module": "nodenext",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
