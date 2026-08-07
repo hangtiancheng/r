@@ -94,10 +94,6 @@ Pushing a commit with the message `ci: Deploy resume` to `main` (or
 triggering the workflow manually) builds the site and deploys it to GitHub
 Pages via the `deploy.yml` workflow:
 
-```bash
-pnpm git:push:ci
-```
-
 The production build is served under the `/resume/` base path.
 
 ## License
