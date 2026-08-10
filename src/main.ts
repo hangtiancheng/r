@@ -40,7 +40,7 @@ import resumeHeaderView from "@/views/components/resume-header";
 import sectionEduView from "@/views/components/section-edu";
 import sectionListView from "@/views/components/section-list";
 
-// === Error fallback (mirrors the old React/Preact error boundaries) ===
+// === Error fallback (mirrors the old React/React error boundaries) ===
 
 function renderErrorFallback(error: unknown): void {
   const root = document.getElementById("app");
@@ -60,7 +60,7 @@ function renderErrorFallback(error: unknown): void {
 
 // Report every captured lark-mvc error to @swifty.js/sentry (same behavior
 // as the default sink) and show the fallback card for render/setup crashes,
-// like the old ReactErrorBoundary / PreactErrorBoundary did.
+// like the old ReactErrorBoundary did.
 function larkErrorSink(error: unknown, context: LarkErrorContext): void {
   reportFrameworkError({
     type: EventType.OtherFrameworks,

@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/hangtiancheng/swifty-cli/main/swift
 ## Overview
 
 This resume is a migration of the original
-[hangtiancheng/r](https://github.com/hangtiancheng/r) project (React + Preact
+[hangtiancheng/r](https://github.com/hangtiancheng/r) project (React + React
 
 - Lit dual rendering trees) onto the
   [Lark Mvc framework](https://www.npmjs.com/package/@lark.js/mvc) — a
@@ -32,8 +32,8 @@ This resume is a migration of the original
 
 | Concern    | Before (`r`)                         | Now (`resume`)                                      |
 | ---------- | ------------------------------------ | --------------------------------------------------- |
-| Framework  | React + Preact + Lit Web Components  | `@lark.js/mvc@0.0.23` (single view tree)            |
-| Reactivity | i18next + Preact signals             | `createStore` / `computed` / `useStore`             |
+| Framework  | React + React + Lit Web Components   | `@lark.js/mvc@0.0.23` (single view tree)            |
+| Reactivity | i18next + React signals              | `createStore` / `computed` / `useStore`             |
 | Templates  | JSX / Lit `html` tagged literals     | `.html` templates compiled at build time            |
 | Styling    | Tailwind CSS v4                      | Tailwind CSS v4 (unchanged)                         |
 | Validation | zod                                  | zod (unchanged)                                     |

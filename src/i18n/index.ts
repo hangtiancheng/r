@@ -57,7 +57,7 @@ interface ResumeState {
 /**
  * Store holding the current resume data. Every view bound via `useStore`
  * re-renders automatically when the language toggles, with no prop
- * drilling required — the lark-mvc equivalent of the old Preact signal.
+ * drilling required — the lark-mvc equivalent of the old React signal.
  */
 export const resumeStore = createStore<ResumeState>("resume", (set, get) => ({
   lang: "en",
