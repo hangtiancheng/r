@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@lark.js/mvc':
-        specifier: ^0.0.23
-        version: 0.0.23(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))
+        specifier: ^0.0.24
+        version: 0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))
       '@lark.js/sentry':
-        specifier: ^0.0.12
-        version: 0.0.12(@lark.js/mvc@0.0.23(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))
+        specifier: ^0.0.13
+        version: 0.0.13(@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))
       '@swifty.js/sentry':
         specifier: ^0.0.4
         version: 0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))
@@ -652,16 +652,16 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lark.js/mvc@0.0.23':
-    resolution: {integrity: sha512-zaCB4Chj7UrNqe7U+O9lrwPu7HbSGXFYqIWBNEGyViutbs0hCSPmMuLTKJ48nccTHFBrHKHy/kV2LeDMJDm9xw==}
+  '@lark.js/mvc@0.0.24':
+    resolution: {integrity: sha512-dWk6WtrfwqU3X2KKzrVCGz5DEueAIziE/AMYNq6oNwAluQ3K5IbhtIsRDRZd0TO4CSVo9N8/54e9aoquTRadog==}
     peerDependencies:
       vite: ^8.0.14
 
-  '@lark.js/sentry@0.0.12':
-    resolution: {integrity: sha512-btjQlL0maNKMuaqUvYZzTzbc8reErl/RzVVGSYYKJyU4IBOd+a4dvbloiGDALwVAMWguYNOfnqdmQzfwV4vfZQ==}
+  '@lark.js/sentry@0.0.13':
+    resolution: {integrity: sha512-9O1cKQZFpSqfAZX+375azsMKHqYh3Wf0T/pT9y2w2bzT1JJHc1sQIEbcaxzclFmN7Dxvb6AzhVPy+JeKkMUbeA==}
     peerDependencies:
-      '@lark.js/mvc': '>=0.0.23'
-      '@swifty.js/sentry': '>=0.0.3'
+      '@lark.js/mvc': '>=0.0.24'
+      '@swifty.js/sentry': '>=0.0.4'
 
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     resolution: {integrity: sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==}
@@ -3306,16 +3306,16 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lark.js/mvc@0.0.23(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))':
+  '@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))':
     dependencies:
       '@babel/parser': 7.29.8
       '@babel/types': 7.29.8
       htmlparser2: 12.0.0
       vite: 8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)
 
-  '@lark.js/sentry@0.0.12(@lark.js/mvc@0.0.23(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))':
+  '@lark.js/sentry@0.0.13(@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2)))':
     dependencies:
-      '@lark.js/mvc': 0.0.23(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))
+      '@lark.js/mvc': 0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))
       '@swifty.js/sentry': 0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.49.2))
 
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
