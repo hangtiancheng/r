@@ -24,10 +24,7 @@ import "@/index.css";
 
 import { Framework, registerViewClass } from "@lark.js/mvc";
 import type { FrameworkConfig } from "@lark.js/mvc";
-import { encHtml } from "@lark.js/mvc/runtime";
-import { initLarkSentry, instrumentView } from "@lark.js/sentry";
-import type { LarkErrorContext } from "@lark.js/sentry";
-import { EventType, reportFrameworkError } from "@swifty.js/sentry";
+import { initLarkSentry } from "@lark.js/sentry";
 import {
   ScreenRecordPlugin,
   PerformancePlugin,
@@ -40,68 +37,15 @@ import resumeHeaderView from "@/views/components/resume-header";
 import sectionEduView from "@/views/components/section-edu";
 import sectionListView from "@/views/components/section-list";
 
-// === Error fallback (mirrors the old React/React error boundaries) ===
-
-function renderErrorFallback(error: unknown): void {
-  const root = document.getElementById("app");
-  if (!root) return;
-  const message = error instanceof Error ? error.message : String(error);
-  root.innerHTML = `
-    <div class="min-h-dvh w-full bg-neutral-50 p-6 text-neutral-900">
-      <div class="mx-auto max-w-2xl rounded-lg border border-red-200 bg-white p-4">
-        <div class="mb-3 flex items-center gap-2">
-          <div class="h-2 w-2 rounded-full bg-red-500"></div>
-          <h1 class="text-sm font-semibold text-neutral-900">Rendering Error</h1>
-        </div>
-        <div class="mb-2 text-xs text-red-700">${encHtml(message)}</div>
-      </div>
-    </div>`;
-}
-
-// Report every captured lark-mvc error to @swifty.js/sentry (same behavior
-// as the default sink) and show the fallback card for render/setup crashes,
-// like the old ReactErrorBoundary did.
-function larkErrorSink(error: unknown, context: LarkErrorContext): void {
-  reportFrameworkError({
-    type: EventType.OtherFrameworks,
-    error,
-    context: {
-      framework: "lark-mvc",
-      ...context,
-    },
-  });
-  if (context.phase === "setup" || context.phase === "template") {
-    renderErrorFallback(error);
-  }
-}
-
 // === View registration ===
 // All views are registered synchronously before boot. instrumentView wraps
 // setup / template / event handlers / cleanups so errors swallowed by the
 // framework are reported (the lark-mvc replacement for error boundaries).
 
-registerViewClass(
-  "views/resume",
-  instrumentView(resumeView, { viewPath: "views/resume" }),
-);
-registerViewClass(
-  "views/components/resume-header",
-  instrumentView(resumeHeaderView, {
-    viewPath: "views/components/resume-header",
-  }),
-);
-registerViewClass(
-  "views/components/section-edu",
-  instrumentView(sectionEduView, {
-    viewPath: "views/components/section-edu",
-  }),
-);
-registerViewClass(
-  "views/components/section-list",
-  instrumentView(sectionListView, {
-    viewPath: "views/components/section-list",
-  }),
-);
+registerViewClass("views/resume", resumeView);
+registerViewClass("views/components/resume-header", resumeHeaderView);
+registerViewClass("views/components/section-edu", sectionEduView);
+registerViewClass("views/components/section-list", sectionListView);
 
 // === Boot ===
 
@@ -126,7 +70,6 @@ Framework.boot(config);
 initLarkSentry({
   dsn: "/sentry",
   debug: true,
-  onError: larkErrorSink,
   beforePushEventList(eventList) {
     if (!import.meta.env.DEV) {
       console.log("@swifty.js/sentry App:", eventList);
