@@ -33,7 +33,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: isProd ? "/resume/" : "/",
+  base: isProd ? "/r/" : "/",
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
     larkMvcPlugin({ vdom: false }),
@@ -55,8 +55,8 @@ export default defineConfig({
         theme_color: "#f05138",
         background_color: "#f05138",
         display: "standalone",
-        scope: isProd ? "/resume/" : "/",
-        start_url: isProd ? "/resume/" : "/",
+        scope: isProd ? "/r/" : "/",
+        start_url: isProd ? "/r/" : "/",
         icons: [
           {
             src: "pwa-64x64.png",
