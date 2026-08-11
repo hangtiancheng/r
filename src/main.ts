@@ -29,8 +29,8 @@ import {
   ScreenRecordPlugin,
   PerformancePlugin,
   ExposurePlugin,
-} from "@swifty.js/sentry/plugins";
-import { enablePlugin } from "@swifty.js/sentry";
+} from "@lark.js/sentry/plugins";
+import { enablePlugin } from "@lark.js/sentry";
 
 import resumeView from "@/views/resume";
 import resumeHeaderView from "@/views/components/resume-header";
