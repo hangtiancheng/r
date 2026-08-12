@@ -23,13 +23,10 @@
 import { createStore, computed } from "@lark.js/mvc";
 import enData from "@/i18n/en.json";
 import zhData from "@/i18n/zh.json";
-import { resumeSchema } from "@/schema/resume";
 import type { Resume, TitledItem } from "@/schema/resume";
 
-// Validate resource shape at module load so malformed data fails fast
-// instead of surfacing as undefined access at render time.
-const en = resumeSchema.parse(enData);
-const zh = resumeSchema.parse(zhData);
+const en = enData as Resume;
+const zh = zhData as Resume;
 
 export type Lang = "en" | "zh";
 
