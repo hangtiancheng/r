@@ -60,7 +60,7 @@
       "content": "仓库链接: https://github.com/hangtiancheng/swifty-cli; 是一个轻量级 CLI Coding Agent; 5 层架构, 支持多 LLM provider 接入; AI 友好的工具集; 基于 ReAct 范式, 通过 Agent Loop 推理与行动交替驱动 LLM 自主完成编码任务; System Prompt 组装; 5 层权限系统; 支持 MCP; 安全、高质量的上下文压缩; 指令文件、会话持久化, 以及 LLM 自动记忆提取、定期记忆整理; 支持 Slash Command、Skill、Hook; 实现 worktree 文件隔离、预定义/fork 的 Subagent 和多 teammate 协作的 Agent Team; 新增对图片内容块的支持"
     },
     {
-      "title": "前端埋点/性能监控",
+      "title": "前端监控/埋点",
       "content": "仓库链接: https://github.com/hangtiancheng/swifty-sentry; 框架无关的前端监控 SDK, 发布订阅架构, core 模块和 plugin 子模块解耦, 支持错误捕获、白屏检测、性能指标采集、故障现场重放; 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持 lru 和错误去重, trace 点击事件、路由跳转等用户行为; 白屏检测使用关键点采样; 性能指标采集模块计算 LCP/FCP/CLS/INP 等性能指标, 使用 Observer API 计算首屏渲染时间、检测 longTask 长任务; 使用 rrweb + gzip 屏幕录制以重放故障现场, 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon -> fetch keepAlive, 离线使用 localStorage, 网络恢复自动 flush 上报队列"
     }
   ],
