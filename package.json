@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@lark.js/mvc": "^0.0.24",
-    "@lark.js/sentry": "^0.0.14",
+    "@lark.js/sentry": "^0.0.15",
     "tailwindcss": "^4.3.3",
     "zod": "^4.4.3"
   },

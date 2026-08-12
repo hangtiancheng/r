@@ -67,17 +67,19 @@ Framework.boot(config);
 // initLarkSentry must run AFTER Framework.boot() so the instrumentation
 // wraps the final framework configuration.
 
-initLarkSentry({
-  dsn: "/sentry",
-  debug: true,
-  beforePushEventList(eventList) {
-    if (!import.meta.env.DEV) {
-      console.log("@lark.js/sentry App:", eventList);
-      return false;
-    }
-    return eventList;
-  },
-});
+if (Framework.isBooted()) {
+  initLarkSentry({
+    dsn: "/sentry",
+    debug: true,
+    beforePushEventList(eventList) {
+      if (!import.meta.env.DEV) {
+        console.log("@lark.js/sentry App:", eventList);
+        return false;
+      }
+      return eventList;
+    },
+  });
+}
 
 enablePlugin(new ScreenRecordPlugin());
 enablePlugin(new ExposurePlugin());
