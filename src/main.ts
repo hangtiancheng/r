@@ -31,6 +31,7 @@ import {
   ExposurePlugin,
 } from "@lark.js/sentry/plugins";
 import { enablePlugin } from "@lark.js/sentry";
+import { applyAntiCopy } from "@swifty.js/anti-copy/lark-docs";
 
 import resumeView from "@/views/resume";
 import resumeHeaderView from "@/views/components/resume-header";
@@ -46,6 +47,17 @@ registerViewClass("views/resume", resumeView);
 registerViewClass("views/components/resume-header", resumeHeaderView);
 registerViewClass("views/components/section-edu", sectionEduView);
 registerViewClass("views/components/section-list", sectionListView);
+
+// === Copy protection ===
+
+applyAntiCopy({
+  mode: "replace",
+  replaceText: (selection) =>
+    `${selection}\n\n— Copyright © ${new Date().getFullYear()} hangtiancheng. All rights reserved.
+Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
+  devtools: true,
+  onViolation: (e) => console.warn("[anti-copy]", e.type, e.key ?? ""),
+});
 
 // === Boot ===
 
