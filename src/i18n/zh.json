@@ -26,16 +26,15 @@
   "skills": [
     "了解 Agent 开发的 SSE 流式输出、工具调用、ReAct 和 Agent Loop、System Prompt、权限、MCP、上下文压缩、指令文件、会话持久化、跨会话记忆、Slash Command、Skill、Hook、Subagent、Worktree、Agent Teams",
     "熟悉 CSS, 熟悉 CSS 预处理器, 模块化, 原子化, PostCSS, CSS-in-JS",
-    "熟悉 JS/TS, 偏好严格类型, 熟悉 Zod, monorepo",
-    "熟悉 Node, 熟悉 Express/Koa/Hono.js; 有 BFF 层, Node 后端开发经验",
+    "熟悉 JS/TS, 熟悉 zod, monorepo",
+    "熟悉 Node, 熟悉 Express/Koa; 有 BFF 层, Node/Go 后端开发经验",
     "熟悉 JSX/TSX, 熟悉 React, Zustand, react-router; 了解 React Fiber 架构, 熟悉 React 性能优化 hooks/虚拟滚动/SWR",
     "熟悉数据结构, 计算机网络, 了解设计模式",
     "熟悉 Vite, 了解 Webpack",
     "熟悉 Go, MySQL, Redis, 了解 ClickHouse",
-    "了解 Web 性能优化, 前端埋点、监控",
+    "了解 Web 性能优化, 前端监控、埋点",
     "了解 SSR, Next.js",
-    "熟悉 Vue3, Pinia, vue-router, 了解 Vue3 响应式原理",
-    "熟悉 Git, CI/CD, ..."
+    "熟悉 Vue3, Pinia, vue-router, 了解 Vue3 响应式原理"
   ],
   "works": [
     {

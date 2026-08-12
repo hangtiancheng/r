@@ -34,16 +34,15 @@
   "skills": [
     "Familiar with Agent development: SSE streaming output, tool calling, ReAct and Agent Loop, System Prompt, permissions, MCP, context compression, instruction files, session persistence, cross-session memory, Slash Commands, Skills, Hooks, Subagents, Worktrees, Agent Teams",
     "Proficient in CSS; familiar with CSS preprocessors, modularization, atomic CSS, PostCSS, CSS-in-JS",
-    "Proficient in JS/TS with a preference for strict typing; familiar with Zod and monorepos",
-    "Proficient in Node; familiar with Express/Koa/Hono.js; experienced in BFF layer and Node backend development",
+    "Proficient in JS/TS; familiar with Zod and monorepos",
+    "Proficient in Node; familiar with Express/Koa; experienced in BFF layer and Node/Go backend development",
     "Proficient in JSX/TSX; familiar with React, Zustand, react-router; understand React Fiber architecture; proficient in React performance optimization via hooks / virtual scrolling / SWR",
     "Familiar with data structures and computer networks; understand design patterns",
     "Proficient in Vite; familiar with Webpack",
     "Proficient in Go, MySQL, Redis; familiar with ClickHouse",
-    "Familiar with web performance optimization, frontend tracking and monitoring",
+    "Familiar with web performance optimization, frontend monitoring and tracking",
     "Familiar with SSR and Next.js",
-    "Proficient in Vue3, Pinia, vue-router; understand Vue3 reactivity principles",
-    "Proficient in Git, CI/CD, ..."
+    "Proficient in Vue3, Pinia, vue-router; understand Vue3 reactivity principles"
   ],
   "works": [
     {
