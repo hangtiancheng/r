@@ -52,6 +52,7 @@ registerViewClass("views/components/section-list", sectionListView);
 
 applyAntiCopy({
   mode: "replace",
+  print: false,
   replaceText: (selection) =>
     `${selection}\n\n— Copyright © ${new Date().getFullYear()} hangtiancheng. All rights reserved.
 Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
