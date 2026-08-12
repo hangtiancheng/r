@@ -24,14 +24,14 @@ import "@/index.css";
 
 import { Framework, registerViewClass } from "@lark.js/mvc";
 import type { FrameworkConfig } from "@lark.js/mvc";
-import { initLarkSentry } from "@lark.js/sentry";
+import { initLarkSentry, isInitialized, traceCustomEvent } from "@lark.js/sentry";
 import {
   ScreenRecordPlugin,
   PerformancePlugin,
   ExposurePlugin,
 } from "@lark.js/sentry/plugins";
 import { enablePlugin } from "@lark.js/sentry";
-import { applyAntiCopy } from "@swifty.js/anti-copy/lark-docs";
+import { applyAntiCopy } from "@swifty.js/anti-copy/lark-mvc";
 
 import resumeView from "@/views/resume";
 import resumeHeaderView from "@/views/components/resume-header";
@@ -56,7 +56,15 @@ applyAntiCopy({
     `${selection}\n\n— Copyright © ${new Date().getFullYear()} hangtiancheng. All rights reserved.
 Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
   devtools: true,
-  onViolation: (e) => console.warn("[anti-copy]", e.type, e.key ?? ""),
+  onViolation: (e) => {
+    // Before init the SDK drops events silently (empty dsn); skip early.
+    if (!isInitialized()) return;
+    traceCustomEvent({
+      name: "AntiCopyViolation",
+      message: e.key ? `${e.type}:${e.key}` : e.type,
+      extra: { violation: e.type, key: e.key ?? "", url: location.href },
+    });
+  },
 });
 
 // === Boot ===
