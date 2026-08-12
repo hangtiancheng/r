@@ -21,12 +21,11 @@
  */
 
 import { defineView } from "@lark.js/mvc";
-import type { edu } from "@/schema/resume";
 import template from "./section-edu.html";
 
 interface SectionEduProps {
   header?: string;
-  edu?: edu[];
+  edu?: string[][];
 }
 
 /**

@@ -36,8 +36,6 @@ export interface Labels {
   switch: string;
 }
 
-export type edu = [string, string, string];
-
 export interface TitledItem {
   title: string;
   content: string;
@@ -51,7 +49,7 @@ export interface Resume {
   email: string;
   github: string;
   about: string;
-  edu: edu[];
+  edu: string[][];
   skills: string[];
   works: TitledItem[];
   projects: TitledItem[];
