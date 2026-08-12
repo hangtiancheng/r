@@ -72,7 +72,7 @@ initLarkSentry({
   debug: true,
   beforePushEventList(eventList) {
     if (!import.meta.env.DEV) {
-      console.log("@swifty.js/sentry App:", eventList);
+      console.log("@lark.js/sentry App:", eventList);
       return false;
     }
     return eventList;

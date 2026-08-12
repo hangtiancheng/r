@@ -23,7 +23,7 @@
 import { defineConfig } from "vite";
 import { larkMvcPlugin } from "@lark.js/mvc/vite";
 import tailwindcss from "@tailwindcss/vite";
-import { sentryPlugin } from "@swifty.js/sentry/vite";
+import { sentryPlugin } from "@lark.js/sentry/vite";
 import { fileURLToPath, URL } from "node:url";
 import { VitePWA } from "vite-plugin-pwa";
 import { resolve } from "node:path";
