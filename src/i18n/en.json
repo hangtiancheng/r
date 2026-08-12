@@ -20,8 +20,16 @@
   "about": "Male, 24, Master's degree, Frontend / Full-stack Engineer",
   "edu": [
     ["High School: 2016-2019", "Nanling High School, Anhui", "Science Track"],
-    ["Bachelor: 2019-2023", "Xidian University", "Microelectronic Science and Engineering"],
-    ["Master: 2024-2027", "Nanjing University of Posts and Telecommunications", "Computer Technology"]
+    [
+      "Bachelor: 2019-2023",
+      "Xidian University",
+      "Microelectronic Science and Engineering"
+    ],
+    [
+      "Master: 2024-2027",
+      "Nanjing University of Posts and Telecommunications",
+      "Computer Technology"
+    ]
   ],
   "skills": [
     "Familiar with Agent development: SSE streaming output, tool calling, ReAct and Agent Loop, System Prompt, permissions, MCP, context compression, instruction files, session persistence, cross-session memory, Slash Commands, Skills, Hooks, Subagents, Worktrees, Agent Teams",
