@@ -20,43 +20,43 @@
  * SOFTWARE.
  */
 
-import { html, type PropertyDeclarations } from "lit";
-import { StyledElement, jsonConverter } from "./base";
+import { LitElement, type ComplexAttributeConverter } from "lit";
 
-export class SectionEdu extends StyledElement {
-  static properties: PropertyDeclarations = {
-    header: { type: String },
-    edu: { type: Array, converter: jsonConverter },
-  };
+export const jsonConverter: ComplexAttributeConverter = {
+  fromAttribute(value: string | null) {
+    return value ? JSON.parse(value) : null;
+  },
+};
 
-  declare header: string;
-  declare edu: string[][];
+let sharedSheets: CSSStyleSheet[] | null = null;
 
-  constructor() {
-    super();
-    this.header = "";
-    this.edu = [];
+function getSharedSheets(): CSSStyleSheet[] {
+  if (!sharedSheets) {
+    sharedSheets = Array.from(document.styleSheets)
+      .filter((sheet) => {
+        try {
+          return sheet.cssRules.length >= 0;
+        } catch {
+          return false;
+        }
+      })
+      .map((sheet) => {
+        const copy = new CSSStyleSheet();
+        copy.replaceSync(
+          Array.from(sheet.cssRules)
+            .map((rule) => rule.cssText)
+            .join("\n"),
+        );
+        return copy;
+      });
   }
-
-  render() {
-    return html`
-      <section class="rounded-lg border border-neutral-200 bg-white p-3">
-        <div class="text-sm font-semibold text-neutral-900">${this.header}</div>
-        <div class="my-1 h-px bg-neutral-100"></div>
-        <ul class="mt-1.5 space-y-0.5 text-xs">
-          ${this.edu.map(
-            (row) => html`
-              <li class="grid gap-1 md:grid-cols-3">
-                <div class="text-neutral-700">${row[0]}</div>
-                <div class="text-neutral-700">${row[1]}</div>
-                <div class="text-neutral-700">${row[2]}</div>
-              </li>
-            `,
-          )}
-        </ul>
-      </section>
-    `;
-  }
+  return sharedSheets;
 }
 
-customElements.define("section-edu", SectionEdu);
+export class StyledElement extends LitElement {
+  createRenderRoot() {
+    const root = this.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = getSharedSheets();
+    return root;
+  }
+}

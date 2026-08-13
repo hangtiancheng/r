@@ -20,23 +20,21 @@
  * SOFTWARE.
  */
 
-import { LitElement, html } from "lit";
+import { html, type PropertyDeclarations } from "lit";
+import { jsonConverter, StyledElement } from "./base";
 import type { Labels } from "@/schema/resume";
 
-const jsonConverter = {
-  fromAttribute(value: string | null) {
-    return value ? JSON.parse(value) : null;
-  },
-};
-
-export class ResumeHeader extends LitElement {
-  static properties = {
+export class ResumeHeader extends StyledElement {
+  static properties: PropertyDeclarations = {
     name: { type: String },
     about: { type: String },
     tel: { type: String },
     email: { type: String },
     github: { type: String },
-    labels: { type: Object, converter: jsonConverter },
+    labels: {
+      type: Object,
+      converter: jsonConverter,
+    },
   };
 
   declare name: string;
@@ -54,10 +52,6 @@ export class ResumeHeader extends LitElement {
     this.email = "";
     this.github = "";
     this.labels = { tel: "", email: "", github: "", switch: "" };
-  }
-
-  createRenderRoot() {
-    return this;
   }
 
   render() {

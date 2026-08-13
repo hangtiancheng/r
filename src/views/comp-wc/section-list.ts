@@ -20,17 +20,12 @@
  * SOFTWARE.
  */
 
-import { LitElement, html } from "lit";
+import { html, type PropertyDeclarations } from "lit";
+import { StyledElement, jsonConverter } from "./base";
 import type { TitledItem } from "@/schema/resume";
 
-const jsonConverter = {
-  fromAttribute(value: string | null) {
-    return value ? JSON.parse(value) : null;
-  },
-};
-
-export class SectionList extends LitElement {
-  static properties = {
+export class SectionList extends StyledElement {
+  static properties: PropertyDeclarations = {
     title: { type: String },
     items: { type: Array, converter: jsonConverter },
   };
@@ -42,10 +37,6 @@ export class SectionList extends LitElement {
     super();
     this.title = "";
     this.items = [];
-  }
-
-  createRenderRoot() {
-    return this;
   }
 
   render() {
