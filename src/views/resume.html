@@ -20,7 +20,7 @@
  SOFTWARE.
 -->
 
-<div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
+<!-- <div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
   <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
     <div
       v-lark="views/comp/resume-header"
@@ -32,11 +32,13 @@
       *labels="{{@data.labels}}"
       @toggleLocale="onToggleLocale"
     ></div>
+
     <div
       v-lark="views/comp/section-edu"
       *header="{{=data.headers.edu}}"
       *edu="{{@data.edu}}"
     ></div>
+
     {{forOf sections as section idx}}
     <div
       id="section-{{=idx}}"
@@ -44,6 +46,32 @@
       *title="{{=section.title}}"
       *items="{{@section.items}}"
     ></div>
+    {{/forOf}}
+  </div>
+</div> -->
+
+<div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
+  <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
+    <resume-header
+      name="{{=data.name}}"
+      about="{{=data.about}}"
+      tel="{{=data.tel}}"
+      email="{{=data.email}}"
+      github="{{=data.github}}"
+      labels="{{=JSON.stringify(data.labels)}}"
+    ></resume-header>
+
+    <section-edu
+      header="{{=data.headers.edu}}"
+      edu="{{=JSON.stringify(data.edu)}}"
+    ></section-edu>
+
+    {{forOf sections as section idx}}
+    <section-list
+      id="section-{{=idx}}"
+      title="{{=section.title}}"
+      items="{{=JSON.stringify(section.items)}}"
+    ></section-list>
     {{/forOf}}
   </div>
 </div>

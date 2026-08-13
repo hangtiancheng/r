@@ -24,7 +24,11 @@ import "@/index.css";
 
 import { Framework, registerViewClass } from "@lark.js/mvc";
 import type { FrameworkConfig } from "@lark.js/mvc";
-import { initLarkSentry, isInitialized, traceCustomEvent } from "@lark.js/sentry";
+import {
+  initLarkSentry,
+  isInitialized,
+  traceCustomEvent,
+} from "@lark.js/sentry";
 import {
   ScreenRecordPlugin,
   PerformancePlugin,
@@ -34,19 +38,22 @@ import { enablePlugin } from "@lark.js/sentry";
 import { applyAntiCopy } from "@swifty.js/anti-copy/lark-mvc";
 
 import resumeView from "@/views/resume";
-import resumeHeaderView from "@/views/comp/resume-header";
-import sectionEduView from "@/views/comp/section-edu";
-import sectionListView from "@/views/comp/section-list";
+
+// import resumeHeaderView from "@/views/comp/resume-header";
+// import sectionEduView from "@/views/comp/section-edu";
+// import sectionListView from "@/views/comp/section-list";
+
+import "@/views/comp-wc/resume-header";
+import "@/views/comp-wc/section-edu";
+import "@/views/comp-wc/section-list";
 
 // === View registration ===
-// All views are registered synchronously before boot. instrumentView wraps
-// setup / template / event handlers / cleanups so errors swallowed by the
-// framework are reported (the lark-mvc replacement for error boundaries).
+
+// registerViewClass("views/comp/resume-header", resumeHeaderView);
+// registerViewClass("views/comp/section-edu", sectionEduView);
+// registerViewClass("views/comp/section-list", sectionListView);
 
 registerViewClass("views/resume", resumeView);
-registerViewClass("views/comp/resume-header", resumeHeaderView);
-registerViewClass("views/comp/section-edu", sectionEduView);
-registerViewClass("views/comp/section-list", sectionListView);
 
 // === Copy protection ===
 

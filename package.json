@@ -19,6 +19,7 @@
     "@lark.js/mvc": "^0.0.24",
     "@lark.js/sentry": "^0.0.15",
     "@swifty.js/anti-copy": "^0.0.2",
+    "lit": "^3.3.3",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
