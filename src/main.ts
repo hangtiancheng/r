@@ -34,9 +34,9 @@ import { enablePlugin } from "@lark.js/sentry";
 import { applyAntiCopy } from "@swifty.js/anti-copy/lark-mvc";
 
 import resumeView from "@/views/resume";
-import resumeHeaderView from "@/views/components/resume-header";
-import sectionEduView from "@/views/components/section-edu";
-import sectionListView from "@/views/components/section-list";
+import resumeHeaderView from "@/views/comp/resume-header";
+import sectionEduView from "@/views/comp/section-edu";
+import sectionListView from "@/views/comp/section-list";
 
 // === View registration ===
 // All views are registered synchronously before boot. instrumentView wraps
@@ -44,9 +44,9 @@ import sectionListView from "@/views/components/section-list";
 // framework are reported (the lark-mvc replacement for error boundaries).
 
 registerViewClass("views/resume", resumeView);
-registerViewClass("views/components/resume-header", resumeHeaderView);
-registerViewClass("views/components/section-edu", sectionEduView);
-registerViewClass("views/components/section-list", sectionListView);
+registerViewClass("views/comp/resume-header", resumeHeaderView);
+registerViewClass("views/comp/section-edu", sectionEduView);
+registerViewClass("views/comp/section-list", sectionListView);
 
 // === Copy protection ===
 

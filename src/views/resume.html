@@ -23,7 +23,7 @@
 <div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
   <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
     <div
-      v-lark="views/components/resume-header"
+      v-lark="views/comp/resume-header"
       *name="{{=data.name}}"
       *about="{{=data.about}}"
       *tel="{{=data.tel}}"
@@ -33,14 +33,14 @@
       @toggleLocale="onToggleLocale"
     ></div>
     <div
-      v-lark="views/components/section-edu"
+      v-lark="views/comp/section-edu"
       *header="{{=data.headers.edu}}"
       *edu="{{@data.edu}}"
     ></div>
     {{forOf sections as section idx}}
     <div
       id="section-{{=idx}}"
-      v-lark="views/components/section-list"
+      v-lark="views/comp/section-list"
       *title="{{=section.title}}"
       *items="{{@section.items}}"
     ></div>
