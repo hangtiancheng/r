@@ -57,11 +57,17 @@ export class ResumeHeader extends StyledElement {
   render() {
     const { name, about, tel, email, github, labels } = this;
     return html`
-      <div class="rounded-lg border border-neutral-200 bg-white p-3">
+      <div
+        class="rounded-lg border border-neutral-200 bg-white p-3"
+        swifty-sentry-el="resume-header"
+      >
         <div class="flex items-center justify-between gap-2">
           <h1 class="text-xl font-semibold text-neutral-900">${name}</h1>
           <button
             class="rounded-md border border-neutral-200 px-2 py-0.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100"
+            swifty-sentry-ev="toggle-locale"
+            swifty-sentry-msg="Toggle locale"
+            swifty-sentry-label="${labels.switch}"
             @click=${this.#onToggleLocale}
           >
             ${labels.switch}
