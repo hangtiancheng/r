@@ -25,8 +25,8 @@ import enData from "@/i18n/en.json";
 import zhData from "@/i18n/zh.json";
 import type { Resume, TitledItem } from "@/schema/resume";
 
-const en = enData as Resume;
-const zh = zhData as Resume;
+const en = enData satisfies Resume;
+const zh = zhData satisfies Resume;
 
 export type Lang = "en" | "zh";
 

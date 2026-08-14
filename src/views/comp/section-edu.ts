@@ -32,6 +32,7 @@ interface SectionEduProps {
  * Education section view. Reads edu rows from the props pushed by the
  * parent (initial mount params, then mountZone prop updates).
  */
+// TODO export default defineView<SectionEduProps>((ctx, params)) => { ... }
 export default defineView((ctx, params) => {
   const p = (params ?? {}) as SectionEduProps;
   ctx.updater.set({
