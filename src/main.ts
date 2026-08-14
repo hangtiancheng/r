@@ -43,9 +43,13 @@ import resumeView from "@/views/resume";
 // import sectionEduView from "@/views/comp/section-edu";
 // import sectionListView from "@/views/comp/section-list";
 
-import "@/views/comp-wc/resume-header";
-import "@/views/comp-wc/section-edu";
-import "@/views/comp-wc/section-list";
+// import "@/views/comp-wc/resume-header";
+// import "@/views/comp-wc/section-edu";
+// import "@/views/comp-wc/section-list";
+
+import "@/views/comp-wc-decorator/resume-header";
+import "@/views/comp-wc-decorator/section-edu";
+import "@/views/comp-wc-decorator/section-list";
 
 // === View registration ===
 
