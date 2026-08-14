@@ -61,7 +61,7 @@
     },
     {
       "title": "前端监控/埋点",
-      "content": "仓库链接: https://github.com/hangtiancheng/swifty-sentry; 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦, 支持错误捕获、白屏检测、性能指标采集、故障现场重放; 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持错误去重和 lru 队列, 支持声明式属性 trace 点击事件、监听 hashchange 和 history 导航; 白屏检测使用关键点采样; 性能采集插件计算 LCP/FCP/CLS/INP 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务; 使用 rrweb + gzip 屏幕录制以重放故障现场, 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon -> fetch keepAlive, 离线使用 localStorage, 网络恢复自动 flush 上报队列, 提供 React16+/Vue3+ 框架集成"
+      "content": "仓库链接: https://github.com/hangtiancheng/swifty-sentry; 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦, 支持错误捕获、白屏检测、性能指标采集、故障现场重放; 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持错误去重和 lru 队列, 支持声明式属性 trace 点击事件、监听 hashchange 和 history 导航; 白屏检测使用关键点采样; 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务; 使用 rrweb + gzip 屏幕录制以重放故障现场, 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon (可选) -> fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列, 提供 React16+/Vue3+ 框架集成"
     }
   ],
   "research": "科研方向: 强化学习辅助计算机网络拥塞控制, 多核并行化网络仿真"
