@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@swifty.js/sentry': ^0.0.5
+
 importers:
 
   .:
@@ -661,7 +664,7 @@ packages:
     resolution: {integrity: sha512-iW9NwToANho+an/VCPXthl1hGT5AZH8WKCeiMcHl6Me8wPIZ9Z6GFF5MSJu1UWAONcJXhhsSbqxzAfwAIty9rA==}
     peerDependencies:
       '@lark.js/mvc': '>=0.0.24'
-      '@swifty.js/sentry': '>=0.0.4'
+      '@swifty.js/sentry': ^0.0.5
       vite: ^7.0.0 || ^8.0.0
       webpack: ^4.0.0 || ^5.0.0
     peerDependenciesMeta:
