@@ -51,7 +51,7 @@
   "works": [
     {
       "title": "ByteDance",
-      "content": "Jun 2025 ~ Sep 2025, Product R&D and Engineering Architecture, TikTok Performance team; Perfetto-collected performance data forwarded via Kafka to Hive, ClickHouse, MySQL, Redis; backend built with Golang and Kitex, BFF layer for data cleaning, frontend for visualization; BFF layer built with Nest.js, calling backend RPC methods and exposing HTTP APIs to the frontend; implemented performance optimization hooks and virtual scrolling lists; contributed to open-source projects Kitex (documentation fixes) and coze-js (OkHttp on RN Android does not set User-Agent header by default)"
+      "content": "Jun 2025 ~ Sep 2025, Product R&D and Engineering Architecture, TikTok Performance team; Perfetto-collected performance data forwarded via Kafka to Hive, ClickHouse, MySQL, Redis; backend built with Golang and Kitex, BFF layer for data cleaning, frontend for visualization; BFF layer built with Nest.js, calling backend RPC methods and exposing HTTP APIs to the frontend; implemented performance optimization hooks and virtual scrolling lists; contributed to open-source projects Kitex (documentation fixes) and coze-js (TypeError caused by missing User-Agent in RN Android environment)"
     },
     {
       "title": "Tencent",
