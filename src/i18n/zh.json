@@ -39,7 +39,7 @@
   "works": [
     {
       "title": "字节跳动",
-      "content": "2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; Perfetto 采集的性能数据使用 Kafka 转发到 Hive, ClickHouse, MySQL, Redis; 后端使用 Golang 和 Kitex, BFF 层清洗数据, 前端可视化渲染; BFF 层使用 Nest.js, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 使用性能优化 hooks, 编写虚拟滚动列表; 参与 Kitex (修正文档) 和 coze-js (RN Android 的 OkHttp 默认不设置 User-Agent 请求头) 开源项目"
+      "content": "2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; Perfetto 采集的性能数据使用 Kafka 转发到 Hive, ClickHouse, MySQL, Redis; 后端使用 Golang 和 Kitex, BFF 层清洗数据, 前端可视化渲染; BFF 层使用 Nest.js, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 使用性能优化 hooks, 编写虚拟滚动列表; 参与 Kitex (修正文档) 和 coze-js (RN Android 环境下 User-Agent 缺失导致 TypeError) 开源项目"
     },
     {
       "title": "腾讯",
