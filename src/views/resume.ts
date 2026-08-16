@@ -23,6 +23,9 @@
 import { defineView, useStore } from "@lark.js/mvc";
 import { resumeStore } from "@/i18n";
 import template from "./resume.html";
+import type { ResumeHeader } from "./comp-wc-decorator/resume-header";
+import type { SectionEdu } from "./comp-wc-decorator/section-edu";
+import type { SectionList } from "./comp-wc-decorator/section-list";
 
 /**
  * Root view. Composes the header / edu / list section child views and
@@ -43,3 +46,14 @@ export default defineView(() => {
     },
   };
 });
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "resume-header": ResumeHeader;
+    "section-edu": SectionEdu;
+    "section-list": SectionList;
+  }
+}
+
+// const resumeHeader = document.createElement("resume-header");
+// resumeHeader.github = "swifty-js";
