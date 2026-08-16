@@ -20,13 +20,25 @@
  * SOFTWARE.
  */
 
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import { larkMvcPlugin } from "@lark.js/mvc/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { sentryPlugin } from "@lark.js/sentry/vite";
 import { fileURLToPath, URL } from "node:url";
 import { VitePWA } from "vite-plugin-pwa";
 import { resolve } from "node:path";
+
+function fetchPriorityHints(): Plugin {
+  return {
+    name: "fetch-priority-hints",
+    enforce: "post",
+    transformIndexHtml(html) {
+      return html
+        .replace(/<link rel="stylesheet"/g, '<link rel="stylesheet" fetchpriority="high"')
+        .replace(/<script type="module" crossorigin/g, '<script type="module" crossorigin fetchpriority="high"');
+    },
+  };
+}
 
 const PKG_DIR = import.meta.dirname;
 const isProd = process.env.NODE_ENV === "production";
@@ -41,6 +53,7 @@ export default defineConfig({
     sentryPlugin({
       dsn: "/sentry",
     }),
+    fetchPriorityHints(),
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: [
@@ -117,15 +130,15 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: (id: string) => {
-          if (id.includes("node_modules")) {
-            return "vendor";
-          }
-        },
-      },
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     output: {
+  //       manualChunks: (id: string) => {
+  //         if (id.includes("node_modules")) {
+  //           return "vendor";
+  //         }
+  //       },
+  //     },
+  //   },
+  // },
 });
