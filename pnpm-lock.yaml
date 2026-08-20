@@ -12,14 +12,14 @@ importers:
   .:
     dependencies:
       '@lark.js/mvc':
-        specifier: ^0.0.24
-        version: 0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: ^0.0.26
+        version: 0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@lark.js/sentry':
-        specifier: ^0.0.15
-        version: 0.0.15(@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: ^0.0.16
+        version: 0.0.16(@lark.js/mvc@0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/anti-copy':
         specifier: ^0.0.2
-        version: 0.0.2(@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))
+        version: 0.0.2(@lark.js/mvc@0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))
       lit:
         specifier: ^3.3.3
         version: 3.3.3
@@ -655,15 +655,15 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lark.js/mvc@0.0.24':
-    resolution: {integrity: sha512-dWk6WtrfwqU3X2KKzrVCGz5DEueAIziE/AMYNq6oNwAluQ3K5IbhtIsRDRZd0TO4CSVo9N8/54e9aoquTRadog==}
+  '@lark.js/mvc@0.0.26':
+    resolution: {integrity: sha512-N2Mw+M2P4s+ZTH8Delw7dildtKmSK0Yqf240FLYU5aLrDGBX/Yla7RMAd9WJWLAS3aMzb5rMoFIe7bSQvd3/yg==}
     peerDependencies:
       vite: ^8.0.14
 
-  '@lark.js/sentry@0.0.15':
-    resolution: {integrity: sha512-iW9NwToANho+an/VCPXthl1hGT5AZH8WKCeiMcHl6Me8wPIZ9Z6GFF5MSJu1UWAONcJXhhsSbqxzAfwAIty9rA==}
+  '@lark.js/sentry@0.0.16':
+    resolution: {integrity: sha512-EqpAhkrwXWlOge02ccRV5xL0nCeJfw4PlqdY3m78b2Up23d52xBVkpZ6H6+Mg27IX//FuK3PvSnR1iahyNOLEw==}
     peerDependencies:
-      '@lark.js/mvc': '>=0.0.24'
+      '@lark.js/mvc': '>=0.0.26'
       '@swifty.js/sentry': ^0.0.5
       vite: ^7.0.0 || ^8.0.0
       webpack: ^4.0.0 || ^5.0.0
@@ -1367,22 +1367,6 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  dom-serializer@3.1.1:
-    resolution: {integrity: sha512-4MEa38/QexBob6gFNwu+EGdWvhJ1OKuNwdYY3Y3NyeWDQfnGeDYQUDfIRzWu5B5gsv03so2Uxd28YC6zrsx3Lw==}
-    engines: {node: '>=20.19.0'}
-
-  domelementtype@3.0.0:
-    resolution: {integrity: sha512-umCQid3jKbDmVjx8jGaW7uUykm4DEUeyV21hPxNMo2nV955DhUThwqyOIDtreepP31hl84X7G5U9ZfsWvIB3Pg==}
-    engines: {node: '>=20.19.0'}
-
-  domhandler@6.0.1:
-    resolution: {integrity: sha512-gYzvtM72ZtxQO0T048kd6HWSbbGCNOUwcnfQ01cqIJ4X2IYKFFHZ5mKvrQETcFXxsRObZulDaKmy//R7TPtsBg==}
-    engines: {node: '>=20.19.0'}
-
-  domutils@4.0.2:
-    resolution: {integrity: sha512-qI4JLRKnSzqFqr7hAlS5xQDusBCjKSEG4t4+7aNrIQMHBcsC2TGEhuyABJdYkgSewL57PNLYEiibY2iPKhKpaA==}
-    engines: {node: '>=20.19.0'}
-
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
@@ -1398,10 +1382,6 @@ packages:
   enhanced-resolve@5.24.5:
     resolution: {integrity: sha512-L1l8TNvomm6UVW5B253AGxQagSQr+vGwhMlrrfRS2qmhx46AMpMVJKQYLvWYbysTMY8VoicOvzHzoHMbyzB+4A==}
     engines: {node: '>=10.13.0'}
-
-  entities@8.0.0:
-    resolution: {integrity: sha512-zwfzJecQ/Uej6tusMqwAqU/6KL2XaB2VZ2Jg54Je6ahNBGNH6Ek6g3jjNCF0fG9EWQKGZNddNjU5F1ZQn/sBnA==}
-    engines: {node: '>=20.19.0'}
 
   es-abstract-get@1.0.0:
     resolution: {integrity: sha512-6PMWXpdhshVvFp+FoWYs1EvG1Nj0tvk0dZM+XcK0xMEM1czRVcP6ohqPWHy6qPagSpC8j4+p89WXlT+xXJs/fg==}
@@ -1624,10 +1604,6 @@ packages:
   hasown@2.0.4:
     resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
-
-  htmlparser2@12.0.0:
-    resolution: {integrity: sha512-Tz7u1i95/g2x2jz81+x0FBVhBhY5aRTvD3tXXdFaljuNdzDLJ8UGNRrTcj2cgQvAg3iW/h77Fz15nLW0L0CrZw==}
-    engines: {node: '>=20.19.0'}
 
   idb@7.1.1:
     resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
@@ -3354,16 +3330,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/mvc@0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
       '@babel/parser': 7.29.8
       '@babel/types': 7.29.8
-      htmlparser2: 12.0.0
       vite: 8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
 
-  '@lark.js/sentry@0.0.15(@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/sentry@0.0.16(@lark.js/mvc@0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
-      '@lark.js/mvc': 0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+      '@lark.js/mvc': 0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/sentry': 0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
     optionalDependencies:
       vite: 8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
@@ -3551,9 +3526,9 @@ snapshots:
 
   '@rrweb/utils@2.1.1': {}
 
-  '@swifty.js/anti-copy@0.0.2(@lark.js/mvc@0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))':
+  '@swifty.js/anti-copy@0.0.2(@lark.js/mvc@0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))':
     optionalDependencies:
-      '@lark.js/mvc': 0.0.24(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+      '@lark.js/mvc': 0.0.26(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
 
   '@swifty.js/sentry@0.0.4(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
@@ -3925,24 +3900,6 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  dom-serializer@3.1.1:
-    dependencies:
-      domelementtype: 3.0.0
-      domhandler: 6.0.1
-      entities: 8.0.0
-
-  domelementtype@3.0.0: {}
-
-  domhandler@6.0.1:
-    dependencies:
-      domelementtype: 3.0.0
-
-  domutils@4.0.2:
-    dependencies:
-      dom-serializer: 3.1.1
-      domelementtype: 3.0.0
-      domhandler: 6.0.1
-
   dunder-proto@1.0.1:
     dependencies:
       call-bind-apply-helpers: 1.0.2
@@ -3959,8 +3916,6 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.3
-
-  entities@8.0.0: {}
 
   es-abstract-get@1.0.0:
     dependencies:
@@ -4264,13 +4219,6 @@ snapshots:
   hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
-
-  htmlparser2@12.0.0:
-    dependencies:
-      domelementtype: 3.0.0
-      domhandler: 6.0.1
-      domutils: 4.0.2
-      entities: 8.0.0
 
   idb@7.1.1: {}
 
