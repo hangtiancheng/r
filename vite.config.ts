@@ -48,7 +48,7 @@ export default defineConfig({
   base: isProd ? "/r/" : "/",
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
-    larkMvcPlugin({ vdom: false }),
+    larkMvcPlugin(),
     tailwindcss(),
     sentryPlugin({
       dsn: "/sentry",

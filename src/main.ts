@@ -87,7 +87,6 @@ const config: FrameworkConfig = {
   defaultPath: "/",
   defaultView: "views/resume",
   unmatchedView: "views/resume",
-  vdom: false,
   error(e: Error) {
     console.error("[resume]", e);
   },
