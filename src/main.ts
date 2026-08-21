@@ -112,6 +112,4 @@ if (Framework.isBooted()) {
   });
 }
 
-enablePlugin(new ScreenRecordPlugin());
-enablePlugin(new ExposurePlugin());
-enablePlugin(new PerformancePlugin());
+enablePlugin(new ScreenRecordPlugin(), new ExposurePlugin(), new PerformancePlugin());
