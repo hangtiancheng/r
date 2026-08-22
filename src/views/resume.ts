@@ -36,11 +36,9 @@ export default defineView(() => {
   return {
     template,
     events: {
-      // "onToggleLocale<click>": () => {
-      "$document<toggle-locale>": () => {
+      "onToggleLocale<click>": () => {
         resumeStore.getState().toggleLocale();
       },
     },
   };
 });
-

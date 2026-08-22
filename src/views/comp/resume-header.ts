@@ -42,7 +42,6 @@ interface ResumeHeaderProps {
  * handle (the lark-mvc equivalent of the old Lit CustomEvent). Later
  * parent renders push updated props through mountZone automatically.
  */
-// TODO export default defineView<ResumeHeaderProps>((ctx, params)) => { ... }
 export default defineView((ctx, params) => {
   const p = (params ?? {}) as ResumeHeaderProps;
   const [, setPreviewing] = useState("previewing", false);

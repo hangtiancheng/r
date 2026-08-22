@@ -102,4 +102,8 @@ if (Framework.isBooted()) {
   });
 }
 
-enablePlugin(new ScreenRecordPlugin(), new ExposurePlugin(), new PerformancePlugin());
+enablePlugin(
+  new ScreenRecordPlugin(),
+  new ExposurePlugin(),
+  new PerformancePlugin(),
+);

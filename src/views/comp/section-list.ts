@@ -32,7 +32,6 @@ interface SectionListProps {
 /**
  * Generic list section view for skills, works, projects, research.
  */
-// TODO export default defineView<SectionListProps>((ctx, params)) => { ... }
 export default defineView((ctx, params) => {
   const p = (params ?? {}) as SectionListProps;
   ctx.updater.set({
