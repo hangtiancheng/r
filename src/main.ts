@@ -37,26 +37,16 @@ import {
 import { enablePlugin } from "@lark.js/sentry";
 import { applyAntiCopy } from "@swifty.js/anti-copy/lark-mvc";
 
+import resumeHeaderView from "@/views/comp/resume-header";
+import sectionEduView from "@/views/comp/section-edu";
+import sectionListView from "@/views/comp/section-list";
 import resumeView from "@/views/resume";
-
-// import resumeHeaderView from "@/views/comp/resume-header";
-// import sectionEduView from "@/views/comp/section-edu";
-// import sectionListView from "@/views/comp/section-list";
-
-// import "@/views/comp-wc/resume-header";
-// import "@/views/comp-wc/section-edu";
-// import "@/views/comp-wc/section-list";
-
-import "@/views/comp-wc-decorator/resume-header";
-import "@/views/comp-wc-decorator/section-edu";
-import "@/views/comp-wc-decorator/section-list";
 
 // === View registration ===
 
-// registerViewClass("views/comp/resume-header", resumeHeaderView);
-// registerViewClass("views/comp/section-edu", sectionEduView);
-// registerViewClass("views/comp/section-list", sectionListView);
-
+registerViewClass("views/comp/resume-header", resumeHeaderView);
+registerViewClass("views/comp/section-edu", sectionEduView);
+registerViewClass("views/comp/section-list", sectionListView);
 registerViewClass("views/resume", resumeView);
 
 // === Copy protection ===

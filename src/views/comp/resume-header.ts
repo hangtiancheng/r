@@ -20,9 +20,10 @@
  * SOFTWARE.
  */
 
-import { defineView } from "@lark.js/mvc";
+import { defineView, useState } from "@lark.js/mvc";
 import type { Labels } from "@/schema/resume";
 import template from "./resume-header.html";
+import avatarUrl from "@/assets/avatar.jpeg";
 
 interface ResumeHeaderProps {
   name?: string;
@@ -44,7 +45,9 @@ interface ResumeHeaderProps {
 // TODO export default defineView<ResumeHeaderProps>((ctx, params)) => { ... }
 export default defineView((ctx, params) => {
   const p = (params ?? {}) as ResumeHeaderProps;
+  const [, setPreviewing] = useState("previewing", false);
   ctx.updater.set({
+    avatarUrl,
     name: p.name ?? "",
     about: p.about ?? "",
     tel: p.tel ?? "",
@@ -58,6 +61,12 @@ export default defineView((ctx, params) => {
     events: {
       "toggleLocale<click>": () => {
         ctx.owner.fire("toggleLocale");
+      },
+      "previewAvatar<click>": () => {
+        setPreviewing(true);
+      },
+      "closePreview<click>": () => {
+        setPreviewing(false);
       },
     },
   };
