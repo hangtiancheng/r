@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { defineView, jsxTemplate, useState } from "@lark.js/mvc";
+import { defineView, jsxTemplate, signal } from "@lark.js/mvc";
 import type { Labels } from "@/schema/resume";
 import avatarUrl from "@/assets/avatar.jpeg";
 
@@ -34,42 +34,33 @@ interface ResumeHeaderProps {
   onToggleLocale?: (data?: Record<string, unknown>) => void;
 }
 
-interface ResumeHeaderData {
-  avatarUrl: string;
-  name: string;
-  about: string;
-  tel: string;
-  email: string;
-  github: string;
-  labels: Labels;
-  previewing: boolean;
-}
+const FALLBACK_LABELS: Labels = { tel: "", email: "", github: "", switch: "" };
 
 /**
  * Resume header view.
  *
- * Pure presentation — all data arrives via `prop:` bindings, and the
- * language toggle fires a "toggleLocale" frame event for the parent to
- * handle (the lark-mvc equivalent of the old Lit CustomEvent). Later
- * parent renders push updated props through mountZone automatically.
- *
- * Events use React-style inline closures, so the template lives inside
- * the setup where it can capture `ctx` and the `previewing` setter.
+ * Pure presentation — data arrives through the reactive `params` proxy
+ * (template reads = subscriptions), and the language toggle fires a
+ * "toggleLocale" frame event for the parent's `onToggleLocale` prop.
+ * Later parent renders push updated props through the params signals
+ * automatically.
  */
 export default defineView<ResumeHeaderProps>((ctx, params) => {
   const p = params ?? {};
-  const [, setPreviewing] = useState("previewing", false);
-  ctx.updater.set({
-    avatarUrl,
-    name: p.name ?? "",
-    about: p.about ?? "",
-    tel: p.tel ?? "",
-    email: p.email ?? "",
-    github: p.github ?? "",
-    labels: p.labels ?? { tel: "", email: "", github: "", switch: "" },
-  });
+  const previewing = signal(false);
 
-  const template = jsxTemplate<ResumeHeaderData>((d) => (
+  const template = jsxTemplate(() => {
+    const d = {
+      avatarUrl,
+      name: p.name ?? "",
+      about: p.about ?? "",
+      tel: p.tel ?? "",
+      email: p.email ?? "",
+      github: p.github ?? "",
+      labels: p.labels ?? FALLBACK_LABELS,
+      previewing: previewing.value,
+    };
+    return (
     <>
       <div
         class="flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3"
@@ -80,7 +71,7 @@ export default defineView<ResumeHeaderProps>((ctx, params) => {
           alt={d.name}
           class="size-16 shrink-0 cursor-zoom-in rounded-md border border-neutral-200 object-cover"
           fetchpriority="medium"
-          onClick={() => setPreviewing(true)}
+          onClick={() => (previewing.value = true)}
         />
         <div class="min-w-0 flex-1">
           <div class="flex items-center justify-between gap-2">
@@ -144,7 +135,7 @@ export default defineView<ResumeHeaderProps>((ctx, params) => {
             // itself must not dismiss (the old template's @click.stop).
             const hit = e.eventTarget;
             if (hit instanceof HTMLElement && hit.tagName === "IMG") return;
-            setPreviewing(false);
+            previewing.value = false;
           }}
         >
           <img
@@ -155,7 +146,8 @@ export default defineView<ResumeHeaderProps>((ctx, params) => {
         </div>
       )}
     </>
-  ));
+    );
+  });
 
   return { template };
 });

@@ -28,37 +28,32 @@ interface SectionListProps {
   items?: (string | TitledItem)[];
 }
 
-interface SectionListData {
-  title: string;
-  items: (string | TitledItem)[];
-}
-
-const template = jsxTemplate<SectionListData>(({ title, items }) => (
-  <section class="rounded-lg border border-neutral-200 bg-white p-3">
-    <div class="text-sm font-semibold text-neutral-900">{title}</div>
-    <div class="my-1 h-px bg-neutral-100"></div>
-    <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
-      {items.map((item) =>
-        typeof item === "string" ? (
-          <li>{item}</li>
-        ) : (
-          <li>
-            <b>{item.title}</b>: {item.content}
-          </li>
-        ),
-      )}
-    </ul>
-  </section>
-));
-
 /**
  * Generic list section view for skills, works, projects, research.
+ * Template reads the reactive `params` proxy — prop pushes re-render.
  */
-export default defineView<SectionListProps>((ctx, params) => {
+export default defineView<SectionListProps>((_ctx, params) => {
   const p = params ?? {};
-  ctx.updater.set({
-    title: p.title ?? "",
-    items: p.items ?? [],
+  const template = jsxTemplate(() => {
+    const title = p.title ?? "";
+    const items = p.items ?? [];
+    return (
+      <section class="rounded-lg border border-neutral-200 bg-white p-3">
+        <div class="text-sm font-semibold text-neutral-900">{title}</div>
+        <div class="my-1 h-px bg-neutral-100"></div>
+        <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
+          {items.map((item) =>
+            typeof item === "string" ? (
+              <li>{item}</li>
+            ) : (
+              <li>
+                <b>{item.title}</b>: {item.content}
+              </li>
+            ),
+          )}
+        </ul>
+      </section>
+    );
   });
 
   return { template };

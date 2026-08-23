@@ -52,14 +52,15 @@ interface ResumeState {
 }
 
 /**
- * Store holding the current resume data. Every view bound via `useStore`
- * re-renders automatically when the language toggles, with no prop
- * drilling required — the lark-mvc equivalent of the old React signal.
+ * Store holding the current resume data. Views whose templates read
+ * `resumeStore.getState()` re-render automatically when the language
+ * toggles (tracked per-key signal reads) — no prop drilling, no digest.
  */
 export const resumeStore = createStore<ResumeState>("resume", (set, get) => ({
   lang: "en",
   data: en,
-  sections: computed(["data"], () => buildSections(get().data)),
+  // Dependencies are tracked automatically — get().data is a signal read.
+  sections: computed(() => buildSections(get().data)),
   toggleLocale: () => {
     const next: Lang = get().lang === "en" ? "zh" : "en";
     set({ lang: next, data: next === "en" ? en : zh });
