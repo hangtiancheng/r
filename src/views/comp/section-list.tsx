@@ -20,20 +20,42 @@
  * SOFTWARE.
  */
 
-import { defineView } from "@lark.js/mvc";
+import { defineView, jsxTemplate } from "@lark.js/mvc";
 import type { TitledItem } from "@/schema/resume";
-import template from "./section-list.html";
 
 interface SectionListProps {
   title?: string;
   items?: (string | TitledItem)[];
 }
 
+interface SectionListData {
+  title: string;
+  items: (string | TitledItem)[];
+}
+
+const template = jsxTemplate<SectionListData>(({ title, items }) => (
+  <section class="rounded-lg border border-neutral-200 bg-white p-3">
+    <div class="text-sm font-semibold text-neutral-900">{title}</div>
+    <div class="my-1 h-px bg-neutral-100"></div>
+    <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
+      {items.map((item) =>
+        typeof item === "string" ? (
+          <li>{item}</li>
+        ) : (
+          <li>
+            <b>{item.title}</b>: {item.content}
+          </li>
+        ),
+      )}
+    </ul>
+  </section>
+));
+
 /**
  * Generic list section view for skills, works, projects, research.
  */
-export default defineView((ctx, params) => {
-  const p = (params ?? {}) as SectionListProps;
+export default defineView<SectionListProps>((ctx, params) => {
+  const p = params ?? {};
   ctx.updater.set({
     title: p.title ?? "",
     items: p.items ?? [],

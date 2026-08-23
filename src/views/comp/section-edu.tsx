@@ -20,20 +20,40 @@
  * SOFTWARE.
  */
 
-import { defineView } from "@lark.js/mvc";
-import template from "./section-edu.html";
+import { defineView, jsxTemplate } from "@lark.js/mvc";
 
 interface SectionEduProps {
   header?: string;
   edu?: string[][];
 }
 
+interface SectionEduData {
+  header: string;
+  edu: string[][];
+}
+
+const template = jsxTemplate<SectionEduData>(({ header, edu }) => (
+  <section class="rounded-lg border border-neutral-200 bg-white p-3">
+    <div class="text-sm font-semibold text-neutral-900">{header}</div>
+    <div class="my-1 h-px bg-neutral-100"></div>
+    <ul class="mt-1.5 space-y-0.5 text-xs">
+      {edu.map((row) => (
+        <li class="grid gap-1 md:grid-cols-3">
+          <div class="text-neutral-700">{row[0]}</div>
+          <div class="text-neutral-700">{row[1]}</div>
+          <div class="text-neutral-700">{row[2]}</div>
+        </li>
+      ))}
+    </ul>
+  </section>
+));
+
 /**
  * Education section view. Reads edu rows from the props pushed by the
  * parent (initial mount params, then mountZone prop updates).
  */
-export default defineView((ctx, params) => {
-  const p = (params ?? {}) as SectionEduProps;
+export default defineView<SectionEduProps>((ctx, params) => {
+  const p = params ?? {};
   ctx.updater.set({
     header: p.header ?? "",
     edu: p.edu ?? [],

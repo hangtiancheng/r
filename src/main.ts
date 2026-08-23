@@ -22,7 +22,7 @@
 
 import "@/index.css";
 
-import { Framework, registerViewClass } from "@lark.js/mvc";
+import { Framework } from "@lark.js/mvc";
 import type { FrameworkConfig } from "@lark.js/mvc";
 import {
   initLarkSentry,
@@ -37,17 +37,7 @@ import {
 import { enablePlugin } from "@lark.js/sentry";
 import { applyAntiCopy } from "@swifty.js/anti-copy/lark-mvc";
 
-import resumeHeaderView from "@/views/comp/resume-header";
-import sectionEduView from "@/views/comp/section-edu";
-import sectionListView from "@/views/comp/section-list";
 import resumeView from "@/views/resume";
-
-// === View registration ===
-
-registerViewClass("views/comp/resume-header", resumeHeaderView);
-registerViewClass("views/comp/section-edu", sectionEduView);
-registerViewClass("views/comp/section-list", sectionListView);
-registerViewClass("views/resume", resumeView);
 
 // === Copy protection ===
 
@@ -75,8 +65,8 @@ const config: FrameworkConfig = {
   rootId: "app",
   routeMode: "history",
   defaultPath: "/",
-  defaultView: "views/resume",
-  unmatchedView: "views/resume",
+  defaultView: resumeView,
+  unmatchedView: resumeView,
   error(e: Error) {
     console.error("[resume]", e);
   },

@@ -12,14 +12,14 @@ importers:
   .:
     dependencies:
       '@lark.js/mvc':
-        specifier: ^0.0.27
-        version: 0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: ^0.0.28
+        version: 0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@lark.js/sentry':
         specifier: ^0.0.17
-        version: 0.0.17(@lark.js/mvc@0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        version: 0.0.17(@lark.js/mvc@0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/anti-copy':
         specifier: ^0.0.3
-        version: 0.0.3(@lark.js/mvc@0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))
+        version: 0.0.3(@lark.js/mvc@0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -652,10 +652,13 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lark.js/mvc@0.0.27':
-    resolution: {integrity: sha512-rZAjc9uRdtsAGIawyp18UdrbqKXil//7LWzwETuDoUctNrcQiu287xyKQV3bJz8fKI8uMwsuK//LV77oYd5R8g==}
+  '@lark.js/mvc@0.0.28':
+    resolution: {integrity: sha512-YlQYzEQZEUkdkGI5Jgu825icb8hljQ96uh/hKvATb8airbRYAUXSnzkGZD6gP9QVQrZifutmASQjx31ZCJ07gQ==}
     peerDependencies:
       vite: ^8.0.14
+    peerDependenciesMeta:
+      vite:
+        optional: true
 
   '@lark.js/sentry@0.0.17':
     resolution: {integrity: sha512-LrPKA6KHeICChA3QDbSCwlzuD7OJBTe90zbMiB6wCPlhI8WimdoqBBqmIEvYSPShccZj3+RmRCbrS9pa3HDY8g==}
@@ -3318,15 +3321,13 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lark.js/mvc@0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
-    dependencies:
-      '@babel/parser': 7.29.8
-      '@babel/types': 7.29.8
+  '@lark.js/mvc@0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+    optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
 
-  '@lark.js/sentry@0.0.17(@lark.js/mvc@0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/sentry@0.0.17(@lark.js/mvc@0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
-      '@lark.js/mvc': 0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+      '@lark.js/mvc': 0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/sentry': 0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
     optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
@@ -3511,9 +3512,9 @@ snapshots:
 
   '@rrweb/utils@2.1.1': {}
 
-  '@swifty.js/anti-copy@0.0.3(@lark.js/mvc@0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))':
+  '@swifty.js/anti-copy@0.0.3(@lark.js/mvc@0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))':
     optionalDependencies:
-      '@lark.js/mvc': 0.0.27(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+      '@lark.js/mvc': 0.0.28(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
 
   '@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
