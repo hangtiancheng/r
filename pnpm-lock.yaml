@@ -5,21 +5,21 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@swifty.js/sentry': ^0.0.5
+  '@swifty.js/sentry': latest
 
 importers:
 
   .:
     dependencies:
       '@lark.js/mvc':
-        specifier: file:../lark.js/packages/lark-mvc
-        version: file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: latest
+        version: 0.0.31(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@lark.js/sentry':
-        specifier: file:../lark.js/packages/lark-sentry
-        version: file:../lark.js/packages/lark-sentry(@lark.js/mvc@file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: latest
+        version: 0.0.18(@lark.js/mvc@0.0.31(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/anti-copy':
-        specifier: file:../swifty.js/packages/anti-copy
-        version: file:../swifty.js/packages/anti-copy(@lark.js/mvc@file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))
+        specifier: latest
+        version: 0.0.6
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -652,19 +652,19 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lark.js/mvc@file:../lark.js/packages/lark-mvc':
-    resolution: {directory: ../lark.js/packages/lark-mvc, type: directory}
+  '@lark.js/mvc@0.0.31':
+    resolution: {integrity: sha512-/f5bZdw+ChqB1oIIgYQxWHfVKZET/hcW3vP1qWchWSTnwo83LXyDZ8sn9wrWyYlesG9CesHsQ4sM6EDqCGF2eg==}
     peerDependencies:
       vite: ^8.0.14
     peerDependenciesMeta:
       vite:
         optional: true
 
-  '@lark.js/sentry@file:../lark.js/packages/lark-sentry':
-    resolution: {directory: ../lark.js/packages/lark-sentry, type: directory}
+  '@lark.js/sentry@0.0.18':
+    resolution: {integrity: sha512-iRa1UI3wQ5T4jh1HaSPWgs2oQ9b1zgVdhwfii/VyiPzDRfhqGAezJ9dShvEieL6WztWRGTqQDyU67JrX7g/r1g==}
     peerDependencies:
-      '@lark.js/mvc': '>=0.0.32'
-      '@swifty.js/sentry': ^0.0.5
+      '@lark.js/mvc': 0.0.31
+      '@swifty.js/sentry': '>=0.0.5'
       vite: ^7.0.0 || ^8.0.0
       webpack: ^4.0.0 || ^5.0.0
     peerDependenciesMeta:
@@ -981,17 +981,14 @@ packages:
   '@rrweb/utils@2.1.1':
     resolution: {integrity: sha512-x2SgJAD3YJ9eVcLZ5l6OqWMtczdA3VfS5XqPeqpZdQgV9oh6Id5GK2cDN4bimnkqryOcIJdz8cTvV0yNvqQ+nA==}
 
-  '@swifty.js/anti-copy@file:../swifty.js/packages/anti-copy':
-    resolution: {directory: ../swifty.js/packages/anti-copy, type: directory}
+  '@swifty.js/anti-copy@0.0.6':
+    resolution: {integrity: sha512-fJq8c1bHkvrWSiaOnswvpwZVlXxAKZUoQL7O4KGDEJXxhRE1qFfaSUn88JeWr4AmhkulnWMW82agzMmH8JW4mA==}
     peerDependencies:
-      '@lark.js/mvc': '>=0.0.26'
-      '@swifty.js/docs': '>=0.0.11'
+      '@swifty.js/docs': '>=0.0.12'
       react: ^18.0.0 || ^19.0.0
       vitepress: '>=1.0.0'
       vue: '>=3.0.0'
     peerDependenciesMeta:
-      '@lark.js/mvc':
-        optional: true
       '@swifty.js/docs':
         optional: true
       react:
@@ -3321,15 +3318,15 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lark.js/mvc@file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/mvc@0.0.31(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
       '@preact/signals-core': 1.14.4
     optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
 
-  '@lark.js/sentry@file:../lark.js/packages/lark-sentry(@lark.js/mvc@file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/sentry@0.0.18(@lark.js/mvc@0.0.31(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
-      '@lark.js/mvc': file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+      '@lark.js/mvc': 0.0.31(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/sentry': 0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
     optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
@@ -3516,9 +3513,7 @@ snapshots:
 
   '@rrweb/utils@2.1.1': {}
 
-  '@swifty.js/anti-copy@file:../swifty.js/packages/anti-copy(@lark.js/mvc@file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))':
-    optionalDependencies:
-      '@lark.js/mvc': file:../lark.js/packages/lark-mvc(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+  '@swifty.js/anti-copy@0.0.6': {}
 
   '@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:

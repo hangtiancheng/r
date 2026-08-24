@@ -1,2 +1,2 @@
 overrides:
-  "@swifty.js/sentry": "^0.0.5"
+  "@swifty.js/sentry": "latest"

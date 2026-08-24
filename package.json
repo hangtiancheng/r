@@ -15,9 +15,9 @@
     "git:push": "pnpm git:commit && git push origin main"
   },
   "dependencies": {
-    "@lark.js/mvc": "file:../lark.js/packages/lark-mvc",
-    "@lark.js/sentry": "file:../lark.js/packages/lark-sentry",
-    "@swifty.js/anti-copy": "file:../swifty.js/packages/anti-copy",
+    "@lark.js/mvc": "latest",
+    "@lark.js/sentry": "latest",
+    "@swifty.js/anti-copy": "latest",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@swifty.js/sentry": "^0.0.5"
+      "@swifty.js/sentry": "latest"
     }
   }
 }
