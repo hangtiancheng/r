@@ -20,41 +20,31 @@
  * SOFTWARE.
  */
 
-import { defineView, jsxTemplate } from "@lark.js/mvc";
-import type { TitledItem } from "@/schema/resume";
-
-interface SectionListProps {
-  title?: string;
-  items?: (string | TitledItem)[];
+interface SectionEduProps {
+  header?: string;
+  edu?: string[][];
 }
 
 /**
- * Generic list section view for skills, works, projects, research.
- * Template reads the reactive `params` proxy — prop pushes re-render.
+ * Education section. Reads edu rows from props — reading them in the body
+ * subscribes this instance, so parent prop pushes re-render it.
  */
-export default defineView<SectionListProps>((_ctx, params) => {
-  const p = params ?? {};
-  const template = jsxTemplate(() => {
-    const title = p.title ?? "";
-    const items = p.items ?? [];
-    return (
-      <section class="rounded-lg border border-neutral-200 bg-white p-3">
-        <div class="text-sm font-semibold text-neutral-900">{title}</div>
-        <div class="my-1 h-px bg-neutral-100"></div>
-        <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
-          {items.map((item) =>
-            typeof item === "string" ? (
-              <li>{item}</li>
-            ) : (
-              <li>
-                <b>{item.title}</b>: {item.content}
-              </li>
-            ),
-          )}
-        </ul>
-      </section>
-    );
-  });
-
-  return { template };
-});
+export default function SectionEdu(props: SectionEduProps) {
+  const header = props.header ?? "";
+  const edu = props.edu ?? [];
+  return (
+    <section class="rounded-lg border border-neutral-200 bg-white p-3">
+      <div class="text-sm font-semibold text-neutral-900">{header}</div>
+      <div class="my-1 h-px bg-neutral-100"></div>
+      <ul class="mt-1.5 space-y-0.5 text-xs">
+        {edu.map((row, idx) => (
+          <li key={`edu-${idx}`} class="grid gap-1 md:grid-cols-3">
+            <div class="text-neutral-700">{row[0]}</div>
+            <div class="text-neutral-700">{row[1]}</div>
+            <div class="text-neutral-700">{row[2]}</div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

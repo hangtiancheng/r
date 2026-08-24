@@ -56,7 +56,7 @@ interface ResumeState {
  * `resumeStore.getState()` re-render automatically when the language
  * toggles (tracked per-key signal reads) — no prop drilling, no digest.
  */
-export const resumeStore = createStore<ResumeState>("resume", (set, get) => ({
+export const resumeStore = createStore<ResumeState>((set, get) => ({
   lang: "en",
   data: en,
   // Dependencies are tracked automatically — get().data is a signal read.

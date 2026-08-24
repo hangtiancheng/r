@@ -22,8 +22,7 @@
 
 import "@/index.css";
 
-import { Framework } from "@lark.js/mvc";
-import type { FrameworkConfig } from "@lark.js/mvc";
+import { render } from "@lark.js/mvc";
 import {
   initLarkSentry,
   isInitialized,
@@ -35,13 +34,13 @@ import {
   ExposurePlugin,
 } from "@lark.js/sentry/plugins";
 import { enablePlugin } from "@lark.js/sentry";
-import { applyAntiCopy } from "@swifty.js/anti-copy/lark-mvc";
+import { createAntiCopy } from "@swifty.js/anti-copy";
 
-import resumeView from "@/views/resume";
+import Resume from "@/pages/resume";
 
 // === Copy protection ===
 
-applyAntiCopy({
+createAntiCopy({
   mode: "replace",
   print: false,
   replaceText: (selection) =>
@@ -49,7 +48,6 @@ applyAntiCopy({
 Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
   devtools: true,
   onViolation: (e) => {
-    // Before init the SDK drops events silently (empty dsn); skip early.
     if (!isInitialized()) return;
     traceCustomEvent({
       name: "AntiCopyViolation",
@@ -57,40 +55,25 @@ Unauthorized reproduction or distribution of this content is prohibited without 
       extra: { violation: e.type, key: e.key ?? "", url: location.href },
     });
   },
-});
+}).enable();
 
 // === Boot ===
 
-const config: FrameworkConfig = {
-  rootId: "app",
-  routeMode: "history",
-  defaultPath: "/",
-  defaultView: resumeView,
-  unmatchedView: resumeView,
-  error(e: Error) {
-    console.error("[resume]", e);
-  },
-};
-
-Framework.boot(config);
+render(<Resume />, document.getElementById("app")!);
 
 // === Monitoring ===
-// initLarkSentry must run AFTER Framework.boot() so the instrumentation
-// wraps the final framework configuration.
 
-if (Framework.isBooted()) {
-  initLarkSentry({
-    dsn: "/sentry",
-    debug: true,
-    beforePushEventList(eventList) {
-      if (!import.meta.env.DEV) {
-        console.log("@lark.js/sentry App:", eventList);
-        return false;
-      }
-      return eventList;
-    },
-  });
-}
+initLarkSentry({
+  dsn: "/sentry",
+  debug: true,
+  beforePushEventList(eventList) {
+    if (!import.meta.env.DEV) {
+      console.log("@lark.js/sentry App:", eventList);
+      return false;
+    }
+    return eventList;
+  },
+});
 
 enablePlugin(
   new ScreenRecordPlugin(),

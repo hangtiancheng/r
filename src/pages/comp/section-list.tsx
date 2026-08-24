@@ -20,38 +20,36 @@
  * SOFTWARE.
  */
 
-import { defineView, jsxTemplate } from "@lark.js/mvc";
+import type { TitledItem } from "@/schema/resume";
 
-interface SectionEduProps {
-  header?: string;
-  edu?: string[][];
+interface SectionListProps {
+  title?: string;
+  items?: (string | TitledItem)[];
 }
 
 /**
- * Education section view. Reads edu rows from the reactive `params`
- * proxy (initial mount params, then mountZone prop-signal updates).
+ * Generic list section for skills, works, projects, research. Reads items
+ * from props — reading them in the body subscribes this instance, so prop
+ * pushes re-render it.
  */
-export default defineView<SectionEduProps>((_ctx, params) => {
-  const p = params ?? {};
-  const template = jsxTemplate(() => {
-    const header = p.header ?? "";
-    const edu = p.edu ?? [];
-    return (
-      <section class="rounded-lg border border-neutral-200 bg-white p-3">
-        <div class="text-sm font-semibold text-neutral-900">{header}</div>
-        <div class="my-1 h-px bg-neutral-100"></div>
-        <ul class="mt-1.5 space-y-0.5 text-xs">
-          {edu.map((row) => (
-            <li class="grid gap-1 md:grid-cols-3">
-              <div class="text-neutral-700">{row[0]}</div>
-              <div class="text-neutral-700">{row[1]}</div>
-              <div class="text-neutral-700">{row[2]}</div>
+export default function SectionList(props: SectionListProps) {
+  const title = props.title ?? "";
+  const items = props.items ?? [];
+  return (
+    <section class="rounded-lg border border-neutral-200 bg-white p-3">
+      <div class="text-sm font-semibold text-neutral-900">{title}</div>
+      <div class="my-1 h-px bg-neutral-100"></div>
+      <ul class="mt-1.5 ml-4 list-disc space-y-0.5 text-xs text-neutral-700">
+        {items.map((item, idx) =>
+          typeof item === "string" ? (
+            <li key={`item-${idx}`}>{item}</li>
+          ) : (
+            <li key={`item-${idx}`}>
+              <b>{item.title}</b>: {item.content}
             </li>
-          ))}
-        </ul>
-      </section>
-    );
-  });
-
-  return { template };
-});
+          ),
+        )}
+      </ul>
+    </section>
+  );
+}

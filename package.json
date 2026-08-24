@@ -15,9 +15,9 @@
     "git:push": "pnpm git:commit && git push origin main"
   },
   "dependencies": {
-    "@lark.js/mvc": "^0.0.30",
-    "@lark.js/sentry": "^0.0.17",
-    "@swifty.js/anti-copy": "^0.0.3",
+    "@lark.js/mvc": "file:../lark.js/packages/lark-mvc",
+    "@lark.js/sentry": "file:../lark.js/packages/lark-sentry",
+    "@swifty.js/anti-copy": "file:../swifty.js/packages/anti-copy",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
