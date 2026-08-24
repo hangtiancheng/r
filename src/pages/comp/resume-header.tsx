@@ -62,7 +62,7 @@ export default function ResumeHeader(props: ResumeHeaderProps) {
           src={avatarUrl}
           alt={name}
           class="size-16 shrink-0 cursor-zoom-in rounded-md border border-neutral-200 object-cover"
-          fetchpriority="medium"
+          fetchpriority="low"
           onClick={() => (previewing.value = true)}
         />
         <div class="min-w-0 flex-1">
