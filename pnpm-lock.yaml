@@ -12,14 +12,17 @@ importers:
   .:
     dependencies:
       '@lark.js/mvc':
-        specifier: ^0.0.33
-        version: 0.0.33(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: ^0.0.34
+        version: 0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@lark.js/sentry':
         specifier: latest
-        version: 0.0.18(@lark.js/mvc@0.0.33(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        version: 0.0.18(@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/anti-copy':
         specifier: latest
         version: 0.0.6
+      lit:
+        specifier: ^3.3.3
+        version: 3.3.3
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -652,8 +655,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lark.js/mvc@0.0.33':
-    resolution: {integrity: sha512-L/e9E/NwNFk1jx7+xBzkgA6Td7Dpb7UkLDN5Fgk25/rRCOOmOzv1gByybXQuMLXe2vdvwrEPCgFi5RQsrQVK3w==}
+  '@lark.js/mvc@0.0.34':
+    resolution: {integrity: sha512-Il2VQ4DNGkHg6LB0nPA6tLhYQ3YFdgpv+H44LdM+7dvyYzr20shdKlKUcfuS1ENfWxSQpseNsUxGoaKruzFOuQ==}
     peerDependencies:
       vite: ^8.0.14
     peerDependenciesMeta:
@@ -672,6 +675,12 @@ packages:
         optional: true
       webpack:
         optional: true
+
+  '@lit-labs/ssr-dom-shim@1.6.0':
+    resolution: {integrity: sha512-VHb0ALPMTlgKjM6yIxxoQNnpKyUKLD04VzeQdsiXkMqkvYlAHxq9glGLmgbb889/1GsohSOAjvQYoiBppXFqrQ==}
+
+  '@lit/reactive-element@2.1.2':
+    resolution: {integrity: sha512-pbCDiVMnne1lYUIaYNN5wrwQXDtHaYtg7YEFPeW+hws6U47WeFvISGUWekPGKWOP1ygrs0ef0o1VJMk1exos5A==}
 
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     resolution: {integrity: sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==}
@@ -1948,6 +1957,15 @@ packages:
   lightningcss@1.33.0:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
+
+  lit-element@4.2.2:
+    resolution: {integrity: sha512-aFKhNToWxoyhkNDmWZwEva2SlQia+jfG0fjIWV//YeTaWrVnOxD89dPKfigCUspXFmjzOEUQpOkejH5Ly6sG0w==}
+
+  lit-html@3.3.3:
+    resolution: {integrity: sha512-el8M6jK2o3RXBnrSHX3ZKrsN8zEV63pSExTO1wYJz7QndGYZ8353e2a5PPX+qHe2aGayfnchQmkAojaWAREOIA==}
+
+  lit@3.3.3:
+    resolution: {integrity: sha512-fycuvZg/hkpozL00lm1pEJH5nN/lr9ZXd6mJI2HSN4+Bzc+LDNdEApJ6HFbPkdFNHLvOplIIuJvxkS4XUxqirw==}
 
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
@@ -3318,18 +3336,24 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lark.js/mvc@0.0.33(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
       '@preact/signals-core': 1.14.4
     optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
 
-  '@lark.js/sentry@0.0.18(@lark.js/mvc@0.0.33(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/sentry@0.0.18(@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
-      '@lark.js/mvc': 0.0.33(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+      '@lark.js/mvc': 0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/sentry': 0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
     optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
+
+  '@lit-labs/ssr-dom-shim@1.6.0': {}
+
+  '@lit/reactive-element@2.1.2':
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.6.0
 
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
@@ -4485,6 +4509,22 @@ snapshots:
       lightningcss-linux-x64-musl: 1.33.0
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
+
+  lit-element@4.2.2:
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.6.0
+      '@lit/reactive-element': 2.1.2
+      lit-html: 3.3.3
+
+  lit-html@3.3.3:
+    dependencies:
+      '@types/trusted-types': 2.0.7
+
+  lit@3.3.3:
+    dependencies:
+      '@lit/reactive-element': 2.1.2
+      lit-element: 4.2.2
+      lit-html: 3.3.3
 
   locate-path@6.0.0:
     dependencies:

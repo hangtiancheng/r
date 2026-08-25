@@ -15,9 +15,10 @@
     "git:push": "pnpm git:commit && git push origin main"
   },
   "dependencies": {
-    "@lark.js/mvc": "^0.0.33",
+    "@lark.js/mvc": "^0.0.34",
     "@lark.js/sentry": "latest",
     "@swifty.js/anti-copy": "latest",
+    "lit": "^3.3.3",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
