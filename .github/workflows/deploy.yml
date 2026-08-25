@@ -18,7 +18,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-name: Deploy https://tianchenghang.github.io/resume resume
+name: Deploy https://hangtiancheng.github.io/r resume
 
 on:
   push:
