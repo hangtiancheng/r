@@ -52,8 +52,12 @@ export class ResumeHeaderElement extends LitElement {
 
   @property() github = "";
 
-  /** Locale-aware chrome labels (contact chips, language toggle button). */
-  @property({ attribute: false }) labels: Labels = FALLBACK_LABELS;
+  /**
+   * Locale-aware chrome labels (contact chips, language toggle button).
+   * Settable as a property or as a JSON `labels` attribute (Lit Object
+   * converter).
+   */
+  @property({ type: Object }) labels: Labels = FALLBACK_LABELS;
 
   /** Whether the enlarged avatar overlay is open. */
   @state() private previewing = false;

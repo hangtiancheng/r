@@ -40,8 +40,11 @@ export class SectionListElement extends LitElement {
   /** Section heading text. */
   @property() heading = "";
 
-  /** List rows: plain strings or `{ title, content }` pairs. */
-  @property({ attribute: false }) items: (string | TitledItem)[] = [];
+  /**
+   * List rows: plain strings or `{ title, content }` pairs. Settable as a
+   * property or as a JSON `items` attribute (Lit Array converter).
+   */
+  @property({ type: Array }) items: (string | TitledItem)[] = [];
 
   protected override createRenderRoot(): HTMLElement {
     return this;

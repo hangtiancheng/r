@@ -35,8 +35,11 @@ export class SectionEduElement extends LitElement {
   /** Section heading text. */
   @property() header = "";
 
-  /** Education rows, three columns per row. */
-  @property({ attribute: false }) edu: string[][] = [];
+  /**
+   * Education rows, three columns per row. Settable as a property or as a
+   * JSON `edu` attribute (Lit Array converter).
+   */
+  @property({ type: Array }) edu: string[][] = [];
 
   protected override createRenderRoot(): HTMLElement {
     return this;
