@@ -23,17 +23,17 @@
 import "@/index.css";
 
 import { render } from "@lark.js/mvc";
-import {
-  initLarkSentry,
-  isInitialized,
-  traceCustomEvent,
-} from "@lark.js/sentry";
-import {
-  ScreenRecordPlugin,
-  PerformancePlugin,
-  ExposurePlugin,
-} from "@lark.js/sentry/plugins";
-import { enablePlugin } from "@lark.js/sentry";
+// import {
+//   initLarkSentry,
+//   isInitialized,
+//   traceCustomEvent,
+// } from "@lark.js/sentry";
+// import {
+//   ScreenRecordPlugin,
+//   PerformancePlugin,
+//   ExposurePlugin,
+// } from "@lark.js/sentry/plugins";
+// import { enablePlugin } from "@lark.js/sentry";
 import { createAntiCopy } from "@swifty.js/anti-copy";
 
 import Resume from "@/pages/resume";
@@ -43,40 +43,40 @@ import Resume from "@/pages/resume";
 createAntiCopy({
   mode: "replace",
   print: false,
-  replaceText: (selection) =>
-    `${selection}\n\n— Copyright © ${new Date().getFullYear()} hangtiancheng. All rights reserved.
-Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
+  //   replaceText: (selection) =>
+  //     `${selection}\n\n— Copyright © ${new Date().getFullYear()} hangtiancheng. All rights reserved.
+  // Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
   devtools: true,
-  onViolation: (e) => {
-    if (!isInitialized()) return;
-    traceCustomEvent({
-      name: "AntiCopyViolation",
-      message: e.key ? `${e.type}:${e.key}` : e.type,
-      extra: { violation: e.type, key: e.key ?? "", url: location.href },
-    });
+  onViolation: () => {
+    // if (!isInitialized()) return;
+    // traceCustomEvent({
+    //   name: "AntiCopyViolation",
+    //   message: e.key ? `${e.type}:${e.key}` : e.type,
+    //   extra: { violation: e.type, key: e.key ?? "", url: location.href },
+    // });
   },
 }).enable();
 
-// === Boot ===
+// === Rendering ===
 
 render(<Resume />, document.getElementById("app")!);
 
-// === Monitoring ===
+// // === Monitoring ===
 
-initLarkSentry({
-  dsn: "/sentry",
-  debug: true,
-  beforePushEventList(eventList) {
-    if (!import.meta.env.DEV) {
-      console.log("@lark.js/sentry App:", eventList);
-      return false;
-    }
-    return eventList;
-  },
-});
+// initLarkSentry({
+//   dsn: "/sentry",
+//   debug: true,
+//   beforePushEventList(eventList) {
+//     if (!import.meta.env.DEV) {
+//       console.log("@lark.js/sentry App:", eventList);
+//       return false;
+//     }
+//     return eventList;
+//   },
+// });
 
-enablePlugin(
-  new ScreenRecordPlugin(),
-  new ExposurePlugin(),
-  new PerformancePlugin(),
-);
+// enablePlugin(
+//   new ScreenRecordPlugin(),
+//   new ExposurePlugin(),
+//   new PerformancePlugin(),
+// );
