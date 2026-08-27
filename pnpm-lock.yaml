@@ -15,8 +15,8 @@ importers:
         specifier: ^0.0.34
         version: 0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@lark.js/sentry':
-        specifier: file:../lark.js/packages/lark-sentry
-        version: file:../lark.js/packages/lark-sentry(@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
+        specifier: ^0.0.19
+        version: 0.0.19(@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/anti-copy':
         specifier: latest
         version: 0.0.6
@@ -663,10 +663,10 @@ packages:
       vite:
         optional: true
 
-  '@lark.js/sentry@file:../lark.js/packages/lark-sentry':
-    resolution: {directory: ../lark.js/packages/lark-sentry, type: directory}
+  '@lark.js/sentry@0.0.19':
+    resolution: {integrity: sha512-9at2MmjgNbSbm3LZAVHZ0wm7F3MrpGiVVbiTsBZFJ/j7ZfHpmHzIaAdkxo7uhGYsqCB2+Ch76LbadXKZoBqVuQ==}
     peerDependencies:
-      '@lark.js/mvc': workspace:*
+      '@lark.js/mvc': '>=0.0.34'
       '@swifty.js/sentry': '>=0.0.5'
       vite: ^7.0.0 || ^8.0.0
       webpack: ^4.0.0 || ^5.0.0
@@ -3342,7 +3342,7 @@ snapshots:
     optionalDependencies:
       vite: 8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)
 
-  '@lark.js/sentry@file:../lark.js/packages/lark-sentry(@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
+  '@lark.js/sentry@0.0.19(@lark.js/mvc@0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(@swifty.js/sentry@0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0)))(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))':
     dependencies:
       '@lark.js/mvc': 0.0.34(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
       '@swifty.js/sentry': 0.0.5(vite@8.2.2(@types/node@24.13.3)(jiti@2.7.0)(terser@5.50.0))
