@@ -1,14 +1,10 @@
 # lit-jsx
 
-`lit-jsx` is a library that provides a convenient way to build Lit components using JSX syntax. The only dependency for the library is `lit` itself.
+> Requires `lit@latest` (3.x); older Lit versions are not supported.
 
-## Why?
-
-Personal aesthetic preference: I am on board with everything about Lit but I cannot bring myself to write components using string templates.
+`lit-jsx` is a library that provides a convenient way to build Lit components using JSX syntax.
 
 ## Installation
-
-You can install `lit-jsx` via npm:
 
 ```bash
 pnpm install @swifty.js/lit-jsx
@@ -140,5 +136,3 @@ pnpm test        # vitest + jsdom, tests in tests/
 pnpm typecheck   # tsc --noEmit
 pnpm build       # tsup — ESM + CJS + dts
 ```
-
-Requires `lit@latest` (3.x); older Lit versions are not supported.
