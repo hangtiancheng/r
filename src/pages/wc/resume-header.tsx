@@ -23,11 +23,8 @@
 import {
   LitElement,
   customElement,
-  html,
-  nothing,
   property,
   state,
-  type TemplateResult,
 } from "@swifty.js/lit-jsx";
 
 import type { Labels } from "@/schema/resume";
@@ -96,96 +93,90 @@ export class ResumeHeaderElement extends LitElement {
     this.previewing = false;
   }
 
-  protected override render(): TemplateResult {
-    return html`
-      <div
-        class="flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3"
-        swifty-sentry-el="resume-header"
-      >
-        <img
-          src=${avatarUrl}
-          alt=${this.name}
-          class="size-16 shrink-0 cursor-zoom-in rounded-md border border-neutral-200 object-cover"
-          fetchpriority="low"
-          @click=${() => (this.previewing = true)}
-        />
-        <div class="min-w-0 flex-1">
-          <div class="flex items-center justify-between gap-2">
-            <h1 class="text-xl font-semibold text-neutral-900">${this.name}</h1>
-            <button
-              class="rounded-md border border-neutral-200 px-2 py-0.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100"
-              @click=${this.toggleLocale}
-              swifty-sentry-ev="toggle-locale"
-              swifty-sentry-msg="Toggle locale"
-              swifty-sentry-label=${this.labels.switch}
-            >
-              ${this.labels.switch}
-            </button>
-          </div>
-          <p class="mt-1 text-xs text-neutral-500">${this.about}</p>
-          <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-            <div class="flex items-center gap-1.5">
-              <span
-                class="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600"
+  protected override render() {
+    return (
+      <>
+        <div
+          className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3"
+          swifty-sentry-el="resume-header"
+        >
+          <img
+            src={avatarUrl}
+            alt={this.name}
+            className="size-16 shrink-0 cursor-zoom-in rounded-md border border-neutral-200 object-cover"
+            fetchPriority="low"
+            onClick={() => (this.previewing = true)}
+          />
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-2">
+              <h1 className="text-xl font-semibold text-neutral-900">
+                {this.name}
+              </h1>
+              <button
+                className="rounded-md border border-neutral-200 px-2 py-0.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100"
+                onClick={this.toggleLocale}
+                swifty-sentry-ev="toggle-locale"
+                swifty-sentry-msg="Toggle locale"
+                swifty-sentry-label={this.labels.switch}
               >
-                ${this.labels.tel}
-              </span>
-              <a
-                href="tel:${this.tel}"
-                class="text-neutral-900 hover:text-black hover:underline"
-              >
-                ${this.tel}
-              </a>
+                {this.labels.switch}
+              </button>
             </div>
-            <div class="flex items-center gap-1.5">
-              <span
-                class="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600"
-              >
-                ${this.labels.email}
-              </span>
-              <a
-                href="mailto:${this.email}"
-                class="text-neutral-900 hover:text-black hover:underline"
-              >
-                ${this.email}
-              </a>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span
-                class="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600"
-              >
-                ${this.labels.github}
-              </span>
-              <a
-                href="https://github.com/${this.github}"
-                class="text-neutral-900 hover:text-black hover:underline"
-                target="_blank"
-                rel="noopener"
-              >
-                https://github.com/${this.github}
-              </a>
+            <p className="mt-1 text-xs text-neutral-500">{this.about}</p>
+            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-xs">
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600">
+                  {this.labels.tel}
+                </span>
+                <a
+                  href={`tel:${this.tel}`}
+                  className="text-neutral-900 hover:text-black hover:underline"
+                >
+                  {this.tel}
+                </a>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600">
+                  {this.labels.email}
+                </span>
+                <a
+                  href={`mailto:${this.email}`}
+                  className="text-neutral-900 hover:text-black hover:underline"
+                >
+                  {this.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="rounded bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-600">
+                  {this.labels.github}
+                </span>
+                <a
+                  href={`https://github.com/${this.github}`}
+                  className="text-neutral-900 hover:text-black hover:underline"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  https://github.com/{this.github}
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      ${
-        this.previewing
-          ? html`
-              <div
-                class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-                @click=${this.closePreview}
-              >
-                <img
-                  src=${avatarUrl}
-                  alt=${this.name}
-                  class="max-h-[80vh] max-w-[80vw] rounded-lg shadow-2xl"
-                />
-              </div>
-            `
-          : nothing
-      }
-    `;
+        {this.previewing ? (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            onClick={this.closePreview}
+          >
+            <img
+              src={avatarUrl}
+              alt={this.name}
+              className="max-h-[80vh] max-w-[80vw] rounded-lg shadow-2xl"
+            />
+          </div>
+        ) : null}
+      </>
+    );
   }
 }
 

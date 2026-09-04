@@ -20,13 +20,7 @@
  * SOFTWARE.
  */
 
-import {
-  LitElement,
-  customElement,
-  html,
-  property,
-  type TemplateResult,
-} from "@swifty.js/lit-jsx";
+import { LitElement, customElement, property } from "@swifty.js/lit-jsx";
 
 /**
  * Education section. Each row is `[school, degree, period]`.
@@ -55,24 +49,24 @@ export class SectionEduElement extends LitElement {
     this.classList.add("block");
   }
 
-  protected override render(): TemplateResult {
-    return html`
-      <section class="rounded-lg border border-neutral-200 bg-white p-3">
-        <div class="text-sm font-semibold text-neutral-900">${this.header}</div>
-        <div class="my-1 h-px bg-neutral-100"></div>
-        <ul class="mt-1.5 space-y-0.5 text-xs">
-          ${this.edu.map(
-            (row) => html`
-              <li class="grid gap-1 md:grid-cols-3">
-                <div class="text-neutral-700">${row[0]}</div>
-                <div class="text-neutral-700">${row[1]}</div>
-                <div class="text-neutral-700">${row[2]}</div>
-              </li>
-            `,
-          )}
+  protected override render() {
+    return (
+      <section className="rounded-lg border border-neutral-200 bg-white p-3">
+        <div className="text-sm font-semibold text-neutral-900">
+          {this.header}
+        </div>
+        <div className="my-1 h-px bg-neutral-100"></div>
+        <ul className="mt-1.5 space-y-0.5 text-xs">
+          {this.edu.map((row) => (
+            <li className="grid gap-1 md:grid-cols-3">
+              <div className="text-neutral-700">{row[0]}</div>
+              <div className="text-neutral-700">{row[1]}</div>
+              <div className="text-neutral-700">{row[2]}</div>
+            </li>
+          ))}
         </ul>
       </section>
-    `;
+    );
   }
 }
 

@@ -34,7 +34,17 @@ export function parseProps(type, props, registry: ElementRegistry) {
       eventName = getNativeEventName(propName);
       if (eventName) {
         parsedProps[`@${eventName}`] = props[propName];
-      } else if (typeof props[propName] === "boolean") {
+        continue;
+      }
+      if (propName === "class") {
+        parsedProps[".className"] = props[propName];
+        continue;
+      }
+      if (propName.includes("-")) {
+        parsedProps[propName] = props[propName];
+        continue;
+      }
+      if (typeof props[propName] === "boolean") {
         // Likewise, don't set attributes on non-primitives, just forward the props.
         parsedProps[`?${propName}`] = props[propName];
       }

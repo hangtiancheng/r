@@ -3,4 +3,3 @@ overrides:
 
 packages:
   - lit-jsx
-  - lit-jsx/example
