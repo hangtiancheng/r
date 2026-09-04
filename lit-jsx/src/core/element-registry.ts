@@ -1,8 +1,3 @@
-/**
- * A map of tag names to the name of the element that should be used to render it in TwixtDOM.
- * No surprises here, every tag name is rendered using its corresponding native HTML element.
- * See {@link twixt/elementRegistry} for TwixtCanvas overrides.
- */
 import { literal } from "lit/static-html.js";
 import type { ElementRegistry } from "../types";
 
