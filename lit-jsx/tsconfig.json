@@ -12,7 +12,8 @@
     // https://lit.dev/docs/components/properties/#avoiding-issues-with-class-fields
     "useDefineForClassFields": false,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

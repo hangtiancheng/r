@@ -51,6 +51,7 @@ class SpreadDirective extends AsyncDirective {
   prevData: { [key: string]: unknown } = {};
 
   render(spreadData: { [key: string]: unknown }) {
+    void spreadData;
     return nothing;
   }
 
@@ -76,13 +77,13 @@ class SpreadDirective extends AsyncDirective {
       }
       const name = key.slice(1);
       switch (key[0]) {
-        case "@": // event listener
+        case "@": {
           const prevHandler = prevData[key];
           if (prevHandler) {
             element.removeEventListener(
               name,
               this,
-              value as EventListenerWithOptions,
+              prevHandler as EventListenerWithOptions,
             );
           }
           element.addEventListener(
@@ -91,6 +92,7 @@ class SpreadDirective extends AsyncDirective {
             value as EventListenerWithOptions,
           );
           break;
+        }
         case ".": // property
           element[name] = value;
           break;
@@ -127,7 +129,7 @@ class SpreadDirective extends AsyncDirective {
       // ***********************
       if (removed) {
         switch (key[0]) {
-          case "@": // event listener
+          case "@": {
             const value = prevData[key];
             element.removeEventListener(
               key.slice(1),
@@ -135,6 +137,7 @@ class SpreadDirective extends AsyncDirective {
               value as EventListenerWithOptions,
             );
             break;
+          }
           case ".": // property
             element[key.slice(1)] = undefined;
             break;
@@ -157,13 +160,11 @@ class SpreadDirective extends AsyncDirective {
   }
 
   handleEvent(event: Event) {
-    const value: Function | EventListenerObject = this.prevData[
-      `@${event.type}`
-    ] as Function | EventListenerObject;
+    const value = this.prevData[`@${event.type}`] as EventListenerWithOptions;
     if (typeof value === "function") {
-      (value as Function).call(this.host, event);
+      value.call(this.host, event);
     } else {
-      (value as EventListenerObject).handleEvent(event);
+      value.handleEvent(event);
     }
   }
 

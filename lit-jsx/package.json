@@ -3,18 +3,18 @@
   "version": "0.0.1",
   "description": "A JSX runtime for Lit",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./jsx-runtime": {
-      "import": "./dist/jsx-runtime.js",
-      "require": "./dist/jsx-runtime.js",
-      "types": "./dist/jsx-runtime.d.ts"
+      "types": "./dist/jsx-runtime.d.ts",
+      "import": "./dist/jsx-runtime.mjs",
+      "require": "./dist/jsx-runtime.js"
     }
   },
   "author": {
@@ -22,8 +22,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsdown",
+    "build": "tsup",
     "typecheck": "tsc --noEmit",
+    "lint": "pnpm --dir ../ lint",
+    "format": "pnpm --dir ../ format",
     "prepublishOnly": "pnpm build"
   },
   "repository": {

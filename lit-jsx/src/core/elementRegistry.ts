@@ -100,7 +100,7 @@ const registry: ElementRegistry = {
   span: literal`span`,
   strong: literal`strong`,
   style: literal`style`,
-  sub: literal``,
+  sub: literal`sub`,
   summary: literal`summary`,
   sup: literal`sup`,
   table: literal`table`,
@@ -121,7 +121,7 @@ const registry: ElementRegistry = {
   video: literal`video`,
   wbr: literal`wbr`,
   // Fallback to div.
-  default: literal`<div>`,
+  default: literal`div`,
 };
 
 export default registry;

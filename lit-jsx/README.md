@@ -11,7 +11,7 @@ Personal aesthetic preference: I am on board with everything about Lit but I can
 You can install `lit-jsx` via npm:
 
 ```bash
-npm install @swifty.js/lit-jsx
+pnpm install @swifty.js/lit-jsx
 ```
 
 ## Usage
@@ -52,13 +52,13 @@ import { LitElement, createRoot, customElement } from '@swifty.js/lit-jsx';
 
 @customElement('my-app')
 class App extends LitElement {
-    render() {
-        return (
-            <button onClick={console.log}>
-                Click Me!
-            </button>
-        );
-    }
+  render() {
+    return (
+      <button onClick={console.log}>
+        Click Me!
+      </button>
+    );
+  }
 }
 
 const app = document.createElement('div');
@@ -69,8 +69,8 @@ root.render(new App());
 
 // Clean up.
 const onUnload = () => {
-    window.removeEventListener('beforeunload', onUnload);
-    root.unmount();
+  window.removeEventListener('beforeunload', onUnload);
+  root.unmount();
 };
 window.addEventListener('beforeunload', onUnload);
 ```
@@ -79,8 +79,8 @@ window.addEventListener('beforeunload', onUnload);
 
 ```bash
 cd ./example
-npm install
-npm run watch
+pnpm install
+pnpm dev
 ```
 
 Go to https://localhost:8080/
@@ -113,8 +113,7 @@ The original motivation behind this jsx-runtime was for a WebXR UI framework I w
 
 I got a fair amount of it working including divs, images, text, overflow management, scroll bars, flex-box, border-radii, background colors, etc.
 <details>
+
 <summary>Expand to see the code for this "component"</summary>
 
 </details>
-
-Good times though.

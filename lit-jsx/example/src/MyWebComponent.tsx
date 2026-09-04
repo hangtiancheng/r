@@ -21,7 +21,7 @@ class ClassComponent extends LitElement {
   count?: number;
 
   @property({ type: Function })
-  onClick?: (e: any) => void;
+  onClick?: ((event: Event) => void) | null;
 
   render() {
     return <button onClick={this.onClick}>Wow {this.count}</button>;
@@ -34,7 +34,8 @@ export default class Counter extends LitElement {
   @state()
   private _counter = 0;
 
-  private _ref: Ref<HTMLElement> = createRef();
+  private _classComponentRef: Ref<ClassComponent> = createRef();
+  private _buttonRef: Ref<HTMLButtonElement> = createRef();
 
   private _increment = () => {
     this._counter++;
@@ -45,12 +46,12 @@ export default class Counter extends LitElement {
       <>
         <FunctionalComponent onClick={this._increment} count={this._counter} />
         <ClassComponent
-          ref={this._ref}
+          ref={this._classComponentRef}
           onClick={this._counter > 5 ? null : this._increment}
           count={this._counter}
         />
         <button
-          ref={this._ref}
+          ref={this._buttonRef}
           onClick={this._counter > 5 ? undefined : this._increment}
         >
           Hi {this._counter}

@@ -1,5 +1,4 @@
-export type { PropertyValues } from "@lit/reactive-element";
-import { StaticValue } from "lit/static-html.js";
+import type { StaticValue } from "lit/static-html.js";
 
 export type Constructor<T> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,7 +17,7 @@ export interface ClassElement {
   kind: "field" | "method";
   key: PropertyKey;
   placement: "static" | "prototype" | "own";
-  initializer?: Function;
+  initializer?: () => unknown;
   extras?: ClassElement[];
   finisher?: <T>(clazz: Constructor<T>) => void | Constructor<T>;
   descriptor?: PropertyDescriptor;

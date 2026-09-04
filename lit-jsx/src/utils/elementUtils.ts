@@ -48,9 +48,13 @@ export function parseProps(type, props, registry: ElementRegistry) {
 
 // Handle any type-based overrides to the children's Lit expression, if any.
 // Useful if, for example, a custom element registry needs to handle text in any special way.
-export function parseChildren(children = [], registry: ElementRegistry) {
-  const parsedChildren = [];
-  for (const child of children) {
+export function parseChildren(
+  children: unknown = [],
+  registry: ElementRegistry,
+) {
+  const parsedChildren: unknown[] = [];
+  const childList = Array.isArray(children) ? children : [children];
+  for (const child of childList) {
     const wrapper = registry[typeof child];
     parsedChildren.push(
       wrapper ? (html`<${wrapper}>${child}</${wrapper}>` as never) : child,

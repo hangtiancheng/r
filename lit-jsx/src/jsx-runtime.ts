@@ -1,5 +1,40 @@
+import type { RefOrCallback } from "lit/directives/ref.js";
+import type { StyleInfo } from "lit/directives/style-map.js";
 import customElementRegistry from "./utils/customElementRegistry";
 import createElement from "./core/createElement";
+
+type ElementProps<T extends Element> = Omit<
+  Partial<T>,
+  "children" | "style"
+> & {
+  children?: unknown;
+  ref?: RefOrCallback<T>;
+  style?: Readonly<StyleInfo>;
+  [property: string]: unknown;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-namespace -- TypeScript requires this namespace for automatic JSX runtime types.
+export namespace JSX {
+  export type Element = unknown;
+
+  export interface ElementChildrenAttribute {
+    children: unknown;
+  }
+
+  export interface IntrinsicAttributes {
+    key?: string | number;
+    ref?: RefOrCallback;
+    [property: string]: unknown;
+  }
+
+  export type IntrinsicElements = {
+    [TagName in keyof HTMLElementTagNameMap]: ElementProps<
+      HTMLElementTagNameMap[TagName]
+    >;
+  } & {
+    [tagName: string]: ElementProps<HTMLElement>;
+  };
+}
 
 // JSX runtime. This is what will translate JSX and create actual html elements.
 function jsx(type, config) {
@@ -42,4 +77,4 @@ function jsxFragment(fragment) {
     : [fragment.children];
 }
 
-export { jsx, jsx as jsxs, jsxFragment as Fragment };
+export { jsx, jsx as jsxs, jsx as jsxDEV, jsxFragment as Fragment };
