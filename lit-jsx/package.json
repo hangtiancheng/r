@@ -15,6 +15,11 @@
       "types": "./dist/jsx-runtime.d.ts",
       "import": "./dist/jsx-runtime.mjs",
       "require": "./dist/jsx-runtime.js"
+    },
+    "./jsx-dev-runtime": {
+      "types": "./dist/jsx-runtime.d.ts",
+      "import": "./dist/jsx-runtime.mjs",
+      "require": "./dist/jsx-runtime.js"
     }
   },
   "author": {
