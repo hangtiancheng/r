@@ -60,6 +60,7 @@ createAntiCopy({
   //     `${selection}\n\n— Copyright © ${new Date().getFullYear()} hangtiancheng. All rights reserved.
   // Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
   devtools: true,
+  copy: false,
   onViolation: (e) => {
     if (!isInitialized()) return;
     traceCustomEvent({
