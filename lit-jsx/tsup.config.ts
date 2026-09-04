@@ -1,4 +1,18 @@
 import { defineConfig } from "tsup";
+import { cpSync } from "node:fs";
+
+// tsup runs array configs in parallel via Promise.all — a single config's
+// onSuccess fires before other configs' DTS generation finishes.
+// Defer the copy to process exit so all builds are fully complete.
+(() => {
+  process.on("exit", () => {
+    cpSync("../.agents/skills/swifty-lit-jsx", "skills/swifty-lit-jsx", {
+      errorOnExist: false,
+      force: true,
+      recursive: true,
+    });
+  });
+})();
 
 export default defineConfig({
   entry: ["src/index.ts", "src/jsx-runtime.ts"],

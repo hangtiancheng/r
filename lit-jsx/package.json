@@ -1,7 +1,7 @@
 {
   "name": "@swifty.js/lit-jsx",
   "version": "0.0.1",
-  "description": "A JSX runtime for Lit",
+  "description": "A jsx runtime for lit",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
     }
   },
   "author": {
-    "name": "hangtiancheng <161043261@qq.com>"
+    "name": "hangtiancheng <yukino161043261@gmail.com>"
   },
   "license": "MIT",
   "scripts": {
@@ -41,7 +41,8 @@
   },
   "files": [
     "dist",
-    "LICENSE"
+    "skills",
+    "README.md"
   ],
   "dependencies": {
     "lit": "latest"

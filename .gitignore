@@ -201,3 +201,5 @@ tsconfig.tsbuildinfo
 
 .playwright-cli/
 **/.playwright-cli/
+
+lit-jsx/skills

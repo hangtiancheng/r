@@ -1,73 +1,22 @@
 // Map JSX/React event names to their standard DOM counterpart.
-const eventsMap = {
-  onAbort: "abort",
-  onAnimationCancel: "animationcancel",
-  onAnimationEnd: "animationend",
-  onAnimationIteration: "animationiteration",
-  onAnimationStart: "animationstart",
-  onAuxClick: "auxclick",
-  onBeforeInput: "beforeinput",
-  onBlur: "blur",
-  onChange: "change",
-  onCompositionEnd: "compositionend",
-  onCompositionStart: "compositionstart",
-  onCompositionUpdate: "compositionupdate",
-  onClick: "click",
-  onClose: "close",
-  onContextMenu: "contextmenu",
+//
+// Almost every name follows the React convention `onFooBar` -> `foobar`, so a
+// Proxy derives those on the fly and new DOM events (e.g. `scrollend`) work
+// without touching this file. Only names that break the pattern are listed
+// explicitly. The `on` + capital-letter guard keeps non-event props like
+// `only` or `once` from being mistaken for event handlers.
+const specialCases: Record<string, string> = {
   onDoubleClick: "dblclick",
-  onError: "error",
-  onFocus: "focus",
-  onGotPointerCapture: "gotpointercapture",
-  onInput: "input",
-  onInvalid: "invalid",
-  onKeyDown: "keydown",
-  onKeyPress: "keypress",
-  onKeyUp: "keyup",
-  onLoad: "load",
-  onLoadEnd: "loadend",
-  onLoadStart: "loadstart",
-  onLostPointerCapture: "lostpointercapture",
-  onMouseDown: "mousedown",
-  onMouseMove: "mousemove",
-  onMouseOut: "mouseout",
-  onMouseOver: "mouseover",
-  onMouseUp: "mouseup",
-  onPointerCancel: "pointercancel",
-  onPointerDown: "pointerdown",
-  onPointerEnter: "pointerenter",
-  onPointerLeave: "pointerleave",
-  onPointerMove: "pointermove",
-  onPointerOut: "pointerout",
-  onPointerOver: "pointerover",
-  onPointerUp: "pointerup",
-  onReset: "reset",
-  onResize: "resize",
-  onScroll: "scroll",
-  onSelect: "select",
-  onSelectionChange: "selectionchange",
-  onSelectStart: "selectstart",
-  onSubmit: "submit",
-  onTouchCancel: "touchcancel",
-  onTouchEnd: "touchend",
-  onTouchMove: "touchmove",
-  onTouchStart: "touchstart",
-  onTransitionCancel: "transitioncancel",
-  onTransitionEnd: "transitionend",
-  onTransitionStart: "transitionstart",
-  onToggle: "toggle",
-  onWheel: "wheel",
-  onDrag: "drag",
-  onDragEnd: "dragend",
-  onDragEnter: "dragenter",
-  onDragExit: "dragexit",
-  onDragLeave: "dragleave",
-  onDragOver: "dragover",
-  onDragStart: "dragstart",
-  onDrop: "drop",
-  onFocusOut: "focusout",
 };
 
+const eventsMap = new Proxy<Record<string, string | undefined>>(specialCases, {
+  get(target, prop) {
+    if (typeof prop !== "string") return undefined;
+    if (Object.hasOwn(target, prop)) return target[prop];
+    return /^on[A-Z]/.test(prop) ? prop.slice(2).toLowerCase() : undefined;
+  },
+});
+
 export function getNativeEventName(reactEventName: string): string | undefined {
-  return eventsMap[reactEventName as keyof typeof eventsMap];
+  return eventsMap[reactEventName];
 }
