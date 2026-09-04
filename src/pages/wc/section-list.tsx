@@ -31,8 +31,8 @@ import type { TitledItem } from "@/schema/resume";
  * applies to the template; the host is given the Tailwind `block` utility
  * because custom elements default to `display: inline`.
  *
- * Note: the lark-mvc component's `title` prop is renamed `heading` here —
- * `title` is a global HTML attribute and would trigger a native tooltip.
+ * The property is named `heading` because `title` is a global HTML attribute
+ * and would trigger a native tooltip.
  */
 @customElement("section-list")
 export class SectionListElement extends LitElement {
