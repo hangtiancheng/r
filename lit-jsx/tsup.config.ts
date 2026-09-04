@@ -23,5 +23,7 @@ export default defineConfig({
     compilerOptions: { ignoreDeprecations: "6.0" },
   },
   clean: true,
-  sourcemap: true,
+  sourcemap: false,
+  minify: true,
+  tsconfig: "tsconfig.json"
 });
