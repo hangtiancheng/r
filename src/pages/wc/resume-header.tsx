@@ -20,12 +20,7 @@
  * SOFTWARE.
  */
 
-import {
-  LitElement,
-  customElement,
-  property,
-  state,
-} from "@swifty.js/lit-jsx";
+import { LitElement, customElement, property, state } from "@swifty.js/lit-jsx";
 
 import type { Labels } from "@/schema/resume";
 import avatarUrl from "@/assets/avatar.jpeg";
