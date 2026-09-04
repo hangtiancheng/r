@@ -20,8 +20,13 @@
  * SOFTWARE.
  */
 
-import { LitElement, html, type TemplateResult } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import {
+  LitElement,
+  customElement,
+  html,
+  property,
+  type TemplateResult,
+} from "@swifty.js/lit-jsx";
 
 /**
  * Education section. Each row is `[school, degree, period]`.

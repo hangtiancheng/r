@@ -1,8 +1,8 @@
+import { nothing, render as renderLit } from "lit";
 import type { RootElement } from "../types";
 
 export class Root {
   _container?: RootElement;
-  _elements: HTMLElement[] = [];
 
   static _roots = new Map<RootElement, Root>();
 
@@ -11,21 +11,19 @@ export class Root {
     Root._roots.set(container, this);
   }
 
-  render(element: HTMLElement) {
-    // Keep track of all elements rendered directly on the root.
-    this._elements.push(element);
-    this._container?.appendChild(element);
+  render(element: unknown) {
+    if (!this._container) {
+      throw new Error("Cannot render an unmounted root.");
+    }
+    renderLit(element, this._container);
     return element;
   }
 
   unmount() {
-    // Remove all elements rendered on the root.
-    this._elements.forEach((element) => element.remove());
     if (this._container) {
+      renderLit(nothing, this._container);
       Root._roots.delete(this._container);
     }
-    // Clear the references to the elements and container.
-    this._elements.length = 0;
     this._container = undefined;
   }
 }

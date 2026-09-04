@@ -21,7 +21,6 @@
  */
 
 import { defineConfig, type Plugin } from "vite";
-import { larkMvcPlugin } from "@lark.js/mvc/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { sentryPlugin } from "@lark.js/sentry/vite";
 import { fileURLToPath, URL } from "node:url";
@@ -54,7 +53,6 @@ export default defineConfig({
   base: isProd ? "/r/" : "/",
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
-    larkMvcPlugin(),
     tailwindcss(),
     sentryPlugin({
       dsn: "/sentry",

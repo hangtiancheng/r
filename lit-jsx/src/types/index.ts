@@ -38,4 +38,4 @@ export type ElementRegistry = { [key: HTMLElement["tagName"]]: StaticValue };
  * The top level HTMLElement to render all other components on.
  * User-created, handled in {@link @swifty.js/lit-jsx/core/createElement}
  */
-export type RootElement = Element | Document | DocumentFragment;
+export type RootElement = HTMLElement | DocumentFragment;

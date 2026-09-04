@@ -3,15 +3,19 @@ import type { StyleInfo } from "lit/directives/style-map.js";
 import customElementRegistry from "./utils/customElementRegistry";
 import createElement from "./core/createElement";
 
-type ElementProps<T extends Element> = Omit<
-  Partial<T>,
-  "children" | "style"
-> & {
-  children?: unknown;
-  ref?: RefOrCallback<T>;
-  style?: Readonly<StyleInfo>;
-  [property: string]: unknown;
+type EventProps = {
+  [EventName in keyof HTMLElementEventMap as `on${Capitalize<EventName>}`]?: (
+    event: HTMLElementEventMap[EventName],
+  ) => void;
 };
+
+type ElementProps<T extends Element> = Omit<Partial<T>, "children" | "style"> &
+  EventProps & {
+    children?: unknown;
+    ref?: RefOrCallback<T>;
+    style?: Readonly<StyleInfo>;
+    [property: string]: unknown;
+  };
 
 // eslint-disable-next-line @typescript-eslint/no-namespace -- TypeScript requires this namespace for automatic JSX runtime types.
 export namespace JSX {

@@ -22,7 +22,7 @@
 
 import "@/index.css";
 
-import { render } from "@lark.js/mvc";
+import { createRoot } from "@swifty.js/lit-jsx";
 import {
   enablePlugin,
   initLarkSentry,
@@ -32,6 +32,7 @@ import {
 import { PerformancePlugin, ScreenRecordPlugin } from "@lark.js/sentry/plugins";
 import { createAntiCopy } from "@swifty.js/anti-copy";
 
+import { resumeStore } from "@/i18n";
 import Resume from "@/pages/resume";
 
 // === Monitoring (before render, so first-render errors are captured) ===
@@ -73,4 +74,21 @@ createAntiCopy({
 
 // === Rendering ===
 
-render(<Resume />, document.getElementById("app")!);
+const app = document.getElementById("app");
+if (!app) {
+  throw new Error("Missing #app container.");
+}
+
+const root = createRoot(app);
+const renderResume = () => root.render(<Resume />);
+const onToggleLocale = () => resumeStore.getState().toggleLocale();
+
+app.addEventListener("toggle-locale", onToggleLocale);
+const unsubscribe = resumeStore.subscribe(renderResume);
+renderResume();
+
+window.addEventListener("beforeunload", () => {
+  unsubscribe();
+  app.removeEventListener("toggle-locale", onToggleLocale);
+  root.unmount();
+});

@@ -20,97 +20,31 @@
  * SOFTWARE.
  */
 
-import { useEffect, useRef } from "@lark.js/mvc";
-
 import { resumeStore } from "@/i18n";
 import "@/pages/wc";
-import type { ResumeHeaderElement } from "@/pages/wc/resume-header";
 
-/**
- * Root view. Composes the `<resume-header>` / `<section-edu>` /
- * `<section-list>` Lit custom elements and reads resume content from the
- * resume store. The tracked `getState()` reads subscribe this component to
- * `data`/`sections`, so toggling the language re-renders it; complex values
- * are pushed as JSON attributes that Lit's `@property` converters parse back
- * into typed properties. The `toggle-locale` custom event cannot be a lark
- * `on*` prop (event types derive via `slice(2).toLowerCase()`), so it is
- * wired via `ref` + `addEventListener`.
- */
+/** Root view rendered by the lit-jsx automatic JSX runtime. */
 export default function Resume() {
   const { data, sections } = resumeStore.getState();
-  const header = useRef<ResumeHeaderElement>();
-
-  useEffect(() => {
-    const el = header.current;
-    if (!el) return;
-    const onToggleLocale = () => resumeStore.getState().toggleLocale();
-    el.addEventListener("toggle-locale", onToggleLocale);
-    return () => el.removeEventListener("toggle-locale", onToggleLocale);
-  });
 
   return (
-    <div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
-      <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
+    <div className="min-h-dvh w-full bg-neutral-50 text-neutral-900">
+      <div className="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
         <resume-header
-          ref={header}
           name={data.name}
           about={data.about}
           tel={data.tel}
           email={data.email}
           github={data.github}
-          labels={JSON.stringify(data.labels)}
+          labels={data.labels}
         />
 
-        <section-edu header={data.headers.edu} edu={JSON.stringify(data.edu)} />
+        <section-edu header={data.headers.edu} edu={data.edu} />
 
-        {sections.map((section, idx) => (
-          <section-list
-            key={`section-${idx}`}
-            heading={section.title}
-            items={JSON.stringify(section.items)}
-          />
+        {sections.map((section) => (
+          <section-list heading={section.title} items={section.items} />
         ))}
       </div>
     </div>
   );
 }
-
-// import { resumeStore } from "@/i18n";
-// import ResumeHeader from "@/pages/comp/resume-header";
-// import SectionEdu from "@/pages/comp/section-edu";
-// import SectionList from "@/pages/comp/section-list";
-
-// /**
-//  * Root view. Composes the header / edu / list section child components and
-//  * reads resume content from the resume store. The tracked `getState()`
-//  * reads subscribe this component to `data`/`sections`, so toggling the
-//  * language re-renders it and pushes fresh props down to every child.
-//  */
-// export default function Resume() {
-//   const { data, sections } = resumeStore.getState();
-//   return (
-//     <div class="min-h-dvh w-full bg-neutral-50 text-neutral-900">
-//       <div class="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
-//         <ResumeHeader
-//           name={data.name}
-//           about={data.about}
-//           tel={data.tel}
-//           email={data.email}
-//           github={data.github}
-//           labels={data.labels}
-//           onToggleLocale={() => resumeStore.getState().toggleLocale()}
-//         />
-
-//         <SectionEdu header={data.headers.edu} edu={data.edu} />
-
-//         {sections.map((section, idx) => (
-//           <SectionList
-//             key={`section-${idx}`}
-//             title={section.title}
-//             items={section.items}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }

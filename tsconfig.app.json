@@ -6,7 +6,7 @@
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "jsx": "react-jsx",
-    "jsxImportSource": "@lark.js/mvc",
+    "jsxImportSource": "@swifty.js/lit-jsx",
     "lib": ["ESNext", "DOM"],
     "module": "esnext",
     "moduleDetection": "force",

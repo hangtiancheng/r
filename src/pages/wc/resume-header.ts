@@ -20,8 +20,15 @@
  * SOFTWARE.
  */
 
-import { LitElement, html, nothing, type TemplateResult } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import {
+  LitElement,
+  customElement,
+  html,
+  nothing,
+  property,
+  state,
+  type TemplateResult,
+} from "@swifty.js/lit-jsx";
 
 import type { Labels } from "@/schema/resume";
 import avatarUrl from "@/assets/avatar.jpeg";
