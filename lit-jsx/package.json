@@ -28,6 +28,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "lint": "pnpm --dir ../ lint",
     "format": "pnpm --dir ../ format",
@@ -46,7 +47,9 @@
     "lit": "latest"
   },
   "devDependencies": {
+    "jsdom": "^30.0.1",
     "tsup": "latest",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
   }
 }

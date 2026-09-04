@@ -1,8 +1,8 @@
 import { html, unsafeStatic } from "lit/static-html.js";
-import { getNativeEventName } from "../utils/eventUtils";
+import { getNativeEventName } from "./event-utils";
 import type { ElementRegistry } from "../types";
 
-export function getHTMLTag(type, registry: ElementRegistry) {
+export function getHTMLTag(type: string, registry: ElementRegistry) {
   if (window.customElements.get(type)) {
     // If this is the tag of a registered custom element, allow it to be used.
     // This is deemed unsafe because we're injecting html tags using dynamic user-generated content,
@@ -18,9 +18,13 @@ export function getHTMLTag(type, registry: ElementRegistry) {
 
 // Parse JSX-friendly props into their corresponding Lit expression.
 // https://lit.dev/docs/templates/expressions/
-export function parseProps(type, props, registry: ElementRegistry) {
-  const parsedProps = {};
-  let eventName;
+export function parseProps(
+  type: string,
+  props: Record<string, unknown>,
+  registry: ElementRegistry,
+) {
+  const parsedProps: Record<string, unknown> = {};
+  let eventName: string | undefined;
 
   for (const propName of Object.keys(props)) {
     // If the type is the element registry, we consider it a "primitive".
@@ -65,6 +69,10 @@ export function parseChildren(
   const parsedChildren: unknown[] = [];
   const childList = Array.isArray(children) ? children : [children];
   for (const child of childList) {
+    // React-style conditional rendering: `false`, `true`, `null` and
+    // `undefined` children render nothing (lit-html would render booleans
+    // as text, e.g. `{cond && <div/>}` producing the string "false").
+    if (typeof child === "boolean" || child == null) continue;
     const wrapper = registry[typeof child];
     parsedChildren.push(
       wrapper ? (html`<${wrapper}>${child}</${wrapper}>` as never) : child,

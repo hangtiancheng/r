@@ -1,7 +1,7 @@
 import type { RefOrCallback } from "lit/directives/ref.js";
 import type { StyleInfo } from "lit/directives/style-map.js";
-import customElementRegistry from "./utils/customElementRegistry";
-import createElement from "./core/createElement";
+import customElementRegistry from "./utils/custom-element-registry";
+import createElement from "./core/create-element";
 
 type EventProps = {
   [EventName in keyof HTMLElementEventMap as `on${Capitalize<EventName>}`]?: (
@@ -41,7 +41,8 @@ export namespace JSX {
 }
 
 // JSX runtime. This is what will translate JSX and create actual html elements.
-function jsx(type, config) {
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+function jsx(type: string | Function, config: Record<string, unknown>) {
   // If the type is a function, we're dealing with a nested user-defined component template (i.e <YourComponent />).
   // This can either be a custom element extending HTMLElement or a simple functional component.
   if (typeof type === "function") {
@@ -56,7 +57,8 @@ function jsx(type, config) {
       let tagName = customElementRegistry.get(type);
       if (!tagName) {
         // We have to construct the element to get its tag name.
-        const element = new type() as HTMLElement;
+        const CustomElement = type as new () => HTMLElement;
+        const element = new CustomElement();
         tagName = element.localName;
         // Cache the tag name so that we don't have to do this again.
         customElementRegistry.set(type, tagName);
@@ -74,7 +76,7 @@ function jsx(type, config) {
   return createElement(type, config);
 }
 
-function jsxFragment(fragment) {
+function jsxFragment(fragment: { children?: unknown }) {
   // When the fragment only has one child, children is the child object.
   return Array.isArray(fragment.children)
     ? fragment.children

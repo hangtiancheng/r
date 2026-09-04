@@ -51,7 +51,7 @@ import type {
   ClassDescriptor,
   Constructor,
 } from "../types";
-import customElementRegistry from "../utils/customElementRegistry";
+import customElementRegistry from "../utils/custom-element-registry";
 
 /*
  * IMPORTANT: For compatibility with tsickle and the Closure JS compiler, all
@@ -62,13 +62,7 @@ import customElementRegistry from "../utils/customElementRegistry";
 
 const legacyCustomElement = (tagName: string, clazz: CustomElementClass) => {
   customElements.define(tagName, clazz as CustomElementConstructor);
-  // Cast as any because TS doesn't recognize the return type as being a
-  // subtype of the decorated class when clazz is typed as
-  // `Constructor<HTMLElement>` for some reason.
-  // `Constructor<HTMLElement>` is helpful to make sure the decorator is
-  // applied to elements however.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return clazz as any;
+  return clazz;
 };
 
 const standardCustomElement = (
@@ -102,12 +96,19 @@ const standardCustomElement = (
  */
 export const customElement =
   (tagName: string) =>
-  (classOrDescriptor: CustomElementClass | ClassDescriptor) => {
+  <C extends CustomElementClass | ClassDescriptor>(classOrDescriptor: C): C => {
     // ***********************
     // This is the difference.
     customElementRegistry.set(classOrDescriptor, tagName);
     // ***********************
+    // The generic identity return keeps decorated classes' types intact:
+    // legacy decorators are applied to the class expression itself, and TS
+    // can't verify that `CustomElementClass` is assignable to the decorated
+    // class type, so the branch result is asserted here.
     return typeof classOrDescriptor === "function"
-      ? legacyCustomElement(tagName, classOrDescriptor)
-      : standardCustomElement(tagName, classOrDescriptor as ClassDescriptor);
+      ? (legacyCustomElement(tagName, classOrDescriptor) as C)
+      : (standardCustomElement(
+          tagName,
+          classOrDescriptor as ClassDescriptor,
+        ) as C);
   };

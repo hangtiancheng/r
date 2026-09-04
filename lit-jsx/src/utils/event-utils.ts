@@ -4,9 +4,14 @@ const eventsMap = {
   onAnimationCancel: "animationcancel",
   onAnimationEnd: "animationend",
   onAnimationIteration: "animationiteration",
+  onAnimationStart: "animationstart",
   onAuxClick: "auxclick",
+  onBeforeInput: "beforeinput",
   onBlur: "blur",
   onChange: "change",
+  onCompositionEnd: "compositionend",
+  onCompositionStart: "compositionstart",
+  onCompositionUpdate: "compositionupdate",
   onClick: "click",
   onClose: "close",
   onContextMenu: "contextmenu",
@@ -15,6 +20,7 @@ const eventsMap = {
   onFocus: "focus",
   onGotPointerCapture: "gotpointercapture",
   onInput: "input",
+  onInvalid: "invalid",
   onKeyDown: "keydown",
   onKeyPress: "keypress",
   onKeyUp: "keyup",
@@ -43,10 +49,14 @@ const eventsMap = {
   onSelectStart: "selectstart",
   onSubmit: "submit",
   onTouchCancel: "touchcancel",
+  onTouchEnd: "touchend",
   onTouchMove: "touchmove",
   onTouchStart: "touchstart",
   onTransitionCancel: "transitioncancel",
   onTransitionEnd: "transitionend",
+  onTransitionStart: "transitionstart",
+  onToggle: "toggle",
+  onWheel: "wheel",
   onDrag: "drag",
   onDragEnd: "dragend",
   onDragEnter: "dragenter",
@@ -58,6 +68,6 @@ const eventsMap = {
   onFocusOut: "focusout",
 };
 
-export function getNativeEventName(reactEventName) {
-  return eventsMap[reactEventName];
+export function getNativeEventName(reactEventName: string): string | undefined {
+  return eventsMap[reactEventName as keyof typeof eventsMap];
 }

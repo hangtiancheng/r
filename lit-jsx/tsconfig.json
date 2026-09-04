@@ -1,20 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "es6",
-    "moduleResolution": "bundler",
     "declaration": true,
-    "esModuleInterop": true,
-    "noImplicitAny": false,
-    "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    // https://lit.dev/docs/components/properties/#avoiding-issues-with-class-fields
-    "useDefineForClassFields": false,
-    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "skipLibCheck": true,
-    "ignoreDeprecations": "6.0"
+    "strict": true,
+    "target": "esnext",
+    // https://lit.dev/docs/components/properties/#avoiding-issues-with-class-fields
+    "useDefineForClassFields": false
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist"],
+  "include": ["./src", "./tests"]
 }

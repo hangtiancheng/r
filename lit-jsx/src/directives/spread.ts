@@ -41,6 +41,7 @@
 
 import { nothing } from "lit/html.js";
 import { directive, AsyncDirective } from "lit/async-directive.js";
+import type { AttributePart } from "lit";
 
 type EventListenerWithOptions = EventListenerOrEventListenerObject &
   Partial<AddEventListenerOptions>;
@@ -56,11 +57,13 @@ class SpreadDirective extends AsyncDirective {
   }
 
   // Each update, apply the props and remove/clean up stale ones.
-  update(part, [spreadData]: Parameters<this["render"]>) {
+  // This directive only ever sits in an attribute position, so the part is
+  // always an AttributePart.
+  update(part: AttributePart, [spreadData]: Parameters<this["render"]>) {
     if (this.element !== part.element) {
       this.element = part.element;
     }
-    this.host = part.options?.host || this.element;
+    this.host = (part.options?.host as EventTarget | undefined) || this.element;
     this.apply(spreadData);
     this.groom(spreadData);
     this.prevData = spreadData;
@@ -94,7 +97,7 @@ class SpreadDirective extends AsyncDirective {
           break;
         }
         case ".": // property
-          element[name] = value;
+          (element as unknown as Record<string, unknown>)[name] = value;
           break;
         case "?": // boolean attribute
           if (value) {
@@ -139,7 +142,8 @@ class SpreadDirective extends AsyncDirective {
             break;
           }
           case ".": // property
-            element[key.slice(1)] = undefined;
+            (element as unknown as Record<string, unknown>)[key.slice(1)] =
+              undefined;
             break;
           case "?": // boolean attribute
             element.removeAttribute(key.slice(1));

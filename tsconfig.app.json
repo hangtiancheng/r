@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
     "emitDecoratorMetadata": true,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
     "jsx": "react-jsx",

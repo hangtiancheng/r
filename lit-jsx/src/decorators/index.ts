@@ -8,4 +8,4 @@ export {
   queryAsync,
   state,
 } from "lit/decorators.js";
-export { customElement } from "./customElement";
+export { customElement } from "./custom-element";

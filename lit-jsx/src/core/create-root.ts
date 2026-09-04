@@ -31,10 +31,8 @@ export class Root {
 export function createRoot(container: RootElement) {
   const existingRoot = Root._roots.get(container);
   if (existingRoot) {
-    console.warn(`
-            Warning: You are calling createRoot() on a container that has already been passed to createRoot() before.
-            Call root.render() on the existing root instead if you want to update it.
-        `);
+    console.warn(`Warning: You are calling createRoot() on a container that has already been passed to createRoot() before.
+Call root.render() on the existing root instead if you want to update it.`);
     return existingRoot;
   }
   return new Root(container);
