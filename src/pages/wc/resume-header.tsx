@@ -108,7 +108,7 @@ export class ResumeHeaderElement extends LitElement {
                 {this.name}
               </h1>
               <button
-                className="rounded-md border border-neutral-200 px-2 py-0.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100"
+                className="hidden rounded-md border border-neutral-200 px-2 py-0.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100 print:hidden"
                 onClick={this.toggleLocale}
                 swifty-sentry-ev="toggle-locale"
                 swifty-sentry-msg="Toggle locale"

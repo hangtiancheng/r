@@ -25,5 +25,5 @@ export default defineConfig({
   clean: true,
   sourcemap: false,
   minify: true,
-  tsconfig: "tsconfig.json"
+  tsconfig: "tsconfig.json",
 });
