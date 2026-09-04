@@ -49,7 +49,7 @@ type ElementConfig = {
 export default function createElement(
   type: string,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  { children, ref: elementRef, style, _key, ...props }: ElementConfig = {},
+  { children, ref: elementRef, style, key, ...props }: ElementConfig = {},
 ) {
   const tagName = getHTMLTag(type, elementRegistry);
   return html`<${tagName} ${ref(elementRef)} ${spread(parseProps(type, props, elementRegistry))} style=${styleMap(style ?? EMPTY_STYLES)}>${parseChildren(children, elementRegistry)}</${tagName}>`;
