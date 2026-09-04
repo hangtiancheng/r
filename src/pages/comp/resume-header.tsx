@@ -56,7 +56,7 @@ export default function ResumeHeader(props: ResumeHeaderProps) {
     <>
       <div
         class="flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3"
-        swifty-sentry-el="resume-header"
+        swifty-sentry-view="resume-header"
       >
         <img
           src={avatarUrl}
