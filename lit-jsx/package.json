@@ -42,7 +42,7 @@
     "commander": "^15.0.0",
     "glob": "^13.0.6",
     "prettier": "^3.9.6",
-    "tsdown": "^0.23.0",
+    "tsup": "latest",
     "typescript": "^6.0.3"
   }
 }

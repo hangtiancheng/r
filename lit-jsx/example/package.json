@@ -1,7 +1,7 @@
 {
   "name": "lit-jsx-example",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "author": {
     "name": "swifty-js"
   },
