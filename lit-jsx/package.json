@@ -1,0 +1,48 @@
+{
+  "name": "@swifty.js/lit-jsx",
+  "version": "0.0.1",
+  "description": "A JSX runtime for Lit",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./jsx-runtime": {
+      "import": "./dist/jsx-runtime.js",
+      "require": "./dist/jsx-runtime.js",
+      "types": "./dist/jsx-runtime.d.ts"
+    }
+  },
+  "author": {
+    "name": "hangtiancheng <161043261@qq.com>"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hangtiancheng/r.git",
+    "directory": "lit-jsx"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "lit": "latest"
+  },
+  "devDependencies": {
+    "commander": "^15.0.0",
+    "glob": "^13.0.6",
+    "prettier": "^3.9.6",
+    "tsdown": "^0.23.0",
+    "typescript": "^6.0.3"
+  }
+}

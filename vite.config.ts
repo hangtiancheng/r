@@ -34,8 +34,14 @@ function fetchPriorityHints(): Plugin {
     enforce: "post",
     transformIndexHtml(html) {
       return html
-        .replace(/<link rel="stylesheet"/g, '<link rel="stylesheet" fetchpriority="high"')
-        .replace(/<script type="module" crossorigin/g, '<script type="module" crossorigin fetchpriority="high"');
+        .replace(
+          /<link rel="stylesheet"/g,
+          '<link rel="stylesheet" fetchpriority="high"',
+        )
+        .replace(
+          /<script type="module" crossorigin/g,
+          '<script type="module" crossorigin fetchpriority="high"',
+        );
     },
   };
 }

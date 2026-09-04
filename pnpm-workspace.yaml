@@ -1,2 +1,6 @@
 overrides:
   "@swifty.js/sentry": "latest"
+
+packages:
+  - lit-jsx
+  - lit-jsx/example
