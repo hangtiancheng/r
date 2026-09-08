@@ -56,7 +56,7 @@ export class SectionListElement extends LitElement {
 
   protected override render() {
     return (
-      <section className="rounded-lg border border-neutral-200 bg-white p-3">
+      <section className="rounded-lg border border-neutral-200 bg-white/50 p-3">
         <div className="text-sm font-semibold text-neutral-900">
           {this.heading}
         </div>

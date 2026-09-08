@@ -92,7 +92,7 @@ export class ResumeHeaderElement extends LitElement {
     return (
       <>
         <div
-          className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-white p-3"
+          className="flex items-center gap-3 rounded-lg border border-neutral-200 bg-white/50 p-3"
           swifty-sentry-view="resume-header"
         >
           <img
