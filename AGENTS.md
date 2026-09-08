@@ -37,9 +37,24 @@ swifty&larkIntents
   hotSwapByComponent, or "why doesn't my component re-render". Even if the
   user just says "add a page/view/component to the Lark app", consult this
   skill first."
+
 - id: "@swifty.js/anti-copy#swifty-anti-copy"
 - run: "npx @tanstack/intent load @swifty.js/anti-copy#swifty-anti-copy"
-- for: 'Authoritative reference for @swifty.js/anti-copy (packages/anti-copy, MIT), a framework-agnostic browser copy/print/DevTools protection SDK plus per-framework docs-site integrations, shipped as an ESM+CJS dual build with four subpath entries — . (core), ./vitepress, ./swifty-docs, ./lark-docs. Use this skill whenever the user reads, writes, debugs, reviews, or extends code under packages/anti-copy/src/**, imports from @swifty.js/anti-copy or any subpath, or works with copy-protection concepts. Trigger eagerly on these symbols and tokens — createAntiCopy, AntiCopyInstance, AntiCopyOptions, AntiCopyMode, DevtoolsOptions, ViolationEvent, ViolationType, DEFAULT_REPLACE_TEXT, isBrowser, applyAntiCopy (VitePress + lark-docs), the renderless AntiCopy React component (swifty-docs), AntiCopyHandle, SwiftyDocsAntiCopyProps, LarkDocsAntiCopyOptions, isPathExcluded, excludePaths, excludeSelectors, VITEPRESS_DEFAULT_EXCLUDES, SWIFTY_DOCS_DEFAULT_EXCLUDES, LARK_DOCS_DEFAULT_EXCLUDES, options mode/replaceText/copy/keyboard/contextmenu/selectStyle/print/devtools/onViolation/target, mode: "block"/"replace", devtools intervalMs/threshold/freeze/redirectUrl, violation types copy/cut/drag/selection/keyboard/contextmenu/print/devtools'
+- for: 'Authoritative reference for @swifty.js/anti-copy (packages/anti-copy, MIT),
+  a framework-agnostic browser copy/print/DevTools protection SDK
+  plus per-framework docs-site integrations, shipped as an ESM+CJS dual build
+  with four subpath entries — . (core), ./vitepress, ./swifty-docs, ./lark-docs.
+  Use this skill whenever the user reads, writes, debugs, reviews,
+  or extends code under packages/anti-copy/src/**, imports from @swifty.js/anti-copy
+  or any subpath, or works with copy-protection concepts.
+  Trigger eagerly on these symbols and tokens — createAntiCopy,
+  AntiCopyInstance, AntiCopyOptions, AntiCopyMode, DevtoolsOptions, ViolationEvent, ViolationType,
+  DEFAULT_REPLACE_TEXT, isBrowser, applyAntiCopy (VitePress + lark-docs),
+  the renderless AntiCopy React component (swifty-docs), AntiCopyHandle,
+  isPathExcluded, excludePaths, excludeSelectors,
+  options mode/replaceText/copy/keyboard/contextmenu/selectStyle/print/devtools/onViolation/target,
+  mode: "block"/"replace", devtools intervalMs/threshold/freeze/redirectUrl,
+  violation types copy/cut/drag/selection/keyboard/contextmenu/print/devtools'
 
 - id: "@swifty.js/lit-jsx#swifty-lit-jsx"
 - run: "npx @tanstack/intent load @swifty.js/lit-jsx#swifty-lit-jsx"
