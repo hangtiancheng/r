@@ -39,19 +39,19 @@
   "works": [
     {
       "title": "字节跳动",
-      "content": "2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; Perfetto 采集的性能数据使用 Kafka 转发到 Hive, ClickHouse, MySQL, Redis; 后端使用 Golang 和 Kitex, BFF 层清洗数据, 前端可视化渲染; BFF 层使用 Nest.js, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 使用性能优化 hooks, 编写虚拟滚动列表; 参与 Kitex (修正文档) 和 coze-js (RN Android 环境下 User-Agent 缺失导致 TypeError) 开源项目"
+      "content": "2025-06 ~ 2025-09, 产品研发与工程架构, TikTok Performance 团队; Perfetto 采集的性能数据使用 Kafka 转发到 Hive, ClickHouse, MySQL, Redis; 后端使用 Golang 和 Kitex, BFF 层清洗数据, 前端可视化渲染; BFF 层使用 Nest.js, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端; 使用性能优化 hooks, 编写虚拟滚动列表; 修复开源 coze-dev/coze-js: Android 环境 User-Agent 缺失导致 TypeError (pull/257)"
     },
     {
       "title": "腾讯",
-      "content": "2025-10 ~ 2026-2, IEG 互动娱乐事业群, 基础技术产品部; 负责腾讯 TcaplusDB NoSQL 数据库管理端; 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化渲染性能, 排查接口响应时间不稳定导致的数据竞争; 后端使用 generics-pool 同时池化多个场景: NoSQL 数据库连接使用 TCP 连接池; ffi-napi 调用 C++ .so 动态链接库加解密, 解析表文件使用进程池; 使用 valgrind 排查 ffi-napi 调用 .so 动态链接库时的内存泄漏, 利用 v8 隐藏类, 维护对象池以降低 Node 侧 GC 压力"
+      "content": "2025-10 ~ 2026-2, IEG 互动娱乐事业群, 基础技术产品部; 负责腾讯 TcaplusDB NoSQL 数据库管理端; 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化渲染性能, 排查接口响应时间不稳定导致的数据竞争; 后端使用通用池，同时池化多个场景: NoSQL 数据库连接使用 TCP 连接池; ffi-napi 调用 C++ .so 动态链接库加解密, 解析表文件使用进程池; 使用 valgrind 排查 ffi-napi 调用 .so 动态链接库时的内存泄漏, 利用 v8 隐藏类, 维护对象池以降低 Node 侧 GC 压力"
     },
     {
       "title": "字节跳动",
-      "content": "2026-02 ~ 2026-05, Data-架构部门; 搜索推荐算法平台、抖音 Debug 平台开发; 对于搜索推荐算法平台, 前端 Slardar 监控 SDK 上报 JSError 携带错误信息; 使用 rrweb 录制错误发生前的页面操作, 还原故障现场; 建设项目的 harness 工程 (AGENTS.md/skills/codegraph), 将错误信息提供给 LLM 自动修复、提交 mr、e2e 测试; 接入 SWR 前端性能优化; 对于抖音 Debug 平台, 建设 A2UI 能力, 迁移旧 python 服务到抖音 Debug 后端, 支持视频/直播间切片并调用 LLM 对切片生产聚类标签, 评估算法消费质量"
+      "content": "2026-02 ~ 2026-05, Data-架构部门; 搜索推荐算法平台、抖音 Debug 平台开发; 对于搜索推荐算法平台, 前端 Slardar 监控 SDK 上报 JSError 携带错误信息; 使用 rrweb 录制错误发生前的页面操作, 还原故障现场; 建设项目的 harness 工程, 将错误信息提供给 LLM 自动修复、提交 mr、e2e 测试; 接入 SWR 前端性能优化"
     },
     {
       "title": "阿里巴巴",
-      "content": "2026-05 ~ 至今, 阿里妈妈广告技术部; 负责阿里妈妈万相台 AI 小万开发, 负责条件任务和定时任务模块; Webpack/Vite 模块联邦接入, 参与 @module-federation/vite 开源项目, 修复 workspace 包通过 exports 同时提供 cjs/esm 入口时崩溃问题; 基于 Schema-Driven UI, 为 AI 小万建设 A2UI 能力; 支持上传创意图片, 通过 magic bytes 探测图片格式, 压缩图片, 转换为 base64 加入上下文窗口"
+      "content": "2026-05 ~ 至今, 阿里妈妈广告技术部; 负责阿里妈妈商家 Agent 开发, 负责条件任务和定时任务模块; Webpack/Vite 模块联邦接入, 为商家 Agent 建设 A2UI 能力, 修复开源 module-federation/vite workspace 包通过 exports 同时提供 cjs/esm 入口时崩溃问题 (pull/860); 修复开源 rstackjs/rspress-plugins: renderId 清洗、减少冗余 rerender (pull/36), AI 聊天全栈建站平台建设，通过边缘函数实现后端热部署"
     }
   ],
   "projects": [
