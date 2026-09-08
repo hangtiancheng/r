@@ -20,12 +20,13 @@
  * SOFTWARE.
  */
 
-import { resumeStore } from "@/i18n";
+import { dataAtom, resumeStore, sectionsAtom } from "@/i18n";
 import "@/pages/wc";
 
 /** Root view rendered by the lit-jsx automatic JSX runtime. */
 export default function Resume() {
-  const { data, sections } = resumeStore.getState();
+  const data = resumeStore.get(dataAtom);
+  const sections = resumeStore.get(sectionsAtom);
 
   return (
     <div className="min-h-dvh w-full bg-neutral-50 text-neutral-900">

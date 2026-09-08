@@ -25,7 +25,7 @@ import "@/index.css";
 import { createRoot } from "@swifty.js/lit-jsx";
 import { createAntiCopy } from "@swifty.js/anti-copy";
 
-import { resumeStore } from "@/i18n";
+import { dataAtom, resumeStore, toggleLocaleAtom } from "@/i18n";
 import Resume from "@/pages/resume";
 
 // === Copy protection ===
@@ -49,10 +49,10 @@ if (!app) {
 
 const root = createRoot(app);
 const renderResume = () => root.render(<Resume />);
-const onToggleLocale = () => resumeStore.getState().toggleLocale();
+const onToggleLocale = () => resumeStore.set(toggleLocaleAtom);
 
 app.addEventListener("toggle-locale", onToggleLocale);
-const unsubscribe = resumeStore.subscribe(renderResume);
+const unsubscribe = resumeStore.sub(dataAtom, renderResume);
 renderResume();
 
 window.addEventListener("beforeunload", () => {

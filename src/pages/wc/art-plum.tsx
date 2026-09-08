@@ -134,9 +134,11 @@ function startPlumArt(canvas: HTMLCanvasElement): () => void {
   prevSteps = [];
   steps = [
     () => step(randomMiddle() * window.innerWidth, -5, R90),
-    () => step(randomMiddle() * window.innerWidth, window.innerHeight + 5, -R90),
+    () =>
+      step(randomMiddle() * window.innerWidth, window.innerHeight + 5, -R90),
     () => step(-5, randomMiddle() * window.innerHeight, 0),
-    () => step(window.innerWidth + 5, randomMiddle() * window.innerHeight, R180),
+    () =>
+      step(window.innerWidth + 5, randomMiddle() * window.innerHeight, R180),
   ];
   if (window.innerWidth < 500) steps = steps.slice(0, 2);
   running = true;

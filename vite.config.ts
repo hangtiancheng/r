@@ -22,7 +22,6 @@
 
 import { defineConfig, type Plugin } from "vite";
 import tailwindcss from "@tailwindcss/vite";
-import { sentryPlugin } from "@lark.js/sentry/vite";
 import { fileURLToPath, URL } from "node:url";
 import { VitePWA } from "vite-plugin-pwa";
 import { resolve } from "node:path";
@@ -54,9 +53,6 @@ export default defineConfig({
   publicDir: resolve(PKG_DIR, "public"),
   plugins: [
     tailwindcss(),
-    sentryPlugin({
-      dsn: "/sentry",
-    }),
     fetchPriorityHints(),
     VitePWA({
       registerType: "autoUpdate",

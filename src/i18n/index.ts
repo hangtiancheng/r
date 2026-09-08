@@ -20,7 +20,7 @@
  * SOFTWARE.
  */
 
-import { createStore, computed } from "@lark.js/mvc";
+import { atom, createStore } from "jotai/vanilla";
 import enData from "@/i18n/en.json";
 import zhData from "@/i18n/zh.json";
 import type { Resume, TitledItem } from "@/schema/resume";
@@ -44,25 +44,26 @@ function buildSections(data: Resume): ResumeSection[] {
   ];
 }
 
-interface ResumeState {
-  lang: Lang;
-  data: Resume;
-  sections: ResumeSection[];
-  toggleLocale: () => void;
-}
+const langAtom = atom<Lang>("en");
+
+/** Resume data for the active language. */
+export const dataAtom = atom<Resume>((get) =>
+  get(langAtom) === "en" ? en : zh,
+);
+
+/** Locale-agnostic section list derived from the resume data. */
+export const sectionsAtom = atom<ResumeSection[]>((get) =>
+  buildSections(get(dataAtom)),
+);
+
+/** Flips the active language between English and Chinese. */
+export const toggleLocaleAtom = atom(null, (get, set) => {
+  set(langAtom, get(langAtom) === "en" ? "zh" : "en");
+});
 
 /**
- * Store holding the current resume data. Views whose templates read
- * `resumeStore.getState()` re-render automatically when the language
- * toggles (tracked per-key signal reads) — no prop drilling, no digest.
+ * Vanilla (non-React) jotai store. This app has no React — views read
+ * atoms imperatively via `resumeStore.get(...)` and re-render on
+ * `resumeStore.sub(...)` notifications.
  */
-export const resumeStore = createStore<ResumeState>((set, get) => ({
-  lang: "en",
-  data: en,
-  // Dependencies are tracked automatically — get().data is a signal read.
-  sections: computed(() => buildSections(get().data)),
-  toggleLocale: () => {
-    const next: Lang = get().lang === "en" ? "zh" : "en";
-    set({ lang: next, data: next === "en" ? en : zh });
-  },
-}));
+export const resumeStore = createStore();
