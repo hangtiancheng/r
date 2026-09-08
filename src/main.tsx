@@ -23,34 +23,10 @@
 import "@/index.css";
 
 import { createRoot } from "@swifty.js/lit-jsx";
-import {
-  enablePlugin,
-  initLarkSentry,
-  isInitialized,
-  traceCustomEvent,
-} from "@lark.js/sentry";
-import { PerformancePlugin, ScreenRecordPlugin } from "@lark.js/sentry/plugins";
 import { createAntiCopy } from "@swifty.js/anti-copy";
 
 import { resumeStore } from "@/i18n";
 import Resume from "@/pages/resume";
-
-// === Monitoring (before render, so first-render errors are captured) ===
-
-initLarkSentry({
-  dsn: "/sentry",
-  trackRoutes: false, // single-page resume — no router
-  debug: import.meta.env.DEV,
-  beforePushEventList(eventList) {
-    if (!import.meta.env.DEV) {
-      console.log("@lark.js/sentry App:", eventList);
-      return false; // no backend in production — log and drop
-    }
-    return eventList; // dev — send to the vite mock endpoint
-  },
-});
-
-enablePlugin(new ScreenRecordPlugin(), new PerformancePlugin());
 
 // === Copy protection ===
 
@@ -62,14 +38,6 @@ createAntiCopy({
   // Unauthorized reproduction or distribution of this content is prohibited without prior written permission.`,
   devtools: true,
   copy: false,
-  onViolation: (e) => {
-    if (!isInitialized()) return;
-    traceCustomEvent({
-      name: "AntiCopyViolation",
-      message: e.key ? `${e.type}:${e.key}` : e.type,
-      extra: { violation: e.type, key: e.key ?? "", url: location.href },
-    });
-  },
 }).enable();
 
 // === Rendering ===

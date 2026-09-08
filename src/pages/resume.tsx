@@ -29,7 +29,9 @@ export default function Resume() {
 
   return (
     <div className="min-h-dvh w-full bg-neutral-50 text-neutral-900">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-1.5">
+      <art-plum />
+      {/* `relative` stacks the content above the fixed <art-plum> canvas. */}
+      <div className="relative mx-auto flex w-full max-w-4xl flex-col gap-1.5">
         <resume-header
           name={data.name}
           about={data.about}

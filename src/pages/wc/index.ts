@@ -22,8 +22,10 @@
 
 /**
  * Lit web-component ports of `@/pages/comp`. Importing this module
- * registers `<resume-header>`, `<section-edu>` and `<section-list>`.
+ * registers `<resume-header>`, `<section-edu>`, `<section-list>` and
+ * `<art-plum>`.
  */
 export { ResumeHeaderElement, type ToggleLocaleEvent } from "./resume-header";
 export { SectionEduElement } from "./section-edu";
 export { SectionListElement } from "./section-list";
+export { ArtPlumElement } from "./art-plum";
