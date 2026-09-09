@@ -58,7 +58,7 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build @swifty.js/lit-jsx
         run: pnpm --filter @swifty.js/lit-jsx build
-      - name: Build with @lark.js/mvc, @swifty.js/sentry and Vite
+      - name: Build lit
         run: pnpm build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
