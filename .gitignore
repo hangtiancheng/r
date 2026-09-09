@@ -196,8 +196,6 @@ tsconfig.tsbuildinfo
 **/tsconfig.tsbuildinfo
 
 .swifty/
-.swifty-docs/
-.lark-docs/
 
 .playwright-cli/
 **/.playwright-cli/
