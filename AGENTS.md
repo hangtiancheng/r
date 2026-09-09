@@ -1,8 +1,8 @@
 <!-- intent-skills:start -->
 
-Swifty&Lark Intents - before editing files, run the matching guidance command.
+Swifty Intents - before editing files, run the matching guidance command.
 
-swifty&larkIntents
+swiftyIntents
 
 - id: "@swifty.js/anti-copy#swifty-anti-copy"
 - run: "npx @tanstack/intent load @swifty.js/anti-copy#swifty-anti-copy"
