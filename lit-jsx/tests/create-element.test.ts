@@ -175,3 +175,43 @@ describe("createElement prop semantics", () => {
     expect(container.querySelector("div")).toBeTruthy();
   });
 });
+
+describe("createElement content-restricted tags", () => {
+  it("renders textarea without a child expression (no lit warning)", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      render(jsx("textarea", { value: "abc" }) as never, container);
+      expect(
+        (container.querySelector("textarea") as HTMLTextAreaElement).value,
+      ).toBe("abc");
+      expect(warn).not.toHaveBeenCalledWith(
+        expect.stringContaining("textarea"),
+      );
+    } finally {
+      warn.mockRestore();
+    }
+  });
+
+  it("drops textarea children instead of warning", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      render(
+        jsx("textarea", { children: "unsupported", value: "v" }) as never,
+        container,
+      );
+      expect(
+        (container.querySelector("textarea") as HTMLTextAreaElement).value,
+      ).toBe("v");
+      expect(warn).not.toHaveBeenCalledWith(
+        expect.stringContaining("textarea"),
+      );
+    } finally {
+      warn.mockRestore();
+    }
+  });
+
+  it("renders template without a child expression (no throw)", () => {
+    expect(() => render(jsx("template", {}) as never, container)).not.toThrow();
+    expect(container.querySelector("template")).toBeTruthy();
+  });
+});

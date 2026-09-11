@@ -35,6 +35,11 @@ resetElements();
 // Avoid creating a new object each time the user doesn't provide a style prop.
 const EMPTY_STYLES = {};
 
+// lit-html cannot bind expressions inside textarea/template content (dev-mode
+// warning for textarea, hard throw for template). JSX children of these tags
+// are dropped; textarea content is controlled via the `value` prop instead.
+const NO_CHILD_EXPRESSION_TAGS = new Set(["textarea", "template"]);
+
 type ElementConfig = {
   children?: unknown;
   ref?: Parameters<typeof ref>[0];
@@ -52,5 +57,8 @@ export default function createElement(
   { children, ref: elementRef, style, key, ...props }: ElementConfig = {},
 ) {
   const tagName = getHTMLTag(type, elementRegistry);
+  if (NO_CHILD_EXPRESSION_TAGS.has(tagName._$litStatic$)) {
+    return html`<${tagName} ${ref(elementRef)} ${spread(parseProps(type, props, elementRegistry))} style=${styleMap(style ?? EMPTY_STYLES)}></${tagName}>`;
+  }
   return html`<${tagName} ${ref(elementRef)} ${spread(parseProps(type, props, elementRegistry))} style=${styleMap(style ?? EMPTY_STYLES)}>${parseChildren(children, elementRegistry)}</${tagName}>`;
 }
