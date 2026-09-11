@@ -34,9 +34,7 @@ class SpreadDirective extends AsyncDirective {
     const { prevData, element } = this;
     for (const key in data) {
       const value = data[key];
-      if (value === prevData[key]) {
-        continue;
-      }
+      if (value == null || value === prevData[key]) continue;
       const name = key.slice(1);
       switch (key[0]) {
         case "@": {
@@ -66,11 +64,7 @@ class SpreadDirective extends AsyncDirective {
           }
           break;
         default: // standard attribute
-          if (value != null) {
-            element.setAttribute(key, String(value));
-          } else {
-            element.removeAttribute(key);
-          }
+          element.setAttribute(key, String(value));
           break;
       }
     }
@@ -81,44 +75,27 @@ class SpreadDirective extends AsyncDirective {
     const { prevData, element } = this;
     if (!prevData) return;
     for (const key in prevData) {
-      // ***********************
-      // Change
+      const value = prevData[key];
       const removed =
-        !data ||
-        !(key in data) ||
-        data[key] === undefined ||
-        data[key] === null;
-      // ***********************
-      if (removed) {
-        switch (key[0]) {
-          case "@": {
-            const value = prevData[key];
-            element.removeEventListener(
-              key.slice(1),
-              this,
-              value as EventListenerWithOptions,
-            );
-            break;
-          }
-          case ".": // property
-            (element as unknown as Record<string, unknown>)[key.slice(1)] =
-              undefined;
-            break;
-          case "?": // boolean attribute
-            element.removeAttribute(key.slice(1));
-            break;
-          default: // standard attribute
-            element.removeAttribute(key);
-            break;
-        }
+        value != null && (!data || !(key in data) || data[key] == null);
+      if (!removed) continue;
+      switch (key[0]) {
+        case "@":
+          element.removeEventListener(
+            key.slice(1),
+            this,
+            value as EventListenerWithOptions,
+          );
+          break;
+        case ".":
+          break;
+        case "?":
+          element.removeAttribute(key.slice(1));
+          break;
+        default:
+          element.removeAttribute(key);
+          break;
       }
-      // ***********************
-      // Change
-      if (key in data) {
-        // Stop tracking the key so that we don't keep handling its removal.
-        delete this.prevData[key];
-      }
-      // ***********************
     }
   }
 
@@ -134,9 +111,8 @@ class SpreadDirective extends AsyncDirective {
   disconnected() {
     const { prevData, element } = this;
     for (const key in prevData) {
-      if (key[0] !== "@") continue;
-      // event listener
       const value = prevData[key];
+      if (key[0] !== "@" || value == null) continue;
       element.removeEventListener(
         key.slice(1),
         this,
@@ -148,9 +124,8 @@ class SpreadDirective extends AsyncDirective {
   reconnected() {
     const { prevData, element } = this;
     for (const key in prevData) {
-      if (key[0] !== "@") continue;
-      // event listener
       const value = prevData[key];
+      if (key[0] !== "@" || value == null) continue;
       element.addEventListener(
         key.slice(1),
         this,

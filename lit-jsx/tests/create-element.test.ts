@@ -115,6 +115,28 @@ describe("createElement prop semantics", () => {
     );
   });
 
+  it("omits nullish primitive props and event handlers", () => {
+    const defaultMaxLength = document.createElement("input").maxLength;
+
+    render(
+      jsx("input", { maxLength: undefined, onInput: undefined }) as never,
+      container,
+    );
+    const input = container.querySelector("input")!;
+    expect(input.maxLength).toBe(defaultMaxLength);
+    expect(input.hasAttribute("maxlength")).toBe(false);
+    expect(() => input.dispatchEvent(new Event("input"))).not.toThrow();
+
+    render(
+      jsx("input", { maxLength: null, onInput: null }) as never,
+      container,
+    );
+    expect(container.querySelector("input")).toBe(input);
+    expect(input.maxLength).toBe(defaultMaxLength);
+    expect(input.hasAttribute("maxlength")).toBe(false);
+    expect(() => input.dispatchEvent(new Event("input"))).not.toThrow();
+  });
+
   it("applies style objects via styleMap", () => {
     render(
       jsx("div", {

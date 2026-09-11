@@ -35,6 +35,13 @@ describe("element registry overrides", () => {
     expect(container.querySelector("section")).toBeTruthy();
   });
 
+  it("renders entries from the generated HTML tag registry", () => {
+    for (const tag of ["article", "input", "details", "video"]) {
+      render(jsx(tag, {}) as never, container);
+      expect(container.firstElementChild?.localName).toBe(tag);
+    }
+  });
+
   it("resetElements restores the default mapping", () => {
     assignElements({ button: "my-button" });
     resetElements();

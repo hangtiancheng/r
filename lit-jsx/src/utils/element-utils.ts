@@ -27,34 +27,36 @@ export function parseProps(
   let eventName: string | undefined;
 
   for (const propName of Object.keys(props)) {
+    const value = props[propName];
     // If the type is the element registry, we consider it a "primitive".
     // In DOM, these will be your `button`s, `div`s, etc.
     // in Canvas, these would be `twixt-button`, `twixt-div`, etc.
     if (registry[type]) {
+      if (value == null) continue;
       // We don't want to automatically attach events to the top-level node of non-primitives (i.e user-defined custom elements).
       // Meaning, <MyCustomElement onClick={...} /> should _not_ automatically
       // get a click handler on its top node - it should be up to <MyCustomElement />'s implementation
       // to decide how (or if) it should handle a received prop that _happens_ to be named "onClick".
       eventName = getNativeEventName(propName);
       if (eventName) {
-        parsedProps[`@${eventName}`] = props[propName];
+        parsedProps[`@${eventName}`] = value;
         continue;
       }
       if (propName === "class") {
-        parsedProps[".className"] = props[propName];
+        parsedProps[".className"] = value;
         continue;
       }
       if (propName.includes("-")) {
-        parsedProps[propName] = props[propName];
+        parsedProps[propName] = value;
         continue;
       }
-      if (typeof props[propName] === "boolean") {
+      if (typeof value === "boolean") {
         // Likewise, don't set attributes on non-primitives, just forward the props.
-        parsedProps[`?${propName}`] = props[propName];
+        parsedProps[`?${propName}`] = value;
       }
     }
     // Forward the prop to the element.
-    parsedProps[`.${propName}`] = props[propName];
+    parsedProps[`.${propName}`] = value;
   }
 
   return parsedProps;
