@@ -69,7 +69,7 @@
   "projects": [
     {
       "title": "CLI Coding Agent",
-      "content": "Repository: https://github.com/hangtiancheng/swifty-cli; a lightweight CLI Coding Agent; 5-layer architecture supporting multiple LLM providers; AI-friendly toolset; based on the ReAct paradigm, driving the LLM to autonomously complete coding tasks through alternating reasoning and action in an Agent Loop; System Prompt assembly; 5-layer permission system; MCP support; secure, high-quality context compression; instruction files, session persistence, and LLM automatic memory extraction with periodic memory consolidation; support for Slash Commands, Skills, Hooks; implemented worktree file isolation, predefined/fork Subagents, and multi-teammate Agent Teams; added support for image content blocks"
+      "content": "Repository: https://github.com/hangtiancheng/swifty-code; a lightweight CLI Coding Agent; 5-layer architecture supporting multiple LLM providers; AI-friendly toolset; based on the ReAct paradigm, driving the LLM to autonomously complete coding tasks through alternating reasoning and action in an Agent Loop; System Prompt assembly; 5-layer permission system; MCP support; secure, high-quality context compression; instruction files, session persistence, and LLM automatic memory extraction with periodic memory consolidation; support for Slash Commands, Skills, Hooks; implemented worktree file isolation, predefined/fork Subagents, and multi-teammate Agent Teams; added support for image content blocks"
     },
     {
       "title": "Frontend Monitoring & Event Tracking",
