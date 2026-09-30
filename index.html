@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#f5f5f5"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#121212"
+    />
+    <meta
+      name="description"
+      content="hangtiancheng — frontend/full-stack engineer"
+    />
+    <script>
+      // Sync the `dark` class on <html> with the OS color scheme, mirroring
+      // the h site's class-based dark mode (Tailwind variant + art-plum both
+      // key off this class).
+      (() => {
+        const mq = matchMedia("(prefers-color-scheme: dark)");
+        const apply = () =>
+          document.documentElement.classList.toggle("dark", mq.matches);
+        mq.addEventListener("change", apply);
+        apply();
+      })();
+    </script>
+    <link
+      rel="icon"
+      href="/favicon.svg"
+      type="image/svg+xml"
+      fetchpriority="low"
+    />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" fetchpriority="low" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-icon-180x180.png"
+      fetchpriority="low"
+    />
+    <title>resume</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.tsx" fetchpriority="high"></script>
+  </body>
+</html>

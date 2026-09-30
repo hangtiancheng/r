@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: the `dark` class on <html> is synced with the OS
+   color scheme by the inline script in index.html (mirrors the h site). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    Geist Mono, Maple Mono, Menlo, Cascadia Code, Sarasa Gothic SC, PingFang SC,
+    Microsoft YaHei;
+
+  --font-mono:
+    Geist Mono, Maple Mono, Menlo, Cascadia Code, Sarasa Gothic SC, PingFang SC,
+    Microsoft YaHei;
+}
