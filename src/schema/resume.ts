@@ -1,4 +1,6 @@
-export type Lang = "en" | "zh";
+// Defined in the client/node-safe i18n shared module (also used by the
+// llms-txt plugin in vite.config.ts) and re-exported here for consumers.
+export type { Lang } from "@/i18n/shared";
 
 export interface Headers {
   edu: string;

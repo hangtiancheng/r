@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    /* vite.config.ts imports src/i18n/shared.ts with its real extension */
+    "allowImportingTsExtensions": true,
     "erasableSyntaxOnly": true,
     "lib": ["ES2023"],
     /* Bundler mode */
@@ -19,5 +21,5 @@
     "types": ["node"],
     "verbatimModuleSyntax": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "./src/i18n/shared.ts"]
 }

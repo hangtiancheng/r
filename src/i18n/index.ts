@@ -1,7 +1,9 @@
 import { atom, createStore } from "jotai/vanilla";
+import { atomWithStorage } from "jotai/vanilla/utils";
 
 import { parseResume } from "@/schema/parse";
 import type { Lang, Resume, TitledItem } from "@/schema/resume";
+import { LANG_STORAGE_KEY } from "@/i18n/shared";
 
 import resumeEnMd from "@/i18n/resume.md?raw";
 import resumeZhMd from "@/i18n/resume_zh.md?raw";
@@ -30,7 +32,27 @@ function buildSections(data: Resume): ResumeSection[] {
   ];
 }
 
-const langAtom = atom<Lang>("en");
+// Persisted in localStorage and mirrored into a cookie so the llms.txt
+// endpoints can respond in the language the app currently shows — the Vite
+// dev/preview middleware only sees request headers, not localStorage.
+const langStorage = {
+  getItem(key: string, initialValue: Lang): Lang {
+    const value = localStorage.getItem(key);
+    return value === "zh" || value === "en" ? value : initialValue;
+  },
+  setItem(key: string, value: Lang): void {
+    localStorage.setItem(key, value);
+    document.cookie = `${key}=${value};path=${import.meta.env.BASE_URL};max-age=31536000;SameSite=Lax`;
+  },
+  removeItem(key: string): void {
+    localStorage.removeItem(key);
+    document.cookie = `${key}=;path=${import.meta.env.BASE_URL};max-age=0`;
+  },
+};
+
+const langAtom = atomWithStorage<Lang>(LANG_STORAGE_KEY, "en", langStorage, {
+  getOnInit: true,
+});
 
 /** Resume data for the active language. */
 export const dataAtom = atom<Resume>((get) =>
@@ -53,3 +75,11 @@ export const toggleLocaleAtom = atom(null, (get, set) => {
  * `resumeStore.sub(...)` notifications.
  */
 export const resumeStore = createStore();
+
+// atomWithStorage only writes on change, so seed it on the first visit —
+// otherwise the `resume-lang` cookie stays unset until the user toggles and
+// the llms.txt endpoints fall back to their default instead of mirroring the
+// language the app actually shows.
+if (localStorage.getItem(LANG_STORAGE_KEY) === null) {
+  resumeStore.set(langAtom, resumeStore.get(langAtom));
+}
