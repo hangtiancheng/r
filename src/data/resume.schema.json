@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resume.schema.json",
+  "title": "ResumeDoc",
+  "description": "简历文档结构。对应 src/lib/types.ts 的 ResumeDoc：既描述 IndexedDB 中持久化的单文档，也描述「下载简历 JSON / 导入简历 JSON」使用的备份文件格式（src/data/default-resume.json 即一份实例）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "base",
+    "edu",
+    "works",
+    "projects",
+    "honors",
+    "skills",
+    "hiddenModules",
+    "updatedAt"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "可选。指向本 schema 的引用，仅供编辑器提示；导入时会被忽略。"
+    },
+    "id": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "单文档存储中的固定文档 id。"
+    },
+    "title": {
+      "type": "string",
+      "description": "简历标题，同时用作导出文件名。"
+    },
+    "base": {
+      "$ref": "#/$defs/BaseInfo"
+    },
+    "edu": {
+      "type": "array",
+      "description": "教育经历条目。",
+      "items": { "$ref": "#/$defs/EduItem" }
+    },
+    "works": {
+      "type": "array",
+      "description": "工作经历条目。",
+      "items": { "$ref": "#/$defs/WorkItem" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "项目经历条目。",
+      "items": { "$ref": "#/$defs/ProjectItem" }
+    },
+    "honors": {
+      "type": "array",
+      "description": "荣誉奖项条目。",
+      "items": { "$ref": "#/$defs/HonorItem" }
+    },
+    "skills": {
+      "type": "string",
+      "description": "个人技能模块的 Markdown 正文。"
+    },
+    "hiddenModules": {
+      "type": "array",
+      "description": "在纸面上隐藏的模块。隐藏不删除数据，只影响渲染。",
+      "items": { "$ref": "#/$defs/ModuleKind" }
+    },
+    "updatedAt": {
+      "type": "number",
+      "description": "最近一次保存的时间戳（Date.now() 毫秒）。"
+    }
+  },
+  "$defs": {
+    "ModuleKind": {
+      "type": "string",
+      "description": "简历模块标识。",
+      "enum": ["base", "edu", "work", "project", "honor", "skill"]
+    },
+    "Gender": {
+      "type": "string",
+      "enum": ["男", "女"]
+    },
+    "Month": {
+      "type": "string",
+      "description": "月份，\"YYYY-MM\"；空字符串表示未填写。",
+      "pattern": "^(\\d{4}-(0[1-9]|1[0-2]))?$"
+    },
+    "BaseInfo": {
+      "type": "object",
+      "description": "个人信息模块。",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "gender",
+        "birth",
+        "showAge",
+        "freshGraduate",
+        "workStart",
+        "tel",
+        "email",
+        "hometown",
+        "political",
+        "location",
+        "degree"
+      ],
+      "properties": {
+        "name": { "type": "string", "description": "姓名。" },
+        "gender": { "$ref": "#/$defs/Gender" },
+        "birth": {
+          "$ref": "#/$defs/Month",
+          "description": "出生月份；showAge 开启时据此渲染年龄。"
+        },
+        "showAge": { "type": "boolean", "description": "是否展示年龄。" },
+        "freshGraduate": {
+          "type": "boolean",
+          "description": "应届毕业生标签。"
+        },
+        "workStart": {
+          "$ref": "#/$defs/Month",
+          "description": "首次参加工作时间（可选）。"
+        },
+        "tel": { "type": "string", "description": "手机号。" },
+        "email": { "type": "string", "description": "邮箱。" },
+        "hometown": { "type": "string", "description": "籍贯。" },
+        "political": { "type": "string", "description": "政治面貌。" },
+        "location": { "type": "string", "description": "所在地。" },
+        "degree": { "type": "string", "description": "最高学历。" }
+      }
+    },
+    "EduItem": {
+      "type": "object",
+      "description": "一条教育经历。",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "start",
+        "end",
+        "ongoing",
+        "school",
+        "major",
+        "degree",
+        "gpa",
+        "rank"
+      ],
+      "properties": {
+        "id": { "type": "string", "description": "条目唯一 id。" },
+        "start": { "$ref": "#/$defs/Month" },
+        "end": { "$ref": "#/$defs/Month" },
+        "ongoing": {
+          "type": "boolean",
+          "description": "是否在读（渲染为「至今」）。"
+        },
+        "school": { "type": "string", "description": "学校。" },
+        "major": { "type": "string", "description": "专业。" },
+        "degree": { "type": "string", "description": "学历/学位。" },
+        "gpa": { "type": "string", "description": "GPA（可选）。" },
+        "rank": { "type": "string", "description": "排名（可选）。" },
+        "hidden": {
+          "type": "boolean",
+          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+        }
+      }
+    },
+    "WorkDetail": {
+      "type": "object",
+      "description": "工作经历下的一段工作内容。",
+      "additionalProperties": false,
+      "required": ["id", "title", "content"],
+      "properties": {
+        "id": { "type": "string", "description": "条目唯一 id。" },
+        "title": { "type": "string", "description": "小标题。" },
+        "content": {
+          "type": "string",
+          "description": "Markdown 正文（如项目符号列表）。"
+        }
+      }
+    },
+    "WorkItem": {
+      "type": "object",
+      "description": "一条工作经历。",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "start",
+        "end",
+        "ongoing",
+        "company",
+        "department",
+        "position",
+        "details"
+      ],
+      "properties": {
+        "id": { "type": "string", "description": "条目唯一 id。" },
+        "start": { "$ref": "#/$defs/Month" },
+        "end": { "$ref": "#/$defs/Month" },
+        "ongoing": {
+          "type": "boolean",
+          "description": "是否在职（渲染为「至今」）。"
+        },
+        "company": { "type": "string", "description": "公司。" },
+        "department": { "type": "string", "description": "部门。" },
+        "position": { "type": "string", "description": "职位。" },
+        "details": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/WorkDetail" }
+        },
+        "hidden": {
+          "type": "boolean",
+          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+        }
+      }
+    },
+    "ProjectItem": {
+      "type": "object",
+      "description": "一条项目经历。",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "start",
+        "end",
+        "ongoing",
+        "name",
+        "duty",
+        "repo",
+        "content"
+      ],
+      "properties": {
+        "id": { "type": "string", "description": "条目唯一 id。" },
+        "start": { "$ref": "#/$defs/Month" },
+        "end": { "$ref": "#/$defs/Month" },
+        "ongoing": {
+          "type": "boolean",
+          "description": "是否进行中（渲染为「至今」）。"
+        },
+        "name": { "type": "string", "description": "项目名称。" },
+        "duty": { "type": "string", "description": "担任角色。" },
+        "repo": { "type": "string", "description": "仓库/链接（可选）。" },
+        "content": {
+          "type": "string",
+          "description": "Markdown 正文（如项目符号列表）。"
+        },
+        "hidden": {
+          "type": "boolean",
+          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+        }
+      }
+    },
+    "HonorItem": {
+      "type": "object",
+      "description": "一条荣誉奖项。",
+      "additionalProperties": false,
+      "required": ["id", "name", "issuer", "date"],
+      "properties": {
+        "id": { "type": "string", "description": "条目唯一 id。" },
+        "name": { "type": "string", "description": "奖项/荣誉名称。" },
+        "issuer": { "type": "string", "description": "颁发机构。" },
+        "date": { "$ref": "#/$defs/Month", "description": "获奖时间。" },
+        "hidden": {
+          "type": "boolean",
+          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+        }
+      }
+    }
+  }
+}

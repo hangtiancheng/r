@@ -1,0 +1,281 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Class-based dark mode: the `dark` class on <html> is synced with the OS
+   color scheme by the inline script in index.html. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans:
+    -apple-system, "system-ui", system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #fafbfc;
+  --foreground: #13181d;
+  --card: #ffffff;
+  --card-foreground: #13181d;
+  --popover: #ffffff;
+  --popover-foreground: #13181d;
+  --primary: #0f7af5;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2f6;
+  --secondary-foreground: #13181d;
+  --muted: #f2f4f6;
+  --muted-foreground: #71808f;
+  --accent: #eaf3fe;
+  --accent-foreground: #0f498b;
+  --destructive: #d93025;
+  --border: rgba(21, 46, 74, 0.12);
+  --input: rgba(21, 46, 74, 0.16);
+  --ring: rgba(15, 122, 245, 0.5);
+  --chart-1: #0f7af5;
+  --chart-2: #0f498b;
+  --chart-3: #a8cffb;
+  --chart-4: #71808f;
+  --chart-5: #13181d;
+  --radius: 0.5rem;
+  --sidebar: #f5f7fa;
+  --sidebar-foreground: #13181d;
+  --sidebar-primary: #0f7af5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eaf3fe;
+  --sidebar-accent-foreground: #0f498b;
+  --sidebar-border: rgba(21, 46, 74, 0.12);
+  --sidebar-ring: rgba(15, 122, 245, 0.5);
+}
+
+.dark {
+  --background: #14171b;
+  --foreground: #e8eaed;
+  --card: #1c2126;
+  --card-foreground: #e8eaed;
+  --popover: #1c2126;
+  --popover-foreground: #e8eaed;
+  --primary: #4d9dff;
+  --primary-foreground: #ffffff;
+  --secondary: #262c33;
+  --secondary-foreground: #e8eaed;
+  --muted: #262c33;
+  --muted-foreground: #9aa5b1;
+  --accent: #1d2c40;
+  --accent-foreground: #a8cffb;
+  --destructive: #f0605a;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.18);
+  --ring: rgba(77, 157, 255, 0.5);
+  --chart-1: #4d9dff;
+  --chart-2: #a8cffb;
+  --chart-3: #0f498b;
+  --chart-4: #9aa5b1;
+  --chart-5: #e8eaed;
+  --sidebar: #1c2126;
+  --sidebar-foreground: #e8eaed;
+  --sidebar-primary: #4d9dff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1d2c40;
+  --sidebar-accent-foreground: #a8cffb;
+  --sidebar-border: rgba(255, 255, 255, 0.12);
+  --sidebar-ring: rgba(77, 157, 255, 0.5);
+}
+
+/* The resume paper + toolbar always render with the light QQ Mail palette,
+   even in dark mode — like a printed sheet inside a themed app. Scoping the
+   theme variables keeps every shadcn component inside light automatically. */
+.qq-light {
+  --background: #ffffff;
+  --foreground: #13181d;
+  --card: #ffffff;
+  --card-foreground: #13181d;
+  --popover: #ffffff;
+  --popover-foreground: #13181d;
+  --primary: #0f7af5;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2f6;
+  --secondary-foreground: #13181d;
+  --muted: #f2f4f6;
+  --muted-foreground: #71808f;
+  --accent: #eaf3fe;
+  --accent-foreground: #0f498b;
+  --destructive: #d93025;
+  --border: rgba(21, 46, 74, 0.12);
+  --input: rgba(21, 46, 74, 0.16);
+  --ring: rgba(15, 122, 245, 0.5);
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* === Markdown bodies rendered on the QQ paper === */
+
+.qq-md .wmde-markdown {
+  background-color: transparent;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.qq-md-ink .wmde-markdown {
+  --color-fg-default: #13181d;
+  color: #13181d;
+}
+
+.qq-md-ink-60 .wmde-markdown {
+  --color-fg-default: rgba(24, 36, 48, 0.6);
+  color: rgba(24, 36, 48, 0.6);
+}
+
+.qq-md .wmde-markdown p {
+  margin: 2px 0;
+}
+
+.qq-md .wmde-markdown ul,
+.qq-md .wmde-markdown ol {
+  margin: 2px 0;
+  padding-left: 1.4em;
+}
+
+.qq-md .wmde-markdown ul {
+  list-style: disc;
+}
+
+.qq-md .wmde-markdown li + li {
+  margin-top: 2px;
+}
+
+.qq-md .wmde-markdown a {
+  color: #0f7af5;
+  text-decoration: none;
+}
+
+.qq-md .wmde-markdown a:hover {
+  text-decoration: underline;
+}
+
+.qq-md .wmde-markdown code {
+  font-size: 12.5px;
+}
+
+/* === App canvas & polish === */
+.app-canvas {
+  background:
+    radial-gradient(
+      1200px 400px at 50% -100px,
+      rgba(15, 122, 245, 0.07),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #f7f9fc 0%, #edf1f7 100%);
+}
+.dark .app-canvas {
+  background:
+    radial-gradient(
+      1200px 400px at 50% -100px,
+      rgba(77, 157, 255, 0.09),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #171b20 0%, #12161b 100%);
+}
+
+/* Hairline under module headings: QQ blue fading out to the right. */
+.qq-rule {
+  background: linear-gradient(
+    90deg,
+    #a8cffb 0%,
+    rgba(168, 207, 251, 0.45) 60%,
+    rgba(168, 207, 251, 0) 100%
+  );
+}
+
+::selection {
+  background: rgba(15, 122, 245, 0.18);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(113, 128, 143, 0.35) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: rgba(113, 128, 143, 0.3);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* === Export as PDF === */
+
+/* Also honored by html2pdf.js when slicing pages offscreen. */
+.print-avoid-break {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}

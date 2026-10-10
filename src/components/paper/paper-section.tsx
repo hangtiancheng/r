@@ -1,0 +1,50 @@
+import type { ReactNode } from "react";
+import { cn } from "cn";
+
+import { HEAD_BLUE } from "@/components/paper/paper-tokens";
+import type { ModuleKind } from "@/lib/types";
+
+export interface PaperSectionProps {
+  title?: string;
+  kind: ModuleKind;
+  editing: boolean;
+  onOpen: (kind: ModuleKind) => void;
+  /** Hidden modules keep their data but are not rendered on the paper. */
+  hidden?: boolean;
+  children: ReactNode;
+}
+
+/**
+ * A resume module (个人信息 / 教育 / 工作 / …). In edit mode the whole section
+ * becomes clickable and highlights on hover — tapping opens its form.
+ */
+export function PaperSection({
+  title,
+  kind,
+  editing,
+  onOpen,
+  hidden,
+  children,
+}: PaperSectionProps) {
+  if (hidden) return null;
+  return (
+    <section
+      onClick={editing ? () => onOpen(kind) : undefined}
+      className={cn(
+        "mt-3 first:mt-0",
+        editing &&
+          "-mx-1.5 cursor-pointer rounded-md px-1.5 py-1 transition-colors hover:bg-[rgba(15,122,245,0.05)] hover:ring-1 hover:ring-[rgba(15,122,245,0.3)]",
+      )}
+    >
+      {title && (
+        <div className="mb-1.5 flex items-center gap-2">
+          <h2 className={cn("text-sm leading-5.25 font-bold", HEAD_BLUE)}>
+            {title}
+          </h2>
+          <div className="qq-rule h-px flex-1" aria-hidden />
+        </div>
+      )}
+      {children}
+    </section>
+  );
+}

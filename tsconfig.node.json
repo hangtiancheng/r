@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    /* vite.config.ts imports src/i18n/shared.ts with its real extension */
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "lib": ["ES2023"],
+    /* Bundler mode */
+    "module": "nodenext",
+    "moduleDetection": "force",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "skipLibCheck": true,
+    "target": "es2023",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "types": ["node"],
+    "verbatimModuleSyntax": true
+  },
+  "include": ["vite.config.ts", "./src/i18n/shared.ts"]
+}

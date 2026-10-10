@@ -1,0 +1,140 @@
+{
+  "$schema": "./resume.schema.json",
+  "id": 1,
+  "title": "Agent 全栈工程师_杭天铖",
+  "base": {
+    "name": "杭天铖",
+    "gender": "男",
+    "birth": "2002-02",
+    "showAge": true,
+    "freshGraduate": true,
+    "workStart": "",
+    "tel": "15395377789",
+    "email": "161043261@qq.com",
+    "hometown": "安徽省芜湖市",
+    "political": "群众",
+    "location": "江苏省南京市",
+    "degree": "硕士"
+  },
+  "edu": [
+    {
+      "id": "edu-njupt",
+      "start": "2024-09",
+      "end": "2027-06",
+      "ongoing": false,
+      "school": "南京邮电大学",
+      "major": "计算机技术",
+      "degree": "硕士",
+      "gpa": "",
+      "rank": ""
+    },
+    {
+      "id": "edu-xidian",
+      "start": "2019-09",
+      "end": "2023-06",
+      "ongoing": false,
+      "school": "西安电子科技大学",
+      "major": "微电子科学与工程",
+      "degree": "本科",
+      "gpa": "",
+      "rank": ""
+    }
+  ],
+  "works": [
+    {
+      "id": "work-alibaba",
+      "start": "2026-05",
+      "end": "",
+      "ongoing": true,
+      "company": "阿里巴巴",
+      "department": "阿里妈妈 · 广告技术部",
+      "position": "全栈开发",
+      "details": [
+        {
+          "id": "work-alibaba-1",
+          "title": "商家经营托管 Agent",
+          "content": "- 确定性 workflow 加商家经营托管 Agent, 支持指代消解、query 扩写、意图识别与分流、RAG + BM25 混合检索双路召回、工具调用、上下文压缩、数据飞轮持续迭代, 已在淘宝商家端落地\n- 为提高商家经营托管 Agent 用户渗透率, 负责接入 A2UI 能力, 提高 LLM A2UI json 部分场景下的生成速率和准确率, 服务端支持失败重试、客户端支持失败降级\n- 参与确定性 workflow 建设、LLM 幻觉治理, RAG + BM25 混合检索前的置信度闸; 实测误放率 0%, 误拦率 17%\n- 参与数据飞轮持续迭代建设, 提升系统可用性\n- 参与前端 Webpack/Vite 模块联邦接入, 修复开源 module-federation/vite workspace 包通过 exports 同时提供 CJS/ESM 入口时崩溃问题 (pull/860)"
+        }
+      ]
+    },
+    {
+      "id": "work-bytedance-data",
+      "start": "2026-02",
+      "end": "2026-05",
+      "ongoing": false,
+      "company": "字节跳动",
+      "department": "Data 架构",
+      "position": "全栈开发",
+      "details": [
+        {
+          "id": "work-bytedance-data-1",
+          "title": "搜索推荐算法平台",
+          "content": "- 前端 Slardar 监控 SDK 上报 JSError 携带错误信息, 还原故障现场\n- 建设项目的 Harness 工程, 将错误信息提供给 LLM 自动修复、提交 MR, 自动触发 E2E 测试\n- 向量库模块接入 SWR 前端性能优化, 以提高页面秒开率"
+        },
+        {
+          "id": "work-bytedance-data-2",
+          "title": "抖音 Debug 平台",
+          "content": "- 迁移旧平台能力, 支持对长视频/直播间 ID, 调用下游 RPC 方法切片、打标生成聚类标签, 并使用 Redis 缓存"
+        }
+      ]
+    },
+    {
+      "id": "work-tencent",
+      "start": "2025-10",
+      "end": "2026-02",
+      "ongoing": false,
+      "company": "腾讯",
+      "department": "IEG 互动娱乐事业群, 基础技术产品部",
+      "position": "全栈开发",
+      "details": [
+        {
+          "id": "work-tencent-1",
+          "title": "腾讯 TcaplusDB NoSQL 数据库管理端",
+          "content": "- 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化渲染性能, 排查接口响应时间不稳定导致的数据竞争\n- 后端使用通用池，同时池化多个场景: NoSQL 数据库连接使用 TCP 连接池; ffi-napi 调用 C++ .so 动态链接库加解密, 解析表文件使用进程池\n- 使用 Valgrind 排查 ffi-napi 调用 .so 动态链接库时的内存泄漏, 利用 V8 隐藏类, 维护对象池以降低 Node.js 侧 GC 压力"
+        }
+      ]
+    },
+    {
+      "id": "work-bytedance-tiktok",
+      "start": "2025-06",
+      "end": "2025-09",
+      "ongoing": false,
+      "company": "字节跳动",
+      "department": "产品研发与工程架构 · TikTok Performance",
+      "position": "全栈开发",
+      "details": [
+        {
+          "id": "work-bytedance-tiktok-1",
+          "title": "TikTok Performance",
+          "content": "- 通过插桩和抓栈两种方式采集性能数据; 使用 Kafka 转发到 Hive, ClickHouse, MySQL, Redis\n- 后端使用 Golang 和 Kitex; BFF 层清洗数据, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端\n- 前端使用性能优化 Hooks, 编写虚拟滚动列表\n- 修复开源 coze-dev/coze-js: Android 环境 User-Agent 缺失导致 TypeError (pull/257)"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-yukino-code",
+      "start": "2026-02",
+      "end": "",
+      "ongoing": true,
+      "name": "CLI Coding Agent",
+      "duty": "全栈开发",
+      "repo": "https://github.com/hangtiancheng/yukino-code",
+      "content": "- 5 层架构, 支持多 LLM 协议 (OpenAI Chat Completions/OpenAI Response/Anthropic Messages)、多 LLM providers、支持会话内切换 provider\n- 支持 Slash Commands、Skills、Hooks\n- 支持 MCP 工具延迟加载、MCP reload 的 reconcile\n- 通过动态指令注入等手段, 尽可能命中 Prompt Cache 前缀缓存, 缓存命中率实测 >90% (不同场景下数值不同)\n- 权限系统: 权限模式、权限规则配置文件、路径沙箱、OS 级沙箱、Human-in-the-Loop\n- 两层上下文压缩, 基于自动上下文压缩、subagent 实现长期 loop 的 Goal 模式\n- 支持 Auto-Dream 自动记忆提取、定期记忆整理\n- 支持预定义的 subagent (Definition-based) 和 fork 的 subagent (Fork-based), subagent 支持前台同步和后台异步\n- 支持 Worktree 文件隔离; 支持 Agent Team, 通过文件邮箱、p2p/broadcast 实现主 agent 编排、teammates 通信和合作\n- 支持多模态消息 (例如图片)、对于图片, 支持二进制格式嗅探和 sharp 压缩\n- 使用 SWE-bench-Live 数据集进行自动化评测, 通过真实使用和自动化评测持续优化 prompts、descriptions 等"
+    },
+    {
+      "id": "proj-yukino-sentry",
+      "start": "2025-04",
+      "end": "2025-12",
+      "ongoing": false,
+      "name": "前端监控/埋点",
+      "duty": "前端开发",
+      "repo": "https://github.com/hangtiancheng/yukino-sentry",
+      "content": "- 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦\n- 支持错误捕获、白屏检测、性能指标采集、故障现场重放\n- 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持错误去重和 LRU 队列\n- 监听 hashchange 和 history 导航, 支持声明式属性 trace 点击事件\n- 白屏检测使用关键点采样算法\n- 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务\n- 使用 rrweb + gzip 屏幕录制以重放故障现场\n- 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon (可选) -> fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列\n- 提供 React16+/Vue3+ 框架集成"
+    }
+  ],
+  "honors": [],
+  "skills": "了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限、会话持久化、上下文压缩、指令文件、Auto-Dream 自动记忆、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Teams; 拥有丰富的全栈 (Go/TypeScript)、Agent 开发经验和热情",
+  "hiddenModules": [],
+  "updatedAt": 0
+}
