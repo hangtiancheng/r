@@ -21,7 +21,6 @@ export interface BaseInfoDialogProps {
   onChange: (patch: Partial<BaseInfo>) => void;
 }
 
-/** 个人信息 module form. */
 export function BaseInfoDialog({
   open,
   onOpenChange,

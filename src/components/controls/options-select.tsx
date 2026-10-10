@@ -17,7 +17,6 @@ export interface OptionsSelectProps {
   className?: string;
 }
 
-/** A `Select` over a flat list of string options. */
 export function OptionsSelect({
   value,
   options,

@@ -9,7 +9,6 @@ export interface ModuleListProps {
   onToggleItem: (kind: ModuleKind, id: string) => void;
 }
 
-/** All module rows; shared by the desktop panel and the narrow-screen sheet. */
 export function ModuleList({
   data,
   onOpen,

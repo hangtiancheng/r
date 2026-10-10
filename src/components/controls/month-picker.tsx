@@ -12,13 +12,11 @@ import {
 } from "@/components/ui/popover";
 
 export interface MonthPickerProps {
-  /** "YYYY-MM" or empty. */
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
   disabled?: boolean;
   className?: string;
-  /** Upper bound of the calendar navigation. Defaults to five years ahead. */
   maxDate?: Date;
   "aria-label"?: string;
 }
@@ -31,11 +29,6 @@ function parseMonth(value: string): Date | undefined {
   return new Date(Number(match[1]), Number(match[2]) - 1, 1);
 }
 
-/**
- * "YYYY-MM" picker composed from shadcn primitives: Popover + Button trigger +
- * Calendar. The calendar caption carries month/year dropdowns for fast jumps;
- * the picked day is collapsed back to its month.
- */
 export function MonthPicker({
   value,
   onChange,

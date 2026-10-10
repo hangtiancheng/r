@@ -11,11 +11,9 @@ export interface EditTopBarProps {
   onTitleChange: (title: string) => void;
   onCancel: () => void;
   onSave: () => void;
-  /** Extra actions rendered before 取消 / 保存, e.g. the module sheet trigger. */
   actions?: ReactNode;
 }
 
-/** Edit mode: back + editable title + 取消 / 保存 (QQ Mail editor top bar). */
 export function EditTopBar({
   title,
   saving,

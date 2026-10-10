@@ -16,7 +16,6 @@ export interface HonorDialogProps {
   onChange: (items: HonorItem[]) => void;
 }
 
-/** 荣誉奖项 module dialog. */
 export function HonorDialog({
   open,
   onOpenChange,

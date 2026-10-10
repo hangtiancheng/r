@@ -7,7 +7,6 @@ export interface AddEntryButtonProps {
   onClick: () => void;
 }
 
-/** Dashed full-width 添加… button at the bottom of list dialogs. */
 export function AddEntryButton({ label, onClick }: AddEntryButtonProps) {
   return (
     <Button

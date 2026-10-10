@@ -5,7 +5,6 @@ import { createAntiCopy } from "@yukino.js/anti-copy";
 
 import App from "@/app";
 
-// Copy protection (production only).
 const antiCopy = import.meta.env.PROD
   ? createAntiCopy({
       mode: "replace",

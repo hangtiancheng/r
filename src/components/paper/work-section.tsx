@@ -35,7 +35,6 @@ export interface WorkSectionProps {
   hidden?: boolean;
 }
 
-/** 工作经历: one entry per company, each with its 项目 sub-entries. */
 export function WorkSection({
   items,
   editing,

@@ -19,7 +19,6 @@ export interface WorkDetailsFieldProps {
   onChange: (details: WorkDetail[]) => void;
 }
 
-/** Nested 项目 list inside a 工作经历 entry. */
 export function WorkDetailsField({ details, onChange }: WorkDetailsFieldProps) {
   const patch = (id: string, value: Partial<WorkDetail>) =>
     onChange(details.map((d) => (d.id === id ? { ...d, ...value } : d)));

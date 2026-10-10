@@ -14,7 +14,6 @@ export interface MarkdownFieldProps {
   placeholder?: string;
 }
 
-/** Markdown editor field (@uiw/react-md-editor), lazy-loaded off the main bundle. */
 export function MarkdownField({
   label,
   value,

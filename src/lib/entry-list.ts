@@ -1,4 +1,3 @@
-/** Immutable helpers for editing an id-keyed entry list. */
 export interface EntryListActions<T extends { id: string }> {
   add: (item: T) => void;
   remove: (id: string) => void;

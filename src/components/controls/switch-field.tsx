@@ -17,7 +17,6 @@ export interface SwitchFieldProps {
   description?: string;
 }
 
-/** Bordered row with a label on the left and a visibility switch on the right. */
 export function SwitchField({
   label,
   checked,

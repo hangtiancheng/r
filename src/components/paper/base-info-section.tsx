@@ -13,7 +13,6 @@ export interface BaseInfoSectionProps {
   hidden?: boolean;
 }
 
-/** Name + QQ-style tag line + contact block at the top of the sheet. */
 export function BaseInfoSection({
   base,
   editing,

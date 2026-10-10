@@ -17,7 +17,6 @@ export interface EntryEmptyProps {
   onAdd: () => void;
 }
 
-/** Placeholder shown when a list module has no entries yet. */
 export function EntryEmpty({
   title,
   description,

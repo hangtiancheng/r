@@ -19,7 +19,6 @@ export interface ModuleDialogProps {
   children: ReactNode;
 }
 
-/** QQ Mail-style dialog shell: header / scrollable body / 取消·完成 footer. */
 export function ModuleDialog({
   open,
   onOpenChange,

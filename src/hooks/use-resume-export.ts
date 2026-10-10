@@ -8,7 +8,6 @@ import {
 } from "@/lib/export";
 import type { ResumeDoc } from "@/lib/types";
 
-/** PDF + JSON export for the current resume document. */
 export function useResumeExport(
   data: ResumeDoc | undefined,
   paperRef: RefObject<HTMLDivElement | null>,

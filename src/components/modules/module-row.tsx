@@ -29,10 +29,6 @@ export interface ModuleRowProps {
   onToggleItem: (kind: ModuleKind, id: string) => void;
 }
 
-/**
- * One module row: expand toggle, icon, name (+ entry count) and a visibility
- * switch. Expanding reveals per-entry switches for list modules.
- */
 export function ModuleRow({
   meta,
   data,
@@ -99,10 +95,6 @@ export function ModuleRow({
         </ItemActions>
       </Item>
       <CollapsibleContent>
-        {/* No left margin here: indenting the whole group would push the
-            entry switches past the panel's clipped right edge. The indent
-            lives on the text content instead, keeping switches aligned with
-            the module-level one. */}
         <ItemGroup className="gap-0.5 py-0.5">
           {entries.map((entry) => (
             <Item

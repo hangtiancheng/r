@@ -15,10 +15,6 @@ export interface ResetResumeDialogProps {
   onReset: () => void;
 }
 
-/**
- * Confirmation dialog behind the 更多 menu's 恢复默认简历 entry. Rendered at
- * toolbar level (not inside the menu popup) so it survives the menu closing.
- */
 export function ResetResumeDialog({
   open,
   onOpenChange,

@@ -25,7 +25,6 @@ function fetchPriorityHints(): Plugin {
 const PKG_DIR = import.meta.dirname;
 const isProd = process.env.NODE_ENV === "production";
 
-// https://vite.dev/config/
 export default defineConfig({
   base: isProd ? "/r/" : "/",
   publicDir: resolve(PKG_DIR, "public"),

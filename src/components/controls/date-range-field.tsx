@@ -13,11 +13,9 @@ export interface DateRangeValue {
 export interface DateRangeFieldProps {
   value: DateRangeValue;
   onChange: (patch: Partial<DateRangeValue>) => void;
-  /** Upper bound for both month pickers. */
   maxDate?: Date;
 }
 
-/** Start / end month pickers plus the 至今 checkbox. */
 export function DateRangeField({
   value,
   onChange,

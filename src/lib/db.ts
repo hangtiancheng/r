@@ -3,7 +3,6 @@ import Dexie, { type Table } from "dexie";
 import { DEFAULT_RESUME } from "@/lib/default-resume";
 import type { ResumeDoc } from "@/lib/types";
 
-/** Single-document IndexedDB store; dexie-react-hooks watches it live. */
 class ResumeDB extends Dexie {
   resumes!: Table<ResumeDoc, number>;
 
@@ -17,7 +16,6 @@ export const db = new ResumeDB();
 
 export const RESUME_ID = 1;
 
-/** Seed the store on first launch. */
 export async function initResume(): Promise<void> {
   const count = await db.resumes.count();
   if (count === 0) {

@@ -23,10 +23,6 @@ export interface ModuleSheetProps {
   className?: string;
 }
 
-/**
- * Narrow-screen counterpart of `ModulePanel`: the same module list behind a
- * sheet. Opening a module dialog closes the sheet first.
- */
 export function ModuleSheet({
   data,
   onOpen,

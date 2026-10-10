@@ -7,8 +7,6 @@ import type {
   WorkItem,
 } from "@/lib/types";
 
-/** Blank entries used by the "添加…" buttons in the module dialogs. */
-
 export function newWorkDetail(): WorkDetail {
   return { id: uid(), title: "", content: "" };
 }

@@ -9,7 +9,6 @@ export interface SkillSectionProps {
   hidden?: boolean;
 }
 
-/** 个人技能: a single markdown body rendered at full ink. */
 export function SkillSection({
   source,
   editing,

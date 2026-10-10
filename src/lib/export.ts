@@ -1,18 +1,12 @@
 import type { ResumeDoc } from "@/lib/types";
 
-/** A4 width in CSS pixels at 96dpi — the offscreen export canvas. */
 const A4_WIDTH_PX = 794;
 
-/** Strip characters that are invalid in filenames on common OSes. */
 export function safeFileName(title: string, ext: string): string {
   const base = (title || "resume").replace(/[\\/:*?"<>|]/g, "_");
   return `${base}.${ext}`;
 }
 
-/**
- * Clone the paper, lay it out offscreen at A4 width and download it as a PDF.
- * Cloning keeps the visible sheet untouched while html2pdf rasterizes.
- */
 export async function exportPaperToPdf(
   paper: HTMLElement,
   filename: string,
@@ -43,7 +37,6 @@ export async function exportPaperToPdf(
   }
 }
 
-/** Download the document as a pretty-printed JSON backup. */
 export function downloadResumeJson(doc: ResumeDoc): void {
   const blob = new Blob([JSON.stringify(doc, null, 2)], {
     type: "application/json",

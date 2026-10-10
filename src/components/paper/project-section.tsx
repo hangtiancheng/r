@@ -32,7 +32,6 @@ export interface ProjectSectionProps {
   hidden?: boolean;
 }
 
-/** 项目经历: name · role, optional repo link, markdown body. */
 export function ProjectSection({
   items,
   editing,

@@ -17,7 +17,6 @@ export interface ProjectDialogProps {
   onChange: (items: ProjectItem[]) => void;
 }
 
-/** 项目经历 module dialog. */
 export function ProjectDialog({
   open,
   onOpenChange,

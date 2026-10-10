@@ -10,7 +10,6 @@ export interface EduSectionProps {
   hidden?: boolean;
 }
 
-/** 教育经历: 学校 · 专业学历 on the left, date range on the right. */
 export function EduSection({
   items,
   editing,

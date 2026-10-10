@@ -12,10 +12,6 @@ export interface ModulePanelProps {
   className?: string;
 }
 
-/**
- * Right-hand module panel of the QQ Mail editor. Each row carries a
- * visibility switch; hiding never deletes data — it only affects rendering.
- */
 export function ModulePanel({
   data,
   onOpen,

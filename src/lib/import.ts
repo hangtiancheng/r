@@ -12,7 +12,6 @@ const MODULE_KINDS: readonly ModuleKind[] = [
   "skill",
 ];
 
-/** Top-level keys that prove a JSON object is one of our resume backups. */
 const RESUME_KEYS = [
   "title",
   "base",
@@ -28,10 +27,6 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
-/**
- * Keep only object entries and guarantee each one a unique, non-empty
- * string id — entries without ids would break toggles and React keys.
- */
 function sanitizeEntries(value: unknown): Record<string, unknown>[] {
   if (!Array.isArray(value)) return [];
   const seen = new Set<string>();
@@ -43,11 +38,6 @@ function sanitizeEntries(value: unknown): Record<string, unknown>[] {
   });
 }
 
-/**
- * Parse an untrusted resume JSON backup. Accepts any object that looks like
- * a resume document, repairs entry ids and fills missing fields; throws an
- * Error with a user-facing message otherwise.
- */
 export function parseResumeJson(text: string): ResumeDoc {
   let parsed: unknown;
   try {

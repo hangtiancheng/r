@@ -9,15 +9,10 @@ export interface PaperSectionProps {
   kind: ModuleKind;
   editing: boolean;
   onOpen: (kind: ModuleKind) => void;
-  /** Hidden modules keep their data but are not rendered on the paper. */
   hidden?: boolean;
   children: ReactNode;
 }
 
-/**
- * A resume module (个人信息 / 教育 / 工作 / …). In edit mode the whole section
- * becomes clickable and highlights on hover — tapping opens its form.
- */
 export function PaperSection({
   title,
   kind,

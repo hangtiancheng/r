@@ -18,7 +18,6 @@ export interface EduDialogProps {
   onChange: (items: EduItem[]) => void;
 }
 
-/** 教育经历 module dialog. */
 export function EduDialog({
   open,
   onOpenChange,

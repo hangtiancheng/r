@@ -3,13 +3,10 @@ import { cn } from "cn";
 
 export interface PaperMarkdownProps {
   source: string;
-  /** Render at full ink instead of the 60% body tone. */
   strong?: boolean;
 }
 
-/** Renders a module's markdown body in the QQ paper typography. */
 export function PaperMarkdown({ source, strong = false }: PaperMarkdownProps) {
-  // Legacy/partial IndexedDB docs may omit a body; never crash the paper.
   const body = typeof source === "string" ? source : "";
   if (!body.trim()) return null;
   return (

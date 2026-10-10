@@ -10,7 +10,6 @@ export interface HonorSectionProps {
   hidden?: boolean;
 }
 
-/** 荣誉奖项: 名称 · 颁发机构 on the left, award month on the right. */
 export function HonorSection({
   items,
   editing,

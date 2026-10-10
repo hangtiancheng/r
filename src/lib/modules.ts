@@ -9,7 +9,6 @@ import {
 
 import type { ModuleKind, ResumeDoc } from "@/lib/types";
 
-/** One toggleable entry inside a list module (edu/work/project/honor). */
 export interface ModuleEntry {
   id: string;
   name: string;
@@ -20,11 +19,9 @@ export interface ModuleMeta {
   kind: ModuleKind;
   label: string;
   icon: typeof UserIcon;
-  /** Entry list for modules holding multiple items. */
   entries?: (doc: ResumeDoc) => ModuleEntry[];
 }
 
-/** Every resume module, in paper order. */
 export const MODULES: ModuleMeta[] = [
   { kind: "base", label: "个人信息", icon: UserIcon },
   {
@@ -58,7 +55,6 @@ export const MODULES: ModuleMeta[] = [
   { kind: "skill", label: "个人技能", icon: LightbulbIcon },
 ];
 
-/** Hidden modules keep their data — they are simply not rendered on paper. */
 export function isModuleHidden(doc: ResumeDoc, kind: ModuleKind): boolean {
   return (doc.hiddenModules ?? []).includes(kind);
 }

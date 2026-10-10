@@ -8,7 +8,6 @@ export interface SkillDialogProps {
   onChange: (skills: string) => void;
 }
 
-/** 个人技能 module dialog — a single markdown body. */
 export function SkillDialog({
   open,
   onOpenChange,

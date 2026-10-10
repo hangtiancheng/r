@@ -13,7 +13,6 @@ export interface EditDialogsProps {
   patchDraft: (patch: (doc: ResumeDoc) => void) => void;
 }
 
-/** Renders every module dialog; `dialog` decides which one is open. */
 export function EditDialogs({
   dialog,
   setDialog,

@@ -13,11 +13,9 @@ export interface ResumePaperProps {
   data: ResumeDoc;
   editing: boolean;
   onOpen: (kind: ModuleKind) => void;
-  /** Root sheet element — used as the PDF export source. */
   ref?: Ref<HTMLDivElement>;
 }
 
-/** The A4-ish resume sheet, styled after QQ Mail's resume preview. */
 export function ResumePaper({ data, editing, onOpen, ref }: ResumePaperProps) {
   const hidden = (kind: ModuleKind) => isModuleHidden(data, kind);
   return (

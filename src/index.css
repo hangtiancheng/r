@@ -2,8 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Class-based dark mode: the `dark` class on <html> is synced with the OS
-   color scheme by the inline script in index.html. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
@@ -120,9 +118,6 @@
   --sidebar-ring: rgba(77, 157, 255, 0.5);
 }
 
-/* The resume paper + toolbar always render with the light QQ Mail palette,
-   even in dark mode — like a printed sheet inside a themed app. Scoping the
-   theme variables keeps every shadcn component inside light automatically. */
 .qq-light {
   --background: #ffffff;
   --foreground: #13181d;
@@ -156,8 +151,6 @@
     @apply font-sans;
   }
 }
-
-/* === Markdown bodies rendered on the QQ paper === */
 
 .qq-md .wmde-markdown {
   background-color: transparent;
@@ -207,7 +200,6 @@
   font-size: 12.5px;
 }
 
-/* === App canvas & polish === */
 .app-canvas {
   background:
     radial-gradient(
@@ -227,7 +219,6 @@
     linear-gradient(180deg, #171b20 0%, #12161b 100%);
 }
 
-/* Hairline under module headings: QQ blue fading out to the right. */
 .qq-rule {
   background: linear-gradient(
     90deg,
@@ -257,9 +248,6 @@
   background: transparent;
 }
 
-/* === Export as PDF === */
-
-/* Also honored by html2pdf.js when slicing pages offscreen. */
 .print-avoid-break {
   break-inside: avoid;
   page-break-inside: avoid;

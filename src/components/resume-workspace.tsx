@@ -14,7 +14,6 @@ import { useResumeExport } from "@/hooks/use-resume-export";
 import { resetResume, saveResume } from "@/lib/db";
 import { parseResumeJson } from "@/lib/import";
 
-/** Loading placeholder until the IndexedDB document resolves. */
 function WorkspaceSkeleton() {
   return (
     <div className="mx-auto w-full max-w-[1120px] px-3 py-4">
@@ -24,10 +23,6 @@ function WorkspaceSkeleton() {
   );
 }
 
-/**
- * The whole editor: toolbar + A4 paper + module panel (or sheet on narrow
- * screens) + module dialogs. All document state lives in `useResumeDoc`.
- */
 export function ResumeWorkspace() {
   const {
     data,
@@ -82,8 +77,6 @@ export function ResumeWorkspace() {
     <div className="app-canvas min-h-dvh px-3 py-3 md:py-5 print:p-0">
       <div className="mx-auto w-full max-w-[1120px] print:max-w-none">
         <div className="flex items-start gap-3">
-          {/* qq-light: the paper + its toolbar always keep the light QQ
-              palette, even under a dark OS theme. */}
           <Card className="qq-light min-w-0 flex-1 gap-0 rounded-xl py-0 shadow-[0_1px_2px_rgba(20,46,77,0.05),0_16px_40px_-16px_rgba(20,46,77,0.20)] print:rounded-none print:shadow-none print:ring-0">
             <div className="no-print">
               {editing && draft ? (

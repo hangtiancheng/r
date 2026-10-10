@@ -15,11 +15,6 @@ const DEFAULT_BASE: BaseInfo = {
   degree: "",
 };
 
-/**
- * Older stored documents predate newer fields. Fill in defaults so the paper,
- * toolbar and dialogs never read `undefined` where they expect a string, an
- * array or an object. Mutates and returns the same reference.
- */
 export function normalizeResume(doc: ResumeDoc): ResumeDoc {
   doc.title ??= "";
   doc.skills ??= "";

@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
-    /* vite.config.ts imports src/i18n/shared.ts with its real extension */
     "allowImportingTsExtensions": true,
     "erasableSyntaxOnly": true,
     "lib": ["ES2023"],
-    /* Bundler mode */
     "module": "nodenext",
     "moduleDetection": "force",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {

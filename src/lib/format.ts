@@ -17,7 +17,6 @@ export function uid(): string {
   return crypto.randomUUID();
 }
 
-/** "2024-09" -> "2024.9"; anything else round-trips unchanged. */
 export function formatMonth(month: string): string {
   const m = /^(\d{4})-(\d{2})$/.exec(month);
   if (!m) return month;
@@ -33,7 +32,6 @@ export function formatRange(item: {
   return `${formatMonth(item.start)} - ${end}`;
 }
 
-/** Age (周岁) derived from a "YYYY-MM" birth month. */
 export function ageFrom(birth: string): number | null {
   if (!/^\d{4}-\d{2}$/.test(birth)) return null;
   const [y, m] = birth.split("-").map(Number);
@@ -43,7 +41,6 @@ export function ageFrom(birth: string): number | null {
   return age >= 0 ? age : null;
 }
 
-/** The QQ-style tag line under the name: 应届 | 学历 | 政治面貌 | 年龄 | 性别. */
 export function buildTags(base: BaseInfo): string[] {
   const tags: string[] = [];
   if (base.freshGraduate) tags.push("应届毕业生");

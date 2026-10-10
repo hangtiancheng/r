@@ -32,7 +32,6 @@ export interface ViewToolbarProps {
   onReset: () => void;
 }
 
-/** View mode: resume title + 编辑简历 / 导出 / 更多. */
 export function ViewToolbar({
   title,
   exporting,
@@ -42,11 +41,7 @@ export function ViewToolbar({
   onImportJson,
   onReset,
 }: ViewToolbarProps) {
-  // The file input must stay mounted while the 更多 menu closes after a
-  // pick, so it lives in the toolbar instead of the menu popup.
   const importInputRef = useRef<HTMLInputElement>(null);
-  // The reset confirmation lives here too: nested inside the menu popup it
-  // would unmount before the dialog ever shows.
   const [resetOpen, setResetOpen] = useState(false);
   return (
     <div className="border-border/60 bg-background/85 sticky top-0 z-20 flex h-10 items-center gap-1 rounded-t-xl border-b px-2 backdrop-blur-sm">

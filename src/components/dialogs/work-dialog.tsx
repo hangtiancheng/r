@@ -17,7 +17,6 @@ export interface WorkDialogProps {
   onChange: (items: WorkItem[]) => void;
 }
 
-/** 工作经历 module dialog. */
 export function WorkDialog({
   open,
   onOpenChange,

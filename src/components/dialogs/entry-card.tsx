@@ -22,7 +22,6 @@ export interface EntryCardProps {
   children: ReactNode;
 }
 
-/** One editable entry, rendered as a small card with visibility + delete. */
 export function EntryCard({
   title,
   hidden,

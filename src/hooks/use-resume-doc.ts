@@ -6,7 +6,6 @@ import { RESUME_ID, db, initResume, saveResume } from "@/lib/db";
 import { normalizeResume } from "@/lib/normalize";
 import type { ModuleKind, ResumeDoc } from "@/lib/types";
 
-/** Item lists keyed by module, for item-level visibility toggles. */
 function itemLists(
   doc: ResumeDoc,
 ): Partial<Record<ModuleKind, { id: string; hidden?: boolean }[]>> {
@@ -18,12 +17,7 @@ function itemLists(
   };
 }
 
-/**
- * Resume document state machine: live IndexedDB read, the edit draft,
- * module/item visibility toggles and persistence.
- */
 export function useResumeDoc() {
-  // Older stored documents predate newer fields; normalize on read.
   const doc = useLiveQuery(async () => {
     const stored = await db.resumes.get(RESUME_ID);
     return stored ? normalizeResume(stored) : stored;
@@ -47,7 +41,6 @@ export function useResumeDoc() {
     });
   }, []);
 
-  /** Module-level visibility toggle — hidden modules keep their data. */
   const toggleModule = useCallback(
     (kind: ModuleKind) => {
       patchDraft((d) => {
@@ -60,7 +53,6 @@ export function useResumeDoc() {
     [patchDraft],
   );
 
-  /** Item-level visibility toggle (edu/work/project/honor entries). */
   const toggleItem = useCallback(
     (kind: ModuleKind, id: string) => {
       patchDraft((d) => {
@@ -97,7 +89,6 @@ export function useResumeDoc() {
   }, [draft]);
 
   return {
-    /** The document to render — draft while editing, stored copy otherwise. */
     data: editing && draft ? draft : doc,
     draft,
     editing,

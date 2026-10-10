@@ -2,10 +2,8 @@ import { Fragment } from "react";
 
 import { LINK } from "@/components/paper/paper-tokens";
 
-/** Bare http(s) URLs inside plain-text fields. */
 const URL_RE = /https?:\/\/[^\s<>"'，。；、）)】]+/g;
 
-/** Renders plain text with any URLs turned clickable. */
 export function PaperLinkText({ text }: { text: string }) {
   const parts = text.split(URL_RE);
   const urls = text.match(URL_RE) ?? [];
