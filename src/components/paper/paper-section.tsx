@@ -36,7 +36,10 @@ export function PaperSection({
           <h2 className={cn("text-sm leading-5.25 font-bold", HEAD_BLUE)}>
             {title}
           </h2>
-          <div className="qq-rule h-px flex-1" aria-hidden />
+          <div
+            className="h-px flex-1 bg-[linear-gradient(90deg,#a8cffb_0%,rgba(168,207,251,0.45)_60%,rgba(168,207,251,0)_100%)]"
+            aria-hidden
+          />
         </div>
       )}
       {children}

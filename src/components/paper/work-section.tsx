@@ -9,7 +9,7 @@ import type { ModuleKind, WorkItem } from "@/lib/types";
 
 function WorkEntry({ item }: { item: WorkItem }) {
   return (
-    <div className="print-avoid-break py-1">
+    <div className="break-inside-avoid py-1">
       <PaperEntryHeader
         parts={[item.company, item.department, item.position]}
         date={formatRange(item)}

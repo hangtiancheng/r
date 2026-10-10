@@ -23,7 +23,7 @@ export function ModulePanel({
     <Card
       size="sm"
       className={cn(
-        "no-print w-72 shrink-0 shadow-[0_1px_2px_rgba(20,46,77,0.05),0_10px_28px_-14px_rgba(20,46,77,0.18)]",
+        "w-72 shrink-0 shadow-[0_1px_2px_rgba(20,46,77,0.05),0_10px_28px_-14px_rgba(20,46,77,0.18)] print:hidden",
         className,
       )}
     >

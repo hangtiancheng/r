@@ -10,7 +10,7 @@ import type { ModuleKind, ProjectItem } from "@/lib/types";
 
 function ProjectEntry({ item }: { item: ProjectItem }) {
   return (
-    <div className="print-avoid-break py-1">
+    <div className="break-inside-avoid py-1">
       <PaperEntryHeader
         parts={[item.name, item.duty]}
         date={formatRange(item)}

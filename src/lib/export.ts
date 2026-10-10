@@ -28,7 +28,7 @@ export async function exportPaperToPdf(
         image: { type: "jpeg", quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["css", "legacy"], avoid: ".print-avoid-break" },
+        pagebreak: { mode: ["css", "legacy"], avoid: ".break-inside-avoid" },
       })
       .from(clone)
       .save();

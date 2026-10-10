@@ -7,7 +7,7 @@ class ResumeDB extends Dexie {
   resumes!: Table<ResumeDoc, number>;
 
   constructor() {
-    super("qq-resume");
+    super("yukino-resume");
     this.version(1).stores({ resumes: "id" });
   }
 }
