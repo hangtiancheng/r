@@ -15,7 +15,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 export interface ModuleDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  title: string;
+  title: ReactNode;
+  headerExtra?: ReactNode;
   children: ReactNode;
 }
 
@@ -23,13 +24,18 @@ export function ModuleDialog({
   open,
   onOpenChange,
   title,
+  headerExtra,
   children,
 }: ModuleDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="gap-0 overflow-hidden p-0 sm:max-w-150">
+      <DialogContent
+        showCloseButton={false}
+        className="gap-0 overflow-hidden p-0 sm:max-w-150"
+      >
         <DialogHeader className="border-border/60 border-b px-5 py-3">
           <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
+          {headerExtra}
         </DialogHeader>
         <ScrollArea className="max-h-[min(62dvh,540px)]">
           <FieldGroup className="gap-3 px-5 py-4">{children}</FieldGroup>

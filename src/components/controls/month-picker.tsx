@@ -3,6 +3,7 @@ import { addYears, endOfYear, format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "cn";
 
+import { CalendarDropdown } from "@/components/controls/calendar-dropdown";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -19,6 +20,7 @@ export interface MonthPickerProps {
   className?: string;
   maxDate?: Date;
   "aria-label"?: string;
+  "aria-invalid"?: boolean;
 }
 
 const MONTH_RE = /^(\d{4})-(\d{2})$/;
@@ -71,6 +73,7 @@ export function MonthPicker({
           defaultMonth={selected}
           endMonth={endMonth}
           captionLayout="dropdown"
+          components={{ Dropdown: CalendarDropdown }}
           onSelect={(date) => {
             if (date) onChange(format(date, "yyyy-MM"));
             setOpen(false);

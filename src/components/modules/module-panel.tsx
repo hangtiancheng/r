@@ -2,13 +2,15 @@ import { cn } from "cn";
 
 import { ModuleList } from "@/components/modules/module-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { ModuleKind, ResumeDoc } from "@/lib/types";
+import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ModulePanelProps {
   data: ResumeDoc;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   onToggleModule: (kind: ModuleKind) => void;
   onToggleItem: (kind: ModuleKind, id: string) => void;
+  onToggleCustomModule: (id: string) => void;
+  onAddCustomModule: () => void;
   className?: string;
 }
 
@@ -17,6 +19,8 @@ export function ModulePanel({
   onOpen,
   onToggleModule,
   onToggleItem,
+  onToggleCustomModule,
+  onAddCustomModule,
   className,
 }: ModulePanelProps) {
   return (
@@ -38,6 +42,8 @@ export function ModulePanel({
           onOpen={onOpen}
           onToggleModule={onToggleModule}
           onToggleItem={onToggleItem}
+          onToggleCustomModule={onToggleCustomModule}
+          onAddCustomModule={onAddCustomModule}
         />
       </CardContent>
     </Card>

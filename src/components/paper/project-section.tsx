@@ -6,7 +6,7 @@ import { PaperMarkdown } from "@/components/paper/paper-markdown";
 import { PaperSection } from "@/components/paper/paper-section";
 import { INK_60 } from "@/components/paper/paper-tokens";
 import { formatRange } from "@/lib/format";
-import type { ModuleKind, ProjectItem } from "@/lib/types";
+import type { ModuleTarget, ProjectItem } from "@/lib/types";
 
 function ProjectEntry({ item }: { item: ProjectItem }) {
   return (
@@ -28,7 +28,7 @@ function ProjectEntry({ item }: { item: ProjectItem }) {
 export interface ProjectSectionProps {
   items: ProjectItem[];
   editing: boolean;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   hidden?: boolean;
 }
 
@@ -43,7 +43,7 @@ export function ProjectSection({
   return (
     <PaperSection
       title="项目经历"
-      kind="project"
+      target={{ kind: "project" }}
       editing={editing}
       onOpen={onOpen}
       hidden={hidden}

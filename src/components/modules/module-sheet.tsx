@@ -13,13 +13,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import type { ModuleKind, ResumeDoc } from "@/lib/types";
+import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ModuleSheetProps {
   data: ResumeDoc;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   onToggleModule: (kind: ModuleKind) => void;
   onToggleItem: (kind: ModuleKind, id: string) => void;
+  onToggleCustomModule: (id: string) => void;
+  onAddCustomModule: () => void;
   className?: string;
 }
 
@@ -28,6 +30,8 @@ export function ModuleSheet({
   onOpen,
   onToggleModule,
   onToggleItem,
+  onToggleCustomModule,
+  onAddCustomModule,
   className,
 }: ModuleSheetProps) {
   const [open, setOpen] = useState(false);
@@ -59,12 +63,17 @@ export function ModuleSheet({
           <div className="p-2">
             <ModuleList
               data={data}
-              onOpen={(kind) => {
+              onOpen={(target) => {
                 setOpen(false);
-                onOpen(kind);
+                onOpen(target);
               }}
               onToggleModule={onToggleModule}
               onToggleItem={onToggleItem}
+              onToggleCustomModule={onToggleCustomModule}
+              onAddCustomModule={() => {
+                setOpen(false);
+                onAddCustomModule();
+              }}
             />
           </div>
         </ScrollArea>

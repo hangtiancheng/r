@@ -5,7 +5,7 @@ import { PaperMarkdown } from "@/components/paper/paper-markdown";
 import { PaperSection } from "@/components/paper/paper-section";
 import { INK } from "@/components/paper/paper-tokens";
 import { formatRange } from "@/lib/format";
-import type { ModuleKind, WorkItem } from "@/lib/types";
+import type { ModuleTarget, WorkItem } from "@/lib/types";
 
 function WorkEntry({ item }: { item: WorkItem }) {
   return (
@@ -31,7 +31,7 @@ function WorkEntry({ item }: { item: WorkItem }) {
 export interface WorkSectionProps {
   items: WorkItem[];
   editing: boolean;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   hidden?: boolean;
 }
 
@@ -46,7 +46,7 @@ export function WorkSection({
   return (
     <PaperSection
       title="工作经历"
-      kind="work"
+      target={{ kind: "work" }}
       editing={editing}
       onOpen={onOpen}
       hidden={hidden}

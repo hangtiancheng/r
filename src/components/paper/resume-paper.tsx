@@ -1,18 +1,18 @@
 import type { Ref } from "react";
 
 import { BaseInfoSection } from "@/components/paper/base-info-section";
+import { CustomModuleSection } from "@/components/paper/custom-module-section";
 import { EduSection } from "@/components/paper/edu-section";
 import { HonorSection } from "@/components/paper/honor-section";
 import { ProjectSection } from "@/components/paper/project-section";
-import { SkillSection } from "@/components/paper/skill-section";
 import { WorkSection } from "@/components/paper/work-section";
 import { isModuleHidden } from "@/lib/modules";
-import type { ModuleKind, ResumeDoc } from "@/lib/types";
+import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ResumePaperProps {
   data: ResumeDoc;
   editing: boolean;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -50,12 +50,14 @@ export function ResumePaper({ data, editing, onOpen, ref }: ResumePaperProps) {
         onOpen={onOpen}
         hidden={hidden("honor")}
       />
-      <SkillSection
-        source={data.skills}
-        editing={editing}
-        onOpen={onOpen}
-        hidden={hidden("skill")}
-      />
+      {data.customModules.map((module) => (
+        <CustomModuleSection
+          key={module.id}
+          module={module}
+          editing={editing}
+          onOpen={onOpen}
+        />
+      ))}
     </div>
   );
 }

@@ -30,11 +30,15 @@ export function ResumeWorkspace() {
     draft,
     editing,
     saving,
+    showErrors,
     dialog,
     setDialog,
     patchDraft,
     toggleModule,
     toggleItem,
+    toggleCustomModule,
+    addCustomModule,
+    removeCustomModule,
     startEdit,
     cancelEdit,
     saveEdit,
@@ -102,6 +106,8 @@ export function ResumeWorkspace() {
                       onOpen={setDialog}
                       onToggleModule={toggleModule}
                       onToggleItem={toggleItem}
+                      onToggleCustomModule={toggleCustomModule}
+                      onAddCustomModule={addCustomModule}
                       className="xl:hidden"
                     />
                   }
@@ -131,6 +137,8 @@ export function ResumeWorkspace() {
               onOpen={setDialog}
               onToggleModule={toggleModule}
               onToggleItem={toggleItem}
+              onToggleCustomModule={toggleCustomModule}
+              onAddCustomModule={addCustomModule}
               className="sticky top-4 hidden xl:flex"
             />
           )}
@@ -141,7 +149,9 @@ export function ResumeWorkspace() {
           dialog={dialog}
           setDialog={setDialog}
           draft={draft}
+          showErrors={showErrors}
           patchDraft={patchDraft}
+          onRemoveCustomModule={removeCustomModule}
         />
       )}
     </div>

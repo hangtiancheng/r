@@ -13,7 +13,7 @@
     "works",
     "projects",
     "honors",
-    "skills",
+    "customModules",
     "hiddenModules",
     "updatedAt"
   ],
@@ -54,13 +54,14 @@
       "description": "荣誉奖项条目。",
       "items": { "$ref": "#/$defs/HonorItem" }
     },
-    "skills": {
-      "type": "string",
-      "description": "个人技能模块的 Markdown 正文。"
+    "customModules": {
+      "type": "array",
+      "description": "自定义模块条目。每个模块包含标题、图标与 Markdown 正文。",
+      "items": { "$ref": "#/$defs/CustomModule" }
     },
     "hiddenModules": {
       "type": "array",
-      "description": "在纸面上隐藏的模块。隐藏不删除数据，只影响渲染。",
+      "description": "在纸面上隐藏的固定模块。隐藏不删除数据，只影响渲染。自定义模块使用条目自身的 hidden 字段。",
       "items": { "$ref": "#/$defs/ModuleKind" }
     },
     "updatedAt": {
@@ -71,12 +72,17 @@
   "$defs": {
     "ModuleKind": {
       "type": "string",
-      "description": "简历模块标识。",
-      "enum": ["base", "edu", "work", "project", "honor", "skill"]
+      "description": "固定简历模块标识。",
+      "enum": ["base", "edu", "work", "project", "honor"]
     },
     "Gender": {
       "type": "string",
       "enum": ["男", "女"]
+    },
+    "BirthDisplay": {
+      "type": "string",
+      "description": "出生信息在纸面上的呈现方式。",
+      "enum": ["age", "month"]
     },
     "Month": {
       "type": "string",
@@ -91,13 +97,12 @@
         "name",
         "gender",
         "birth",
-        "showAge",
+        "birthDisplay",
         "freshGraduate",
         "workStart",
         "tel",
         "email",
         "hometown",
-        "political",
         "location",
         "degree"
       ],
@@ -106,9 +111,12 @@
         "gender": { "$ref": "#/$defs/Gender" },
         "birth": {
           "$ref": "#/$defs/Month",
-          "description": "出生月份；showAge 开启时据此渲染年龄。"
+          "description": "出生月份；按 birthDisplay 渲染为年龄或出生年月。"
         },
-        "showAge": { "type": "boolean", "description": "是否展示年龄。" },
+        "birthDisplay": {
+          "$ref": "#/$defs/BirthDisplay",
+          "description": "age 渲染年龄，month 渲染出生年月。"
+        },
         "freshGraduate": {
           "type": "boolean",
           "description": "应届毕业生标签。"
@@ -120,7 +128,6 @@
         "tel": { "type": "string", "description": "手机号。" },
         "email": { "type": "string", "description": "邮箱。" },
         "hometown": { "type": "string", "description": "籍贯。" },
-        "political": { "type": "string", "description": "政治面貌。" },
         "location": { "type": "string", "description": "所在地。" },
         "degree": { "type": "string", "description": "最高学历。" }
       }
@@ -253,6 +260,28 @@
         "name": { "type": "string", "description": "奖项/荣誉名称。" },
         "issuer": { "type": "string", "description": "颁发机构。" },
         "date": { "$ref": "#/$defs/Month", "description": "获奖时间。" },
+        "hidden": {
+          "type": "boolean",
+          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+        }
+      }
+    },
+    "CustomModule": {
+      "type": "object",
+      "description": "一条自定义模块。",
+      "additionalProperties": false,
+      "required": ["id", "name", "icon", "content"],
+      "properties": {
+        "id": { "type": "string", "description": "条目唯一 id。" },
+        "name": { "type": "string", "description": "模块标题。" },
+        "icon": {
+          "type": "string",
+          "description": "模块图标，取值为 src/lib/icons.ts MODULE_ICONS 的键名（lucide-react 图标名）。"
+        },
+        "content": {
+          "type": "string",
+          "description": "Markdown 正文。"
+        },
         "hidden": {
           "type": "boolean",
           "description": "隐藏条目保留数据，仅在纸面上跳过。"

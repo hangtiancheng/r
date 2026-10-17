@@ -1,20 +1,28 @@
+import { RequiredIndicator } from "@/components/controls/required-indicator";
 import { DateRangeField } from "@/components/controls/date-range-field";
 import { AddEntryButton } from "@/components/dialogs/add-entry-button";
 import { EntryCard } from "@/components/dialogs/entry-card";
 import { EntryEmpty } from "@/components/dialogs/entry-empty";
 import { ModuleDialog } from "@/components/dialogs/module-dialog";
 import { WorkDetailsField } from "@/components/dialogs/work-details-field";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { entryListActions } from "@/lib/entry-list";
 import { newWorkItem } from "@/lib/factories";
 import type { WorkItem } from "@/lib/types";
+import { issueFor, type ValidationReport } from "@/lib/validation";
 
 export interface WorkDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   items: WorkItem[];
   onChange: (items: WorkItem[]) => void;
+  report: ValidationReport;
 }
 
 export function WorkDialog({
@@ -22,6 +30,7 @@ export function WorkDialog({
   onOpenChange,
   items,
   onChange,
+  report,
 }: WorkDialogProps) {
   const list = entryListActions(items, onChange);
   return (
@@ -34,56 +43,68 @@ export function WorkDialog({
           onAdd={() => list.add(newWorkItem())}
         />
       )}
-      {items.map((item, i) => (
-        <EntryCard
-          key={item.id}
-          title={`工作经历 ${i + 1}`}
-          hidden={item.hidden}
-          onToggleHidden={() => list.toggleHidden(item.id)}
-          onDelete={() => list.remove(item.id)}
-        >
-          <DateRangeField
-            value={item}
-            onChange={(patch) => list.update(item.id, patch)}
-          />
-          <FieldGroup className="gap-3 sm:grid sm:grid-cols-2">
-            <Field>
-              <FieldLabel>公司名（必填）</FieldLabel>
-              <Input
-                value={item.company}
-                placeholder="填写公司名"
-                onChange={(e) =>
-                  list.update(item.id, { company: e.target.value })
-                }
-              />
-            </Field>
-            <Field>
-              <FieldLabel>部门</FieldLabel>
-              <Input
-                value={item.department}
-                placeholder="填写部门"
-                onChange={(e) =>
-                  list.update(item.id, { department: e.target.value })
-                }
-              />
-            </Field>
-            <Field>
-              <FieldLabel>职位</FieldLabel>
-              <Input
-                value={item.position}
-                placeholder="填写职位"
-                onChange={(e) =>
-                  list.update(item.id, { position: e.target.value })
-                }
-              />
-            </Field>
-          </FieldGroup>
-          <WorkDetailsField
-            details={item.details}
-            onChange={(details) => list.update(item.id, { details })}
-          />
-        </EntryCard>
-      ))}
+      {items.map((item, i) => {
+        const startError = issueFor(report, `work:${item.id}:start`);
+        const endError = issueFor(report, `work:${item.id}:end`);
+        const companyError = issueFor(report, `work:${item.id}:company`);
+        const rangeError = startError ?? endError;
+        return (
+          <EntryCard
+            key={item.id}
+            title={`工作经历 ${i + 1}`}
+            hidden={item.hidden}
+            onToggleHidden={() => list.toggleHidden(item.id)}
+            onDelete={() => list.remove(item.id)}
+          >
+            <DateRangeField
+              value={item}
+              invalid={!!rangeError}
+              onChange={(patch) => list.update(item.id, patch)}
+            />
+            {rangeError && <FieldError>{rangeError}</FieldError>}
+            <FieldGroup className="gap-3 sm:grid sm:grid-cols-2">
+              <Field data-invalid={!!companyError}>
+                <FieldLabel>
+                  公司名 <RequiredIndicator />
+                </FieldLabel>
+                <Input
+                  value={item.company}
+                  placeholder="填写公司名"
+                  aria-invalid={!!companyError}
+                  onChange={(e) =>
+                    list.update(item.id, { company: e.target.value })
+                  }
+                />
+                <FieldError>{companyError}</FieldError>
+              </Field>
+              <Field>
+                <FieldLabel>部门</FieldLabel>
+                <Input
+                  value={item.department}
+                  placeholder="填写部门"
+                  onChange={(e) =>
+                    list.update(item.id, { department: e.target.value })
+                  }
+                />
+              </Field>
+              <Field>
+                <FieldLabel>职位</FieldLabel>
+                <Input
+                  value={item.position}
+                  placeholder="填写职位"
+                  onChange={(e) =>
+                    list.update(item.id, { position: e.target.value })
+                  }
+                />
+              </Field>
+            </FieldGroup>
+            <WorkDetailsField
+              details={item.details}
+              onChange={(details) => list.update(item.id, { details })}
+            />
+          </EntryCard>
+        );
+      })}
       {items.length > 0 && (
         <AddEntryButton
           label="添加工作经历"

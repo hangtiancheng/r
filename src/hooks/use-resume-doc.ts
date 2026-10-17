@@ -3,8 +3,11 @@ import { useLiveQuery } from "dexie-react-hooks";
 
 import { toast } from "@/components/ui/toast";
 import { RESUME_ID, db, initResume, saveResume } from "@/lib/db";
+import { newCustomModule } from "@/lib/factories";
+import { isSameTarget } from "@/lib/modules";
 import { normalizeResume } from "@/lib/normalize";
-import type { ModuleKind, ResumeDoc } from "@/lib/types";
+import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
+import { validateResume } from "@/lib/validation";
 
 function itemLists(
   doc: ResumeDoc,
@@ -25,11 +28,16 @@ export function useResumeDoc() {
 
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<ResumeDoc | null>(null);
-  const [dialog, setDialog] = useState<ModuleKind | null>(null);
+  const [dialog, setDialogState] = useState<ModuleTarget | null>(null);
   const [saving, setSaving] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
 
   useEffect(() => {
     void initResume();
+  }, []);
+
+  const setDialog = useCallback((target: ModuleTarget | null) => {
+    setDialogState((prev) => (isSameTarget(prev, target) ? prev : target));
   }, []);
 
   const patchDraft = useCallback((patch: (doc: ResumeDoc) => void) => {
@@ -63,26 +71,67 @@ export function useResumeDoc() {
     [patchDraft],
   );
 
+  const toggleCustomModule = useCallback(
+    (id: string) => {
+      patchDraft((d) => {
+        const module = d.customModules.find((it) => it.id === id);
+        if (module) module.hidden = !module.hidden;
+      });
+    },
+    [patchDraft],
+  );
+
+  const addCustomModule = useCallback(() => {
+    const module = newCustomModule();
+    patchDraft((d) => {
+      d.customModules = [...d.customModules, module];
+    });
+    setDialog({ customId: module.id });
+  }, [patchDraft, setDialog]);
+
+  const removeCustomModule = useCallback(
+    (id: string) => {
+      patchDraft((d) => {
+        d.customModules = d.customModules.filter((it) => it.id !== id);
+      });
+    },
+    [patchDraft],
+  );
+
   const startEdit = useCallback(() => {
     if (!doc) return;
     setDraft(structuredClone(doc));
+    setShowErrors(false);
     setEditing(true);
   }, [doc]);
 
   const cancelEdit = useCallback(() => {
     setEditing(false);
     setDraft(null);
-    setDialog(null);
+    setShowErrors(false);
+    setDialogState(null);
   }, []);
 
-  const saveEdit = useCallback(async () => {
-    if (!draft) return;
+  const saveEdit = useCallback(async (): Promise<boolean> => {
+    if (!draft) return false;
+    const report = validateResume(draft);
+    if (report.issues.length > 0) {
+      const first = report.issues[0];
+      setShowErrors(true);
+      toast.add({
+        title: "保存失败",
+        description: `共 ${report.issues.length} 处未通过校验：${first.message}`,
+        type: "error",
+      });
+      return false;
+    }
     setSaving(true);
     try {
       await saveResume(draft);
       toast.add({ title: "已保存", description: "简历已持久化到 IndexedDB" });
       setEditing(false);
       setDraft(null);
+      return true;
     } finally {
       setSaving(false);
     }
@@ -93,11 +142,15 @@ export function useResumeDoc() {
     draft,
     editing,
     saving,
+    showErrors,
     dialog,
     setDialog,
     patchDraft,
     toggleModule,
     toggleItem,
+    toggleCustomModule,
+    addCustomModule,
+    removeCustomModule,
     startEdit,
     cancelEdit,
     saveEdit,

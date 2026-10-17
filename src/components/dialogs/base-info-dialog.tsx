@@ -1,8 +1,14 @@
+import { RequiredIndicator } from "@/components/controls/required-indicator";
 import { MonthPicker } from "@/components/controls/month-picker";
 import { OptionsSelect } from "@/components/controls/options-select";
 import { SwitchField } from "@/components/controls/switch-field";
 import { ModuleDialog } from "@/components/dialogs/module-dialog";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   InputGroup,
@@ -11,34 +17,50 @@ import {
   InputGroupText,
 } from "@/components/ui/input-group";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { DEGREES, GENDERS, POLITICALS } from "@/lib/format";
-import type { BaseInfo, Gender } from "@/lib/types";
+import { DEGREES, GENDERS } from "@/lib/format";
+import type { BaseInfo, BirthDisplay, Gender } from "@/lib/types";
+import { issueFor, type ValidationReport } from "@/lib/validation";
 
 export interface BaseInfoDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   base: BaseInfo;
   onChange: (patch: Partial<BaseInfo>) => void;
+  report: ValidationReport;
 }
+
+const BIRTH_DISPLAYS: { value: BirthDisplay; label: string }[] = [
+  { value: "age", label: "年龄" },
+  { value: "month", label: "出生年月" },
+];
 
 export function BaseInfoDialog({
   open,
   onOpenChange,
   base,
   onChange,
+  report,
 }: BaseInfoDialogProps) {
   const today = new Date();
+  const nameError = issueFor(report, "base:name");
+  const birthError = issueFor(report, "base:birth");
+  const telError = issueFor(report, "base:tel");
+  const emailError = issueFor(report, "base:email");
   return (
     <ModuleDialog open={open} onOpenChange={onOpenChange} title="我的个人信息">
       <FieldGroup className="gap-3 sm:grid sm:grid-cols-2">
-        <Field>
-          <FieldLabel htmlFor="base-name">姓名（必填）</FieldLabel>
+        <Field data-invalid={!!nameError}>
+          <FieldLabel htmlFor="base-name">
+            姓名 <RequiredIndicator />
+          </FieldLabel>
           <Input
             id="base-name"
             value={base.name}
             placeholder="输入姓名"
+            aria-invalid={!!nameError}
             onChange={(e) => onChange({ name: e.target.value })}
           />
+          <FieldError>{nameError}</FieldError>
         </Field>
         <Field>
           <FieldLabel>性别</FieldLabel>
@@ -61,23 +83,48 @@ export function BaseInfoDialog({
             ))}
           </ToggleGroup>
         </Field>
-        <Field>
-          <FieldLabel>出生年月</FieldLabel>
+        <Field data-invalid={!!birthError}>
+          <FieldLabel>
+            出生年月 <RequiredIndicator />
+          </FieldLabel>
           <MonthPicker
+            aria-label="出生年月"
             value={base.birth}
             maxDate={today}
             onChange={(birth) => onChange({ birth })}
             className="w-full"
           />
+          <FieldError>{birthError}</FieldError>
         </Field>
-        <SwitchField
-          label="简历中以年龄显示"
-          checked={base.showAge}
-          onChange={(showAge) => onChange({ showAge })}
-        />
+        <Field>
+          <FieldLabel>出生信息展示</FieldLabel>
+          <ToggleGroup
+            variant="outline"
+            size="sm"
+            spacing={0}
+            aria-label="出生信息展示方式"
+            className="w-full"
+            value={[base.birthDisplay]}
+            onValueChange={(value) => {
+              const display = value[value.length - 1];
+              if (display) onChange({ birthDisplay: display as BirthDisplay });
+            }}
+          >
+            {BIRTH_DISPLAYS.map((option) => (
+              <ToggleGroupItem
+                key={option.value}
+                value={option.value}
+                className="flex-1"
+              >
+                {option.label}
+              </ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </Field>
         <Field>
           <FieldLabel>参加工作时间</FieldLabel>
           <MonthPicker
+            aria-label="参加工作时间"
             value={base.workStart}
             maxDate={today}
             onChange={(workStart) => onChange({ workStart })}
@@ -89,8 +136,10 @@ export function BaseInfoDialog({
           checked={base.freshGraduate}
           onChange={(freshGraduate) => onChange({ freshGraduate })}
         />
-        <Field>
-          <FieldLabel htmlFor="base-tel">手机号（必填）</FieldLabel>
+        <Field data-invalid={!!telError}>
+          <FieldLabel htmlFor="base-tel">
+            手机号 <RequiredIndicator />
+          </FieldLabel>
           <InputGroup>
             <InputGroupAddon>
               <InputGroupText>+86</InputGroupText>
@@ -100,19 +149,25 @@ export function BaseInfoDialog({
               inputMode="tel"
               value={base.tel}
               placeholder="输入手机号"
+              aria-invalid={!!telError}
               onChange={(e) => onChange({ tel: e.target.value })}
             />
           </InputGroup>
+          <FieldError>{telError}</FieldError>
         </Field>
-        <Field>
-          <FieldLabel htmlFor="base-email">邮箱（必填）</FieldLabel>
+        <Field data-invalid={!!emailError}>
+          <FieldLabel htmlFor="base-email">
+            邮箱 <RequiredIndicator />
+          </FieldLabel>
           <Input
             id="base-email"
             type="email"
             value={base.email}
             placeholder="输入邮箱"
+            aria-invalid={!!emailError}
             onChange={(e) => onChange({ email: e.target.value })}
           />
+          <FieldError>{emailError}</FieldError>
         </Field>
         <Field>
           <FieldLabel htmlFor="base-hometown">籍贯</FieldLabel>
@@ -121,15 +176,6 @@ export function BaseInfoDialog({
             value={base.hometown}
             placeholder="输入籍贯"
             onChange={(e) => onChange({ hometown: e.target.value })}
-          />
-        </Field>
-        <Field>
-          <FieldLabel>政治面貌</FieldLabel>
-          <OptionsSelect
-            value={base.political}
-            options={POLITICALS}
-            onChange={(political) => onChange({ political })}
-            placeholder="请选择"
           />
         </Field>
         <Field>

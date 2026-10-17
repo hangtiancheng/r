@@ -14,20 +14,23 @@ export interface DateRangeFieldProps {
   value: DateRangeValue;
   onChange: (patch: Partial<DateRangeValue>) => void;
   maxDate?: Date;
+  invalid?: boolean;
 }
 
 export function DateRangeField({
   value,
   onChange,
   maxDate,
+  invalid,
 }: DateRangeFieldProps) {
   const id = useId();
   return (
-    <Field>
-      <FieldLabel>起止时间（必填）</FieldLabel>
+    <Field data-invalid={invalid}>
+      <FieldLabel>起止时间</FieldLabel>
       <div className="flex flex-wrap items-center gap-2">
         <MonthPicker
           aria-label="开始时间"
+          aria-invalid={invalid}
           value={value.start}
           maxDate={maxDate}
           onChange={(start) => onChange({ start })}
@@ -38,6 +41,7 @@ export function DateRangeField({
         </span>
         <MonthPicker
           aria-label="结束时间"
+          aria-invalid={invalid}
           value={value.end}
           disabled={value.ongoing}
           maxDate={maxDate}

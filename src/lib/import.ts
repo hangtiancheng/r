@@ -9,7 +9,7 @@ const RESUME_KEYS = [
   "works",
   "projects",
   "honors",
-  "skills",
+  "customModules",
   "hiddenModules",
 ] as const;
 

@@ -19,12 +19,12 @@ import {
 } from "@/components/ui/item";
 import { Switch } from "@/components/ui/switch";
 import { isModuleHidden, type ModuleMeta } from "@/lib/modules";
-import type { ModuleKind, ResumeDoc } from "@/lib/types";
+import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ModuleRowProps {
   meta: ModuleMeta;
   data: ResumeDoc;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   onToggleModule: (kind: ModuleKind) => void;
   onToggleItem: (kind: ModuleKind, id: string) => void;
 }
@@ -78,7 +78,7 @@ export function ModuleRow({
               variant="ghost"
               size="xs"
               className="-mx-1.5 min-w-0 flex-1 justify-start text-[13px] font-normal"
-              onClick={() => onOpen(meta.kind)}
+              onClick={() => onOpen({ kind: meta.kind })}
             >
               <span className="truncate">{meta.label}</span>
             </Button>
@@ -111,7 +111,7 @@ export function ModuleRow({
                     variant="ghost"
                     size="xs"
                     className="-mx-1.5 min-w-0 flex-1 justify-start text-xs font-normal"
-                    onClick={() => onOpen(meta.kind)}
+                    onClick={() => onOpen({ kind: meta.kind })}
                   >
                     <span className="truncate">{entry.name || "(未命名)"}</span>
                   </Button>

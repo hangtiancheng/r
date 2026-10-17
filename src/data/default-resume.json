@@ -6,13 +6,12 @@
     "name": "杭天铖",
     "gender": "男",
     "birth": "2002-02",
-    "showAge": true,
+    "birthDisplay": "age",
     "freshGraduate": true,
     "workStart": "",
     "tel": "15395377789",
     "email": "161043261@qq.com",
     "hometown": "安徽省芜湖市",
-    "political": "群众",
     "location": "江苏省南京市",
     "degree": "硕士"
   },
@@ -63,7 +62,7 @@
       "end": "2026-05",
       "ongoing": false,
       "company": "字节跳动",
-      "department": "Data 架构",
+      "department": "Data · 架构",
       "position": "全栈开发",
       "details": [
         {
@@ -84,7 +83,7 @@
       "end": "2026-02",
       "ongoing": false,
       "company": "腾讯",
-      "department": "IEG 互动娱乐事业群, 基础技术产品部",
+      "department": "IEG 互动娱乐事业群 · 基础技术产品部",
       "position": "全栈开发",
       "details": [
         {
@@ -134,7 +133,14 @@
     }
   ],
   "honors": [],
-  "skills": "了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限、会话持久化、上下文压缩、指令文件、Auto-Dream 自动记忆、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Teams; 拥有丰富的全栈 (Go/TypeScript)、Agent 开发经验和热情",
+  "customModules": [
+    {
+      "id": "custom-skills",
+      "name": "个人技能",
+      "icon": "LightbulbIcon",
+      "content": "了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限、会话持久化、上下文压缩、指令文件、Auto-Dream 自动记忆、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Teams; 拥有丰富的全栈 (Go/TypeScript)、Agent 开发经验和热情"
+    }
+  ],
   "hiddenModules": [],
   "updatedAt": 0
 }

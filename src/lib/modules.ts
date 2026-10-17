@@ -2,12 +2,12 @@ import {
   BriefcaseIcon,
   FolderKanbanIcon,
   GraduationCapIcon,
-  LightbulbIcon,
   TrophyIcon,
   UserIcon,
+  type LucideIcon,
 } from "lucide-react";
 
-import type { ModuleKind, ResumeDoc } from "@/lib/types";
+import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ModuleEntry {
   id: string;
@@ -18,7 +18,7 @@ export interface ModuleEntry {
 export interface ModuleMeta {
   kind: ModuleKind;
   label: string;
-  icon: typeof UserIcon;
+  icon: LucideIcon;
   entries?: (doc: ResumeDoc) => ModuleEntry[];
 }
 
@@ -52,9 +52,20 @@ export const MODULES: ModuleMeta[] = [
     entries: (d) =>
       d.honors.map((i) => ({ id: i.id, name: i.name, hidden: !!i.hidden })),
   },
-  { kind: "skill", label: "个人技能", icon: LightbulbIcon },
 ];
 
 export function isModuleHidden(doc: ResumeDoc, kind: ModuleKind): boolean {
   return (doc.hiddenModules ?? []).includes(kind);
+}
+
+export function targetKey(target: ModuleTarget): string {
+  return "kind" in target ? `kind:${target.kind}` : `custom:${target.customId}`;
+}
+
+export function isSameTarget(
+  a: ModuleTarget | null,
+  b: ModuleTarget | null,
+): boolean {
+  if (a === null || b === null) return a === b;
+  return targetKey(a) === targetKey(b);
 }

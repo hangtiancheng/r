@@ -1,16 +1,17 @@
 export type Gender = "男" | "女";
 
+export type BirthDisplay = "age" | "month";
+
 export interface BaseInfo {
   name: string;
   gender: Gender;
   birth: string;
-  showAge: boolean;
+  birthDisplay: BirthDisplay;
   freshGraduate: boolean;
   workStart: string;
   tel: string;
   email: string;
   hometown: string;
-  political: string;
   location: string;
   degree: string;
 }
@@ -66,6 +67,14 @@ export interface HonorItem {
   hidden?: boolean;
 }
 
+export interface CustomModule {
+  id: string;
+  name: string;
+  icon: string;
+  content: string;
+  hidden?: boolean;
+}
+
 export interface ResumeDoc {
   id: number;
   title: string;
@@ -74,10 +83,11 @@ export interface ResumeDoc {
   works: WorkItem[];
   projects: ProjectItem[];
   honors: HonorItem[];
-  skills: string;
+  customModules: CustomModule[];
   hiddenModules: ModuleKind[];
   updatedAt: number;
 }
 
-export type ModuleKind =
-  "base" | "edu" | "work" | "project" | "honor" | "skill";
+export type ModuleKind = "base" | "edu" | "work" | "project" | "honor";
+
+export type ModuleTarget = { kind: ModuleKind } | { customId: string };

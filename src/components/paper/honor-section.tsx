@@ -1,12 +1,12 @@
 import { PaperRow } from "@/components/paper/paper-row";
 import { PaperSection } from "@/components/paper/paper-section";
 import { formatMonth } from "@/lib/format";
-import type { HonorItem, ModuleKind } from "@/lib/types";
+import type { HonorItem, ModuleTarget } from "@/lib/types";
 
 export interface HonorSectionProps {
   items: HonorItem[];
   editing: boolean;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   hidden?: boolean;
 }
 
@@ -21,7 +21,7 @@ export function HonorSection({
   return (
     <PaperSection
       title="荣誉奖项"
-      kind="honor"
+      target={{ kind: "honor" }}
       editing={editing}
       onOpen={onOpen}
       hidden={hidden}

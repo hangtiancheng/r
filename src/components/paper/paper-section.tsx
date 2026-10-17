@@ -2,20 +2,20 @@ import type { ReactNode } from "react";
 import { cn } from "cn";
 
 import { HEAD_BLUE } from "@/components/paper/paper-tokens";
-import type { ModuleKind } from "@/lib/types";
+import type { ModuleTarget } from "@/lib/types";
 
 export interface PaperSectionProps {
   title?: string;
-  kind: ModuleKind;
+  target: ModuleTarget;
   editing: boolean;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   hidden?: boolean;
   children: ReactNode;
 }
 
 export function PaperSection({
   title,
-  kind,
+  target,
   editing,
   onOpen,
   hidden,
@@ -24,7 +24,7 @@ export function PaperSection({
   if (hidden) return null;
   return (
     <section
-      onClick={editing ? () => onOpen(kind) : undefined}
+      onClick={editing ? () => onOpen(target) : undefined}
       className={cn(
         "mt-3 first:mt-0",
         editing &&

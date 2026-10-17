@@ -1,5 +1,11 @@
 import { uid } from "@/lib/format";
-import type { BaseInfo, ModuleKind, ResumeDoc } from "@/lib/types";
+import type {
+  BaseInfo,
+  BirthDisplay,
+  CustomModule,
+  ModuleKind,
+  ResumeDoc,
+} from "@/lib/types";
 
 const MODULE_KINDS: readonly ModuleKind[] = [
   "base",
@@ -7,23 +13,7 @@ const MODULE_KINDS: readonly ModuleKind[] = [
   "work",
   "project",
   "honor",
-  "skill",
 ];
-
-const DEFAULT_BASE: BaseInfo = {
-  name: "",
-  gender: "男",
-  birth: "",
-  showAge: false,
-  freshGraduate: false,
-  workStart: "",
-  tel: "",
-  email: "",
-  hometown: "",
-  political: "",
-  location: "",
-  degree: "",
-};
 
 export function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -35,6 +25,14 @@ function asString(value: unknown): string {
 
 function asBool(value: unknown): boolean {
   return value === true;
+}
+
+function asBirthDisplay(value: unknown): BirthDisplay {
+  return value === "age" ? "age" : "month";
+}
+
+function asModuleName(value: unknown): string {
+  return typeof value === "string" && value.trim() ? value : "自定义模块";
 }
 
 function sanitizeEntries(value: unknown): Record<string, unknown>[] {
@@ -56,23 +54,40 @@ function coerceStrings<T extends object>(
   return item as T;
 }
 
+function sanitizeCustomModules(doc: ResumeDoc): void {
+  doc.customModules = sanitizeEntries(doc.customModules).map((entry) => {
+    const module = coerceStrings<CustomModule>(entry, [
+      "name",
+      "icon",
+      "content",
+    ]);
+    module.name = asModuleName(module.name);
+    return module;
+  });
+}
+
 export function normalizeResume(doc: ResumeDoc): ResumeDoc {
   doc.title = asString(doc.title);
-  doc.skills = asString(doc.skills);
   doc.hiddenModules = Array.isArray(doc.hiddenModules)
     ? doc.hiddenModules.filter((kind): kind is ModuleKind =>
         MODULE_KINDS.includes(kind as ModuleKind),
       )
     : [];
 
-  const base = { ...DEFAULT_BASE, ...(isRecord(doc.base) ? doc.base : {}) };
-  for (const key of Object.keys(DEFAULT_BASE) as (keyof BaseInfo)[]) {
-    if (key === "gender") base.gender = base.gender === "女" ? "女" : "男";
-    else if (key === "showAge") base.showAge = asBool(base.showAge);
-    else if (key === "freshGraduate")
-      base.freshGraduate = asBool(base.freshGraduate);
-    else base[key] = asString(base[key]);
-  }
+  const rawBase: Record<string, unknown> = isRecord(doc.base) ? doc.base : {};
+  const base: BaseInfo = {
+    name: asString(rawBase.name),
+    gender: rawBase.gender === "女" ? "女" : "男",
+    birth: asString(rawBase.birth),
+    birthDisplay: asBirthDisplay(rawBase.birthDisplay),
+    freshGraduate: asBool(rawBase.freshGraduate),
+    workStart: asString(rawBase.workStart),
+    tel: asString(rawBase.tel),
+    email: asString(rawBase.email),
+    hometown: asString(rawBase.hometown),
+    location: asString(rawBase.location),
+    degree: asString(rawBase.degree),
+  };
   doc.base = base;
 
   doc.edu = sanitizeEntries(doc.edu).map((entry) =>
@@ -123,5 +138,8 @@ export function normalizeResume(doc: ResumeDoc): ResumeDoc {
       "date",
     ]),
   );
+
+  sanitizeCustomModules(doc);
+  delete (doc as unknown as { skills?: unknown }).skills;
   return doc;
 }

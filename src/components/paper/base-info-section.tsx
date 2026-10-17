@@ -4,12 +4,12 @@ import { cn } from "cn";
 import { PaperSection } from "@/components/paper/paper-section";
 import { INK, INK_60 } from "@/components/paper/paper-tokens";
 import { buildTags } from "@/lib/format";
-import type { BaseInfo, ModuleKind } from "@/lib/types";
+import type { BaseInfo, ModuleTarget } from "@/lib/types";
 
 export interface BaseInfoSectionProps {
   base: BaseInfo;
   editing: boolean;
-  onOpen: (kind: ModuleKind) => void;
+  onOpen: (target: ModuleTarget) => void;
   hidden?: boolean;
 }
 
@@ -21,7 +21,12 @@ export function BaseInfoSection({
 }: BaseInfoSectionProps) {
   const tags = buildTags(base);
   return (
-    <PaperSection kind="base" editing={editing} onOpen={onOpen} hidden={hidden}>
+    <PaperSection
+      target={{ kind: "base" }}
+      editing={editing}
+      onOpen={onOpen}
+      hidden={hidden}
+    >
       <div className="min-w-0">
         <h1 className={cn("text-lg leading-6 font-bold", INK)}>
           {base.name || "姓名"}

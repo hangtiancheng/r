@@ -1,5 +1,7 @@
+import { DEFAULT_MODULE_ICON } from "@/lib/icons";
 import { uid } from "@/lib/format";
 import type {
+  CustomModule,
   EduItem,
   HonorItem,
   ProjectItem,
@@ -53,4 +55,13 @@ export function newProjectItem(): ProjectItem {
 
 export function newHonorItem(): HonorItem {
   return { id: uid(), name: "", issuer: "", date: "" };
+}
+
+export function newCustomModule(): CustomModule {
+  return {
+    id: uid(),
+    name: "",
+    icon: DEFAULT_MODULE_ICON,
+    content: "",
+  };
 }
