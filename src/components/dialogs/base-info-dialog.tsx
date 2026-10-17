@@ -47,7 +47,7 @@ export function BaseInfoDialog({
   const telError = issueFor(report, "base:tel");
   const emailError = issueFor(report, "base:email");
   return (
-    <ModuleDialog open={open} onOpenChange={onOpenChange} title="我的个人信息">
+    <ModuleDialog open={open} onOpenChange={onOpenChange} title="个人信息">
       <FieldGroup className="gap-3 sm:grid sm:grid-cols-2">
         <Field data-invalid={!!nameError}>
           <FieldLabel htmlFor="base-name">
@@ -102,7 +102,7 @@ export function BaseInfoDialog({
             variant="outline"
             size="sm"
             spacing={0}
-            aria-label="出生信息展示方式"
+            aria-label="出生信息展示"
             className="w-full"
             value={[base.birthDisplay]}
             onValueChange={(value) => {

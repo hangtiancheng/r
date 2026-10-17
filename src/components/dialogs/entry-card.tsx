@@ -42,7 +42,7 @@ export function EntryCard({
           {title}
           {hidden && (
             <Badge variant="secondary" className="font-normal">
-              已隐藏，纸面不展示
+              已隐藏
             </Badge>
           )}
         </CardTitle>

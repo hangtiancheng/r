@@ -17,7 +17,7 @@ function ProjectEntry({ item }: { item: ProjectItem }) {
       />
       {item.repo && (
         <h3 className={cn("mt-1 text-sm leading-5 font-medium", INK_60)}>
-          仓库链接: <PaperLinkText text={item.repo} />
+          项目链接: <PaperLinkText text={item.repo} />
         </h3>
       )}
       <PaperMarkdown source={item.content} />

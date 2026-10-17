@@ -37,7 +37,7 @@ export function HonorDialog({
       {items.length === 0 && (
         <EntryEmpty
           title="暂无荣誉奖项"
-          description="添加奖项名称、颁发机构与获奖时间。"
+          description="添加奖项名称、颁奖机构与获奖时间"
           addLabel="添加荣誉奖项"
           onAdd={() => list.add(newHonorItem())}
         />
@@ -60,7 +60,7 @@ export function HonorDialog({
                 </FieldLabel>
                 <Input
                   value={item.name}
-                  placeholder="奖项/荣誉名称"
+                  placeholder="奖项名称"
                   aria-invalid={!!nameError}
                   onChange={(e) =>
                     list.update(item.id, { name: e.target.value })
@@ -69,10 +69,10 @@ export function HonorDialog({
                 <FieldError>{nameError}</FieldError>
               </Field>
               <Field>
-                <FieldLabel>颁发机构</FieldLabel>
+                <FieldLabel>颁奖机构</FieldLabel>
                 <Input
                   value={item.issuer}
-                  placeholder="颁发机构"
+                  placeholder="颁奖机构"
                   onChange={(e) =>
                     list.update(item.id, { issuer: e.target.value })
                   }

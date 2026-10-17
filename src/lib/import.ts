@@ -18,13 +18,13 @@ export function parseResumeJson(text: string): ResumeDoc {
   try {
     parsed = JSON.parse(text);
   } catch {
-    throw new Error("文件不是合法的 JSON");
+    throw new Error("简历 JSON 不合法");
   }
   if (!isRecord(parsed)) {
-    throw new Error("简历 JSON 的顶层必须是对象");
+    throw new Error("简历 JSON 必须是对象");
   }
   if (!RESUME_KEYS.some((key) => key in parsed)) {
-    throw new Error("文件中找不到简历字段，请确认是本应用导出的 JSON");
+    throw new Error("简历 JSON 不合法");
   }
 
   return normalizeResume({

@@ -65,8 +65,7 @@ export function ResumeWorkspace() {
       } catch (err) {
         toast.add({
           title: "导入失败",
-          description:
-            err instanceof Error ? err.message : "文件不是有效的简历 JSON",
+          description: err instanceof Error ? err.message : "简历 JSON 不合法",
           type: "error",
         });
       }
@@ -80,11 +79,11 @@ export function ResumeWorkspace() {
 
   return (
     <div className="min-h-dvh bg-[radial-gradient(1200px_400px_at_50%_-100px,rgba(15,122,245,0.07),transparent_70%),linear-gradient(180deg,#f7f9fc_0%,#edf1f7_100%)] px-3 py-3 md:py-5 dark:bg-[radial-gradient(1200px_400px_at_50%_-100px,rgba(77,157,255,0.09),transparent_70%),linear-gradient(180deg,#171b20_0%,#12161b_100%)] print:p-0">
-      <div className="mx-auto w-full max-w-[1120px] print:max-w-none">
+      <div className="mx-auto w-full max-w-280 print:max-w-none">
         <div className="flex items-start gap-3">
           <Card
             className={cn(
-              "[color-scheme:light] [--accent-foreground:#0f498b] [--accent:#eaf3fe] [--background:#ffffff] [--border:rgba(21,46,74,0.12)] [--card-foreground:#13181d] [--card:#ffffff] [--destructive:#d93025] [--foreground:#13181d] [--input:rgba(21,46,74,0.16)] [--muted-foreground:#71808f] [--muted:#f2f4f6] [--popover-foreground:#13181d] [--popover:#ffffff] [--primary-foreground:#ffffff] [--primary:#0f7af5] [--ring:rgba(15,122,245,0.5)] [--secondary-foreground:#13181d] [--secondary:#eef2f6]",
+              "scheme-light [--accent-foreground:#0f498b] [--accent:#eaf3fe] [--background:#ffffff] [--border:rgba(21,46,74,0.12)] [--card-foreground:#13181d] [--card:#ffffff] [--destructive:#d93025] [--foreground:#13181d] [--input:rgba(21,46,74,0.16)] [--muted-foreground:#71808f] [--muted:#f2f4f6] [--popover-foreground:#13181d] [--popover:#ffffff] [--primary-foreground:#ffffff] [--primary:#0f7af5] [--ring:rgba(15,122,245,0.5)] [--secondary-foreground:#13181d] [--secondary:#eef2f6]",
               "min-w-0 flex-1 gap-0 rounded-xl py-0 shadow-[0_1px_2px_rgba(20,46,77,0.05),0_16px_40px_-16px_rgba(20,46,77,0.20)] print:rounded-none print:shadow-none print:ring-0",
             )}
           >

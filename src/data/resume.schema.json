@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "resume.schema.json",
   "title": "ResumeDoc",
-  "description": "简历文档结构。对应 src/lib/types.ts 的 ResumeDoc：既描述 IndexedDB 中持久化的单文档，也描述「下载简历 JSON / 导入简历 JSON」使用的备份文件格式（src/data/default-resume.json 即一份实例）。",
+  "description": "Resume document structure, mirroring ResumeDoc in src/lib/types.ts. Describes both the single document persisted in IndexedDB and the backup file format used by \"download resume JSON / import resume JSON\" (src/data/default-resume.json is one instance).",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -20,59 +20,59 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "description": "可选。指向本 schema 的引用，仅供编辑器提示；导入时会被忽略。"
+      "description": "Optional reference to this schema, for editor tooling only; ignored on import."
     },
     "id": {
       "type": "integer",
       "minimum": 1,
-      "description": "单文档存储中的固定文档 id。"
+      "description": "Fixed document id in the single-document store."
     },
     "title": {
       "type": "string",
-      "description": "简历标题，同时用作导出文件名。"
+      "description": "Resume title; also used as the export file name."
     },
     "base": {
       "$ref": "#/$defs/BaseInfo"
     },
     "edu": {
       "type": "array",
-      "description": "教育经历条目。",
+      "description": "Education entries.",
       "items": { "$ref": "#/$defs/EduItem" }
     },
     "works": {
       "type": "array",
-      "description": "工作经历条目。",
+      "description": "Work experience entries.",
       "items": { "$ref": "#/$defs/WorkItem" }
     },
     "projects": {
       "type": "array",
-      "description": "项目经历条目。",
+      "description": "Project entries.",
       "items": { "$ref": "#/$defs/ProjectItem" }
     },
     "honors": {
       "type": "array",
-      "description": "荣誉奖项条目。",
+      "description": "Honors and awards entries.",
       "items": { "$ref": "#/$defs/HonorItem" }
     },
     "customModules": {
       "type": "array",
-      "description": "自定义模块条目。每个模块包含标题、图标与 Markdown 正文。",
+      "description": "Custom module entries. Each module consists of a title, an icon, and Markdown body content.",
       "items": { "$ref": "#/$defs/CustomModule" }
     },
     "hiddenModules": {
       "type": "array",
-      "description": "在纸面上隐藏的固定模块。隐藏不删除数据，只影响渲染。自定义模块使用条目自身的 hidden 字段。",
+      "description": "Built-in modules hidden on the paper. Hiding does not delete data; it only affects rendering. Custom modules use their own hidden field.",
       "items": { "$ref": "#/$defs/ModuleKind" }
     },
     "updatedAt": {
       "type": "number",
-      "description": "最近一次保存的时间戳（Date.now() 毫秒）。"
+      "description": "Timestamp of the last save (Date.now() milliseconds)."
     }
   },
   "$defs": {
     "ModuleKind": {
       "type": "string",
-      "description": "固定简历模块标识。",
+      "description": "Identifier of a built-in resume module.",
       "enum": ["base", "edu", "work", "project", "honor"]
     },
     "Gender": {
@@ -81,17 +81,17 @@
     },
     "BirthDisplay": {
       "type": "string",
-      "description": "出生信息在纸面上的呈现方式。",
+      "description": "How birth information is presented on the paper.",
       "enum": ["age", "month"]
     },
     "Month": {
       "type": "string",
-      "description": "月份，\"YYYY-MM\"；空字符串表示未填写。",
+      "description": "Month in \"YYYY-MM\" format; an empty string means not provided.",
       "pattern": "^(\\d{4}-(0[1-9]|1[0-2]))?$"
     },
     "BaseInfo": {
       "type": "object",
-      "description": "个人信息模块。",
+      "description": "Personal information module.",
       "additionalProperties": false,
       "required": [
         "name",
@@ -107,34 +107,40 @@
         "degree"
       ],
       "properties": {
-        "name": { "type": "string", "description": "姓名。" },
+        "name": { "type": "string", "description": "Full name." },
         "gender": { "$ref": "#/$defs/Gender" },
         "birth": {
           "$ref": "#/$defs/Month",
-          "description": "出生月份；按 birthDisplay 渲染为年龄或出生年月。"
+          "description": "Birth month; rendered as age or birth month according to birthDisplay."
         },
         "birthDisplay": {
           "$ref": "#/$defs/BirthDisplay",
-          "description": "age 渲染年龄，month 渲染出生年月。"
+          "description": "age renders the computed age; month renders the birth month."
         },
         "freshGraduate": {
           "type": "boolean",
-          "description": "应届毕业生标签。"
+          "description": "Fresh graduate badge."
         },
         "workStart": {
           "$ref": "#/$defs/Month",
-          "description": "首次参加工作时间（可选）。"
+          "description": "First employment start date (optional)."
         },
-        "tel": { "type": "string", "description": "手机号。" },
-        "email": { "type": "string", "description": "邮箱。" },
-        "hometown": { "type": "string", "description": "籍贯。" },
-        "location": { "type": "string", "description": "所在地。" },
-        "degree": { "type": "string", "description": "最高学历。" }
+        "tel": { "type": "string", "description": "Mobile phone number." },
+        "email": { "type": "string", "description": "Email address." },
+        "hometown": {
+          "type": "string",
+          "description": "Hometown / place of origin."
+        },
+        "location": { "type": "string", "description": "Current location." },
+        "degree": {
+          "type": "string",
+          "description": "Highest degree attained."
+        }
       }
     },
     "EduItem": {
       "type": "object",
-      "description": "一条教育经历。",
+      "description": "A single education entry.",
       "additionalProperties": false,
       "required": [
         "id",
@@ -148,41 +154,44 @@
         "rank"
       ],
       "properties": {
-        "id": { "type": "string", "description": "条目唯一 id。" },
+        "id": { "type": "string", "description": "Unique entry id." },
         "start": { "$ref": "#/$defs/Month" },
         "end": { "$ref": "#/$defs/Month" },
         "ongoing": {
           "type": "boolean",
-          "description": "是否在读（渲染为「至今」）。"
+          "description": "Whether the program is in progress (rendered as \"Present\")."
         },
-        "school": { "type": "string", "description": "学校。" },
-        "major": { "type": "string", "description": "专业。" },
-        "degree": { "type": "string", "description": "学历/学位。" },
-        "gpa": { "type": "string", "description": "GPA（可选）。" },
-        "rank": { "type": "string", "description": "排名（可选）。" },
+        "school": { "type": "string", "description": "School / institution." },
+        "major": { "type": "string", "description": "Major / field of study." },
+        "degree": { "type": "string", "description": "Degree level." },
+        "gpa": { "type": "string", "description": "GPA (optional)." },
+        "rank": {
+          "type": "string",
+          "description": "Academic ranking (optional)."
+        },
         "hidden": {
           "type": "boolean",
-          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+          "description": "Hidden entries retain their data and are simply skipped on the paper."
         }
       }
     },
     "WorkDetail": {
       "type": "object",
-      "description": "工作经历下的一段工作内容。",
+      "description": "A work-content segment within a work experience entry.",
       "additionalProperties": false,
       "required": ["id", "title", "content"],
       "properties": {
-        "id": { "type": "string", "description": "条目唯一 id。" },
-        "title": { "type": "string", "description": "小标题。" },
+        "id": { "type": "string", "description": "Unique entry id." },
+        "title": { "type": "string", "description": "Segment subtitle." },
         "content": {
           "type": "string",
-          "description": "Markdown 正文（如项目符号列表）。"
+          "description": "Markdown body (e.g. a bulleted list)."
         }
       }
     },
     "WorkItem": {
       "type": "object",
-      "description": "一条工作经历。",
+      "description": "A single work experience entry.",
       "additionalProperties": false,
       "required": [
         "id",
@@ -195,29 +204,32 @@
         "details"
       ],
       "properties": {
-        "id": { "type": "string", "description": "条目唯一 id。" },
+        "id": { "type": "string", "description": "Unique entry id." },
         "start": { "$ref": "#/$defs/Month" },
         "end": { "$ref": "#/$defs/Month" },
         "ongoing": {
           "type": "boolean",
-          "description": "是否在职（渲染为「至今」）。"
+          "description": "Whether currently employed (rendered as \"Present\")."
         },
-        "company": { "type": "string", "description": "公司。" },
-        "department": { "type": "string", "description": "部门。" },
-        "position": { "type": "string", "description": "职位。" },
+        "company": { "type": "string", "description": "Company name." },
+        "department": { "type": "string", "description": "Department." },
+        "position": {
+          "type": "string",
+          "description": "Position / job title."
+        },
         "details": {
           "type": "array",
           "items": { "$ref": "#/$defs/WorkDetail" }
         },
         "hidden": {
           "type": "boolean",
-          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+          "description": "Hidden entries retain their data and are simply skipped on the paper."
         }
       }
     },
     "ProjectItem": {
       "type": "object",
-      "description": "一条项目经历。",
+      "description": "A single project entry.",
       "additionalProperties": false,
       "required": [
         "id",
@@ -230,61 +242,70 @@
         "content"
       ],
       "properties": {
-        "id": { "type": "string", "description": "条目唯一 id。" },
+        "id": { "type": "string", "description": "Unique entry id." },
         "start": { "$ref": "#/$defs/Month" },
         "end": { "$ref": "#/$defs/Month" },
         "ongoing": {
           "type": "boolean",
-          "description": "是否进行中（渲染为「至今」）。"
+          "description": "Whether the project is in progress (rendered as \"Present\")."
         },
-        "name": { "type": "string", "description": "项目名称。" },
-        "duty": { "type": "string", "description": "担任角色。" },
-        "repo": { "type": "string", "description": "仓库/链接（可选）。" },
+        "name": { "type": "string", "description": "Project name." },
+        "duty": {
+          "type": "string",
+          "description": "Role held in the project."
+        },
+        "repo": {
+          "type": "string",
+          "description": "Repository / link (optional)."
+        },
         "content": {
           "type": "string",
-          "description": "Markdown 正文（如项目符号列表）。"
+          "description": "Markdown body (e.g. a bulleted list)."
         },
         "hidden": {
           "type": "boolean",
-          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+          "description": "Hidden entries retain their data and are simply skipped on the paper."
         }
       }
     },
     "HonorItem": {
       "type": "object",
-      "description": "一条荣誉奖项。",
+      "description": "A single honors-and-awards entry.",
       "additionalProperties": false,
       "required": ["id", "name", "issuer", "date"],
       "properties": {
-        "id": { "type": "string", "description": "条目唯一 id。" },
-        "name": { "type": "string", "description": "奖项/荣誉名称。" },
-        "issuer": { "type": "string", "description": "颁发机构。" },
-        "date": { "$ref": "#/$defs/Month", "description": "获奖时间。" },
+        "id": { "type": "string", "description": "Unique entry id." },
+        "name": { "type": "string", "description": "Award / honor name." },
+        "issuer": { "type": "string", "description": "Issuing organization." },
+        "date": {
+          "$ref": "#/$defs/Month",
+          "description": "Date the award was received."
+        },
         "hidden": {
           "type": "boolean",
-          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+          "description": "Hidden entries retain their data and are simply skipped on the paper."
         }
       }
     },
     "CustomModule": {
       "type": "object",
-      "description": "一条自定义模块。",
+      "description": "A single custom module.",
       "additionalProperties": false,
       "required": ["id", "name", "icon", "content"],
       "properties": {
-        "id": { "type": "string", "description": "条目唯一 id。" },
-        "name": { "type": "string", "description": "模块标题。" },
+        "id": { "type": "string", "description": "Unique entry id." },
+        "name": { "type": "string", "description": "Module title." },
         "icon": {
           "type": "string",
-          "description": "模块图标，取值为 src/lib/icons.ts MODULE_ICONS 的键名（lucide-react 图标名）。"
+          "description": "Module icon, keyed by lucide-react icon name (see the deduped registry built in src/lib/icons-registry.ts)."
         },
         "content": {
           "type": "string",
-          "description": "Markdown 正文。"
+          "description": "Markdown body."
         },
         "hidden": {
           "type": "boolean",
-          "description": "隐藏条目保留数据，仅在纸面上跳过。"
+          "description": "Hidden entries retain their data and are simply skipped on the paper."
         }
       }
     }

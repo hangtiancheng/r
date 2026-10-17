@@ -50,7 +50,7 @@ export function CustomModuleDialog({
               </InputGroupAddon>
               <InputGroupInput
                 value={module.name}
-                placeholder="填写模块名称，如：个人技能"
+                placeholder="模块名称"
                 aria-label="模块名称"
                 aria-invalid={!!nameError}
                 onChange={(e) => onChange({ name: e.target.value })}
@@ -64,8 +64,8 @@ export function CustomModuleDialog({
               size="icon"
               className="shrink-0"
               onClick={onRemove}
-              aria-label="删除该自定义模块"
-              title="删除该自定义模块"
+              aria-label="删除该模块"
+              title="删除该模块"
             >
               <Trash2Icon />
             </Button>
@@ -76,10 +76,10 @@ export function CustomModuleDialog({
     >
       <FieldGroup>
         <MarkdownField
-          label="模块正文"
+          label=""
           value={module.content}
           height={280}
-          placeholder="支持 Markdown，分点描述事项（- 一条）"
+          placeholder="支持 Markdown"
           onChange={(content) => onChange({ content })}
         />
       </FieldGroup>

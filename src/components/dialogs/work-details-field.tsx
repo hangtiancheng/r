@@ -50,14 +50,14 @@ export function WorkDetailsField({ details, onChange }: WorkDetailsFieldProps) {
               <FieldGroup className="gap-2">
                 <Input
                   value={detail.title}
-                  placeholder="总结主要工作内容，或事项名称"
+                  placeholder="工作内容"
                   onChange={(e) => patch(detail.id, { title: e.target.value })}
                 />
                 <MarkdownField
-                  label="工作内容描述"
+                  label="工作内容"
                   value={detail.content}
                   height={180}
-                  placeholder="支持 Markdown，分点描述事项（- 一条），渲染为项目符号列表"
+                  placeholder="支持 Markdown"
                   onChange={(content) => patch(detail.id, { content })}
                 />
               </FieldGroup>
@@ -71,7 +71,7 @@ export function WorkDetailsField({ details, onChange }: WorkDetailsFieldProps) {
           onClick={() => onChange([...details, newWorkDetail()])}
         >
           <PlusIcon data-icon="inline-start" />
-          增加项目
+          添加项目
         </Button>
       </FieldGroup>
     </Field>

@@ -55,9 +55,7 @@ export function ModuleSheet({
       <SheetContent side="right" className="w-72 gap-0 p-0 sm:max-w-72">
         <SheetHeader className="border-border/60 border-b px-4 py-3 pr-12">
           <SheetTitle>简历模块</SheetTitle>
-          <SheetDescription>
-            开关只影响纸面展示，隐藏不会删除数据。
-          </SheetDescription>
+          <SheetDescription>隐藏不会删除数据</SheetDescription>
         </SheetHeader>
         <ScrollArea className="flex-1">
           <div className="p-2">

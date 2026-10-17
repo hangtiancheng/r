@@ -38,7 +38,7 @@ export function WorkDialog({
       {items.length === 0 && (
         <EntryEmpty
           title="暂无工作经历"
-          description="添加公司、部门、职位，并分点描述主要工作内容。"
+          description="添加公司、部门、职位, 分点描述工作内容"
           addLabel="添加工作经历"
           onAdd={() => list.add(newWorkItem())}
         />
@@ -65,11 +65,11 @@ export function WorkDialog({
             <FieldGroup className="gap-3 sm:grid sm:grid-cols-2">
               <Field data-invalid={!!companyError}>
                 <FieldLabel>
-                  公司名 <RequiredIndicator />
+                  公司 <RequiredIndicator />
                 </FieldLabel>
                 <Input
                   value={item.company}
-                  placeholder="填写公司名"
+                  placeholder="填写公司"
                   aria-invalid={!!companyError}
                   onChange={(e) =>
                     list.update(item.id, { company: e.target.value })

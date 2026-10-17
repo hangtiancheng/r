@@ -46,8 +46,8 @@ export function BaseInfoSection({
         <div className={cn("mt-1.5 grid gap-y-0.5 leading-5", INK_60)}>
           {(base.location || base.hometown) && (
             <div className="flex flex-wrap gap-x-6">
-              {base.location && <span>所在地：{base.location}</span>}
-              {base.hometown && <span>籍贯：{base.hometown}</span>}
+              {base.location && <span>所在地: {base.location}</span>}
+              {base.hometown && <span>籍贯: {base.hometown}</span>}
             </div>
           )}
           <div className="flex flex-wrap gap-x-6">

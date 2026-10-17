@@ -39,7 +39,7 @@ export function EduDialog({
       {items.length === 0 && (
         <EntryEmpty
           title="暂无教育经历"
-          description="添加学校、专业、学历与绩点等信息。"
+          description="添加学历、学校、专业等信息"
           addLabel="添加教育经历"
           onAdd={() => list.add(newEduItem())}
         />
@@ -90,7 +90,7 @@ export function EduDialog({
                 <FieldLabel>专业</FieldLabel>
                 <Input
                   value={item.major}
-                  placeholder="填写你的专业"
+                  placeholder="填写专业名称"
                   onChange={(e) =>
                     list.update(item.id, { major: e.target.value })
                   }
@@ -100,7 +100,7 @@ export function EduDialog({
                 <FieldLabel>绩点</FieldLabel>
                 <Input
                   value={item.gpa}
-                  placeholder="如：3.8 / 4.0"
+                  placeholder="3.5/4.0"
                   onChange={(e) =>
                     list.update(item.id, { gpa: e.target.value })
                   }
@@ -110,7 +110,7 @@ export function EduDialog({
                 <FieldLabel>成绩排名</FieldLabel>
                 <Input
                   value={item.rank}
-                  placeholder="如：前 5%"
+                  placeholder="前 30%"
                   onChange={(e) =>
                     list.update(item.id, { rank: e.target.value })
                   }

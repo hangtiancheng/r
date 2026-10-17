@@ -120,7 +120,7 @@ export function useResumeDoc() {
       setShowErrors(true);
       toast.add({
         title: "保存失败",
-        description: `共 ${report.issues.length} 处未通过校验：${first.message}`,
+        description: `共 ${report.issues.length} 处校验失败: ${first.message}`,
         type: "error",
       });
       return false;
@@ -128,7 +128,7 @@ export function useResumeDoc() {
     setSaving(true);
     try {
       await saveResume(draft);
-      toast.add({ title: "已保存", description: "简历已持久化到 IndexedDB" });
+      toast.add({ title: "已保存", description: "简历已保存" });
       setEditing(false);
       setDraft(null);
       return true;

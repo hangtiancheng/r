@@ -140,6 +140,6 @@ export function normalizeResume(doc: ResumeDoc): ResumeDoc {
   );
 
   sanitizeCustomModules(doc);
-  delete (doc as unknown as { skills?: unknown }).skills;
+  delete (doc as { skills?: unknown }).skills;
   return doc;
 }

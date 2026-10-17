@@ -38,7 +38,7 @@ export function ProjectDialog({
       {items.length === 0 && (
         <EntryEmpty
           title="暂无项目经历"
-          description="添加项目名称、担任角色，并用 Markdown 分点描述项目内容。"
+          description="添加项目名称、项目角色, 支持 Markdown"
           addLabel="添加项目经历"
           onAdd={() => list.add(newProjectItem())}
         />
@@ -69,7 +69,7 @@ export function ProjectDialog({
                 </FieldLabel>
                 <Input
                   value={item.name}
-                  placeholder="填写项目名称"
+                  placeholder="项目名称"
                   aria-invalid={!!nameError}
                   onChange={(e) =>
                     list.update(item.id, { name: e.target.value })
@@ -78,10 +78,10 @@ export function ProjectDialog({
                 <FieldError>{nameError}</FieldError>
               </Field>
               <Field>
-                <FieldLabel>担任角色</FieldLabel>
+                <FieldLabel>项目角色</FieldLabel>
                 <Input
                   value={item.duty}
-                  placeholder="如：全栈开发"
+                  placeholder="全栈开发"
                   onChange={(e) =>
                     list.update(item.id, { duty: e.target.value })
                   }
@@ -89,7 +89,7 @@ export function ProjectDialog({
               </Field>
             </FieldGroup>
             <Field>
-              <FieldLabel>仓库链接</FieldLabel>
+              <FieldLabel>项目链接</FieldLabel>
               <Input
                 type="url"
                 value={item.repo}
@@ -101,7 +101,7 @@ export function ProjectDialog({
               label="项目描述"
               value={item.content}
               height={220}
-              placeholder="支持 Markdown，分点描述事项（- 一条）"
+              placeholder="支持 Markdown"
               onChange={(content) => list.update(item.id, { content })}
             />
           </EntryCard>

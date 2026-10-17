@@ -7,7 +7,7 @@ import { useIsDark } from "@/hooks/use-is-dark";
 const MDEditor = lazy(() => import("@uiw/react-md-editor"));
 
 export interface MarkdownFieldProps {
-  label: string;
+  label?: string;
   value: string;
   onChange: (value: string) => void;
   height?: number;
@@ -24,7 +24,7 @@ export function MarkdownField({
   const dark = useIsDark();
   return (
     <Field>
-      <FieldLabel>{label}</FieldLabel>
+      {label && <FieldLabel>{label}</FieldLabel>}
       <div data-color-mode={dark ? "dark" : "light"}>
         <Suspense fallback={<Skeleton style={{ height }} />}>
           <MDEditor
