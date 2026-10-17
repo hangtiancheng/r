@@ -1,7 +1,15 @@
+import { PlusIcon } from "lucide-react";
 import { cn } from "cn";
 
 import { ModuleList } from "@/components/modules/module-list";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ModulePanelProps {
@@ -31,10 +39,22 @@ export function ModulePanel({
         className,
       )}
     >
-      <CardHeader className="pb-0">
+      <CardHeader className="items-center pb-0">
         <CardTitle className="text-muted-foreground text-xs font-bold tracking-wide">
           模块
         </CardTitle>
+        <CardAction className="row-span-1 self-center">
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            className="text-muted-foreground hover:text-primary"
+            onClick={onAddCustomModule}
+            aria-label="新增自定义模块"
+            title="新增自定义模块"
+          >
+            <PlusIcon />
+          </Button>
+        </CardAction>
       </CardHeader>
       <CardContent className="p-1.5">
         <ModuleList
@@ -43,7 +63,6 @@ export function ModulePanel({
           onToggleModule={onToggleModule}
           onToggleItem={onToggleItem}
           onToggleCustomModule={onToggleCustomModule}
-          onAddCustomModule={onAddCustomModule}
         />
       </CardContent>
     </Card>

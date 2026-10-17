@@ -1,4 +1,3 @@
-import { PlusIcon } from "lucide-react";
 import { cn } from "cn";
 
 import { ModuleIcon } from "@/components/controls/module-icon";
@@ -66,23 +65,5 @@ export function CustomModuleRow({
         />
       </ItemActions>
     </Item>
-  );
-}
-
-export interface AddCustomModuleButtonProps {
-  onClick: () => void;
-}
-
-export function AddCustomModuleButton({ onClick }: AddCustomModuleButtonProps) {
-  return (
-    <Button
-      variant="ghost"
-      size="xs"
-      className="text-muted-foreground hover:text-primary w-full justify-start px-1.5 font-normal"
-      onClick={onClick}
-    >
-      <PlusIcon data-icon="inline-start" />
-      新增自定义模块
-    </Button>
   );
 }

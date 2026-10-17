@@ -35,7 +35,7 @@ export function WorkDetailsField({ details, onChange }: WorkDetailsFieldProps) {
               </CardTitle>
               <CardAction>
                 <Button
-                  variant="ghost"
+                  variant="destructive"
                   size="icon-xs"
                   aria-label="删除该项目"
                   onClick={() =>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PanelsTopLeftIcon } from "lucide-react";
+import { PanelsTopLeftIcon, PlusIcon } from "lucide-react";
 import { cn } from "cn";
 
 import { ModuleList } from "@/components/modules/module-list";
@@ -54,7 +54,22 @@ export function ModuleSheet({
       </SheetTrigger>
       <SheetContent side="right" className="w-72 gap-0 p-0 sm:max-w-72">
         <SheetHeader className="border-border/60 border-b px-4 py-3 pr-12">
-          <SheetTitle>简历模块</SheetTitle>
+          <div className="flex items-center justify-between gap-2">
+            <SheetTitle>简历模块</SheetTitle>
+            <Button
+              variant="ghost"
+              size="icon-xs"
+              className="text-muted-foreground hover:text-primary shrink-0"
+              onClick={() => {
+                setOpen(false);
+                onAddCustomModule();
+              }}
+              aria-label="新增自定义模块"
+              title="新增自定义模块"
+            >
+              <PlusIcon />
+            </Button>
+          </div>
           <SheetDescription>隐藏不会删除数据</SheetDescription>
         </SheetHeader>
         <ScrollArea className="flex-1">
@@ -68,10 +83,6 @@ export function ModuleSheet({
               onToggleModule={onToggleModule}
               onToggleItem={onToggleItem}
               onToggleCustomModule={onToggleCustomModule}
-              onAddCustomModule={() => {
-                setOpen(false);
-                onAddCustomModule();
-              }}
             />
           </div>
         </ScrollArea>

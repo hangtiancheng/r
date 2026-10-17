@@ -37,7 +37,11 @@ export function ResumeWorkspace() {
     toggleModule,
     toggleItem,
     toggleCustomModule,
+    pendingModule,
     addCustomModule,
+    patchPendingModule,
+    commitPendingModule,
+    discardPendingModule,
     removeCustomModule,
     startEdit,
     cancelEdit,
@@ -150,6 +154,10 @@ export function ResumeWorkspace() {
           draft={draft}
           showErrors={showErrors}
           patchDraft={patchDraft}
+          pendingModule={pendingModule}
+          onPatchPendingModule={patchPendingModule}
+          onCommitPendingModule={commitPendingModule}
+          onDiscardPendingModule={discardPendingModule}
           onRemoveCustomModule={removeCustomModule}
         />
       )}

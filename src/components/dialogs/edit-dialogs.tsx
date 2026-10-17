@@ -7,7 +7,7 @@ import { HonorDialog } from "@/components/dialogs/honor-dialog";
 import { ProjectDialog } from "@/components/dialogs/project-dialog";
 import { WorkDialog } from "@/components/dialogs/work-dialog";
 import { isSameTarget } from "@/lib/modules";
-import type { ModuleTarget, ResumeDoc } from "@/lib/types";
+import type { CustomModule, ModuleTarget, ResumeDoc } from "@/lib/types";
 import { EMPTY_REPORT, validateResume } from "@/lib/validation";
 
 export interface EditDialogsProps {
@@ -16,6 +16,10 @@ export interface EditDialogsProps {
   draft: ResumeDoc;
   showErrors: boolean;
   patchDraft: (patch: (doc: ResumeDoc) => void) => void;
+  pendingModule: CustomModule | null;
+  onPatchPendingModule: (patch: Partial<CustomModule>) => void;
+  onCommitPendingModule: () => void;
+  onDiscardPendingModule: () => void;
   onRemoveCustomModule: (id: string) => void;
 }
 
@@ -25,6 +29,10 @@ export function EditDialogs({
   draft,
   showErrors,
   patchDraft,
+  pendingModule,
+  onPatchPendingModule,
+  onCommitPendingModule,
+  onDiscardPendingModule,
   onRemoveCustomModule,
 }: EditDialogsProps) {
   const report = useMemo(
@@ -72,6 +80,7 @@ export function EditDialogs({
       {customModule && (
         <CustomModuleDialog
           {...bind({ customId: customModule.id })}
+          title={customModule.name.trim() || "自定义模块"}
           module={customModule}
           onChange={(patch) =>
             patchDraft((d) => {
@@ -88,6 +97,17 @@ export function EditDialogs({
           report={report}
         />
       )}
+      <CustomModuleDialog
+        open={!!pendingModule}
+        onOpenChange={(open) => {
+          if (!open) onDiscardPendingModule();
+        }}
+        title="新增自定义模块"
+        module={pendingModule ?? undefined}
+        onChange={onPatchPendingModule}
+        onConfirm={onCommitPendingModule}
+        report={EMPTY_REPORT}
+      />
     </>
   );
 }

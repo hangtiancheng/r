@@ -54,7 +54,7 @@ export function EntryCard({
             aria-label={`${hidden ? "显示" : "隐藏"}${title}`}
           />
           <Button
-            variant="ghost"
+            variant="destructive"
             size="icon-xs"
             aria-label={`删除${title}`}
             onClick={onDelete}

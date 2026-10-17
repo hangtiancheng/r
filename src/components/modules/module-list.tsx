@@ -1,7 +1,4 @@
-import {
-  AddCustomModuleButton,
-  CustomModuleRow,
-} from "@/components/modules/custom-module-row";
+import { CustomModuleRow } from "@/components/modules/custom-module-row";
 import { ModuleRow } from "@/components/modules/module-row";
 import { MODULES } from "@/lib/modules";
 import { Separator } from "@/components/ui/separator";
@@ -13,7 +10,6 @@ export interface ModuleListProps {
   onToggleModule: (kind: ModuleKind) => void;
   onToggleItem: (kind: ModuleKind, id: string) => void;
   onToggleCustomModule: (id: string) => void;
-  onAddCustomModule: () => void;
 }
 
 export function ModuleList({
@@ -22,7 +18,6 @@ export function ModuleList({
   onToggleModule,
   onToggleItem,
   onToggleCustomModule,
-  onAddCustomModule,
 }: ModuleListProps) {
   return (
     <div className="flex flex-col gap-0.5">
@@ -36,16 +31,19 @@ export function ModuleList({
           onToggleItem={onToggleItem}
         />
       ))}
-      <Separator className="my-1.5" />
-      {data.customModules.map((module) => (
-        <CustomModuleRow
-          key={module.id}
-          module={module}
-          onOpen={onOpen}
-          onToggleHidden={onToggleCustomModule}
-        />
-      ))}
-      <AddCustomModuleButton onClick={onAddCustomModule} />
+      {data.customModules.length > 0 && (
+        <>
+          <Separator className="my-1.5" />
+          {data.customModules.map((module) => (
+            <CustomModuleRow
+              key={module.id}
+              module={module}
+              onOpen={onOpen}
+              onToggleHidden={onToggleCustomModule}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 }

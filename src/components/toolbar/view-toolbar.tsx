@@ -50,7 +50,7 @@ export function ViewToolbar({
       </div>
       <Button size="sm" className="rounded-full shadow-xs" onClick={onEdit}>
         <SquarePenIcon data-icon="inline-start" />
-        编辑简历
+        编辑
       </Button>
       <Separator orientation="vertical" className="h-3.5" />
       <ToolButton

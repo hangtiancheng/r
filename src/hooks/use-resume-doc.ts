@@ -6,7 +6,12 @@ import { RESUME_ID, db, initResume, saveResume } from "@/lib/db";
 import { newCustomModule } from "@/lib/factories";
 import { isSameTarget } from "@/lib/modules";
 import { normalizeResume } from "@/lib/normalize";
-import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
+import type {
+  CustomModule,
+  ModuleKind,
+  ModuleTarget,
+  ResumeDoc,
+} from "@/lib/types";
 import { validateResume } from "@/lib/validation";
 
 function itemLists(
@@ -29,6 +34,7 @@ export function useResumeDoc() {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState<ResumeDoc | null>(null);
   const [dialog, setDialogState] = useState<ModuleTarget | null>(null);
+  const [pendingModule, setPendingModule] = useState<CustomModule | null>(null);
   const [saving, setSaving] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
 
@@ -82,12 +88,24 @@ export function useResumeDoc() {
   );
 
   const addCustomModule = useCallback(() => {
-    const module = newCustomModule();
+    setPendingModule(newCustomModule());
+  }, []);
+
+  const patchPendingModule = useCallback((patch: Partial<CustomModule>) => {
+    setPendingModule((prev) => (prev ? { ...prev, ...patch } : prev));
+  }, []);
+
+  const commitPendingModule = useCallback(() => {
+    if (!pendingModule) return;
     patchDraft((d) => {
-      d.customModules = [...d.customModules, module];
+      d.customModules = [...d.customModules, pendingModule];
     });
-    setDialog({ customId: module.id });
-  }, [patchDraft, setDialog]);
+    setPendingModule(null);
+  }, [pendingModule, patchDraft]);
+
+  const discardPendingModule = useCallback(() => {
+    setPendingModule(null);
+  }, []);
 
   const removeCustomModule = useCallback(
     (id: string) => {
@@ -110,6 +128,7 @@ export function useResumeDoc() {
     setDraft(null);
     setShowErrors(false);
     setDialogState(null);
+    setPendingModule(null);
   }, []);
 
   const saveEdit = useCallback(async (): Promise<boolean> => {
@@ -149,7 +168,11 @@ export function useResumeDoc() {
     toggleModule,
     toggleItem,
     toggleCustomModule,
+    pendingModule,
     addCustomModule,
+    patchPendingModule,
+    commitPendingModule,
+    discardPendingModule,
     removeCustomModule,
     startEdit,
     cancelEdit,

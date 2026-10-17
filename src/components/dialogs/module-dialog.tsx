@@ -16,7 +16,8 @@ export interface ModuleDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: ReactNode;
-  headerExtra?: ReactNode;
+  titleAction?: ReactNode;
+  onConfirm?: () => void;
   children: ReactNode;
 }
 
@@ -24,7 +25,8 @@ export function ModuleDialog({
   open,
   onOpenChange,
   title,
-  headerExtra,
+  titleAction,
+  onConfirm,
   children,
 }: ModuleDialogProps) {
   return (
@@ -33,9 +35,9 @@ export function ModuleDialog({
         showCloseButton={false}
         className="gap-0 overflow-hidden p-0 sm:max-w-150"
       >
-        <DialogHeader className="border-border/60 border-b px-5 py-3">
+        <DialogHeader className="border-border/60 flex-row items-center justify-between gap-3 border-b px-5 py-3">
           <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
-          {headerExtra}
+          {titleAction}
         </DialogHeader>
         <ScrollArea className="max-h-[min(62dvh,540px)]">
           <FieldGroup className="gap-3 px-5 py-4">{children}</FieldGroup>
@@ -44,9 +46,15 @@ export function ModuleDialog({
           <DialogClose render={<Button variant="ghost" size="sm" />}>
             取消
           </DialogClose>
-          <DialogClose render={<Button size="sm" className="rounded-full" />}>
-            完成
-          </DialogClose>
+          {onConfirm ? (
+            <Button size="sm" className="rounded-full" onClick={onConfirm}>
+              确定
+            </Button>
+          ) : (
+            <DialogClose render={<Button size="sm" className="rounded-full" />}>
+              确定
+            </DialogClose>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>
