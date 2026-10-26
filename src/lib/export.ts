@@ -1,6 +1,7 @@
 import type { ResumeDoc } from "@/lib/types";
 
-const A4_WIDTH_PX = 794;
+const PDF_MARGIN_MM = [10, 12, 10, 12];
+const PDF_CONTENT_WIDTH_MM = 210 - PDF_MARGIN_MM[1] - PDF_MARGIN_MM[3];
 
 export function safeFileName(title: string, ext: string): string {
   const base = (title || "resume").replace(/[\\/:*?"<>|]/g, "_");
@@ -12,10 +13,12 @@ export async function exportPaperToPdf(
   filename: string,
 ): Promise<void> {
   const clone = paper.cloneNode(true) as HTMLElement;
-  clone.style.width = `${A4_WIDTH_PX}px`;
+  // html2pdf captures only the page width remaining after its margins.
+  // Let the paper reflow to that container instead of overflowing its right edge.
+  clone.style.width = "100%";
 
   const holder = document.createElement("div");
-  holder.style.cssText = `position:fixed;left:-10000px;top:0;width:${A4_WIDTH_PX}px;background:#fff;color:#13181d;`;
+  holder.style.cssText = `position:fixed;left:-10000px;top:0;width:${PDF_CONTENT_WIDTH_MM}mm;background:#fff;color:#13181d;`;
   holder.appendChild(clone);
   document.body.appendChild(holder);
 
@@ -23,7 +26,7 @@ export async function exportPaperToPdf(
     const { default: html2pdf } = await import("html2pdf.js");
     await html2pdf()
       .set({
-        margin: [10, 12, 10, 12],
+        margin: PDF_MARGIN_MM,
         filename,
         image: { type: "jpeg", quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff" },
