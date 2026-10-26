@@ -32,7 +32,7 @@ export function PaperSection({
       )}
     >
       {title && (
-        <div className="mb-1.5 flex items-center gap-2">
+        <div className="paper-section-heading mb-1.5 flex items-center gap-2">
           <h2 className={cn("text-sm leading-5.25 font-bold", HEAD_BLUE)}>
             {title}
           </h2>

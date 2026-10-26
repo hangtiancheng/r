@@ -10,13 +10,18 @@ import type { ModuleTarget, ProjectItem } from "@/lib/types";
 
 function ProjectEntry({ item }: { item: ProjectItem }) {
   return (
-    <div className="break-inside-avoid py-1">
+    <div className="paper-entry break-inside-avoid py-1">
       <PaperEntryHeader
         parts={[item.name, item.duty]}
         date={formatRange(item)}
       />
       {item.repo && (
-        <h3 className={cn("mt-1 text-sm leading-5 font-medium", INK_60)}>
+        <h3
+          className={cn(
+            "paper-detail mt-1 text-sm leading-5 font-medium",
+            INK_60,
+          )}
+        >
           项目链接: <PaperLinkText text={item.repo} />
         </h3>
       )}

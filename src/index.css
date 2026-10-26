@@ -138,3 +138,44 @@
   size: A4;
   margin: 12mm 14mm;
 }
+
+/* Applied only to the cloned paper used by html2pdf. */
+.resume-pdf {
+  padding: 0;
+}
+
+.resume-pdf > section {
+  margin-top: 6px;
+}
+
+.resume-pdf > section:first-child {
+  margin-top: 0;
+}
+
+.resume-pdf .paper-section-heading {
+  margin-bottom: 3px;
+  gap: 6px;
+}
+
+.resume-pdf .paper-entry {
+  padding-block: 2px;
+}
+
+.resume-pdf .paper-detail {
+  margin-top: 2px;
+}
+
+/* Match the markdown component's important overrides of its vendor styles. */
+.resume-pdf .wmde-markdown {
+  line-height: 19px !important;
+}
+
+.resume-pdf .wmde-markdown p,
+.resume-pdf .wmde-markdown ul,
+.resume-pdf .wmde-markdown ol {
+  margin-block: 1px !important;
+}
+
+.resume-pdf .wmde-markdown li + li {
+  margin-top: 0 !important;
+}

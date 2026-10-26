@@ -9,13 +9,13 @@ import type { ModuleTarget, WorkItem } from "@/lib/types";
 
 function WorkEntry({ item }: { item: WorkItem }) {
   return (
-    <div className="break-inside-avoid py-1">
+    <div className="paper-entry break-inside-avoid py-1">
       <PaperEntryHeader
         parts={[item.company, item.department, item.position]}
         date={formatRange(item)}
       />
       {item.details.map((detail) => (
-        <div key={detail.id} className="mt-1">
+        <div key={detail.id} className="paper-detail mt-1">
           {detail.title && (
             <h3 className={cn("text-sm leading-5 font-medium", INK)}>
               {detail.title}

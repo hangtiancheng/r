@@ -1,6 +1,6 @@
 import type { ResumeDoc } from "@/lib/types";
 
-const PDF_MARGIN_MM = [10, 12, 10, 12];
+const PDF_MARGIN_MM = [8, 8, 8, 8];
 const PDF_CONTENT_WIDTH_MM = 210 - PDF_MARGIN_MM[1] - PDF_MARGIN_MM[3];
 
 export function safeFileName(title: string, ext: string): string {
@@ -13,6 +13,7 @@ export async function exportPaperToPdf(
   filename: string,
 ): Promise<void> {
   const clone = paper.cloneNode(true) as HTMLElement;
+  clone.classList.add("resume-pdf");
   // html2pdf captures only the page width remaining after its margins.
   // Let the paper reflow to that container instead of overflowing its right edge.
   clone.style.width = "100%";
