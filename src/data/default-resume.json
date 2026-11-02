@@ -117,9 +117,9 @@
       "id": "custom-skills",
       "name": "个人技能",
       "icon": "LightbulbIcon",
-      "content": "了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限、会话持久化、上下文压缩、指令文件、Auto-Dream 自动记忆、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Teams; 拥有丰富的全栈 (Go/TypeScript)、Agent 开发经验和热情"
+      "content": "- 了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限、会话持久化、上下文压缩、指令文件、Auto-Dream 自动记忆、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Teams\n- 拥有丰富的全栈 (Go/TypeScript)、Agent 开发经验和热情"
     }
   ],
   "hiddenModules": [],
-  "updatedAt": 1793634815611
+  "updatedAt": 1793639438178
 }

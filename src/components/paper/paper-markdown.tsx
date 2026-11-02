@@ -3,7 +3,6 @@ import { cn } from "cn";
 
 export interface PaperMarkdownProps {
   source: string;
-  strong?: boolean;
 }
 
 // wmde-markdown ships its own unlayered stylesheet, so overrides need the
@@ -26,20 +25,14 @@ const WMDE = [
   "[&_.wmde-markdown_code]:text-[12.5px]!",
 ].join(" ");
 
-const WMDE_INK =
-  "[&_.wmde-markdown]:text-[#13181d]! [&_.wmde-markdown]:[--color-fg-default:#13181d]!";
-
 const WMDE_INK_60 =
   "[&_.wmde-markdown]:text-[rgba(24,36,48,0.6)]! [&_.wmde-markdown]:[--color-fg-default:rgba(24,36,48,0.6)]!";
 
-export function PaperMarkdown({ source, strong = false }: PaperMarkdownProps) {
+export function PaperMarkdown({ source }: PaperMarkdownProps) {
   const body = typeof source === "string" ? source : "";
   if (!body.trim()) return null;
   return (
-    <div
-      className={cn("mt-0.5", WMDE, strong ? WMDE_INK : WMDE_INK_60)}
-      data-color-mode="light"
-    >
+    <div className={cn("mt-0.5", WMDE, WMDE_INK_60)} data-color-mode="light">
       <MarkdownPreview
         source={body}
         components={{

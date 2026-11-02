@@ -22,7 +22,9 @@ export function CustomModuleSection({
       editing={editing}
       onOpen={onOpen}
     >
-      <PaperMarkdown source={module.content} strong />
+      <div className="break-inside-avoid">
+        <PaperMarkdown source={module.content} />
+      </div>
     </PaperSection>
   );
 }

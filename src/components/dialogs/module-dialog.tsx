@@ -33,13 +33,13 @@ export function ModuleDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="gap-0 overflow-hidden p-0 sm:max-w-150"
+        className="gap-0 overflow-hidden p-0 sm:max-w-200"
       >
         <DialogHeader className="border-border/60 flex-row items-center justify-between gap-3 border-b px-5 py-3">
           <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
           {titleAction}
         </DialogHeader>
-        <ScrollArea className="max-h-[min(62dvh,540px)]">
+        <ScrollArea className="max-h-[min(72dvh,640px)]">
           <FieldGroup className="gap-3 px-5 py-4">{children}</FieldGroup>
         </ScrollArea>
         <DialogFooter className="border-border/60 mx-0 mb-0 flex-row justify-end gap-1.5 bg-transparent px-5 py-3">

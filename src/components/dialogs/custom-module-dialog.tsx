@@ -105,7 +105,7 @@ export function CustomModuleDialog({
         <MarkdownField
           label="模块内容"
           value={module.content}
-          height={260}
+          height={400}
           placeholder="支持 Markdown"
           onChange={(content) => onChange({ content })}
         />
