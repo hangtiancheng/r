@@ -1,5 +1,4 @@
 {
-  "$schema": "./resume.schema.json",
   "id": 1,
   "title": "Agent 全栈工程师_杭天铖",
   "base": {
@@ -46,34 +45,13 @@
       "end": "",
       "ongoing": true,
       "company": "阿里巴巴",
-      "department": "阿里妈妈 · 广告技术部",
+      "department": "阿里妈妈·广告技术部",
       "position": "全栈开发",
       "details": [
         {
           "id": "work-alibaba-1",
-          "title": "商家经营托管 Agent",
-          "content": "- 确定性 workflow 加商家经营托管 Agent, 支持指代消解、query 扩写、意图识别与分流、RAG + BM25 混合检索双路召回、工具调用、上下文压缩、数据飞轮持续迭代, 已在淘宝商家端落地\n- 为提高商家经营托管 Agent 用户渗透率, 负责接入 A2UI 能力, 提高 LLM A2UI json 部分场景下的生成速率和准确率, 服务端支持失败重试、客户端支持失败降级\n- 参与确定性 workflow 建设、LLM 幻觉治理, RAG + BM25 混合检索前的置信度闸; 实测误放率 0%, 误拦率 17%\n- 参与数据飞轮持续迭代建设, 提升系统可用性\n- 参与前端 Webpack/Vite 模块联邦接入, 修复开源 module-federation/vite workspace 包通过 exports 同时提供 CJS/ESM 入口时崩溃问题 (pull/860)"
-        }
-      ]
-    },
-    {
-      "id": "work-bytedance-data",
-      "start": "2026-02",
-      "end": "2026-05",
-      "ongoing": false,
-      "company": "字节跳动",
-      "department": "Data · 架构",
-      "position": "全栈开发",
-      "details": [
-        {
-          "id": "work-bytedance-data-1",
-          "title": "搜索推荐算法平台",
-          "content": "- 前端 Slardar 监控 SDK 上报 JSError 携带错误信息, 还原故障现场\n- 建设项目的 Harness 工程, 将错误信息提供给 LLM 自动修复、提交 MR, 自动触发 E2E 测试\n- 向量库模块接入 SWR 前端性能优化, 以提高页面秒开率"
-        },
-        {
-          "id": "work-bytedance-data-2",
-          "title": "抖音 Debug 平台",
-          "content": "- 迁移旧平台能力, 支持对长视频/直播间 ID, 调用下游 RPC 方法切片、打标生成聚类标签, 并使用 Redis 缓存"
+          "title": "阿里妈妈经营托管 Agent",
+          "content": "- 为降低商家经营客服团队和讲师团队的人力成本, 上线经营托管 agent, 以确定性 workflow 加 agent 混合架构为核心, 支持 RAG 知识问答, 多工具调用和数据飞轮持续迭代\n个人职责:\n- 使用确定性 workflow 编排指代消解、query 扩写、意图识别与分流、RAG + BM25 混合检索双路召回、经营托管 agent 生成前的置信度校验和经营托管 agent loop, 数据飞轮持续迭代提高系统可用性, 已在淘宝商家端落地\n- workflow 加 agent 混合架构: 使用 langgraph4j 编排 8 类意图到 5 个出口的分流状态机, 知识检索、查询订单/政策等必经步骤使用 workflow 调度, agent 负责证据足够后的判断与回答, 从架构上排除模型跳过必经步骤导致的错误承诺\n- 幻觉治理: 基于三信号加权的置信度打分, 经营托管 agent 生成前先判断证据是否足够, 如果不够则先追问, 追问后仍然澄清失败则转人工, 避免回答错误导致纠纷, 实测误放率 0%、误拦率 17%\n- RAG + BM25 混合检索双路召回, 并通过 RRF 粗排与 reranker 精排, 500 题五桶评估数据集的 450 道可回答题上将 recall@5 提升到 98%、答案覆盖率 97%, 人工逐条核验通过的幻觉率 0.7%\n- 为提高经营托管 agent 用户渗透率, 负责接入 A2UI 能力, 提高 LLM A2UI json 部分场景下的生成速率和准确率, 服务端支持失败重试、客户端支持失败降级\n- 参与前端 webpack/vite 模块联邦接入, 修复开源 module-federation/vite workspace 包通过 exports 同时提供 cjs/esm 入口时崩溃问题 (pull/860)\n"
         }
       ]
     },
@@ -83,13 +61,13 @@
       "end": "2026-02",
       "ongoing": false,
       "company": "腾讯",
-      "department": "IEG 互动娱乐事业群 · 基础技术产品部",
+      "department": "IEG 互动娱乐事业群·基础技术产品部",
       "position": "全栈开发",
       "details": [
         {
           "id": "work-tencent-1",
           "title": "腾讯 TcaplusDB NoSQL 数据库管理端",
-          "content": "- 前端负责迁移 React 类组件到函数组件, 使用性能优化 hooks 避免重复请求, 优化渲染性能, 排查接口响应时间不稳定导致的数据竞争\n- 后端使用通用池, 同时池化多个场景: NoSQL 数据库连接使用 TCP 连接池; ffi-napi 调用 C++ .so 动态链接库加解密, 解析表文件使用进程池\n- 使用 Valgrind 排查 ffi-napi 调用 .so 动态链接库时的内存泄漏, 利用 V8 隐藏类, 维护对象池以降低 Node.js 侧 GC 压力"
+          "content": "- 多场景池化: 设计通用资源池, 同时池化 TCP 长连接, 私有数据表解析的进程池和对象池; NoSQL 管理端与数据库的 TCP 长连接池覆盖建立连接/身份认证超时, 请求超时, 对端主动关闭与连接静默断开等多类异常, 支持资源归还前校验; 私有数据表解析场景使用进程池隔离 C++ .so, 避免 native 崩溃与堆外泄露影响 Node 主进程, 使用对象池复用解析上下文, 固定属性初始化顺序与对象 schema 以共享 V8 隐藏类, 降低堆内存分配与 GC 压力\n- Native 内存与 GC 治理: 针对 V8 堆内存稳定, RSS 持续增长的堆外泄露事故, 使用 Valgrind Memcheck 定位 ffi-napi 调用 C++ .so 的 native 内存分配, 定位 protobuf message 未释放路径并补充 destroy NAPI 调用; 修复后以 RSS 与 heapUsed 曲线确认修复\n- 前端监控建设和监控 SDK 体积治理: 负责前端监控的 JSError 采集和故障现场还原, 基于 rrweb 增量录制和定长环形缓冲区保留错误前 5 秒的 DOM 与交互事件, 配合滑动窗口、gzip 压缩与触发式上报; 支持 sourcemap 和  componentStack 双路反解、fingerprint 聚合与告警, 将线上压缩堆栈还原到源码 file:line:col; 将录屏, 白屏检测等非核心能力拆为插件和子路径入口, 运行时按需动态导入; 通过多入口 + ESM 输出保证 tree-shaking 生效\n- JSError 自动修复 Harness: 建设从错误上报到 MR 的自动修复链路, 将反解后的堆栈、componentStack、用户行为与录屏等上下文组装为修复任务, 提交给 Agent 完成错误定位/修复/验证流水线, 自动推送分支并创建包含错误归因与修复验证的 MR; 以 release+fingerprint 和本地消息表保证任务幂等\n- React 类组件迁移: 负责 app/集群/备用集群/数据库/表五类公共选择器从类组件迁移到函数组件, 沉淀生命周期到 hooks 的映射与 state 拆分规范, 使用 TDD 和 Agent 批量迁移\n- 请求竞态, 渲染优化与 SWR 数据预加载: 对于级联切换场景下接口响应乱序导致的数据竞争问题, 使用请求序号校验最新响应, 使用 AbortController 取消在途请求, 通过模块级缓存, in-flight 去重与 React 性能优化 hooks 将多区域重复请求合并为一次, 减少无效的重复渲染; 对于 app/集群/备用集群/数据库/表五类低频变化、首屏强依赖的公共选择器数据, 落地 SWR 方案: 在 HTML 解析阶段内联预加载脚本, 使得数据请求与 bundle 下载并行; 使用全局 Map 同时持有 in-flight Promise 与 result, 实现跨组件请求去重、缓存命中即返回与后台静默 revalidate"
         }
       ]
     },
@@ -105,7 +83,7 @@
         {
           "id": "work-bytedance-tiktok-1",
           "title": "TikTok Performance",
-          "content": "- 通过插桩和抓栈两种方式采集性能数据; 使用 Kafka 转发到 Hive, ClickHouse, MySQL, Redis\n- 后端使用 Golang 和 Kitex; BFF 层清洗数据, 调用后端提供的 RPC 方法, 暴露 HTTP 接口给前端\n- 前端使用性能优化 Hooks, 编写虚拟滚动列表\n- 修复开源 coze-dev/coze-js: Android 环境 User-Agent 缺失导致 TypeError (pull/257)"
+          "content": "- 性能数据采集: 通过插桩和抓栈两种方式采集性能数据, 定位慢函数; 编译期/运行时插桩记录函数调用的起止时间, 采样式 Profiling 按固定频率抓取 JS 调用栈; 兼顾已知瓶颈的精确定位与海量设备的低开销热点发现\n- 数据链路: 使用 Kafka 承接数据上报洪峰、解耦生产与消费, 按读写模式将数据分发到 Hive 全量离线数仓, ClickHouse 在线聚合, MySQL 关系型数据, Redis 热点数据缓存\n- ClickHouse 优化: AggregatingMergeTree 预聚合, 批量写入控制 part 数量, 结合 Redis 与进程内 LRU 组成多级缓存承接性能数据查询\n- 前端为性能数据长列表实现不定高虚拟滚动, 使用预估高度撑起总高度, 前缀和加二分查找定位可视区间, ResizeObserver 实测回写修正高度缓存, 配合 passive 事件监听、rAF 节流与上下缓冲区消除快速滚动白屏; 沉淀可复用的性能优化 hooks\n- 修复开源 coze-dev/coze-js: Android 环境 User-Agent 缺失导致 TypeError (pull/257)"
         }
       ]
     }
@@ -129,7 +107,8 @@
       "name": "前端监控/埋点",
       "duty": "前端开发",
       "repo": "https://github.com/hangtiancheng/yukino-sentry",
-      "content": "- 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦\n- 支持错误捕获、白屏检测、性能指标采集、故障现场重放\n- 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持错误去重和 LRU 队列\n- 监听 hashchange 和 history 导航, 支持声明式属性 trace 点击事件\n- 白屏检测使用关键点采样算法\n- 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务\n- 使用 rrweb + gzip 屏幕录制以重放故障现场\n- 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon (可选) -> fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列\n- 提供 React16+/Vue3+ 框架集成"
+      "content": "- 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦\n- 支持错误捕获、白屏检测、性能指标采集、故障现场重放\n- 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持错误去重和 LRU 队列\n- 监听 hashchange 和 history 导航, 支持声明式属性 trace 点击事件\n- 白屏检测使用关键点采样算法\n- 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务\n- 使用 rrweb + gzip 屏幕录制以重放故障现场\n- 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon (可选) -> fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列\n- 提供 React16+/Vue3+ 框架集成",
+      "hidden": true
     }
   ],
   "honors": [],
@@ -142,5 +121,5 @@
     }
   ],
   "hiddenModules": [],
-  "updatedAt": 0
+  "updatedAt": 1793634815611
 }
