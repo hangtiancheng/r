@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "title": "Agent 全栈工程师_杭天铖",
+  "title": "Agent_全栈工程师_杭天铖",
   "base": {
     "name": "杭天铖",
     "gender": "男",
@@ -77,7 +77,7 @@
       "end": "2025-09",
       "ongoing": false,
       "company": "字节跳动",
-      "department": "产品研发与工程架构 · TikTok Performance",
+      "department": "产品研发与工程架构·TikTok Performance",
       "position": "全栈开发",
       "details": [
         {
@@ -108,20 +108,45 @@
       "duty": "前端开发",
       "repo": "https://github.com/hangtiancheng/yukino-sentry",
       "content": "- 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦\n- 支持错误捕获、性能指标采集、故障现场重放\n- 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误等, 支持错误去重和 LRU 上报队列\n- 监听 hashchange 和 history 导航, 支持声明式属性埋点 trace 交互事件\n- 白屏检测使用关键点采样算法, 支持注册根标签列表\n- 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务\n- 使用 rrweb 屏幕录制, gzip 压缩后上报以重放故障现场\n- 数据上报使用 3 级降级: navigator.sendBeacon、Image beacon (可选)、fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列\n- 提供 React16+/Vue3+ 框架集成",
-      "hidden": false
+      "hidden": true
     },
     {
-      "id": "b58d49d3-efb1-4670-988b-e1ef30ffae64",
+      "id": "proj-wanproxy",
       "start": "2024-09",
       "end": "2026-05",
       "ongoing": false,
-      "name": "面向 WAN 的传输优化",
+      "name": "面向 WAN 的传输优化代理",
       "duty": "后端开发",
       "repo": "南京邮电大学数据中心网络",
-      "content": ""
+      "content": "- 使用 Go 实现 WANProxy 广域网传输优化代理, 构建双端 TCP 代理链路; 发送侧先 XCodec 去重再 zlib 压缩, 接受侧逆序还原; 减少重复数据的跨 WAN 传输\n- XCodec 流式去重: 基于 2KB 滑动窗口与滚动哈希识别重复分段, 使用 64 位哈希引用替换重复分段; 命中后校验分段内容, 以避免哈希冲突导致错误去重; 结合内存 LRU 与 XCDFS 磁盘二级缓存, 实现跨连接或重连后的历史分段复用, 减少 ASK/LEARN 控制帧往返\n- 设计 XCodec 双向会话协议: 通过 ASK/LEARN 按需请求缺失分段; 通过 ADVANCE 实现在途窗口背压; 通过 EOS/EOS_ACK 配合 TCP 半关闭完成双向收尾, 避免尾部数据截断\n- 将网络数据读取、控制帧发送、业务数据转发拆分为独立 goroutine, 通过有界队列缓冲读写速度差异, 避免下游业务慢写阻塞 XCodec 协议交互; 业务数据转发成功后确认消费, 使得上游发送速度随下游业务消费能力调整, 防止数据积压, 循环等待导致死锁\n- 构建双端代理端到端测试与 A/B 实验, 结合 SHA-256 完整性校验、冷热缓存控制, 验证传输正确性与带宽节省效果"
     }
   ],
-  "honors": [],
+  "honors": [
+    {
+      "id": "5a15b5fd-d791-4079-9f34-c63b9b0624c9",
+      "name": "西安电子科技大学·大二·三等奖学金",
+      "issuer": "",
+      "date": "2020-11"
+    },
+    {
+      "id": "e479c5bd-1c7f-4678-baf4-eba6edf98511",
+      "name": "南京邮电大学·研一·三等奖学金",
+      "issuer": "",
+      "date": "2024-11"
+    },
+    {
+      "id": "547f87cb-516c-46f5-9723-10f742941a07",
+      "name": "南京邮电大学·研二·三等奖学金",
+      "issuer": "",
+      "date": "2025-11"
+    },
+    {
+      "id": "cec75793-5b1e-4102-9e40-9a5c8af69ded",
+      "name": "南京邮电大学·研三·三等奖学金",
+      "issuer": "",
+      "date": "2026-11"
+    }
+  ],
   "customModules": [
     {
       "id": "custom-skills",
@@ -131,5 +156,5 @@
     }
   ],
   "hiddenModules": [],
-  "updatedAt": 1793673259321
+  "updatedAt": 1793677767274
 }
