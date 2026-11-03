@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import {
+  CopyIcon,
   DownloadIcon,
   EllipsisIcon,
   FileDownIcon,
@@ -28,6 +29,7 @@ export interface ViewToolbarProps {
   onEdit: () => void;
   onExportPdf: () => void;
   onDownloadJson: () => void;
+  onCopyJson: () => void;
   onImportJson: (file: File) => void;
   onReset: () => void;
 }
@@ -38,6 +40,7 @@ export function ViewToolbar({
   onEdit,
   onExportPdf,
   onDownloadJson,
+  onCopyJson,
   onImportJson,
   onReset,
 }: ViewToolbarProps) {
@@ -78,6 +81,10 @@ export function ViewToolbar({
         />
         <DropdownMenuContent align="end" className="min-w-40">
           <DropdownMenuGroup>
+            <DropdownMenuItem onClick={onCopyJson}>
+              <CopyIcon data-icon="inline-start" />
+              复制简历 JSON
+            </DropdownMenuItem>
             <DropdownMenuItem onClick={onDownloadJson}>
               <DownloadIcon data-icon="inline-start" />
               下载简历 JSON

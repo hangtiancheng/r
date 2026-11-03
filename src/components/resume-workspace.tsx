@@ -48,7 +48,7 @@ export function ResumeWorkspace() {
     saveEdit,
   } = useResumeDoc();
   const paperRef = useRef<HTMLDivElement>(null);
-  const { exporting, exportPdf, downloadJson } = useResumeExport(
+  const { exporting, exportPdf, downloadJson, copyJson } = useResumeExport(
     data,
     paperRef,
   );
@@ -122,6 +122,7 @@ export function ResumeWorkspace() {
                   onEdit={startEdit}
                   onExportPdf={() => void exportPdf()}
                   onDownloadJson={downloadJson}
+                  onCopyJson={() => void copyJson()}
                   onImportJson={(file) => void importJson(file)}
                   onReset={() => void resetDefaults()}
                 />

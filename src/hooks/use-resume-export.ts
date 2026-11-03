@@ -2,6 +2,7 @@ import { useCallback, useState, type RefObject } from "react";
 
 import { toast } from "@/components/ui/toast";
 import {
+  copyResumeJson,
   downloadResumeJson,
   exportPaperToPdf,
   safeFileName,
@@ -34,5 +35,15 @@ export function useResumeExport(
     downloadResumeJson(data);
   }, [data]);
 
-  return { exporting, exportPdf, downloadJson };
+  const copyJson = useCallback(async () => {
+    if (!data) return;
+    try {
+      await copyResumeJson(data);
+      toast.add({ title: "简历 JSON 已复制" });
+    } catch {
+      toast.add({ title: "复制失败", type: "error" });
+    }
+  }, [data]);
+
+  return { exporting, exportPdf, downloadJson, copyJson };
 }

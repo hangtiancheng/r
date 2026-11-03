@@ -97,7 +97,7 @@
       "name": "CLI Coding Agent",
       "duty": "全栈开发",
       "repo": "https://github.com/hangtiancheng/yukino-code",
-      "content": "- 5 层架构, 支持多 LLM 协议 (OpenAI Chat Completions/OpenAI Response/Anthropic Messages)、多 LLM providers、支持会话内切换 provider\n- 支持 Slash Commands、Skills、Hooks\n- 支持 MCP 工具延迟加载、MCP reload 的 reconcile\n- 通过动态指令注入等手段, 尽可能命中 Prompt Cache 前缀缓存, 缓存命中率实测 >90% (不同场景下数值不同)\n- 权限系统: 权限模式、权限规则配置文件、路径沙箱、OS 级沙箱、Human-in-the-Loop\n- 两层上下文压缩, 基于自动上下文压缩、subagent 实现长期 loop 的 Goal 模式\n- 支持 Auto-Dream 自动记忆提取、定期记忆整理\n- 支持预定义的 subagent (Definition-based) 和 fork 的 subagent (Fork-based), subagent 支持前台同步和后台异步\n- 支持 Worktree 文件隔离; 支持 Agent Team, 通过文件邮箱、p2p/broadcast 实现主 agent 编排、teammates 通信和合作\n- 支持多模态消息 (例如图片)、对于图片, 支持二进制格式嗅探和 sharp 压缩\n- 使用 SWE-bench-Live 数据集进行自动化评测, 通过真实使用和自动化评测持续优化 prompts、descriptions 等"
+      "content": "- 5 层架构, 支持多 LLM 协议 (OpenAI Chat Completions/OpenAI Response/Anthropic Messages)、多 LLM providers\n- 支持 Slash Commands、Skills、Hooks\n- 支持 MCP 工具延迟加载\n- 通过动态指令注入等手段, 尽可能命中 Prompt Cache 前缀缓存, 缓存命中率实测 >90% (不同场景下数值不同)\n- 权限系统: 权限模式、权限规则配置文件、路径沙箱、OS 级沙箱、Human-in-the-Loop\n- 两层上下文压缩, 基于自动上下文压缩、subagent 实现长期 loop 的 Goal 模式\n- 支持 Auto-Dream 自动记忆提取、定期记忆整理\n- 支持预定义的 subagent (Definition-based) 和 fork 的 subagent (Fork-based), subagent 支持前台同步和后台异步\n- 支持 Worktree 文件隔离; 支持 Agent Team, 通过文件邮箱、p2p/broadcast 实现主 agent 编排、teammates 通信和合作\n- 支持多模态消息 (例如图片)、对于图片, 支持二进制格式嗅探和图片压缩\n- 使用 SWE-bench-Live 数据集进行自动化评测, 通过真实使用和自动化评测持续优化"
     },
     {
       "id": "proj-yukino-sentry",
@@ -107,8 +107,18 @@
       "name": "前端监控/埋点",
       "duty": "前端开发",
       "repo": "https://github.com/hangtiancheng/yukino-sentry",
-      "content": "- 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦\n- 支持错误捕获、白屏检测、性能指标采集、故障现场重放\n- 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误, 支持错误去重和 LRU 队列\n- 监听 hashchange 和 history 导航, 支持声明式属性 trace 点击事件\n- 白屏检测使用关键点采样算法\n- 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务\n- 使用 rrweb + gzip 屏幕录制以重放故障现场\n- 数据上报使用 3 级降级: navigator.sendBeacon -> Image beacon (可选) -> fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列\n- 提供 React16+/Vue3+ 框架集成",
-      "hidden": true
+      "content": "- 框架无关的前端监控 SDK, 发布订阅架构, core 模块 (事件总线、生命周期、数据上报) 和 plugin 子模块 (性能采集、屏幕录制) 解耦\n- 支持错误捕获、性能指标采集、故障现场重放\n- 错误捕获覆盖: 资源加载错误、JSError、未捕获的 Promise 错误、xhr 和 fetch 请求错误等, 支持错误去重和 LRU 上报队列\n- 监听 hashchange 和 history 导航, 支持声明式属性埋点 trace 交互事件\n- 白屏检测使用关键点采样算法, 支持注册根标签列表\n- 性能采集插件计算 LCP/FCP/CLS/INP/TTFB 等指标, 使用 MutationObserver + rAF 计算 FSP 首屏渲染时间、检测 longtask 长任务\n- 使用 rrweb 屏幕录制, gzip 压缩后上报以重放故障现场\n- 数据上报使用 3 级降级: navigator.sendBeacon、Image beacon (可选)、fetch keepalive, 离线使用 localStorage, 网络恢复自动 flush 上报队列\n- 提供 React16+/Vue3+ 框架集成",
+      "hidden": false
+    },
+    {
+      "id": "b58d49d3-efb1-4670-988b-e1ef30ffae64",
+      "start": "2024-09",
+      "end": "2026-05",
+      "ongoing": false,
+      "name": "面向 WAN 的传输优化",
+      "duty": "后端开发",
+      "repo": "南京邮电大学数据中心网络",
+      "content": ""
     }
   ],
   "honors": [],
@@ -117,9 +127,9 @@
       "id": "custom-skills",
       "name": "个人技能",
       "icon": "LightbulbIcon",
-      "content": "- 了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限、会话持久化、上下文压缩、指令文件、Auto-Dream 自动记忆、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Teams\n- 拥有丰富的全栈 (Go/TypeScript)、Agent 开发经验和热情"
+      "content": "- 熟悉数据结构, 计算机网络, 操作系统; 熟悉 Go, TypeScript 编程语言\n- 后端: 熟悉 Go, MySQL, Redis, 了解分布式系统设计与开发\n- 前端: 熟悉 TypeScript, React, Vue, Next.js, 了解前端工程化、性能优化\n- Agent 开发: 熟悉 Claude Code 实现, 拥有 Agent 开发经验和热情"
     }
   ],
   "hiddenModules": [],
-  "updatedAt": 1793639438178
+  "updatedAt": 1793673259321
 }

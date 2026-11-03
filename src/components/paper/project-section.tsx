@@ -22,7 +22,7 @@ function ProjectEntry({ item }: { item: ProjectItem }) {
             INK_60,
           )}
         >
-          项目链接: <PaperLinkText text={item.repo} />
+          <PaperLinkText text={item.repo} />
         </h3>
       )}
       <PaperMarkdown source={item.content} />

@@ -41,6 +41,10 @@ export async function exportPaperToPdf(
   }
 }
 
+export async function copyResumeJson(doc: ResumeDoc): Promise<void> {
+  await navigator.clipboard.writeText(JSON.stringify(doc, null, 2));
+}
+
 export function downloadResumeJson(doc: ResumeDoc): void {
   const blob = new Blob([JSON.stringify(doc, null, 2)], {
     type: "application/json",
