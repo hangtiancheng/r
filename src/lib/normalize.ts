@@ -1,4 +1,5 @@
 import { uid } from "@/lib/format";
+import { orderedModuleTargets, targetKey } from "@/lib/modules";
 import type {
   BaseInfo,
   BirthDisplay,
@@ -56,11 +57,8 @@ function coerceStrings<T extends object>(
 
 function sanitizeCustomModules(doc: ResumeDoc): void {
   doc.customModules = sanitizeEntries(doc.customModules).map((entry) => {
-    const module = coerceStrings<CustomModule>(entry, [
-      "name",
-      "icon",
-      "content",
-    ]);
+    delete entry.icon;
+    const module = coerceStrings<CustomModule>(entry, ["name", "content"]);
     module.name = asModuleName(module.name);
     return module;
   });
@@ -140,6 +138,7 @@ export function normalizeResume(doc: ResumeDoc): ResumeDoc {
   );
 
   sanitizeCustomModules(doc);
+  doc.moduleOrder = orderedModuleTargets(doc).map(targetKey);
   delete (doc as { skills?: unknown }).skills;
   return doc;
 }

@@ -70,7 +70,6 @@ export interface HonorItem {
 export interface CustomModule {
   id: string;
   name: string;
-  icon: string;
   content: string;
   hidden?: boolean;
 }
@@ -84,6 +83,7 @@ export interface ResumeDoc {
   projects: ProjectItem[];
   honors: HonorItem[];
   customModules: CustomModule[];
+  moduleOrder: string[];
   hiddenModules: ModuleKind[];
   updatedAt: number;
 }

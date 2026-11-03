@@ -1,13 +1,11 @@
 import { cn } from "cn";
 
-import { ModuleIcon } from "@/components/controls/module-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Item,
   ItemActions,
   ItemContent,
-  ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
 import { Switch } from "@/components/ui/switch";
@@ -35,10 +33,6 @@ export function CustomModuleRow({
         className,
       )}
     >
-      <ItemMedia variant="icon" className="gap-0.5">
-        <span className="size-6" aria-hidden />
-        <ModuleIcon name={module.icon} className="text-muted-foreground" />
-      </ItemMedia>
       <ItemContent className="min-w-0 flex-1">
         <ItemTitle className="w-full min-w-0 gap-1">
           <Button

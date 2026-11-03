@@ -4,7 +4,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { toast } from "@/components/ui/toast";
 import { RESUME_ID, db, initResume, saveResume } from "@/lib/db";
 import { newCustomModule } from "@/lib/factories";
-import { isSameTarget } from "@/lib/modules";
+import { isSameTarget, orderedModuleTargets, targetKey } from "@/lib/modules";
 import { normalizeResume } from "@/lib/normalize";
 import type {
   CustomModule,
@@ -91,6 +91,20 @@ export function useResumeDoc() {
     setPendingModule(newCustomModule());
   }, []);
 
+  const moveModule = useCallback(
+    (activeKey: string, overKey: string) => {
+      patchDraft((d) => {
+        const order = orderedModuleTargets(d).map(targetKey);
+        const from = order.indexOf(activeKey);
+        const to = order.indexOf(overKey);
+        if (from < 0 || to < 0 || from === to) return;
+        order.splice(to, 0, ...order.splice(from, 1));
+        d.moduleOrder = order;
+      });
+    },
+    [patchDraft],
+  );
+
   const patchPendingModule = useCallback((patch: Partial<CustomModule>) => {
     setPendingModule((prev) => (prev ? { ...prev, ...patch } : prev));
   }, []);
@@ -99,6 +113,7 @@ export function useResumeDoc() {
     if (!pendingModule) return;
     patchDraft((d) => {
       d.customModules = [...d.customModules, pendingModule];
+      d.moduleOrder.push(targetKey({ customId: pendingModule.id }));
     });
     setPendingModule(null);
   }, [pendingModule, patchDraft]);
@@ -111,6 +126,9 @@ export function useResumeDoc() {
     (id: string) => {
       patchDraft((d) => {
         d.customModules = d.customModules.filter((it) => it.id !== id);
+        d.moduleOrder = d.moduleOrder.filter(
+          (key) => key !== targetKey({ customId: id }),
+        );
       });
     },
     [patchDraft],
@@ -168,6 +186,7 @@ export function useResumeDoc() {
     toggleModule,
     toggleItem,
     toggleCustomModule,
+    moveModule,
     pendingModule,
     addCustomModule,
     patchPendingModule,

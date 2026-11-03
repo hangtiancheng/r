@@ -1,4 +1,3 @@
-import { DEFAULT_MODULE_ICON } from "@/lib/icons";
 import { uid } from "@/lib/format";
 import type {
   CustomModule,
@@ -61,7 +60,6 @@ export function newCustomModule(): CustomModule {
   return {
     id: uid(),
     name: "",
-    icon: DEFAULT_MODULE_ICON,
     content: "",
   };
 }

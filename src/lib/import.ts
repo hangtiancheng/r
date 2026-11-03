@@ -10,6 +10,7 @@ const RESUME_KEYS = [
   "projects",
   "honors",
   "customModules",
+  "moduleOrder",
   "hiddenModules",
 ] as const;
 

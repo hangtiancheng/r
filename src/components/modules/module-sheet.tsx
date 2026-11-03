@@ -21,6 +21,7 @@ export interface ModuleSheetProps {
   onToggleModule: (kind: ModuleKind) => void;
   onToggleItem: (kind: ModuleKind, id: string) => void;
   onToggleCustomModule: (id: string) => void;
+  onMoveModule: (activeKey: string, overKey: string) => void;
   onAddCustomModule: () => void;
   className?: string;
 }
@@ -31,6 +32,7 @@ export function ModuleSheet({
   onToggleModule,
   onToggleItem,
   onToggleCustomModule,
+  onMoveModule,
   onAddCustomModule,
   className,
 }: ModuleSheetProps) {
@@ -53,13 +55,13 @@ export function ModuleSheet({
         模块
       </SheetTrigger>
       <SheetContent side="right" className="w-72 gap-0 p-0 sm:max-w-72">
-        <SheetHeader className="border-border/60 border-b px-4 py-3 pr-12">
+        <SheetHeader className="px-4 py-3 pr-12">
           <div className="flex items-center justify-between gap-2">
             <SheetTitle>简历模块</SheetTitle>
             <Button
-              variant="ghost"
-              size="icon-xs"
-              className="text-muted-foreground hover:text-primary shrink-0"
+              variant="secondary"
+              size="sm"
+              className="bg-primary/8 text-primary hover:bg-primary/15 h-8 shrink-0 gap-1.5 rounded-lg px-3"
               onClick={() => {
                 setOpen(false);
                 onAddCustomModule();
@@ -67,10 +69,11 @@ export function ModuleSheet({
               aria-label="新增自定义模块"
               title="新增自定义模块"
             >
-              <PlusIcon />
+              <PlusIcon className="size-4" />
+              新增模块
             </Button>
           </div>
-          <SheetDescription>隐藏不会删除数据</SheetDescription>
+          <SheetDescription>拖动调整顺序，隐藏不会删除数据</SheetDescription>
         </SheetHeader>
         <ScrollArea className="flex-1">
           <div className="p-2">
@@ -83,6 +86,7 @@ export function ModuleSheet({
               onToggleModule={onToggleModule}
               onToggleItem={onToggleItem}
               onToggleCustomModule={onToggleCustomModule}
+              onMoveModule={onMoveModule}
             />
           </div>
         </ScrollArea>

@@ -151,10 +151,17 @@
     {
       "id": "custom-skills",
       "name": "个人技能",
-      "icon": "LightbulbIcon",
       "content": "- 熟悉数据结构, 计算机网络, 操作系统; 熟悉 Go, TypeScript 编程语言\n- 后端: 熟悉 Go, MySQL, Redis, 了解分布式系统设计与开发\n- 前端: 熟悉 TypeScript, React, Vue, Next.js, 了解前端工程化、性能优化\n- Agent 开发: 了解 Claude Code 实现, 了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限和沙箱、会话持久化、上下文压缩、指令文件、自动记忆和记忆整理、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Team; 拥有 Agent 开发经验和热情"
     }
   ],
-  "hiddenModules": [],
-  "updatedAt": 1793682353889
+  "moduleOrder": [
+    "kind:base",
+    "kind:edu",
+    "kind:work",
+    "kind:project",
+    "kind:honor",
+    "custom:custom-skills"
+  ],
+  "hiddenModules": ["honor"],
+  "updatedAt": 1793705222322
 }

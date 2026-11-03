@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Trash2Icon } from "lucide-react";
 
-import { IconPicker } from "@/components/controls/icon-picker";
 import { MarkdownField } from "@/components/controls/markdown-field";
 import { RequiredIndicator } from "@/components/controls/required-indicator";
 import { ModuleDialog } from "@/components/dialogs/module-dialog";
@@ -12,11 +11,7 @@ import {
   FieldGroup,
   FieldLabel,
 } from "@/components/ui/field";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
+import { Input } from "@/components/ui/input";
 import type { CustomModule } from "@/lib/types";
 import { issueFor, type ValidationReport } from "@/lib/validation";
 
@@ -82,24 +77,16 @@ export function CustomModuleDialog({
           <FieldLabel>
             模块名称 <RequiredIndicator />
           </FieldLabel>
-          <InputGroup>
-            <InputGroupAddon>
-              <IconPicker
-                value={module.icon}
-                onChange={(icon) => onChange({ icon })}
-              />
-            </InputGroupAddon>
-            <InputGroupInput
-              value={module.name}
-              placeholder="填写模块名称"
-              aria-label="模块名称"
-              aria-invalid={!!nameError}
-              onChange={(e) => {
-                setShowNameError(false);
-                onChange({ name: e.target.value });
-              }}
-            />
-          </InputGroup>
+          <Input
+            value={module.name}
+            placeholder="填写模块名称"
+            aria-label="模块名称"
+            aria-invalid={!!nameError}
+            onChange={(e) => {
+              setShowNameError(false);
+              onChange({ name: e.target.value });
+            }}
+          />
           <FieldError>{nameError}</FieldError>
         </Field>
         <MarkdownField

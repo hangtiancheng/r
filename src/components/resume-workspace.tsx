@@ -37,6 +37,7 @@ export function ResumeWorkspace() {
     toggleModule,
     toggleItem,
     toggleCustomModule,
+    moveModule,
     pendingModule,
     addCustomModule,
     patchPendingModule,
@@ -110,6 +111,7 @@ export function ResumeWorkspace() {
                       onToggleModule={toggleModule}
                       onToggleItem={toggleItem}
                       onToggleCustomModule={toggleCustomModule}
+                      onMoveModule={moveModule}
                       onAddCustomModule={addCustomModule}
                       className="xl:hidden"
                     />
@@ -142,6 +144,7 @@ export function ResumeWorkspace() {
               onToggleModule={toggleModule}
               onToggleItem={toggleItem}
               onToggleCustomModule={toggleCustomModule}
+              onMoveModule={moveModule}
               onAddCustomModule={addCustomModule}
               className="sticky top-4 hidden xl:flex"
             />

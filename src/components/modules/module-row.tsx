@@ -14,7 +14,6 @@ import {
   ItemActions,
   ItemContent,
   ItemGroup,
-  ItemMedia,
   ItemTitle,
 } from "@/components/ui/item";
 import { Switch } from "@/components/ui/switch";
@@ -41,7 +40,6 @@ export function ModuleRow({
   const hidden = isModuleHidden(data, meta.kind);
   const expandable = entries.length > 0;
   const open = expanded && expandable;
-  const Icon = meta.icon;
 
   return (
     <Collapsible open={open} onOpenChange={setExpanded}>
@@ -52,26 +50,6 @@ export function ModuleRow({
           hidden && "opacity-50",
         )}
       >
-        <ItemMedia variant="icon" className="gap-0.5">
-          {expandable ? (
-            <CollapsibleTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon-xs"
-                  aria-label={open ? `收起${meta.label}` : `展开${meta.label}`}
-                />
-              }
-            >
-              <ChevronDownIcon
-                className={cn("transition-transform", !open && "-rotate-90")}
-              />
-            </CollapsibleTrigger>
-          ) : (
-            <span className="size-6" aria-hidden />
-          )}
-          <Icon className="text-muted-foreground" />
-        </ItemMedia>
         <ItemContent className="min-w-0 flex-1">
           <ItemTitle className="w-full min-w-0 gap-1">
             <Button
@@ -83,6 +61,23 @@ export function ModuleRow({
               <span className="truncate">{meta.label}</span>
             </Button>
             {expandable && <Badge variant="secondary">{entries.length}</Badge>}
+            {expandable && (
+              <CollapsibleTrigger
+                render={
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    aria-label={
+                      open ? `收起${meta.label}` : `展开${meta.label}`
+                    }
+                  />
+                }
+              >
+                <ChevronDownIcon
+                  className={cn("transition-transform", !open && "-rotate-90")}
+                />
+              </CollapsibleTrigger>
+            )}
           </ItemTitle>
         </ItemContent>
         <ItemActions>

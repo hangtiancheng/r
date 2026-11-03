@@ -139,9 +139,12 @@
   margin: 12mm 14mm;
 }
 
-/* Applied only to the cloned paper used by html2pdf. */
+/* Applied only to the cloned paper used for PDF export. */
 .resume-pdf {
-  padding: 0;
+  display: flow-root;
+  /* Leave room for font descenders extending beyond the final line box. */
+  padding: 0 0 8px;
+  overflow-wrap: anywhere;
 }
 
 .resume-pdf > section {
@@ -165,17 +168,24 @@
   margin-top: 2px;
 }
 
-/* Match the markdown component's important overrides of its vendor styles. */
-.resume-pdf .wmde-markdown {
-  line-height: 19px !important;
+/* Important declarations must share Tailwind's layer to override the
+   markdown component's important utilities. */
+@layer utilities {
+  .resume-pdf .wmde-markdown {
+    line-height: 19px !important;
+  }
+
+  .resume-pdf .wmde-markdown p,
+  .resume-pdf .wmde-markdown ul,
+  .resume-pdf .wmde-markdown ol {
+    margin-block: 1px !important;
+  }
+
+  .resume-pdf .wmde-markdown li + li {
+    margin-top: 0 !important;
+  }
 }
 
-.resume-pdf .wmde-markdown p,
-.resume-pdf .wmde-markdown ul,
-.resume-pdf .wmde-markdown ol {
-  margin-block: 1px !important;
-}
-
-.resume-pdf .wmde-markdown li + li {
-  margin-top: 0 !important;
+.resume-pdf .wmde-markdown pre {
+  white-space: pre-wrap;
 }

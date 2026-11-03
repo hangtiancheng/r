@@ -1,12 +1,3 @@
-import {
-  BriefcaseIcon,
-  FolderKanbanIcon,
-  GraduationCapIcon,
-  TrophyIcon,
-  UserIcon,
-  type LucideIcon,
-} from "lucide-react";
-
 import type { ModuleKind, ModuleTarget, ResumeDoc } from "@/lib/types";
 
 export interface ModuleEntry {
@@ -18,37 +9,32 @@ export interface ModuleEntry {
 export interface ModuleMeta {
   kind: ModuleKind;
   label: string;
-  icon: LucideIcon;
   entries?: (doc: ResumeDoc) => ModuleEntry[];
 }
 
 export const MODULES: ModuleMeta[] = [
-  { kind: "base", label: "个人信息", icon: UserIcon },
+  { kind: "base", label: "个人信息" },
   {
     kind: "edu",
     label: "教育经历",
-    icon: GraduationCapIcon,
     entries: (d) =>
       d.edu.map((i) => ({ id: i.id, name: i.school, hidden: !!i.hidden })),
   },
   {
     kind: "work",
     label: "工作经历",
-    icon: BriefcaseIcon,
     entries: (d) =>
       d.works.map((i) => ({ id: i.id, name: i.company, hidden: !!i.hidden })),
   },
   {
     kind: "project",
     label: "项目经历",
-    icon: FolderKanbanIcon,
     entries: (d) =>
       d.projects.map((i) => ({ id: i.id, name: i.name, hidden: !!i.hidden })),
   },
   {
     kind: "honor",
     label: "荣誉奖项",
-    icon: TrophyIcon,
     entries: (d) =>
       d.honors.map((i) => ({ id: i.id, name: i.name, hidden: !!i.hidden })),
   },
@@ -60,6 +46,25 @@ export function isModuleHidden(doc: ResumeDoc, kind: ModuleKind): boolean {
 
 export function targetKey(target: ModuleTarget): string {
   return "kind" in target ? `kind:${target.kind}` : `custom:${target.customId}`;
+}
+
+export function orderedModuleTargets(doc: ResumeDoc): ModuleTarget[] {
+  const targets: ModuleTarget[] = [
+    ...MODULES.map(({ kind }) => ({ kind })),
+    ...doc.customModules.map(({ id }) => ({ customId: id })),
+  ];
+  const remaining = new Map(
+    targets.map((target) => [targetKey(target), target]),
+  );
+  const ordered: ModuleTarget[] = [];
+  for (const key of Array.isArray(doc.moduleOrder) ? doc.moduleOrder : []) {
+    const target = remaining.get(key);
+    if (!target) continue;
+    ordered.push(target);
+    remaining.delete(key);
+  }
+  // Older backups have no order; new or missing modules keep their defaults.
+  return [...ordered, ...remaining.values()];
 }
 
 export function isSameTarget(

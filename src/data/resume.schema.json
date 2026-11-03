@@ -14,6 +14,7 @@
     "projects",
     "honors",
     "customModules",
+    "moduleOrder",
     "hiddenModules",
     "updatedAt"
   ],
@@ -56,13 +57,22 @@
     },
     "customModules": {
       "type": "array",
-      "description": "Custom module entries. Each module consists of a title, an icon, and Markdown body content.",
+      "description": "Custom module entries. Each module consists of a title and Markdown body content.",
       "items": { "$ref": "#/$defs/CustomModule" }
     },
     "hiddenModules": {
       "type": "array",
       "description": "Built-in modules hidden on the paper. Hiding does not delete data; it only affects rendering. Custom modules use their own hidden field.",
       "items": { "$ref": "#/$defs/ModuleKind" }
+    },
+    "moduleOrder": {
+      "type": "array",
+      "description": "Display order shared by the module list, paper, and PDF. Built-ins use kind:<ModuleKind>; custom modules use custom:<id>. Missing entries are appended in their default order when importing older backups.",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(kind:(base|edu|work|project|honor)|custom:.+)$"
+      }
     },
     "updatedAt": {
       "type": "number",
@@ -291,14 +301,10 @@
       "type": "object",
       "description": "A single custom module.",
       "additionalProperties": false,
-      "required": ["id", "name", "icon", "content"],
+      "required": ["id", "name", "content"],
       "properties": {
         "id": { "type": "string", "description": "Unique entry id." },
         "name": { "type": "string", "description": "Module title." },
-        "icon": {
-          "type": "string",
-          "description": "Module icon, keyed by lucide-react icon name (see the deduped registry built in src/lib/icons-registry.ts)."
-        },
         "content": {
           "type": "string",
           "description": "Markdown body."
