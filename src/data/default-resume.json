@@ -67,7 +67,7 @@
         {
           "id": "work-tencent-1",
           "title": "腾讯 TcaplusDB NoSQL 数据库管理端",
-          "content": "- 多场景池化: 设计通用资源池, 同时池化 TCP 长连接, 私有数据表解析的进程池和对象池; NoSQL 管理端与数据库的 TCP 长连接池覆盖建立连接/身份认证超时, 请求超时, 对端主动关闭与连接静默断开等多类异常, 支持资源归还前校验; 私有数据表解析场景使用进程池隔离 C++ .so, 避免 native 崩溃与堆外泄露影响 Node 主进程, 使用对象池复用解析上下文, 固定属性初始化顺序与对象 schema 以共享 V8 隐藏类, 降低堆内存分配与 GC 压力\n- Native 内存与 GC 治理: 针对 V8 堆内存稳定, RSS 持续增长的堆外泄露事故, 使用 Valgrind Memcheck 定位 ffi-napi 调用 C++ .so 的 native 内存分配, 定位 protobuf message 未释放路径并补充 destroy NAPI 调用; 修复后以 RSS 与 heapUsed 曲线确认修复\n- 前端监控建设和监控 SDK 体积治理: 负责前端监控的 JSError 采集和故障现场还原, 基于 rrweb 增量录制和定长环形缓冲区保留错误前 5 秒的 DOM 与交互事件, 配合滑动窗口、gzip 压缩与触发式上报; 支持 sourcemap 和  componentStack 双路反解、fingerprint 聚合与告警, 将线上压缩堆栈还原到源码 file:line:col; 将录屏, 白屏检测等非核心能力拆为插件和子路径入口, 运行时按需动态导入; 通过多入口 + ESM 输出保证 tree-shaking 生效\n- JSError 自动修复 Harness: 建设从错误上报到 MR 的自动修复链路, 将反解后的堆栈、componentStack、用户行为与录屏等上下文组装为修复任务, 提交给 Agent 完成错误定位/修复/验证流水线, 自动推送分支并创建包含错误归因与修复验证的 MR; 以 release+fingerprint 和本地消息表保证任务幂等\n- React 类组件迁移: 负责 app/集群/备用集群/数据库/表五类公共选择器从类组件迁移到函数组件, 沉淀生命周期到 hooks 的映射与 state 拆分规范, 使用 TDD 和 Agent 批量迁移\n- 请求竞态, 渲染优化与 SWR 数据预加载: 对于级联切换场景下接口响应乱序导致的数据竞争问题, 使用请求序号校验最新响应, 使用 AbortController 取消在途请求, 通过模块级缓存, in-flight 去重与 React 性能优化 hooks 将多区域重复请求合并为一次, 减少无效的重复渲染; 对于 app/集群/备用集群/数据库/表五类低频变化、首屏强依赖的公共选择器数据, 落地 SWR 方案: 在 HTML 解析阶段内联预加载脚本, 使得数据请求与 bundle 下载并行; 使用全局 Map 同时持有 in-flight Promise 与 result, 实现跨组件请求去重、缓存命中即返回与后台静默 revalidate"
+          "content": "- 多场景池化: 设计通用资源池, 同时池化 TCP 长连接, 私有数据表解析的进程池和对象池; NoSQL 管理端与数据库的 TCP 长连接池覆盖建立连接/身份认证超时, 请求超时, 对端主动关闭与连接静默断开等多类异常, 支持资源归还前校验; 私有数据表解析场景使用进程池隔离 C++ .so, 避免 native 崩溃与堆外泄露影响 Node 主进程, 使用对象池复用解析上下文, 固定属性初始化顺序与对象 schema 以共享 V8 隐藏类, 降低堆内存分配与 GC 压力\n- Native 内存与 GC 治理: 针对 V8 堆内存稳定, RSS 持续增长的堆外泄露事故, 使用 Valgrind Memcheck 定位 ffi-napi 调用 C++ .so 的 native 内存分配, 定位 protobuf message 未释放路径并补充 destroy NAPI 调用; 修复后以 RSS 与 heapUsed 曲线确认修复\n- 前端监控建设和监控 SDK 体积治理: 负责前端监控的 JSError 采集和故障现场还原, 基于 rrweb 增量录制和定长环形缓冲区保留错误前 5 秒的 DOM 与交互事件, 配合滑动窗口、gzip 压缩与触发式上报; 支持 sourcemap 和  componentStack 双路反解、fingerprint 聚合与告警, 将线上压缩堆栈还原到源码 file:line:col; 将录屏, 白屏检测等非核心能力拆为插件和子路径入口, 运行时按需动态导入; 通过多入口 + ESM 输出保证 tree-shaking 生效\n- JSError 自动修复 Harness: 建设从错误上报到 MR 的自动修复链路, 将反解后的堆栈、componentStack、用户行为与录屏等上下文组装为修复任务, 提交给 Agent 完成错误定位/修复/验证流水线, 自动推送分支并创建包含错误归因与修复验证的 MR\n- React 类组件迁移: 负责 app/集群/备用集群/数据库/表五类公共选择器从类组件迁移到函数组件, 沉淀生命周期到 hooks 的映射与 state 拆分规范, 使用 TDD 和 Agent 批量迁移\n- 请求竞态, 渲染优化与 SWR 数据预加载: 对于级联切换场景下接口响应乱序导致的数据竞争问题, 使用请求序号校验最新响应, 使用 AbortController 取消在途请求, 通过模块级缓存, in-flight 去重与 React 性能优化 hooks 将多区域重复请求合并为一次, 减少无效的重复渲染; 对于低频变化、首屏强依赖的公共选择器数据, 落地 SWR 方案: 在 HTML 解析阶段内联预加载脚本, 使得数据请求与 bundle 下载并行; 使用全局 Map 同时持有 in-flight Promise 与 result, 实现跨组件请求去重、缓存命中即返回与后台静默 revalidate"
         }
       ]
     },
@@ -152,9 +152,9 @@
       "id": "custom-skills",
       "name": "个人技能",
       "icon": "LightbulbIcon",
-      "content": "- 熟悉数据结构, 计算机网络, 操作系统; 熟悉 Go, TypeScript 编程语言\n- 后端: 熟悉 Go, MySQL, Redis, 了解分布式系统设计与开发\n- 前端: 熟悉 TypeScript, React, Vue, Next.js, 了解前端工程化、性能优化\n- Agent 开发: 熟悉 Claude Code 实现, 拥有 Agent 开发经验和热情"
+      "content": "- 熟悉数据结构, 计算机网络, 操作系统; 熟悉 Go, TypeScript 编程语言\n- 后端: 熟悉 Go, MySQL, Redis, 了解分布式系统设计与开发\n- 前端: 熟悉 TypeScript, React, Vue, Next.js, 了解前端工程化、性能优化\n- Agent 开发: 了解 Claude Code 实现, 了解 Agent 开发的 SSE 流式输出、ReAct 和 Agent Loop、System Prompt、工具调用、权限和沙箱、会话持久化、上下文压缩、指令文件、自动记忆和记忆整理、MCP、Slash Command、Skill、Hook、Worktree、Subagent、Agent Team; 拥有 Agent 开发经验和热情"
     }
   ],
   "hiddenModules": [],
-  "updatedAt": 1793677839371
+  "updatedAt": 1793678655569
 }
