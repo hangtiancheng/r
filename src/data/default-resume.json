@@ -1,6 +1,6 @@
 {
   "id": 1,
-  "title": "Agent_全栈工程师_杭天铖",
+  "title": "Agent-全栈工程师-杭天铖",
   "base": {
     "name": "杭天铖",
     "gender": "男",
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "id": "work-bytedance-tiktok",
+      "id": "work-bytedance",
       "start": "2025-06",
       "end": "2025-09",
       "ongoing": false,
@@ -81,7 +81,7 @@
       "position": "全栈开发",
       "details": [
         {
-          "id": "work-bytedance-tiktok-1",
+          "id": "work-bytedance-1",
           "title": "TikTok Performance",
           "content": "- 性能数据采集: 通过插桩和抓栈两种方式采集性能数据, 定位慢函数; 编译期/运行时插桩记录函数调用的起止时间, 采样式 Profiling 按固定频率抓取 JS 调用栈; 兼顾已知瓶颈的精确定位与海量设备的低开销热点发现\n- 数据链路: 使用 Kafka 承接数据上报洪峰、解耦生产与消费, 按读写模式将数据分发到 Hive 全量离线数仓, ClickHouse 在线聚合, MySQL 关系型数据, Redis 热点数据缓存\n- ClickHouse 优化: AggregatingMergeTree 预聚合, 批量写入控制 part 数量, 结合 Redis 与进程内 LRU 组成多级缓存承接性能数据查询\n- 前端为性能数据长列表实现不定高虚拟滚动, 使用预估高度撑起总高度, 前缀和加二分查找定位可视区间, ResizeObserver 实测回写修正高度缓存, 配合 passive 事件监听、rAF 节流与上下缓冲区消除快速滚动白屏; 沉淀可复用的性能优化 hooks\n- 修复开源 coze-dev/coze-js: Android 环境 User-Agent 缺失导致 TypeError (pull/257)"
         }
@@ -94,7 +94,7 @@
       "start": "2026-02",
       "end": "",
       "ongoing": true,
-      "name": "CLI Coding Agent",
+      "name": "Coding Agent",
       "duty": "全栈开发",
       "repo": "https://github.com/hangtiancheng/yukino-code",
       "content": "- 5 层架构, 支持多 LLM 协议 (OpenAI Chat Completions/OpenAI Response/Anthropic Messages)、多 LLM providers\n- 支持 Slash Commands、Skills、Hooks\n- 支持 MCP 工具延迟加载\n- 通过动态指令注入等手段, 尽可能命中 Prompt Cache 前缀缓存, 缓存命中率实测 >90% (不同场景下数值不同)\n- 权限系统: 权限模式、权限规则配置文件、路径沙箱、OS 级沙箱、Human-in-the-Loop\n- 两层上下文压缩, 基于自动上下文压缩、subagent 实现长期 loop 的 Goal 模式\n- 支持 Auto-Dream 自动记忆提取、定期记忆整理\n- 支持预定义的 subagent (Definition-based) 和 fork 的 subagent (Fork-based), subagent 支持前台同步和后台异步\n- 支持 Worktree 文件隔离; 支持 Agent Team, 通过文件邮箱、p2p/broadcast 实现主 agent 编排、teammates 通信和合作\n- 支持多模态消息 (例如图片)、对于图片, 支持二进制格式嗅探和图片压缩\n- 使用 SWE-bench-Live 数据集进行自动化评测, 通过真实使用和自动化评测持续优化"
@@ -123,25 +123,25 @@
   ],
   "honors": [
     {
-      "id": "5a15b5fd-d791-4079-9f34-c63b9b0624c9",
+      "id": "honor-xidian",
       "name": "西安电子科技大学·大二·三等奖学金",
       "issuer": "",
       "date": "2020-11"
     },
     {
-      "id": "e479c5bd-1c7f-4678-baf4-eba6edf98511",
+      "id": "honor-njupt-1",
       "name": "南京邮电大学·研一·三等奖学金",
       "issuer": "",
       "date": "2024-11"
     },
     {
-      "id": "547f87cb-516c-46f5-9723-10f742941a07",
+      "id": "honor-njupt-2",
       "name": "南京邮电大学·研二·三等奖学金",
       "issuer": "",
       "date": "2025-11"
     },
     {
-      "id": "cec75793-5b1e-4102-9e40-9a5c8af69ded",
+      "id": "honor-njupt-3",
       "name": "南京邮电大学·研三·三等奖学金",
       "issuer": "",
       "date": "2026-11"
@@ -156,5 +156,5 @@
     }
   ],
   "hiddenModules": [],
-  "updatedAt": 1793678655569
+  "updatedAt": 1793682353889
 }
